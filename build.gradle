@@ -54,6 +54,7 @@ dependencies {
     // Immersive Engineering
     implementation fg.deobf("curse.maven:immersive-engineering-231951:4782978")
 
+
     // Create
     implementation fg.deobf("curse.maven:create-328085:4835191")
 

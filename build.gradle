@@ -1,0 +1,136 @@
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+plugins {
+    id 'java'
+    id 'idea'
+    id "com.matthewprenger.cursegradle" version "1.4.0"
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
+}
+
+base {
+    version = mod_version
+    group = mod_group_id
+    archivesName = mod_id
+}
+
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+idea {
+    module {
+        excludeDirs.add(file("run"))
+    }
+}
+
+repositories {
+    maven {
+        // tfc
+        url 'https://www.cursemaven.com'
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+    maven {
+        // Patchouli
+        name = "BlameJared"
+        url = "https://maven.blamejared.com"
+    }
+}
+
+dependencies {
+
+    // Minecraft
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Mixin
+    annotationProcessor("org.spongepowered:mixin:${mixin_version}:processor")
+
+    // TFC
+    fg.deobf("curse.maven:terrafirmacraft-302973:${tfc_version}")
+    implementation fg.deobf("curse.maven:terrafirmacraft-302973:${tfc_version}")
+
+    // Immersive Engineering
+    implementation fg.deobf("curse.maven:immersive-engineering-231951:4782978")
+
+    // Create
+    implementation fg.deobf("curse.maven:create-328085:4835191")
+
+    // Patchouli
+    fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
+    implementation fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
+
+    // Jade
+    compileOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
+
+    // Only use Jade at runtime
+    runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
+
+    // FirmaLife
+    compileOnly(fg.deobf("curse.maven:firmalife-453394:${firmalife_version}"))
+
+    // Only use FirmaLife at runtime
+    runtimeOnly(fg.deobf("curse.maven:firmalife-453394:${firmalife_version}"))
+
+}
+
+processResources {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+
+    runs {
+        all {
+            arg "-mixin.config=oreprocessing.mixins.json"
+
+            property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+            mods {
+                afc {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            workingDirectory project.file('run/client')
+        }
+
+        server {
+            workingDirectory project.file('run/server')
+
+            arg("--nogui")
+        }
+    }
+}
+
+mixin {
+    // MixinGradle Settings
+    add sourceSets.main, 'afc.refmap.json'
+    //If you get duplicate refmap error, delete the existing refmap file, a new one should generate on build.
+}
+
+// Example for how to get properties into the manifest for reading at runtime.
+tasks {
+    jar {
+        manifest {
+            attributes([
+                    "Specification-Title"     : mod_id,
+                    "Specification-Vendor"    : mod_authors,
+                    "Specification-Version"   : "1", // We are version 1 of ourselves
+                    "Implementation-Title"    : project.name,
+                    "Implementation-Version"  : project.jar.archiveVersion,
+                    "Implementation-Vendor"   : mod_authors,
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                    "MixinConfigs":"afc.mixins.json"
+            ])
+        }
+    }
+}

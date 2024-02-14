@@ -1,0 +1,3 @@
+Mod by Therighthon
+
+This mod would not have been possible without the contributions of others. I'd like to thank the TerraFirmaCraft developers, for their hard work making the original mod, and and especially for the hard work of the past few years to make it easily extendable through datapacks.

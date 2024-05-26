@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_garnierite/dacite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/dacite"
+    },
+    {
+      "item": "tfc:rock/loose/dacite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/dacite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:garnierite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

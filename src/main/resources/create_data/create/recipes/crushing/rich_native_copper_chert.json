@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_native_copper/chert"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/chert"
+    },
+    {
+      "item": "tfc:rock/loose/chert",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/chert",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:native_copper_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_magnetite/conglomerate"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/conglomerate"
+    },
+    {
+      "item": "tfc:rock/loose/conglomerate",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/conglomerate",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:magnetite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

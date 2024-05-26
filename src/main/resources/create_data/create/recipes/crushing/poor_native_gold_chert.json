@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_native_gold/chert"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/chert"
+    },
+    {
+      "item": "tfc:rock/loose/chert",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/chert",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:native_gold_dust"
+    }
+  ],
+  "processingTime": 250
+}

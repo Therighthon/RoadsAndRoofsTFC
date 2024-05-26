@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_garnierite/andesite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/andesite"
+    },
+    {
+      "item": "tfc:rock/loose/andesite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/andesite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:garnierite_dust"
+    },
+    {
+      "item": "kubejs:garnierite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

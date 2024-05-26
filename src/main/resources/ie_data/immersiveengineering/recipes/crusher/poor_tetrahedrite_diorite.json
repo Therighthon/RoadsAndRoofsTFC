@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.9,
+         "output":{
+            "item":"tfc:rock/gravel/diorite"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:tetrahedrite_dust",
+      "count": 2
+      
+   },
+   "input":{
+      "item":"tfc:ore/poor_tetrahedrite/diorite"
+   },
+   "energy":6000
+}

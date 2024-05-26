@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_native_gold/slate"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/slate"
+    },
+    {
+      "item": "tfc:rock/loose/slate",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/slate",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:native_gold_dust"
+    },
+    {
+      "item": "kubejs:native_gold_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

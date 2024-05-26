@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_hematite/andesite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/andesite"
+    },
+    {
+      "item": "tfc:rock/loose/andesite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/andesite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:hematite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

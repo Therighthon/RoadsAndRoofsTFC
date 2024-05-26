@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_hematite/limestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/limestone"
+    },
+    {
+      "item": "tfc:rock/loose/limestone",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/limestone",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:hematite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

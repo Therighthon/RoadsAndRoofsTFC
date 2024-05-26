@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.8,
+         "output":{
+            "item":"tfc:rock/gravel/marble"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:tetrahedrite_dust",
+      "count": 3
+      
+   },
+   "input":{
+      "item":"tfc:ore/normal_tetrahedrite/marble"
+   },
+   "energy":6000
+}

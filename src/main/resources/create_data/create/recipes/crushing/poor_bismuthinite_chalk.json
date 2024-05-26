@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_bismuthinite/chalk"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/chalk"
+    },
+    {
+      "item": "tfc:rock/loose/chalk",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/chalk",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:bismuthinite_dust"
+    }
+  ],
+  "processingTime": 250
+}

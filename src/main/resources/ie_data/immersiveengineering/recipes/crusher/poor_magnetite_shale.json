@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.9,
+         "output":{
+            "item":"tfc:rock/gravel/shale"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:magnetite_dust",
+      "count": 2
+      
+   },
+   "input":{
+      "item":"tfc:ore/poor_magnetite/shale"
+   },
+   "energy":6000
+}

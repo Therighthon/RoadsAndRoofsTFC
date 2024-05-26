@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_malachite/chalk"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/chalk"
+    },
+    {
+      "item": "tfc:rock/loose/chalk",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/chalk",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:malachite_dust"
+    },
+    {
+      "item": "kubejs:malachite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

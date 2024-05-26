@@ -52,10 +52,10 @@ dependencies {
     implementation fg.deobf("curse.maven:terrafirmacraft-302973:${tfc_version}")
 
     // Immersive Engineering
-    implementation fg.deobf("curse.maven:immersive-engineering-231951:4782978")
+    implementation fg.deobf("curse.maven:immersive-engineering-231951:${ie_version}")
 
     // Create
-    implementation fg.deobf("curse.maven:create-328085:4835191")
+    implementation fg.deobf("curse.maven:create-328085:${create_version}")
 
     // Patchouli
     fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")
@@ -85,7 +85,7 @@ minecraft {
 
     runs {
         all {
-            arg "-mixin.config=oreprocessing.mixins.json"
+            arg "-mixin.config=rnr.mixins.json"
 
             property 'forge.logging.console.level', 'debug'
 

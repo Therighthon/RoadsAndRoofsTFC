@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/poor_limonite/marble"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/poor_limonite",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

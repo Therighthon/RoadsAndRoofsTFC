@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_magnetite/dolomite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/dolomite"
+    },
+    {
+      "item": "tfc:rock/loose/dolomite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/dolomite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:magnetite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

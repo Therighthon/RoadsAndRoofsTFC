@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_bismuthinite/granite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/granite"
+    },
+    {
+      "item": "tfc:rock/loose/granite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/granite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:bismuthinite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

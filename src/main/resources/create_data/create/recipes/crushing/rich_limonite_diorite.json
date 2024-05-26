@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_limonite/diorite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/diorite"
+    },
+    {
+      "item": "tfc:rock/loose/diorite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/diorite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:limonite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

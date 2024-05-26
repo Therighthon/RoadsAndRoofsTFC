@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_tetrahedrite/rhyolite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/rhyolite"
+    },
+    {
+      "item": "tfc:rock/loose/rhyolite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/rhyolite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:tetrahedrite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

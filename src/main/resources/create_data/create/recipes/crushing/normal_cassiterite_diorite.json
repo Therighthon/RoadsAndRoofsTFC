@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_cassiterite/diorite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/diorite"
+    },
+    {
+      "item": "tfc:rock/loose/diorite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/diorite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:cassiterite_dust"
+    },
+    {
+      "item": "kubejs:cassiterite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

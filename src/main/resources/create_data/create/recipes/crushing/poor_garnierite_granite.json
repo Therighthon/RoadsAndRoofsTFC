@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_garnierite/granite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/granite"
+    },
+    {
+      "item": "tfc:rock/loose/granite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/granite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:garnierite_dust"
+    }
+  ],
+  "processingTime": 250
+}

@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.8,
+         "output":{
+            "item":"tfc:rock/gravel/rhyolite"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:native_silver_dust",
+      "count": 3
+      
+   },
+   "input":{
+      "item":"tfc:ore/normal_native_silver/rhyolite"
+   },
+   "energy":6000
+}

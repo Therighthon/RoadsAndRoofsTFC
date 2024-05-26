@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_sphalerite/rhyolite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/rhyolite"
+    },
+    {
+      "item": "tfc:rock/loose/rhyolite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/rhyolite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:sphalerite_dust"
+    },
+    {
+      "item": "kubejs:sphalerite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

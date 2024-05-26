@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/normal_sphalerite/gabbro"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/normal_sphalerite",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

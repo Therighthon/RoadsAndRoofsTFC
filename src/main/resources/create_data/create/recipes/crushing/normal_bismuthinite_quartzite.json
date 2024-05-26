@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_bismuthinite/quartzite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/quartzite"
+    },
+    {
+      "item": "tfc:rock/loose/quartzite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/quartzite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:bismuthinite_dust"
+    },
+    {
+      "item": "kubejs:bismuthinite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

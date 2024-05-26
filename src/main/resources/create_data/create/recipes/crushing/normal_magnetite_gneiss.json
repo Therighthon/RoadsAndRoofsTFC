@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_magnetite/gneiss"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/gneiss"
+    },
+    {
+      "item": "tfc:rock/loose/gneiss",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/gneiss",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:magnetite_dust"
+    },
+    {
+      "item": "kubejs:magnetite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

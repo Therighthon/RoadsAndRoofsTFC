@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/normal_native_copper/claystone"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/normal_native_copper",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

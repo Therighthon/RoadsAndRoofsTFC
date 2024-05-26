@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/rich_native_copper/gabbro"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/rich_native_copper",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_sphalerite/diorite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/diorite"
+    },
+    {
+      "item": "tfc:rock/loose/diorite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/diorite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:sphalerite_dust"
+    },
+    {
+      "item": "kubejs:sphalerite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

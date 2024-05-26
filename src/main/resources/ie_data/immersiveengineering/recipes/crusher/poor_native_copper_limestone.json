@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.9,
+         "output":{
+            "item":"tfc:rock/gravel/limestone"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:native_copper_dust",
+      "count": 2
+      
+   },
+   "input":{
+      "item":"tfc:ore/poor_native_copper/limestone"
+   },
+   "energy":6000
+}

@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_garnierite/gneiss"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/gneiss"
+    },
+    {
+      "item": "tfc:rock/loose/gneiss",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/gneiss",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:garnierite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

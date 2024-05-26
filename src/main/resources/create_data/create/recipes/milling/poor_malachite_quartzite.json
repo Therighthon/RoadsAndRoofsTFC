@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/poor_malachite/quartzite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/poor_malachite",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

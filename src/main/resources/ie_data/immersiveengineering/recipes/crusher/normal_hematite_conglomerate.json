@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.8,
+         "output":{
+            "item":"tfc:rock/gravel/conglomerate"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:hematite_dust",
+      "count": 3
+      
+   },
+   "input":{
+      "item":"tfc:ore/normal_hematite/conglomerate"
+   },
+   "energy":6000
+}

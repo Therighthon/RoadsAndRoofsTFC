@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_tetrahedrite/basalt"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/basalt"
+    },
+    {
+      "item": "tfc:rock/loose/basalt",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/basalt",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:tetrahedrite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

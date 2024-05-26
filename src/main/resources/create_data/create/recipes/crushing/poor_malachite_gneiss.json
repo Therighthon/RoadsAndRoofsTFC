@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_malachite/gneiss"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/gneiss"
+    },
+    {
+      "item": "tfc:rock/loose/gneiss",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/gneiss",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:malachite_dust"
+    }
+  ],
+  "processingTime": 250
+}

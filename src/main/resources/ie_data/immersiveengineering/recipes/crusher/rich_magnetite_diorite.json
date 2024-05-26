@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.7,
+         "output":{
+            "item":"tfc:rock/gravel/diorite"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:magnetite_dust",
+      "count": 4
+      
+   },
+   "input":{
+      "item":"tfc:ore/rich_magnetite/diorite"
+   },
+   "energy":6000
+}

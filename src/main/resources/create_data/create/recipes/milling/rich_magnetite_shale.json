@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/rich_magnetite/shale"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/rich_magnetite",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

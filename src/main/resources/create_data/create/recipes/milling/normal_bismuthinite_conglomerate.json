@@ -1,0 +1,15 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item":"tfc:ore/normal_bismuthinite/conglomerate"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:ore/normal_bismuthinite",
+      "count": 2
+    }
+  ],
+  "processingTime": 100
+}

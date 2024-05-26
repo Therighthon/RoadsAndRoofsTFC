@@ -1,0 +1,20 @@
+{
+   "type":"immersiveengineering:crusher",
+   "secondaries":[
+      {
+         "chance":0.8,
+         "output":{
+            "item":"tfc:rock/gravel/slate"
+         }
+      }
+   ],
+   "result":{
+      "item":"kubejs:bismuthinite_dust",
+      "count": 3
+      
+   },
+   "input":{
+      "item":"tfc:ore/normal_bismuthinite/slate"
+   },
+   "energy":6000
+}

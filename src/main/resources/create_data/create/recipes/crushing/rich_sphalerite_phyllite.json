@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/rich_sphalerite/phyllite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/phyllite"
+    },
+    {
+      "item": "tfc:rock/loose/phyllite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/phyllite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:sphalerite_dust",
+      "count": 2
+    }
+  ],
+  "processingTime": 250
+}

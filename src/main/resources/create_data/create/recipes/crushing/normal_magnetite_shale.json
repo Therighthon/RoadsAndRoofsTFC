@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_magnetite/shale"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/shale"
+    },
+    {
+      "item": "tfc:rock/loose/shale",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/shale",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:magnetite_dust"
+    },
+    {
+      "item": "kubejs:magnetite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_malachite/limestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/limestone"
+    },
+    {
+      "item": "tfc:rock/loose/limestone",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/limestone",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:malachite_dust"
+    },
+    {
+      "item": "kubejs:malachite_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

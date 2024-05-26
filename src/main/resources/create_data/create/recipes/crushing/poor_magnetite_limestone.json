@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_magnetite/limestone"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/limestone"
+    },
+    {
+      "item": "tfc:rock/loose/limestone",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/limestone",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:magnetite_dust"
+    }
+  ],
+  "processingTime": 250
+}

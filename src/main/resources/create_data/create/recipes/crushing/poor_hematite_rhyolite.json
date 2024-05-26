@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_hematite/rhyolite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/rhyolite"
+    },
+    {
+      "item": "tfc:rock/loose/rhyolite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/rhyolite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:hematite_dust"
+    }
+  ],
+  "processingTime": 250
+}

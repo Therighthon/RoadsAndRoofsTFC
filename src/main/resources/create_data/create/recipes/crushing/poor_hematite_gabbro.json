@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_hematite/gabbro"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/gabbro"
+    },
+    {
+      "item": "tfc:rock/loose/gabbro",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/gabbro",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:hematite_dust"
+    }
+  ],
+  "processingTime": 250
+}

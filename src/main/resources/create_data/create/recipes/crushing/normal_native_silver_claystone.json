@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/normal_native_silver/claystone"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/claystone"
+    },
+    {
+      "item": "tfc:rock/loose/claystone",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/claystone",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:native_silver_dust"
+    },
+    {
+      "item": "kubejs:native_silver_dust",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 250
+}

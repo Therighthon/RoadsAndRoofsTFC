@@ -1,0 +1,25 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "tfc:ore/poor_native_copper/quartzite"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:rock/loose/quartzite"
+    },
+    {
+      "item": "tfc:rock/loose/quartzite",
+      "chance": 0.75
+    },
+    {
+      "item": "tfc:rock/loose/quartzite",
+      "chance": 0.75
+    },
+    {
+      "item": "kubejs:native_copper_dust"
+    }
+  ],
+  "processingTime": 250
+}

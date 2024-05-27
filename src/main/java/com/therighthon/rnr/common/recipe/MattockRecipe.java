@@ -3,6 +3,7 @@ package com.therighthon.rnr.common.recipe;
 import java.util.Locale;
 import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Either;
+import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -22,7 +23,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,6 +47,7 @@ public class MattockRecipe extends SimpleBlockRecipe
      */
     public static Either<BlockState, InteractionResult> computeResult(Player player, BlockState state, BlockHitResult hit, boolean informWhy)
     {
+
         ItemStack held = player.getMainHandItem();
         if (Helpers.isItem(held, RNRTags.Items.MATTOCKS))
         {
@@ -61,25 +62,25 @@ public class MattockRecipe extends SimpleBlockRecipe
                 }
                 else
                 {
-                    BlockState mattocked = recipe.getBlockCraftingResult(state);
-                    mattocked = mattocked.getBlock().getStateForPlacement(new BlockPlaceContext(player, InteractionHand.MAIN_HAND, new ItemStack(mattocked.getBlock()), hit));
-                    if (mattocked == null)
+                    BlockState chiseled = recipe.getBlockCraftingResult(state);
+                    chiseled = chiseled.getBlock().getStateForPlacement(new BlockPlaceContext(player, InteractionHand.MAIN_HAND, new ItemStack(chiseled.getBlock()), hit));
+                    if (chiseled == null)
                     {
                         if (informWhy) complain(player, "cannot_place");
                         return Either.<BlockState, InteractionResult>right(InteractionResult.FAIL);
                     }
                     else
                     {
-                        // covers case where a waterlogged block is mattocked and the new block can't take the fluid contained
-                        mattocked = FluidHelpers.fillWithFluid(mattocked, player.level().getFluidState(pos).getType());
-                        if (mattocked == null)
+                        // covers case where a waterlogged block is chiseled and the new block can't take the fluid contained
+                        chiseled = FluidHelpers.fillWithFluid(chiseled, player.level().getFluidState(pos).getType());
+                        if (chiseled == null)
                         {
                             if (informWhy) complain(player, "bad_fluid");
                             return Either.<BlockState, InteractionResult>right(InteractionResult.FAIL);
                         }
                         else
                         {
-                            return Either.<BlockState, InteractionResult>left(mattocked);
+                            return Either.<BlockState, InteractionResult>left(chiseled);
                         }
                     }
                 }

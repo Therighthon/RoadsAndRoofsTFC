@@ -2,6 +2,7 @@ package com.therighthon.rnr.client;
 
 import java.util.Locale;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -11,10 +12,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 
 import net.dries007.tfc.client.ClientHelpers;
-import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.capabilities.player.PlayerDataCapability;
 import net.dries007.tfc.util.Helpers;
 

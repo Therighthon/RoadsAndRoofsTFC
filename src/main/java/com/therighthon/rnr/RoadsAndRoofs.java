@@ -2,7 +2,7 @@ package com.therighthon.rnr;
 
 import com.mojang.logging.LogUtils;
 import com.therighthon.rnr.client.ClientEventHandler;
-import com.therighthon.rnr.common.RNRBlocks;
+import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.RNRItems;
 import com.therighthon.rnr.common.recipe.RNRRecipeSerializers;
 import com.therighthon.rnr.common.recipe.RNRRecipeTypes;

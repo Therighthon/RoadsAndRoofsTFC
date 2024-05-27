@@ -6,14 +6,6 @@ public class TampedMudBlock extends TampedSoilBlock
 {
     public TampedMudBlock(Properties pProperties)
     {
-        super(pProperties);
-    }
-
-    @Override
-    public float getSpeedFactor()
-    {
-        //TODO: Add config
-        final float modifier = 0.8f; // 0.0 = full speed factor, 1.0 = no modifier
-        return Helpers.lerp(modifier, speedFactor, 2.0f);
+        super(pProperties.speedFactor(0.8f));
     }
 }

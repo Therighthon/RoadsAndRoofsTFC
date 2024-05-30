@@ -15,21 +15,20 @@ def generate(rm: ResourceManager):
     
     # Dirt Blocks
     for dirt in SOIL_BLOCK_VARIANTS:
-        print(dirt)
-        rm.blockstate('rmr:tamped_%s' % dirt).with_block_model({
+        rm.blockstate('rnr:tamped_%s' % dirt).with_block_model({
             'dirt': 'tfc:block/dirt/%s' % dirt
         }, parent='rnr:block/tamped_block')
     # Mud Blocks
     for dirt in SOIL_BLOCK_VARIANTS:
-        rm.blockstate('rmr:tamped_%s_mud' % dirt).with_block_model({
+        rm.blockstate('rnr:tamped_%s_mud' % dirt).with_block_model({
             'dirt': 'tfc:block/mud/%s' % dirt
         }, parent='rnr:block/tamped_block')
 
-    rm.blockstate('rmr:tamped_peat').with_block_model({
+    rm.blockstate('rnr:tamped_peat').with_block_model({
         'dirt': 'tfc:block/peat'
     }, parent='rnr:block/tamped_block')
 
-    rm.blockstate('rmr:tamped_kaolin').with_block_model({
+    rm.blockstate('rnr:tamped_kaolin').with_block_model({
         'dirt': 'tfc:block/red_kaolin_clay'
     }, parent='rnr:block/tamped_block')
 

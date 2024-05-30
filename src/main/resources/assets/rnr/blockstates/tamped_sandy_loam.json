@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "variants": {
     "": {
-      "model": "rmr:block/tamped_sandy_loam"
+      "model": "rnr:block/tamped_sandy_loam"
     }
   }
 }

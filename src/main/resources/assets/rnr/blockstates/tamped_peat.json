@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "variants": {
     "": {
-      "model": "rmr:block/tamped_silt"
+      "model": "rnr:block/tamped_peat"
     }
   }
 }

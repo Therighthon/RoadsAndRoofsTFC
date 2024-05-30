@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/flagstones/andesite",
+    "top": "rnr:block/rock/flagstones/andesite",
+    "side": "rnr:block/rock/flagstones/andesite"
+  }
+}

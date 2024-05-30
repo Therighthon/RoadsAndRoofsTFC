@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/cobbled_road/claystone",
+    "top": "rnr:block/rock/cobbled_road/claystone",
+    "side": "rnr:block/rock/cobbled_road/claystone"
+  }
+}

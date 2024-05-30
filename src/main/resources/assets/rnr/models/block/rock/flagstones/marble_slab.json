@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "rnr:block/rock/flagstones/marble",
+    "top": "rnr:block/rock/flagstones/marble",
+    "side": "rnr:block/rock/flagstones/marble"
+  }
+}

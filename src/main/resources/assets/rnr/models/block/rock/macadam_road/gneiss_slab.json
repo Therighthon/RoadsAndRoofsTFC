@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "rnr:block/rock/macadam_road/gneiss",
+    "top": "rnr:block/rock/macadam_road/gneiss",
+    "side": "rnr:block/rock/macadam_road/gneiss"
+  }
+}

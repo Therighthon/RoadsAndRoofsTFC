@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_block",
+  "textures": {
+    "top": "rnr:block/rock/sett_road/slate",
+    "gravel": "minecraft:block/gravel"
+  }
+}

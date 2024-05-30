@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/flagstones/conglomerate",
+    "top": "rnr:block/rock/flagstones/conglomerate",
+    "side": "rnr:block/rock/flagstones/conglomerate"
+  }
+}

@@ -17,7 +17,6 @@ from typing import Optional
 
 from mcresources import ResourceManager, utils
 
-import advancements
 import assets
 import constants
 import data
@@ -25,10 +24,8 @@ import tags
 import format_lang
 import generate_book
 import generate_textures
-import generate_trees
 import recipes
 import validate_assets
-import world_gen
 
 BOOK_LANGUAGES = ('en_us', 'ja_jp', 'ko_kr', 'pt_br', 'uk_ua', 'zh_cn', 'zh_tw', 'zh_hk')
 MOD_LANGUAGES = ('en_us', 'es_es', 'de_de', 'ja_jp', 'ko_kr', 'pl_pl', 'pt_br', 'ru_ru', 'tr_tr', 'uk_ua', 'zh_cn', 'zh_tw', 'zh_hk')
@@ -72,7 +69,7 @@ def main():
         elif action == 'all':
             resources(hotswap=hotswap, do_assets=True, do_data=True, do_recipes=True, do_worldgen=True, do_advancements=True)
             format_lang.main(False, 'minecraft', MOD_LANGUAGES)  # format_lang
-            format_lang.main(False, 'tfc', MOD_LANGUAGES)
+            format_lang.main(False, 'rnr', MOD_LANGUAGES)
             for lang in BOOK_LANGUAGES:  # Translate all
                 generate_book.main(lang, args.local, False)
         elif action == 'assets':
@@ -93,11 +90,9 @@ def main():
                     generate_book.main(lang, args.local, validate=False, reverse_translate=args.reverse_translate)
             else:
                 generate_book.main(args.translate, args.local, validate=False, reverse_translate=args.reverse_translate)
-        elif action == 'trees':
-            generate_trees.main()
         elif action == 'format_lang':
             format_lang.main(False, 'minecraft', MOD_LANGUAGES)
-            format_lang.main(False, 'tfc', MOD_LANGUAGES)
+            format_lang.main(False, 'rnr', MOD_LANGUAGES)
         elif action == 'zip':
             zip_resources()
 
@@ -120,7 +115,7 @@ def clean_at(location: str):
 
 def validate_resources():
     """ Validates all resources are unchanged. """
-    rm = ValidatingResourceManager('tfc', './src/main/resources')
+    rm = ValidatingResourceManager('rnr', './src/main/resources')
     resources_at(rm, True, True, True, True, True)
     error = rm.error_files != 0
 
@@ -135,7 +130,7 @@ def validate_resources():
     for lang in MOD_LANGUAGES:
         try:
             format_lang.main(True, 'minecraft', (lang,))
-            format_lang.main(True, 'tfc', (lang,))
+            format_lang.main(True, 'rnr', (lang,))
         except AssertionError as e:
             print(e)
             error = True
@@ -147,8 +142,8 @@ def zip_resources():
     data_count = zip_asset_type('data')
 
     rescue_folder('META-INF')
-    rescue_folder('data/tfc/patchouli_books')
-    rescue_asset('tfc.mixins.json')
+    rescue_folder('data/rnr/patchouli_books')
+    rescue_asset('rnr.mixins.json')
     rescue_asset('assets_zipped.zip')
     rescue_asset('data_zipped.zip')
 
@@ -178,9 +173,9 @@ def rescue_folder(path: str):
 
 def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = False, do_recipes: bool = False, do_worldgen: bool = False, do_advancements: bool = False):
     """ Generates resource files, or a subset of them """
-    resources_at(ResourceManager('tfc', resource_dir='./src/main/resources'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
+    resources_at(ResourceManager('rnr', resource_dir='./src/main/resources'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
     if hotswap:
-        resources_at(ResourceManager('tfc', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
+        resources_at(ResourceManager('rnr', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
 
 
 def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool):
@@ -195,10 +190,6 @@ def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes
         tags.generate(rm)
     if do_recipes:
         recipes.generate(rm)
-    if do_worldgen:
-        world_gen.generate(rm)
-    if do_advancements:
-        advancements.generate(rm)
 
     if all((do_assets, do_data, do_worldgen, do_recipes, do_advancements)):
         # Only generate this when generating all, as it's shared

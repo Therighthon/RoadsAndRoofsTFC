@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/sett_road/dolomite",
+    "top": "rnr:block/rock/sett_road/dolomite",
+    "side": "rnr:block/rock/sett_road/dolomite"
+  }
+}

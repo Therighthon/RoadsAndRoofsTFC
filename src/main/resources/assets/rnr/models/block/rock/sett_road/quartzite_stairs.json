@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/sett_road/quartzite",
+    "top": "rnr:block/rock/sett_road/quartzite",
+    "side": "rnr:block/rock/sett_road/quartzite"
+  }
+}

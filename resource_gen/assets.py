@@ -7,15 +7,46 @@ from constants import *
 
 
 def generate(rm: ResourceManager):
+
+    # Base Course
+    rm.blockstate('rnr:base_course').with_block_model({
+        'dirt': 'minecraft:block/gravel'
+    }, parent='rnr:block/base_course_shape')
+    
+    # Dirt Blocks
+    for dirt in SOIL_BLOCK_VARIANTS:
+        print(dirt)
+        rm.blockstate('rmr:tamped_%s' % dirt).with_block_model({
+            'dirt': 'tfc:block/dirt/%s' % dirt
+        }, parent='rnr:block/tamped_block')
+    # Mud Blocks
+    for dirt in SOIL_BLOCK_VARIANTS:
+        rm.blockstate('rmr:tamped_%s_mud' % dirt).with_block_model({
+            'dirt': 'tfc:block/mud/%s' % dirt
+        }, parent='rnr:block/tamped_block')
+
+    rm.blockstate('rmr:tamped_peat').with_block_model({
+        'dirt': 'tfc:block/peat'
+    }, parent='rnr:block/tamped_block')
+
+    rm.blockstate('rmr:tamped_kaolin').with_block_model({
+        'dirt': 'tfc:block/red_kaolin_clay'
+    }, parent='rnr:block/tamped_block')
+
     # Rock Type Blocks
     for rock, rock_data in ROCKS.items():
 
         def rock_lang(_lhs: str, _rhs: str):
-            return _rhs, _lhs + 'path'
+            return _rhs, _lhs
 
         for block_type in STONE_PATHS:
+            # Paths
+            rm.blockstate('rnr:rock/%s/%s' % (block_type, rock)).with_block_model({
+                'top': 'rnr:block/rock/%s/%s' % (block_type, rock),
+                'gravel': 'minecraft:block/gravel'
+            }, parent='rnr:block/path_block')
             # Stairs
-            rm.block(('rock', block_type, rock)).make_stairs()
+            rm.block(('rock', block_type, rock)).make_stairs('_stairs',)
             rm.block(('rock', block_type, rock + '_stairs')).with_lang(lang('%s %s Stairs', *rock_lang(block_type, rock))).with_block_loot('rnr:rock/%s/%s_stairs' % (block_type, rock))
             # Slabs
             rm.block(('rock', block_type, rock)).make_slab()
@@ -32,3 +63,27 @@ def slab_loot(rm: ResourceManager, loot: str):
             'add': False
         }]
     })
+
+def make_stairs(self, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
+    """
+    Generates all blockstates and models required for a standard stair block
+    """
+    block = self.res.join('block/')
+    stairs = self.res.join() + stair_suffix
+    block_stairs = block + stair_suffix
+    block_stairs_inner = block + stair_suffix + '_inner'
+    block_stairs_outer = block + stair_suffix + '_outer'
+
+    if bottom_texture is None:
+        bottom_texture = block
+    if side_texture is None:
+        side_texture = block
+    if top_texture is None:
+        top_texture = block
+
+    self.rm.blockstate(stairs, variants=block_states.stairs_variants(block_stairs, block_stairs_inner, block_stairs_outer))
+    self.rm.block_model(stairs, textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='block/stairs')
+    self.rm.block_model(stairs + '_inner', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='block/inner_stairs')
+    self.rm.block_model(stairs + '_outer', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='block/outer_stairs')
+    self.rm.item_model(stairs, parent=block_stairs, no_textures=True)
+    return self

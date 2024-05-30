@@ -7,13 +7,13 @@ from mcresources import utils
 ASSETS_PATH = './src/main/resources/assets/'
 TEXTURE_FORGIVENESS_PATHS: List = ['_fluff', 'block/burlap', 'block/powder', 'metal/smooth', 'metal/block', 'block/molten_flow', 'block/paper', 'block/unrefined_paper', 'yellow_bell', 'red_bell', 'green_bell', 'sandstone/side', 'quiver', 'placed_item']
 MODEL_FORGIVENESS_PATHS: List = ['block/jar', 'block/firepit_log_']
-LANG_PATH = ASSETS_PATH + 'tfc/lang/en_us.json'
-SOUNDS_PATH = ASSETS_PATH + 'tfc/sounds.json'
+LANG_PATH = ASSETS_PATH + 'rnr/lang/en_us.json'
+SOUNDS_PATH = ASSETS_PATH + 'rnr/sounds.json'
 
 def main():
     errors = 0
-    model_locations = glob(ASSETS_PATH + 'tfc/models/**/*.json', recursive=True)
-    state_locations = glob(ASSETS_PATH + 'tfc/blockstates/**/*.json', recursive=True)
+    model_locations = glob(ASSETS_PATH + 'rnr/models/**/*.json', recursive=True)
+    state_locations = glob(ASSETS_PATH + 'rnr/blockstates/**/*.json', recursive=True)
     mc_state_locations = glob(ASSETS_PATH + 'minecraft/blockstates/**/*.json', recursive=True)
     lang_json = load(LANG_PATH)
     sound_json = load(SOUNDS_PATH)
@@ -33,10 +33,10 @@ def validate_lang(state_locations, lang_json, sound_json):
     errors = 0
     for f in state_locations:
         name = f.replace('\\', '/')
-        name = name.replace(ASSETS_PATH + 'tfc/blockstates/', '')
+        name = name.replace(ASSETS_PATH + 'rnr/blockstates/', '')
         name = name.replace('.json', '')
         name = name.replace('/', '.')
-        if 'block.tfc.%s' % name not in lang_json and 'plant' not in name:
+        if 'block.rnr.%s' % name not in lang_json and 'plant' not in name:
             print('Block without lang entry: %s' % name)
             errors += 1
         tested += 1
@@ -47,7 +47,7 @@ def validate_lang(state_locations, lang_json, sound_json):
             errors += 1
         else:
             sub = data['subtitle']
-            if 'tfc' in sub and sub not in lang_json:
+            if 'rnr' in sub and sub not in lang_json:
                 print('Sound subtitle missing for sound: %s with key: %s' % (sound, sub))
                 errors += 1
     print('Lang Validation: %s blocks tested, %s sounds tested, %s errors' % (tested, tested_sound, errors))
@@ -97,7 +97,7 @@ def validate_models_used(model_locations, known_models):
     fixed_ml = [f.replace('\\', '/') for f in model_locations if 'item' not in f]
     for f in known_models:
         res = utils.resource_location(f)
-        fixed_km.append(ASSETS_PATH + 'tfc/models/%s.json' % res.path)
+        fixed_km.append(ASSETS_PATH + 'rnr/models/%s.json' % res.path)
     for f in fixed_ml:
         tested += 1
         forgiven = True
@@ -133,10 +133,10 @@ def validate_textures(model_locations):
     for source in atlas['sources']:
         if source['type'] == 'paletted_permutations':
             for tex in source['textures']:
-                TEXTURE_FORGIVENESS_PATHS.append(tex.replace('tfc:', ''))
+                TEXTURE_FORGIVENESS_PATHS.append(tex.replace('rnr:', ''))
                 for suffix in source['permutations'].keys():
                     model_like_path = tex + '_' + suffix + '.png'
-                    path = model_like_path.replace('tfc:', ASSETS_PATH + 'tfc/textures/')
+                    path = model_like_path.replace('rnr:', ASSETS_PATH + 'rnr/textures/')
                     existing_textures.append(path)
     for f in model_locations:
         model_file = load(f)
@@ -147,16 +147,16 @@ def validate_textures(model_locations):
                 for texture in textures.values():
                     if '#' not in texture:
                         res = utils.resource_location(texture)
-                        if res.domain == 'tfc':
+                        if res.domain == 'rnr':
                             tested += 1
-                            path = ASSETS_PATH + 'tfc/textures/%s.png' % res.path
+                            path = ASSETS_PATH + 'rnr/textures/%s.png' % res.path
                             if path not in existing_textures:
                                 if len(glob(path)) == 0:
                                     print('Texture file not found. Name: %s Filepath: %s' % (f, path))
                                     errors += 1
                                 else:
                                     existing_textures.append(path)
-    for f in glob(ASSETS_PATH + 'tfc/textures/**/*.png', recursive=True):
+    for f in glob(ASSETS_PATH + 'rnr/textures/**/*.png', recursive=True):
         f = f.replace('\\', '/')
         if f not in existing_textures and ('block/' in f or 'item/' in f):
             forgiven = False
@@ -172,9 +172,9 @@ def validate_textures(model_locations):
 
 def find_model_file(file_path: str, initial_path: str, tested: int, errors: int, on_error: str):
     res = utils.resource_location(initial_path)
-    if res.domain == 'tfc':
+    if res.domain == 'rnr':
         tested += 1
-        path = ASSETS_PATH + 'tfc/models/%s.json' % res.path
+        path = ASSETS_PATH + 'rnr/models/%s.json' % res.path
         found = len(glob(path))
         if found != 1:
             print(on_error % (file_path, path))

@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "rnr:block/rock/macadam_road/gabbro",
+    "top": "rnr:block/rock/macadam_road/gabbro",
+    "side": "rnr:block/rock/macadam_road/gabbro"
+  }
+}

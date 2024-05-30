@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/gravel_road/granite",
+    "top": "rnr:block/rock/gravel_road/granite",
+    "side": "rnr:block/rock/gravel_road/granite"
+  }
+}

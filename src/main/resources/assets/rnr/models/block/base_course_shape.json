@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "#dirt",
+    "gravel": "#dirt"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 12, 16],
+      "faces": {
+		"up": {"uv": [0, 0, 16, 16], "texture": "#gravel"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#gravel", "cullface": "down"},
+        "north": {"uv": [0, 0, 16, 12], "texture": "#gravel", "cullface": "north"},
+        "south": {"uv": [0, 0, 16, 12], "texture": "#gravel", "cullface": "south"},
+        "west": {"uv": [0, 0, 16, 12], "texture": "#gravel", "cullface": "west"},
+        "east": {"uv": [0, 0, 16, 12], "texture": "#gravel", "cullface": "east"}
+      }
+    }
+  ]
+}

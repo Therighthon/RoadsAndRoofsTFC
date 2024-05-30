@@ -6,7 +6,7 @@ public class HogginBlock extends PathHeightBlock
 {
     public HogginBlock(Properties pProperties)
     {
-        super(pProperties.speedFactor(1.15f));
+        super(pProperties.speedFactor(1.1f));
     }
 
 }

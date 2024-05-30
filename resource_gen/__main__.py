@@ -6,26 +6,23 @@ Where actions can be any list of actions to take.
 
 """
 
+import difflib
+import json
+import os
+import shutil
+import sys
+import zipfile
 from argparse import ArgumentParser
-from mcresources import ResourceManager, utils
 from typing import Optional
 
-import os
-import sys
-import json
-import difflib
+from mcresources import ResourceManager, utils
 
-import data
+
 import assets
-import recipes
 import constants
-import world_gen
-# import format_lang
-# import advancements
-# import generate_book
-import generate_trees
+import data
 import generate_textures
-# import validate_assets
+import recipes
 
 BOOK_LANGUAGES = ('zh_cn', 'ko_kr', 'zh_tw')
 MOD_LANGUAGES = ('zh_cn', 'ru_ru', 'ko_kr', 'pt_br', 'es_es', 'ja_jp')
@@ -41,10 +38,8 @@ def main():
         'assets',  # only assets.py
         'data',  # only data.py
         'recipes',  # only recipes.py
-        'worldgen',  # only world gen data (excluding tags)
         'advancements',  # only advancements.py (which excludes recipe advancements)
         'book',  # generate the book
-        'trees',  # generate tree NBT structures from templates
         'format_lang',  # format language files
         'update_lang',  # useful to update localizations after a change to the base which renders some translations incorrect
         'textures',  # generate textures
@@ -79,23 +74,11 @@ def main():
             resources(hotswap=hotswap, do_advancements=True)
         elif action == 'textures':
             generate_textures.main()
-        # elif action == 'book':
-        #     if args.translate_all:
-        #         for lang in BOOK_LANGUAGES:
-        #             generate_book.main(lang, args.local, False)
-        #     else:
-        #         generate_book.main(args.translate, args.local, False)
-        elif action == 'trees':
-            generate_trees.main()
-        elif action == 'format_lang':
-            format_lang.main(False, MOD_LANGUAGES)
-        elif action == 'update_lang':
-            format_lang.update(MOD_LANGUAGES)
 
 
 def clean(local: Optional[str]):
     """ Cleans all generated resources files """
-    clean_at('E:/Documents/GitHub/Therighthon/ArborFirmaCraft/src/main/resources')
+    clean_at('E:/Documents/GitHub/Therighthon/RoadsAndRoofs/src/main/resources')
     if local:
         clean_at(local)
 
@@ -112,7 +95,7 @@ def clean_at(location: str):
 
 def validate_resources():
     """ Validates all resources are unchanged. """
-    rm = ValidatingResourceManager('tfc', 'E:/Documents/GitHub/Therighthon/ArborFirmaCraft/src/main/resources')
+    rm = ValidatingResourceManager('rnr', 'E:/Documents/GitHub/Therighthon/RoadsAndRoofs/src/main/resources')
     resources_at(rm, True, True, True, True, True)
     error = rm.error_files != 0
 
@@ -136,9 +119,9 @@ def validate_resources():
 
 def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = False, do_recipes: bool = False, do_worldgen: bool = False, do_advancements: bool = False):
     """ Generates resource files, or a subset of them """
-    resources_at(ResourceManager('afc', resource_dir='./src/main/resources'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
+    resources_at(ResourceManager('rnr', resource_dir='./src/main/resources'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
     if hotswap:
-        resources_at(ResourceManager('afc', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
+        resources_at(ResourceManager('rnr', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
 
 
 def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool):
@@ -152,8 +135,6 @@ def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes
         data.generate(rm)
     if do_recipes:
         recipes.generate(rm)
-    if do_worldgen:
-        world_gen.generate(rm)
     # if do_advancements:
     #     advancements.generate(rm)
 

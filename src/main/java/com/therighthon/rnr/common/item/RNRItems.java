@@ -1,16 +1,17 @@
-package com.therighthon.rnr.common;
+package com.therighthon.rnr.common.item;
 
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.Supplier;
 import com.therighthon.rnr.RoadsAndRoofs;
 
+import com.therighthon.rnr.common.item.MattockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import net.dries007.tfc.common.items.ChiselItem;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
@@ -23,7 +24,20 @@ public class RNRItems
     //Metal Items
     public static final Map<Metal.Default, RegistryObject<Item>> MATTOCK_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasUtilities, metal -> register("metal/mattock_head/" + metal.name()));
     public static final Map<Metal.Default, RegistryObject<Item>> MATTOCKS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasUtilities, metal -> register("metal/mattock/" + metal.name(), () -> new MattockItem(metal.toolTier(), ToolItem.calculateVanillaAttackDamage(0.27f, metal.toolTier()), -1.5F, Metal.ItemType.properties(metal))));
+    //TODO:
 
+    //Stone items
+    public static final Map<Rock, RegistryObject<Item>> FLAGSTONE = Helpers.mapOfKeys(Rock.class, type ->
+        register("flagstone/" + type.name())
+    );
+    public static final Map<Rock, RegistryObject<Item>> GRAVEL_FILL = Helpers.mapOfKeys(Rock.class, type ->
+        register("gravel_fill/" + type.name())
+    );
+    //TODO: Maybe also items for sett and cobble, or maybe just use bricks and rock?
+
+    //Misc items
+    public static final RegistryObject<Item> CRUSHED_BASE_COURSE = register("crushed_base_course");
+    public static final RegistryObject<Item> HOGGIN_MIX = register("hoggin_mix");
 
     private static RegistryObject<Item> register(String name)
     {

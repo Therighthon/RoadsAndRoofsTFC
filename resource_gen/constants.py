@@ -248,55 +248,8 @@ METAL_BLOCKS: Dict[str, MetalItem] = {
     'trapdoor': MetalItem('utility', 200, 'tfc:block/trapdoor', None, False, False)
 }
 METAL_ITEMS: Dict[str, MetalItem] = {
-    'ingot': MetalItem('all', 100, 'item/generated', 'forge:ingots', True, False),
-    'double_ingot': MetalItem('part', 200, 'item/generated', 'forge:double_ingots', False, False),
-    'sheet': MetalItem('part', 200, 'item/generated', 'forge:sheets', False, False),
-    'double_sheet': MetalItem('part', 400, 'item/generated', 'forge:double_sheets', False, False),
-    'rod': MetalItem('part', 50, 'item/handheld_rod', 'forge:rods', False, False),
-    'unfinished_lamp': MetalItem('utility', 100, 'item/generated', None, False, False),
-
-    'tuyere': MetalItem('tool', 400, 'item/generated', None, False, True),
-    'fish_hook': MetalItem('tool', 200, 'item/generated', None, False, False),
-    'fishing_rod': MetalItem('tool', 200, 'item/generated', 'forge:fishing_rods', False, True),
-    'pickaxe': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'pickaxe_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'shovel': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'shovel_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'axe': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'axe_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'hoe': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'hoe_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'chisel': MetalItem('tool', 100, 'tfc:item/handheld_flipped', None, False, True),
-    'chisel_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'sword': MetalItem('tool', 200, 'item/handheld', None, False, True),
-    'sword_blade': MetalItem('tool', 200, 'item/generated', None, True, False),
-    'mace': MetalItem('tool', 200, 'item/handheld', None, False, True),
-    'mace_head': MetalItem('tool', 200, 'item/generated', None, True, False),
-    'saw': MetalItem('tool', 100, 'tfc:item/handheld_flipped', None, False, True),
-    'saw_blade': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'javelin': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'javelin_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'hammer': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'hammer_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'propick': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'propick_head': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'knife': MetalItem('tool', 100, 'tfc:item/handheld_flipped', None, False, True),
-    'knife_blade': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'scythe': MetalItem('tool', 100, 'item/handheld', None, False, True),
-    'scythe_blade': MetalItem('tool', 100, 'item/generated', None, True, False),
-    'shears': MetalItem('tool', 200, 'item/handheld', None, False, True),
-
-    'unfinished_helmet': MetalItem('armor', 400, 'item/generated', None, False, False),
-    'helmet': MetalItem('armor', 600, 'item/generated', None, False, True),
-    'unfinished_chestplate': MetalItem('armor', 400, 'item/generated', None, False, False),
-    'chestplate': MetalItem('armor', 800, 'item/generated', None, False, True),
-    'unfinished_greaves': MetalItem('armor', 400, 'item/generated', None, False, False),
-    'greaves': MetalItem('armor', 600, 'item/generated', None, False, True),
-    'unfinished_boots': MetalItem('armor', 200, 'item/generated', None, False, False),
-    'boots': MetalItem('armor', 400, 'item/generated', None, False, True),
-    'horse_armor': MetalItem('armor', 1200, 'item/generated', None, False, False),
-
-    'shield': MetalItem('tool', 400, 'item/handheld', None, False, True)
+    'mattock': MetalItem('tool', 100, 'item/handheld', None, False, True),
+    'mattock_head': MetalItem('tool', 100, 'item/generated', None, True, False)
 }
 METAL_ITEMS_AND_BLOCKS: Dict[str, MetalItem] = {**METAL_ITEMS, **METAL_BLOCKS}
 METAL_TOOL_HEADS = ('chisel', 'hammer', 'hoe', 'javelin', 'knife', 'mace', 'pickaxe', 'propick', 'saw', 'scythe', 'shovel', 'sword', 'axe')

@@ -52,6 +52,25 @@ def generate(rm: ResourceManager):
             rm.block(('rock', block_type, rock + '_slab')).with_lang(lang('%s %s Slab', *rock_lang(block_type, rock)))
             slab_loot(rm, 'rnr:rock/%s/%s_slab' % (block_type, rock))
 
+
+
+
+    # Items
+    for metal, metal_data in METALS.items():
+        # Metal Items
+        for metal_item, metal_item_data in METAL_ITEMS.items():
+            if metal_item_data.type in metal_data.types or metal_item_data.type == 'all':
+                texture = 'rnr:item/metal/%s/%s' % (metal_item, metal) if metal_item != 'shield' or metal in ('red_steel', 'blue_steel', 'wrought_iron') else 'tfc:item/metal/shield/%s_front' % metal
+                item = rm.item_model(('metal', metal_item, metal), texture, parent=metal_item_data.parent_model)
+                item.with_lang(lang('%s %s', metal, metal_item))
+
+    # Rock Items
+    for rock in ROCKS.keys():
+        rm.item_model(('flagstone', rock), 'tfc:item/flagstone/%s' % rock).with_lang(lang('%s flagstone', rock))
+        rm.item_model(('gravel_fill', rock), 'tfc:item/gravel_fill/%s' % rock).with_lang(lang('%s gravel fill', rock))
+
+
+
 def slab_loot(rm: ResourceManager, loot: str):
     return rm.block_loot(loot, {
         'name': loot,

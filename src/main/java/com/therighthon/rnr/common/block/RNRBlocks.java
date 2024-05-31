@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import com.therighthon.rnr.RoadsAndRoofs;
-import com.therighthon.rnr.common.RNRItems;
+import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.VariantBlockRegistryObject;
 import javax.annotation.Nullable;
 import net.minecraft.world.item.BlockItem;

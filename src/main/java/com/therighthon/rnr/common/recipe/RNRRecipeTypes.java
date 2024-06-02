@@ -13,6 +13,7 @@ public class RNRRecipeTypes
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, RoadsAndRoofs.MOD_ID);
 
     public static final RegistryObject<RecipeType<MattockRecipe>> MATTOCK_RECIPE = register("mattock");
+    public static final RegistryObject<RecipeType<BlockModRecipe>> BLOCK_MOD_RECIPE = register("block_mod");
 
     private static <R extends Recipe<?>> RegistryObject<RecipeType<R>> register(String name)
     {

@@ -12,6 +12,7 @@ public class RNRRecipeSerializers
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, RoadsAndRoofs.MOD_ID);
 
     public static final RegistryObject<MattockRecipe.Serializer> MATTOCK_RECIPE = register("mattock", MattockRecipe.Serializer::new);
+    public static final RegistryObject<BlockModRecipe.Serializer> ROAD_RECIPE = register("block_mod", BlockModRecipe.Serializer::new);
 
     private static <S extends RecipeSerializer<?>> RegistryObject<S> register(String name, Supplier<S> factory)
     {

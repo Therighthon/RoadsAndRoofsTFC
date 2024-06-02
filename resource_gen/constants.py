@@ -252,7 +252,7 @@ METAL_ITEMS: Dict[str, MetalItem] = {
     'mattock_head': MetalItem('tool', 100, 'item/generated', None, True, False)
 }
 METAL_ITEMS_AND_BLOCKS: Dict[str, MetalItem] = {**METAL_ITEMS, **METAL_BLOCKS}
-METAL_TOOL_HEADS = ('chisel', 'hammer', 'hoe', 'javelin', 'knife', 'mace', 'pickaxe', 'propick', 'saw', 'scythe', 'shovel', 'sword', 'axe')
+METAL_TOOL_HEADS = ('mattock')
 
 ORES: Dict[str, Ore] = {
     'native_copper': Ore('copper', True, 'copper', 'copper', 'orange'),

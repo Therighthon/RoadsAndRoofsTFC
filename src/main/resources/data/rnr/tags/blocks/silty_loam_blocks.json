@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "tfc:dirt/silty_loam",
+	"tfc:grass/silty_loam",
+	"tfc:grass_path/silty_loam",
+	"tfc:clay/silty_loam",
+	"tfc:glay_grass/silty_loam",
+	"tfc:farmland/silty_loam",
+	"tfc:rooted_dirt/silty_loam",
+	"tfc:clay/silty_loam",
+	"tfc:mud/silty_loam",
+	"tfc:muddy_roots/silty_loam"
+  ]
+}

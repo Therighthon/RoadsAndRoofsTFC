@@ -1,5 +1,17 @@
 package com.therighthon.rnr.common.block;
 
+import com.therighthon.rnr.common.RNRTags;
+import com.therighthon.rnr.common.recipe.BlockModRecipe;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+
 import net.dries007.tfc.util.Helpers;
 
 public class BaseCourseBlock extends BaseCourseHeightBlock
@@ -10,5 +22,27 @@ public class BaseCourseBlock extends BaseCourseHeightBlock
         super(pProperties.speedFactor(0.9f));
     }
 
-    //TODO: Tool/Right click actions
+    //TODO: Sounds
+    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (Helpers.isItem(stack.getItem(), RNRTags.Items.ROAD_MATERIALS) ) {
+            final BlockModRecipe recipe = BlockModRecipe.getRecipe(RNRBlocks.BASE_COURSE.get().defaultBlockState(), stack);
+            if (recipe != null)
+            {
+                final BlockState output = recipe.getOutputBlock();
+                if (stack.isDamageableItem())
+                {
+                    stack.setDamageValue(stack.getDamageValue() - 1);
+                }
+                else
+                {
+                    stack.shrink(1);
+                }
+                level.setBlock(pos, output, 3);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+        return InteractionResult.FAIL;
+    }
 }

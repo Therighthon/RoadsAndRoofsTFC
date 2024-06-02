@@ -89,7 +89,7 @@ public class MattockRecipe extends SimpleBlockRecipe
         return Either.right(InteractionResult.PASS);
     }
 
-    //TODO
+    //TODO: Mattock specific complaints
     private static void complain(Player player, String message)
     {
         player.displayClientMessage(Component.translatable("tfc.chisel." + message), true);

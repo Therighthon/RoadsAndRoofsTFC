@@ -25,6 +25,7 @@ public class RNRTags
     {
         public static final TagKey<Item> MATTOCKS = create("mattocks");
         public static final TagKey<Item> BASE_COURSE = create("base_course");
+        public static final TagKey<Item> ROAD_MATERIALS = create("road_materials");
 
         private static TagKey<Item> create(String id)
         {

@@ -32,6 +32,7 @@ public class TampedHeightBlock extends Block
         return SHAPE;
     }
 
+    //TODO: Sounds
     public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
         if (Helpers.isItem(stack.getItem(), RNRTags.Items.BASE_COURSE) ) {

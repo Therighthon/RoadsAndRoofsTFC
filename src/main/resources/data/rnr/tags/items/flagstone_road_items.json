@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "rnr:flagstone/granite",
+    "rnr:flagstone/diorite",
+    "rnr:flagstone/gabbro",
+    "rnr:flagstone/shale",
+    "rnr:flagstone/claystone",
+    "rnr:flagstone/limestone",
+    "rnr:flagstone/conglomerate",
+    "rnr:flagstone/dolomite",
+    "rnr:flagstone/chert",
+    "rnr:flagstone/chalk",
+    "rnr:flagstone/rhyolite",
+    "rnr:flagstone/basalt",
+    "rnr:flagstone/andesite",
+    "rnr:flagstone/dacite",
+    "rnr:flagstone/quartzite",
+    "rnr:flagstone/slate",
+    "rnr:flagstone/phyllite",
+    "rnr:flagstone/schist",
+    "rnr:flagstone/gneiss",
+    "rnr:flagstone/marble"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:block_mod",
+  "input_item": {
+    "item": "rnr:flagstone/basalt"
+  },
+  "input_block": "rnr:base_course",
+  "output_block": "rnr:rock/flagstones/basalt"
+}

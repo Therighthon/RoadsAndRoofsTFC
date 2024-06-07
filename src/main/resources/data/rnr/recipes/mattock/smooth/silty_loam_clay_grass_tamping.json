@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "tfc:clay_grass/silty_loam",
+  "result": "rnr:tamped_silty_loam",
+  "mode": "smooth"
+}

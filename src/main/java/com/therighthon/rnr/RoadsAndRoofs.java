@@ -2,6 +2,7 @@ package com.therighthon.rnr;
 
 import com.mojang.logging.LogUtils;
 import com.therighthon.rnr.client.ClientEventHandler;
+import com.therighthon.rnr.common.RNRCreativeModeTabs;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.RNRRecipeSerializers;
@@ -34,7 +35,7 @@ public class RoadsAndRoofs
         RNRItems.ITEMS.register(eventBus);
         RNRRecipeTypes.RECIPE_TYPES.register(eventBus);
         RNRRecipeSerializers.RECIPE_SERIALIZERS.register(eventBus);
-//        RNRCreativeModeTabs.CREATIVE_TABS.register(eventBus);
+        RNRCreativeModeTabs.CREATIVE_TABS.register(eventBus);
 
         if (FMLEnvironment.dist == Dist.CLIENT)
         {

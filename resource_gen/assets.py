@@ -7,12 +7,11 @@ from constants import *
 
 
 def generate(rm: ResourceManager):
-
     # Base Course
     rm.blockstate('rnr:base_course').with_block_model({
         'dirt': 'minecraft:block/gravel'
     }, parent='rnr:block/base_course_shape')
-    
+
     # Dirt Blocks
     for dirt in SOIL_BLOCK_VARIANTS:
         rm.blockstate('rnr:tamped_%s' % dirt).with_block_model({
@@ -45,19 +44,18 @@ def generate(rm: ResourceManager):
                 'gravel': 'minecraft:block/gravel'
             }, parent='rnr:block/path_block')
             # Stairs
-            rm.block(('rock', block_type, rock)).make_stairs('_stairs',)
+            rm.block(('rock', block_type, rock)).make_stairs('_stairs', )
             rm.block(('rock', block_type, rock + '_stairs')).with_lang(lang('%s %s Stairs', *rock_lang(block_type, rock))).with_block_loot('rnr:rock/%s/%s_stairs' % (block_type, rock))
             # Slabs
             rm.block(('rock', block_type, rock)).make_slab()
             rm.block(('rock', block_type, rock + '_slab')).with_lang(lang('%s %s Slab', *rock_lang(block_type, rock)))
             slab_loot(rm, 'rnr:rock/%s/%s_slab' % (block_type, rock))
 
-
-
-
     # Items
+    rm.item_model('crushed_base_course', 'rnr:item/crushed_base_course').with_lang(lang('crushed base course'))
+
+    # Metal Items
     for metal, metal_data in METALS.items():
-        # Metal Items
         for metal_item, metal_item_data in METAL_ITEMS.items():
             if metal_item_data.type in metal_data.types or metal_item_data.type == 'all':
                 texture = 'rnr:item/metal/%s/%s' % (metal_item, metal) if metal_item != 'shield' or metal in ('red_steel', 'blue_steel', 'wrought_iron') else 'tfc:item/metal/shield/%s_front' % metal
@@ -66,9 +64,8 @@ def generate(rm: ResourceManager):
 
     # Rock Items
     for rock in ROCKS.keys():
-        rm.item_model(('flagstone', rock), 'tfc:item/flagstone/%s' % rock).with_lang(lang('%s flagstone', rock))
-        rm.item_model(('gravel_fill', rock), 'tfc:item/gravel_fill/%s' % rock).with_lang(lang('%s gravel fill', rock))
-
+        rm.item_model(('flagstone', rock), 'rnr:item/flagstone/%s' % rock).with_lang(lang('%s flagstone', rock))
+        rm.item_model(('gravel_fill', rock), 'rnr:item/gravel_fill/%s' % rock).with_lang(lang('%s gravel fill', rock))
 
 
 def slab_loot(rm: ResourceManager, loot: str):
@@ -81,6 +78,7 @@ def slab_loot(rm: ResourceManager, loot: str):
             'add': False
         }]
     })
+
 
 def make_stairs(self, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
     """

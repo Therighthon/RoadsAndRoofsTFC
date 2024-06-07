@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/cobbled_road/marble",
+  "result": "rnr:rock/cobbled_road/marble_stairs",
+  "mode": "stair"
+}

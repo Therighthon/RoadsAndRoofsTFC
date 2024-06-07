@@ -46,10 +46,10 @@ class Rules(Enum):
 
 def generate(rm: ResourceManager):
     def craft_decorations(recipe_name: str, base_block: str, has_wall: bool = True):
-        rm.crafting_shaped(recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab')).with_advancement(base_block)
-        rm.crafting_shaped(recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs')).with_advancement(base_block)
+        rm.crafting_shaped(recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
+        rm.crafting_shaped(recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
         if has_wall:
-            rm.crafting_shaped(recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall')).with_advancement(base_block)
+            rm.crafting_shaped(recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
 
     # Rock Things
     for rock in ROCKS.keys():
@@ -64,7 +64,7 @@ def generate(rm: ResourceManager):
         if 'tool' in metal_data.types:
             for tool in METAL_TOOL_HEADS:
                 suffix = '_blade' if tool in ('knife', 'saw', 'scythe', 'sword') else '_head'
-                advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#forge:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0)).with_advancement('rnr:metal/%s%s/%s' % (tool, suffix, metal))
+                advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#forge:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0))
 
     for wood in WOODS.keys():
         def item(thing: str):
@@ -124,9 +124,9 @@ def generate(rm: ResourceManager):
 
     for rock in ROCKS.keys():
         block_mod_recipe(rm, rock + '_flagstones', 'rnr:flagstone/' + rock, 'rnr:base_course', 'rnr:rock/flagstones/' + rock)
-        block_mod_recipe(rm, rock + '_cobbled_road', 'tfc:rock/loose/' + rock, 'rnr:base_course', 'rnr:cobbled_road' + rock)
-        block_mod_recipe(rm, rock + '_cobbled_road_mossy', 'tfc:rock/mossy_loose/' + rock, 'rnr:base_course', 'rnr:cobbled_road' + rock)
-        block_mod_recipe(rm, rock + '_sett_road', 'tfc:brick/' + rock, 'rnr:base_course', 'rnr:sett_road/' + rock)
+        block_mod_recipe(rm, rock + '_cobbled_road', 'tfc:rock/loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)
+        block_mod_recipe(rm, rock + '_cobbled_road_mossy', 'tfc:rock/mossy_loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)
+        block_mod_recipe(rm, rock + '_sett_road', 'tfc:brick/' + rock, 'rnr:base_course', 'rnr:rock/sett_road/' + rock)
         block_mod_recipe(rm, rock + '_gravel_road', 'rnr:gravel_fill/' + rock, 'rnr:base_course', 'rnr:rock/gravel_road/' + rock)
 
     # ============
@@ -143,12 +143,16 @@ def generate(rm: ResourceManager):
         # TODO: Macadam recipes
         # chisel_recipe(rm, '%s_smooth' % rock, 'tfc:rock/raw/%s' % rock, 'tfc:rock/smooth/%s' % rock, 'smooth')
 
-    mattock_recipe(rm, 'loam_tamping', '#rnr:loam_blocks', 'rnr:tamped_loam', 'smooth')
-    mattock_recipe(rm, 'silty_loam_tamping', '#rnr:silty_loam_blocks', 'rnr:tamped_silty_loam', 'smooth')
-    mattock_recipe(rm, 'sandy_loam_tamping', '#rnr:sandy_loam_blocks', 'rnr:sandy_tamped_loam', 'smooth')
-    mattock_recipe(rm, 'silt_tamping', '#rnr:silt_blocks', 'rnr:tamped_silt', 'smooth')
-    mattock_recipe(rm, 'kaolin_tamping', '#rnr:kaolin_blocks', 'rnr:tamped_kaolin', 'smooth')
-    mattock_recipe(rm, 'peat_tamping', '#rnr:peat_blocks', 'rnr:tamped_peat', 'smooth')
+    for soil in SOIL_BLOCK_VARIANTS:
+        for block_type in SOIL_BLOCK_TYPES:
+            mattock_recipe(rm, soil + '_' + block_type + '_tamping', 'tfc:' + block_type + '/' + soil, 'rnr:tamped_' + soil, 'smooth')
+
+    mattock_recipe(rm, 'kaolin_tamping_g', 'tfc:kaolin_clay_grass', 'rnr:tamped_kaolin', 'smooth')
+    mattock_recipe(rm, 'kaolin_tamping_w', 'tfc:white_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
+    mattock_recipe(rm, 'kaolin_tamping_p', 'tfc:pink_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
+    mattock_recipe(rm, 'kaolin_tamping_r', 'tfc:red_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
+    mattock_recipe(rm, 'peat_tamping', 'tfc:peat', 'rnr:tamped_peat', 'smooth')
+    mattock_recipe(rm, 'peat_grass_tamping', 'tfc:peat_grass', 'rnr:tamped_peat', 'smooth')
 
     # TODO: Sandstone flagstones
     # for sand in SAND_BLOCK_TYPES:
@@ -244,7 +248,7 @@ def block_mod_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, 
     rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {
         'input_item': utils.ingredient(input_item),
         'input_block': input_block,
-        'result': result
+        'output_block': result
     })
 
 

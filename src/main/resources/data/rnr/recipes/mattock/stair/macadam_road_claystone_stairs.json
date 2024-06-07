@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/macadam_road/claystone",
+  "result": "rnr:rock/macadam_road/claystone_stairs",
+  "mode": "stair"
+}

@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/cobbled_road/dacite",
+  "result": "rnr:rock/cobbled_road/dacite_stairs",
+  "mode": "stair"
+}

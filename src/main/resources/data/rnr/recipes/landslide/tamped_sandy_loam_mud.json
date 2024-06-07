@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:landslide",
+  "ingredient": [
+    "rnr:tamped_sandy_loam_mud"
+  ],
+  "result": [
+    "rnr:tamped_sandy_loam_mud"
+  ]
+}

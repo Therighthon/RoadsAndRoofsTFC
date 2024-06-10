@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/overfilled_block",
+  "textures": {
+    "top": "tfc:block/rock/gravel/marble",
+    "gravel": "minecraft:block/gravel"
+  }
+}

@@ -128,6 +128,8 @@ def generate(rm: ResourceManager):
         block_mod_recipe(rm, rock + '_cobbled_road_mossy', 'tfc:rock/mossy_loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)
         block_mod_recipe(rm, rock + '_sett_road', 'tfc:brick/' + rock, 'rnr:base_course', 'rnr:rock/sett_road/' + rock)
         block_mod_recipe(rm, rock + '_gravel_road', 'rnr:gravel_fill/' + rock, 'rnr:base_course', 'rnr:rock/gravel_road/' + rock)
+        block_mod_recipe(rm, rock + '_overfill_gravel', 'rnr:gravel_fill/' + rock, 'rnr:rock/gravel_road/' + rock, 'rnr:rock/over_height_gravel/' + rock)
+        mattock_recipe(rm, rock + '_macadam_tamping', 'rnr:rock/over_height_gravel/' + rock, 'rnr:rock/macadam_road/' + rock, 'smooth')
 
     # ============
     # Mattock Recipes

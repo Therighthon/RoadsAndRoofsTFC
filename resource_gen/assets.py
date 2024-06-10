@@ -39,6 +39,7 @@ def generate(rm: ResourceManager):
 
         for block_type in STONE_PATHS:
             # Paths
+            # TODO: special case to make cobble and brick use base TFC textures
             rm.blockstate('rnr:rock/%s/%s' % (block_type, rock)).with_block_model({
                 'top': 'rnr:block/rock/%s/%s' % (block_type, rock),
                 'gravel': 'minecraft:block/gravel'
@@ -50,7 +51,10 @@ def generate(rm: ResourceManager):
             rm.block(('rock', block_type, rock)).make_slab()
             rm.block(('rock', block_type, rock + '_slab')).with_lang(lang('%s %s Slab', *rock_lang(block_type, rock)))
             slab_loot(rm, 'rnr:rock/%s/%s_slab' % (block_type, rock))
-
+        rm.blockstate('rnr:rock/over_height_gravel/%s' % rock).with_block_model({
+            'top': 'tfc:block/rock/gravel/%s' % rock,
+            'gravel': 'minecraft:block/gravel'
+        }, parent='rnr:block/overfilled_block')
     # Items
     rm.item_model('crushed_base_course', 'rnr:item/crushed_base_course').with_lang(lang('crushed base course'))
 

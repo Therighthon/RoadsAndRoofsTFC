@@ -63,7 +63,8 @@ public class RNRBlocks
     public static final RegistryObject<Block> BASE_COURSE = register("base_course", () -> new BaseCourseBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> HOGGIN = register("hoggin", () -> new HogginBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
 
-    public static final RegistryObject<Block> BRICK_PATH = register("brick_path", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> BRICK_ROAD = register("brick_road", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_BLOCKS = Helpers.mapOfKeys(Rock.class, rock ->
         Helpers.mapOfKeys(StoneBlockType.class, type ->

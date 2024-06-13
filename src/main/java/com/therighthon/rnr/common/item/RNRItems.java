@@ -12,6 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import net.dries007.tfc.common.blocks.rock.Rock;
+import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
@@ -33,7 +34,9 @@ public class RNRItems
     public static final Map<Rock, RegistryObject<Item>> GRAVEL_FILL = Helpers.mapOfKeys(Rock.class, type ->
         register("gravel_fill/" + type.name())
     );
-    //TODO: Maybe also items for sett and cobble, or maybe just use bricks and rock?
+    public static final Map<SandBlockType, RegistryObject<Item>> SANDSTONE_FLAGSTONE = Helpers.mapOfKeys(SandBlockType.class, type ->
+        register("flagstone/" + type.name() + "_sandstone")
+    );
 
     //Misc items
     public static final RegistryObject<Item> CRUSHED_BASE_COURSE = register("crushed_base_course");

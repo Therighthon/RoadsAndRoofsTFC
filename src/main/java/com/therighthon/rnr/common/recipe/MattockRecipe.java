@@ -92,7 +92,7 @@ public class MattockRecipe extends SimpleBlockRecipe
     //TODO: Mattock specific complaints
     private static void complain(Player player, String message)
     {
-        player.displayClientMessage(Component.translatable("tfc.chisel." + message), true);
+        player.displayClientMessage(Component.translatable("rnr.mattock." + message), true);
     }
 
     public static final IndirectHashCollection<Block, MattockRecipe> CACHE = IndirectHashCollection.createForRecipe(recipe -> recipe.getBlockIngredient().blocks(), RNRRecipeTypes.MATTOCK_RECIPE);

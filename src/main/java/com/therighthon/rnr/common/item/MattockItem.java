@@ -74,7 +74,7 @@ public class MattockItem extends ToolItem
                 level.setBlockAndUpdate(pos, resultState);
 
                 held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-                player.getCooldowns().addCooldown(this, 10);
+                player.getCooldowns().addCooldown(this, 5);
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }, Function.identity()); // returns the interaction result if we are given one
         }

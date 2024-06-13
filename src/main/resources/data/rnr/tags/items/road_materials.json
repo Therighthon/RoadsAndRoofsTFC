@@ -4,6 +4,8 @@
     "#rnr:cobble_road_items",
     "#rnr:brick_road_items",
     "#rnr:gravel_road_items",
-    "#rnr:flagstone_road_items"
+    "#rnr:flagstone_road_items",
+	"rnr:hoggin_mix",
+	"minecraft:brick"
   ]
 }

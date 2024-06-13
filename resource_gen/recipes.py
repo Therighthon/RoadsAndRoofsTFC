@@ -130,7 +130,10 @@ def generate(rm: ResourceManager):
         block_mod_recipe(rm, rock + '_gravel_road', 'rnr:gravel_fill/' + rock, 'rnr:base_course', 'rnr:rock/gravel_road/' + rock)
         block_mod_recipe(rm, rock + '_overfill_gravel', 'rnr:gravel_fill/' + rock, 'rnr:rock/gravel_road/' + rock, 'rnr:rock/over_height_gravel/' + rock)
         mattock_recipe(rm, rock + '_macadam_tamping', 'rnr:rock/over_height_gravel/' + rock, 'rnr:rock/macadam_road/' + rock, 'smooth')
-
+    for sand in SAND_BLOCK_TYPES:
+        block_mod_recipe(rm, sand + '_flagstones', 'rnr:flagstone/' + sand + '_sandstone', 'rnr:base_course', 'rnr:%s_sandstone_flagstones' % sand)
+    block_mod_recipe(rm, 'hoggin', 'rnr:hoggin_mix', 'rnr:base_course', 'rnr:hoggin')
+    block_mod_recipe(rm, 'brick_road', 'minecraft:brick', 'rnr:base_course', 'rnr:brick_road')
     # ============
     # Mattock Recipes
     # ============

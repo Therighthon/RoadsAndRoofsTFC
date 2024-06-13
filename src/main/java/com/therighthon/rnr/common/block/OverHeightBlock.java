@@ -3,6 +3,9 @@ package com.therighthon.rnr.common.block;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -50,6 +53,7 @@ public class OverHeightBlock extends Block
                 {
                     stack.shrink(1);
                 }
+                level.playLocalSound(pos, SoundEvents.GRAVEL_HIT, SoundSource.BLOCKS, 1f, 1f, false);
                 level.setBlock(pos, output, 3);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
                 return InteractionResult.sidedSuccess(level.isClientSide);

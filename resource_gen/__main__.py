@@ -28,7 +28,7 @@ import recipes
 import validate_assets
 
 BOOK_LANGUAGES = ('en_us', 'ja_jp', 'ko_kr', 'pt_br', 'uk_ua', 'zh_cn', 'zh_tw', 'zh_hk')
-MOD_LANGUAGES = ('en_us', 'es_es', 'de_de', 'ja_jp', 'ko_kr', 'pl_pl', 'pt_br', 'ru_ru', 'tr_tr', 'uk_ua', 'zh_cn', 'zh_tw', 'zh_hk')
+MOD_LANGUAGES = 'en_us'
 
 
 def main():
@@ -68,7 +68,7 @@ def main():
             validate_assets.main()
         elif action == 'all':
             resources(hotswap=hotswap, do_assets=True, do_data=True, do_recipes=True, do_worldgen=True, do_advancements=True)
-            format_lang.main(False, 'minecraft', MOD_LANGUAGES)  # format_lang
+            # format_lang.main(False, 'minecraft', MOD_LANGUAGES)  # format_lang
             format_lang.main(False, 'rnr', MOD_LANGUAGES)
             for lang in BOOK_LANGUAGES:  # Translate all
                 generate_book.main(lang, args.local, False)

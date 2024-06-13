@@ -3,6 +3,8 @@ package com.therighthon.rnr.common.block;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -40,6 +42,7 @@ public class TampedHeightBlock extends Block
             blockState = RNRBlocks.BASE_COURSE.get().defaultBlockState();
             level.setBlock(pos, blockState, 3);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
+            level.playLocalSound(pos, SoundEvents.GRAVEL_HIT, SoundSource.BLOCKS, 1f, 1f, false);
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
             return InteractionResult.FAIL;

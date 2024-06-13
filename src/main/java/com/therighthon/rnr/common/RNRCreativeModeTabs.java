@@ -17,7 +17,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.common.blocks.rock.Rock;
-import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.SelfTests;
 
@@ -76,6 +76,22 @@ public class RNRCreativeModeTabs
             accept(out, RNRItems.FLAGSTONE.get(rock));
         }
 
+        out.accept(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get());
+
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.BLACK).get());
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.BROWN).get());
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.GREEN).get());
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.RED).get());
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.PINK).get());
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.WHITE).get());
+        out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.YELLOW).get());
+
         out.accept(RNRBlocks.TAMPED_SILT.get());
         out.accept(RNRBlocks.TAMPED_SILTY_LOAM.get());
         out.accept(RNRBlocks.TAMPED_SANDY_LOAM.get());
@@ -88,6 +104,7 @@ public class RNRCreativeModeTabs
 
         out.accept(RNRBlocks.TAMPED_PEAT.get());
         out.accept(RNRBlocks.TAMPED_KAOLIN.get());
+        out.accept(RNRBlocks.BRICK_ROAD.get());
 
 
     }

@@ -20,6 +20,13 @@
     "rnr:flagstone/phyllite",
     "rnr:flagstone/schist",
     "rnr:flagstone/gneiss",
-    "rnr:flagstone/marble"
+    "rnr:flagstone/marble",
+    "rnr:flagstone/black_sandstone",
+    "rnr:flagstone/brown_sandstone",
+    "rnr:flagstone/green_sandstone",
+    "rnr:flagstone/pink_sandstone",
+    "rnr:flagstone/red_sandstone",
+    "rnr:flagstone/white_sandstone",
+    "rnr:flagstone/yellow_sandstone"
   ]
 }

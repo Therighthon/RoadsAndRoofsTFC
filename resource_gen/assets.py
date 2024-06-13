@@ -10,26 +10,36 @@ def generate(rm: ResourceManager):
     # Base Course
     rm.blockstate('rnr:base_course').with_block_model({
         'dirt': 'minecraft:block/gravel'
-    }, parent='rnr:block/base_course_shape')
+    }, parent='rnr:block/base_course_shape').with_item_model()
 
     # Dirt Blocks
     for dirt in SOIL_BLOCK_VARIANTS:
         rm.blockstate('rnr:tamped_%s' % dirt).with_block_model({
             'dirt': 'tfc:block/dirt/%s' % dirt
-        }, parent='rnr:block/tamped_block')
+        }, parent='rnr:block/tamped_block').with_item_model()
     # Mud Blocks
     for dirt in SOIL_BLOCK_VARIANTS:
         rm.blockstate('rnr:tamped_%s_mud' % dirt).with_block_model({
             'dirt': 'tfc:block/mud/%s' % dirt
-        }, parent='rnr:block/tamped_block')
+        }, parent='rnr:block/tamped_block').with_item_model()
 
     rm.blockstate('rnr:tamped_peat').with_block_model({
         'dirt': 'tfc:block/peat'
-    }, parent='rnr:block/tamped_block')
+    }, parent='rnr:block/tamped_block').with_item_model()
 
     rm.blockstate('rnr:tamped_kaolin').with_block_model({
         'dirt': 'tfc:block/red_kaolin_clay'
-    }, parent='rnr:block/tamped_block')
+    }, parent='rnr:block/tamped_block').with_item_model()
+
+    rm.blockstate('rnr:hoggin').with_block_model({
+        'top': 'minecraft:block/dirt_path_top',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:brick_road').with_block_model({
+        'top': 'rnr:block/brick_road',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
 
     # Rock Type Blocks
     for rock, rock_data in ROCKS.items():
@@ -43,10 +53,11 @@ def generate(rm: ResourceManager):
             rm.blockstate('rnr:rock/%s/%s' % (block_type, rock)).with_block_model({
                 'top': 'rnr:block/rock/%s/%s' % (block_type, rock),
                 'gravel': 'minecraft:block/gravel'
-            }, parent='rnr:block/path_block')
+            }, parent='rnr:block/path_block').with_item_model()
+            # rm.item_model('rnr:rock/%s/%s' % (block_type, rock)).with_lang(lang(rock + block_type))
             # Stairs
             rm.block(('rock', block_type, rock)).make_stairs('_stairs', )
-            rm.block(('rock', block_type, rock + '_stairs')).with_lang(lang('%s %s Stairs', *rock_lang(block_type, rock))).with_block_loot('rnr:rock/%s/%s_stairs' % (block_type, rock))
+            rm.block(('rock', block_type, rock + '_stairs')).with_lang(lang('%s %s Stairs', *rock_lang(block_type, rock)))
             # Slabs
             rm.block(('rock', block_type, rock)).make_slab()
             rm.block(('rock', block_type, rock + '_slab')).with_lang(lang('%s %s Slab', *rock_lang(block_type, rock)))
@@ -54,9 +65,17 @@ def generate(rm: ResourceManager):
         rm.blockstate('rnr:rock/over_height_gravel/%s' % rock).with_block_model({
             'top': 'tfc:block/rock/gravel/%s' % rock,
             'gravel': 'minecraft:block/gravel'
-        }, parent='rnr:block/overfilled_block')
+        }, parent='rnr:block/overfilled_block').with_item_model()
+        # rm.item_model('rnr:rock/over_height_gravel/%s' % rock).with_lang(lang('overfilled %s gravel' % rock))
     # Items
-    rm.item_model('crushed_base_course', 'rnr:item/crushed_base_course').with_lang(lang('crushed base course'))
+    rm.item_model('crushed_base_course', 'rnr:item/crushed_base_course')
+    rm.item_model('hoggin_mix', 'rnr:item/hoggin_mix')
+
+    for sand in SAND_BLOCK_TYPES:
+        rm.blockstate('rnr:%s_sandstone_flagstones' % sand).with_block_model({
+            'top': 'rnr:block/rock/flagstones/%s_sandstone' % sand,
+            'gravel': 'minecraft:block/gravel'
+        }, parent='rnr:block/path_block').with_item_model()
 
     # Metal Items
     for metal, metal_data in METALS.items():
@@ -70,7 +89,8 @@ def generate(rm: ResourceManager):
     for rock in ROCKS.keys():
         rm.item_model(('flagstone', rock), 'rnr:item/flagstone/%s' % rock).with_lang(lang('%s flagstone', rock))
         rm.item_model(('gravel_fill', rock), 'rnr:item/gravel_fill/%s' % rock).with_lang(lang('%s gravel fill', rock))
-
+    for sand in SAND_BLOCK_TYPES:
+        rm.item_model(('flagstone', sand + '_sandstone'), 'rnr:item/flagstone/%s_sandstone' % sand).with_lang(lang('%s sandstone flagstone', sand))
 
 def slab_loot(rm: ResourceManager, loot: str):
     return rm.block_loot(loot, {

@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "rnr:block/rock/flagstones/gabbro",
-    "top": "rnr:block/rock/flagstones/gabbro",
-    "side": "rnr:block/rock/flagstones/gabbro"
-  }
-}

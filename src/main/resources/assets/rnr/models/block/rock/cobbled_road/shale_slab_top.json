@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/shale",
-    "top": "rnr:block/rock/cobbled_road/shale",
-    "side": "rnr:block/rock/cobbled_road/shale"
-  }
-}

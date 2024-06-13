@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "rnr:block/rock/macadam_road/limestone",
-    "top": "rnr:block/rock/macadam_road/limestone",
-    "side": "rnr:block/rock/macadam_road/limestone"
-  }
-}

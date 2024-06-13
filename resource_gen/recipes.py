@@ -62,9 +62,9 @@ def generate(rm: ResourceManager):
 
     for metal, metal_data in METALS.items():
         if 'tool' in metal_data.types:
-            for tool in METAL_TOOL_HEADS:
-                suffix = '_blade' if tool in ('knife', 'saw', 'scythe', 'sword') else '_head'
-                advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#forge:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0))
+            tool = 'mattock'
+            suffix = '_blade' if tool in ('knife', 'saw', 'scythe', 'sword') else '_head'
+            advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#forge:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0))
 
     for wood in WOODS.keys():
         def item(thing: str):

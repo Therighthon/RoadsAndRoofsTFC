@@ -1,9 +1,8 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab",
+  "parent": "rnr:block/path_slab",
   "textures": {
-    "bottom": "rnr:block/rock/flagstones/diorite",
     "top": "rnr:block/rock/flagstones/diorite",
-    "side": "rnr:block/rock/flagstones/diorite"
+    "gravel": "minecraft:block/gravel"
   }
 }

@@ -54,14 +54,13 @@ def generate(rm: ResourceManager):
                 'top': 'rnr:block/rock/%s/%s' % (block_type, rock),
                 'gravel': 'minecraft:block/gravel'
             }, parent='rnr:block/path_block').with_item_model()
-            # rm.item_model('rnr:rock/%s/%s' % (block_type, rock)).with_lang(lang(rock + block_type))
             # Stairs
-            rm.block(('rock', block_type, rock)).make_stairs('_stairs', )
-            rm.block(('rock', block_type, rock + '_stairs')).with_lang(lang('%s %s Stairs', *rock_lang(block_type, rock)))
+            make_path_stairs(rm, block_type, rock)
             # Slabs
-            rm.block(('rock', block_type, rock)).make_slab()
-            rm.block(('rock', block_type, rock + '_slab')).with_lang(lang('%s %s Slab', *rock_lang(block_type, rock)))
-            slab_loot(rm, 'rnr:rock/%s/%s_slab' % (block_type, rock))
+            rm.blockstate('rnr:rock/%s/%s_slab' % (block_type, rock)).with_block_model({
+                'top': 'rnr:block/rock/%s/%s' % (block_type, rock),
+                'gravel': 'minecraft:block/gravel'
+            }, parent='rnr:block/path_slab').with_item_model()
         rm.blockstate('rnr:rock/over_height_gravel/%s' % rock).with_block_model({
             'top': 'tfc:block/rock/gravel/%s' % rock,
             'gravel': 'minecraft:block/gravel'
@@ -104,12 +103,12 @@ def slab_loot(rm: ResourceManager, loot: str):
     })
 
 
-def make_stairs(self, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
+def make_path_stairs(rm, type, rock, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
     """
     Generates all blockstates and models required for a standard stair block
     """
-    block = self.res.join('block/')
-    stairs = self.res.join() + stair_suffix
+    block = 'rnr:block/rock/%s/%s' % (type, rock)
+    stairs = 'rnr:rock/%s/%s%s' % (type, rock, stair_suffix)
     block_stairs = block + stair_suffix
     block_stairs_inner = block + stair_suffix + '_inner'
     block_stairs_outer = block + stair_suffix + '_outer'
@@ -121,9 +120,9 @@ def make_stairs(self, stair_suffix: str = '_stairs', bottom_texture: Optional[st
     if top_texture is None:
         top_texture = block
 
-    self.rm.blockstate(stairs, variants=block_states.stairs_variants(block_stairs, block_stairs_inner, block_stairs_outer))
-    self.rm.block_model(stairs, textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='block/stairs')
-    self.rm.block_model(stairs + '_inner', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='block/inner_stairs')
-    self.rm.block_model(stairs + '_outer', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='block/outer_stairs')
-    self.rm.item_model(stairs, parent=block_stairs, no_textures=True)
-    return self
+    rm.blockstate(stairs, variants=block_states.stairs_variants(block_stairs, block_stairs_inner, block_stairs_outer))
+    rm.block_model(stairs, textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_stairs')
+    rm.block_model(stairs + '_inner', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_inner_stairs')
+    rm.block_model(stairs + '_outer', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_outer_stairs')
+    rm.item_model(stairs, parent=block_stairs, no_textures=True)
+    return

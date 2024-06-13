@@ -1,9 +1,8 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab",
+  "parent": "rnr:block/path_slab",
   "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/andesite",
     "top": "rnr:block/rock/cobbled_road/andesite",
-    "side": "rnr:block/rock/cobbled_road/andesite"
+    "gravel": "minecraft:block/gravel"
   }
 }

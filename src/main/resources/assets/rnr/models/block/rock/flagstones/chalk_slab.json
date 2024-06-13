@@ -1,9 +1,8 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab",
+  "parent": "rnr:block/path_slab",
   "textures": {
-    "bottom": "rnr:block/rock/flagstones/chalk",
     "top": "rnr:block/rock/flagstones/chalk",
-    "side": "rnr:block/rock/flagstones/chalk"
+    "gravel": "minecraft:block/gravel"
   }
 }

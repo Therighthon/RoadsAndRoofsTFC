@@ -3,11 +3,17 @@ package com.therighthon.rnr.common.block;
 //Full height block
 public class GravelPathBlock extends PathHeightBlock
 {
-    public GravelPathBlock(Properties pProperties)
+    private static final float speedFactor = 1.1f;
+
+    public static float getDefaultSpeedFactor()
     {
-        super(pProperties.speedFactor(1.05f));
+        return speedFactor;
     }
 
+    public GravelPathBlock(Properties pProperties)
+    {
+        super(pProperties.speedFactor(speedFactor));
+    }
 
     //Add more gravel to make overheight gravel path, then add tamping recipe to make Macadam from that
 }

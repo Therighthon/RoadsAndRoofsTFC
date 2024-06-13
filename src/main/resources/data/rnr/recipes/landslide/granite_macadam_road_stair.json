@@ -1,0 +1,6 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:landslide",
+  "ingredient": "rnr:rock/macadam_road/granite_stairs",
+  "result": "rnr:rock/macadam_road/granite_slab"
+}

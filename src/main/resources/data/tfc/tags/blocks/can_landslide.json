@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+	"#rnr:sett_road_blocks",
+	"#rnr:flagstones_blocks",
+	"#rnr:gravel_road_blocks",
+	"#rnr:macadam_road_blocks",
+	"#rnr:overheight_gravel_blocks",
+	"#rnr:cobbled_road_blocks",
+	"rnr:base_course",
+	"rnr:hoggin",
+	"rnr:tamped_kaolin",
+	"rnr:tamped_peat",
+	"rnr:tamped_silt",
+	"rnr:tamped_silty_loam",
+	"rnr:tamped_sandy_loam",
+	"rnr:tamped_loam",
+	"rnr:tamped_silt_mud",
+	"rnr:tamped_silty_loam_mud",
+	"rnr:tamped_sandy_loam_mud",
+	"rnr:tamped_loam_mud"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "rnr:rock/over_height_gravel/granite",
+    "rnr:rock/over_height_gravel/diorite",
+    "rnr:rock/over_height_gravel/gabbro",
+    "rnr:rock/over_height_gravel/shale",
+    "rnr:rock/over_height_gravel/claystone",
+    "rnr:rock/over_height_gravel/limestone",
+    "rnr:rock/over_height_gravel/conglomerate",
+    "rnr:rock/over_height_gravel/dolomite",
+    "rnr:rock/over_height_gravel/chert",
+    "rnr:rock/over_height_gravel/chalk",
+    "rnr:rock/over_height_gravel/rhyolite",
+    "rnr:rock/over_height_gravel/basalt",
+    "rnr:rock/over_height_gravel/andesite",
+    "rnr:rock/over_height_gravel/dacite",
+    "rnr:rock/over_height_gravel/quartzite",
+    "rnr:rock/over_height_gravel/slate",
+    "rnr:rock/over_height_gravel/phyllite",
+    "rnr:rock/over_height_gravel/schist",
+    "rnr:rock/over_height_gravel/gneiss",
+    "rnr:rock/over_height_gravel/marble"
+  ]
+}

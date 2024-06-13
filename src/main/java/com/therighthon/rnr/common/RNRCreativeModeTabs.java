@@ -27,7 +27,7 @@ public class RNRCreativeModeTabs
 
     public static final RegistryObject<CreativeModeTab> RNR_TAB = CREATIVE_TABS.register("roads_and_roofs",
         () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.rnr_creative_mode_tab"))
+            .title(Component.translatable("roads_and_roofs"))
             .icon(() -> new ItemStack(RNRItems.MATTOCKS.get(Metal.Default.BISMUTH_BRONZE).get()))
             .displayItems(RNRCreativeModeTabs::fillTab)
             .build()

@@ -78,6 +78,35 @@ def generate(rm: ResourceManager):
     # ============================
 
     # TODO: Landslide Recipes
+    for rock in ROCKS:
+        for type in STONE_PATHS:
+            def block(block_type: str):
+                return 'rnr:rock/%s/%s' % (block_type, rock)
+            def stair(block_type: str):
+                return 'rnr:rock/%s/%s_stairs' % (block_type, rock)
+            def slab(block_type: str):
+                return 'rnr:rock/%s/%s_slab' % (block_type, rock)
+            landslide_recipe(rm, '%s_%s' % (rock, type), block(type), block(type))
+            landslide_recipe(rm, '%s_%s_slab' % (rock, type), block(type), slab(type))
+            landslide_recipe(rm, '%s_%s_stair' % (rock, type), stair(type), slab(type))
+
+    for sand in SAND_BLOCK_TYPES:
+        landslide_recipe(rm, '%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand)
+
+    landslide_recipe(rm, 'base_course', 'rnr:base_course', 'rnr:base_course')
+    landslide_recipe(rm, 'brick_road', 'rnr:brick_road', 'rnr:brick_road')
+    landslide_recipe(rm, 'base_course', 'rnr:base_course', 'rnr:base_course')
+    landslide_recipe(rm, 'hoggin', 'rnr:hoggin', 'rnr:hoggin')
+    landslide_recipe(rm, 'tamped_peat', 'rnr:tamped_peat', 'rnr:tamped_peat')
+    landslide_recipe(rm, 'tamped_kaolin', 'rnr:tamped_kaolin', 'rnr:tamped_kaolin')
+    landslide_recipe(rm, 'tamped_silt', 'rnr:tamped_silt', 'rnr:tamped_silt')
+    landslide_recipe(rm, 'tamped_silty_loam', 'rnr:tamped_silty_loam', 'rnr:tamped_silty_loam')
+    landslide_recipe(rm, 'tamped_sandy_loam', 'rnr:tamped_sandy_loam', 'rnr:tamped_sandy_loam')
+    landslide_recipe(rm, 'tamped_loam', 'rnr:tamped_loam', 'rnr:tamped_loam')
+    landslide_recipe(rm, 'tamped_silt_mud', 'rnr:tamped_silt_mud', 'rnr:tamped_silt_mud')
+    landslide_recipe(rm, 'tamped_silty_loam_mud', 'rnr:tamped_silty_loam_mud', 'rnr:tamped_silty_loam_mud')
+    landslide_recipe(rm, 'tamped_sandy_loam_mud', 'rnr:tamped_sandy_loam_mud', 'rnr:tamped_sandy_loam_mud')
+    landslide_recipe(rm, 'tamped_loam_mud', 'rnr:tamped_loam_mud', 'rnr:tamped_loam_mud')
     # TRIGGERS include raw, hardened, and ores
     # STARTS include raw, ores
     # COLLAPSIBLE includes raw, hardened, ores (lossy), bricks, smooth, spikes (special)
@@ -158,16 +187,6 @@ def generate(rm: ResourceManager):
     mattock_recipe(rm, 'kaolin_tamping_r', 'tfc:red_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
     mattock_recipe(rm, 'peat_tamping', 'tfc:peat', 'rnr:tamped_peat', 'smooth')
     mattock_recipe(rm, 'peat_grass_tamping', 'tfc:peat_grass', 'rnr:tamped_peat', 'smooth')
-
-    # TODO: Sandstone flagstones
-    # for sand in SAND_BLOCK_TYPES:
-    #     for variant in ('raw', 'cut', 'smooth'):
-    #         mattock_stair_slab(variant + '_' + sand, 'tfc:%s_sandstone/%s' % (variant, sand))
-    #     chisel_recipe(rm, '%s_smooth' % sand, 'tfc:raw_sandstone/%s' % sand, 'tfc:smooth_sandstone/%s' % sand, 'smooth')
-    #     chisel_recipe(rm, '%s_cut' % sand, 'tfc:smooth_sandstone/%s' % sand, 'tfc:cut_sandstone/%s' % sand, 'smooth')
-
-    # for soil in SOIL_BLOCK_VARIANTS:
-    #     mattock_stair_slab(soil + '_brick', 'tfc:mud_bricks/%s' % soil)
 
     # ============
     # Heat Recipes

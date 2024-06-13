@@ -87,7 +87,7 @@ def generate(rm: ResourceManager):
             def slab(block_type: str):
                 return 'rnr:rock/%s/%s_slab' % (block_type, rock)
             landslide_recipe(rm, '%s_%s' % (rock, type), block(type), block(type))
-            landslide_recipe(rm, '%s_%s_slab' % (rock, type), block(type), slab(type))
+            landslide_recipe(rm, '%s_%s_slab' % (rock, type), slab(type), slab(type))
             landslide_recipe(rm, '%s_%s_stair' % (rock, type), stair(type), slab(type))
 
     for sand in SAND_BLOCK_TYPES:
@@ -134,13 +134,6 @@ def generate(rm: ResourceManager):
         landslide_recipe(rm, '%s_macadam' % rock, macadam, gravel)
         landslide_recipe(rm, '%s_flagstones' % rock, flagstones, flagstones)
         landslide_recipe(rm, '%s_sett' % rock, sett, sett)
-
-    # Soil Blocks
-    for variant in SOIL_BLOCK_VARIANTS:
-        landslide_recipe(rm, 'tamped_%s' % variant, ['rnr:tamped_%s' % variant], ['rnr:tamped_%s' % variant])
-        landslide_recipe(rm, 'tamped_%s_mud' % variant, ['rnr:tamped_%s_mud' % variant], ['rnr:tamped_%s_mud' % variant])
-    landslide_recipe(rm, 'tamped_kaolin', 'tamped_kaolin', 'tamped_kaolin')
-    landslide_recipe(rm, 'tamped_peat', 'tamped_peat', 'tamped_peat')
 
     # Sand
     # for variant in SAND_BLOCK_TYPES:

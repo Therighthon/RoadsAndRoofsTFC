@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:landslide",
-  "ingredient": "rnr:rock/gravel_road/marble",
+  "ingredient": "rnr:rock/gravel_road/marble_slab",
   "result": "rnr:rock/gravel_road/marble_slab"
 }

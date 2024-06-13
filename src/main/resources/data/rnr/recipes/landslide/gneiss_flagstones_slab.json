@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:landslide",
-  "ingredient": "rnr:rock/flagstones/gneiss",
+  "ingredient": "rnr:rock/flagstones/gneiss_slab",
   "result": "rnr:rock/flagstones/gneiss_slab"
 }

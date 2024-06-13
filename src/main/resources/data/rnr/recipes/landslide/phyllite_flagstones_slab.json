@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:landslide",
-  "ingredient": "rnr:rock/flagstones/phyllite",
+  "ingredient": "rnr:rock/flagstones/phyllite_slab",
   "result": "rnr:rock/flagstones/phyllite_slab"
 }

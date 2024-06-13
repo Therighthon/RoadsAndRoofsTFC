@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:landslide",
-  "ingredient": "rnr:rock/flagstones/schist",
+  "ingredient": "rnr:rock/flagstones/schist_slab",
   "result": "rnr:rock/flagstones/schist_slab"
 }

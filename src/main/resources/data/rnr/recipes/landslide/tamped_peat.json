@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:landslide",
-  "ingredient": "tamped_peat",
-  "result": "tamped_peat"
+  "ingredient": "rnr:tamped_peat",
+  "result": "rnr:tamped_peat"
 }

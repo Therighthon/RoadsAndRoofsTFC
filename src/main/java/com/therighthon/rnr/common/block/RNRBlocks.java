@@ -81,7 +81,7 @@ public class RNRBlocks
     //TODO
     public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_STAIRS = Helpers.mapOfKeys(Rock.class, rock ->
         Helpers.mapOfKeys(StoneBlockType.class, StoneBlockType::hasVariants, type ->
-            register(("rock/" + type.name() + "/" + rock.name()) + "_stairs", () -> type.createPathStairs(rock))
+            register(("rock/" + type.name() + "/" + rock.name()) + "_stairs", () -> type.createPathStairs(rock, type))
         )
     );
 

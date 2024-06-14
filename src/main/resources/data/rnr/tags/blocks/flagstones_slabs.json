@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "rnr:rock/flagstones/granite_slab",
+    "rnr:rock/flagstones/diorite_slab",
+    "rnr:rock/flagstones/gabbro_slab",
+    "rnr:rock/flagstones/shale_slab",
+    "rnr:rock/flagstones/claystone_slab",
+    "rnr:rock/flagstones/limestone_slab",
+    "rnr:rock/flagstones/conglomerate_slab",
+    "rnr:rock/flagstones/dolomite_slab",
+    "rnr:rock/flagstones/chert_slab",
+    "rnr:rock/flagstones/chalk_slab",
+    "rnr:rock/flagstones/rhyolite_slab",
+    "rnr:rock/flagstones/basalt_slab",
+    "rnr:rock/flagstones/andesite_slab",
+    "rnr:rock/flagstones/dacite_slab",
+    "rnr:rock/flagstones/quartzite_slab",
+    "rnr:rock/flagstones/slate_slab",
+    "rnr:rock/flagstones/phyllite_slab",
+    "rnr:rock/flagstones/schist_slab",
+    "rnr:rock/flagstones/gneiss_slab",
+    "rnr:rock/flagstones/marble_slab"
+  ]
+}

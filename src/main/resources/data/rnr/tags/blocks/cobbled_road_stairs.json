@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "rnr:rock/cobbled_road/granite_stairs",
+    "rnr:rock/cobbled_road/diorite_stairs",
+    "rnr:rock/cobbled_road/gabbro_stairs",
+    "rnr:rock/cobbled_road/shale_stairs",
+    "rnr:rock/cobbled_road/claystone_stairs",
+    "rnr:rock/cobbled_road/limestone_stairs",
+    "rnr:rock/cobbled_road/conglomerate_stairs",
+    "rnr:rock/cobbled_road/dolomite_stairs",
+    "rnr:rock/cobbled_road/chert_stairs",
+    "rnr:rock/cobbled_road/chalk_stairs",
+    "rnr:rock/cobbled_road/rhyolite_stairs",
+    "rnr:rock/cobbled_road/basalt_stairs",
+    "rnr:rock/cobbled_road/andesite_stairs",
+    "rnr:rock/cobbled_road/dacite_stairs",
+    "rnr:rock/cobbled_road/quartzite_stairs",
+    "rnr:rock/cobbled_road/slate_stairs",
+    "rnr:rock/cobbled_road/phyllite_stairs",
+    "rnr:rock/cobbled_road/schist_stairs",
+    "rnr:rock/cobbled_road/gneiss_stairs",
+    "rnr:rock/cobbled_road/marble_stairs"
+  ]
+}

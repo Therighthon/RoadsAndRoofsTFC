@@ -63,50 +63,38 @@ public enum StoneBlockType implements StringRepresentable
 
     public Block createRockSlab(RegistryRock rock, StoneBlockType type)
     {
+        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
         if (type == StoneBlockType.GRAVEL_ROAD)
         {
-            return createGravelSlab();
+            return new GravelPathSlabBlock(properties);
         }
         else if (type == StoneBlockType.MACADAM_ROAD)
         {
-            return createMacadamSlab();
+            return new MacadamPathSlabBlock(properties);
         }
         else
         {
-            return createStoneSlab();
+            return new StonePathSlabBlock(properties);
         }
     }
 
-    public HogginSlabBlock createHogginSlab()
+    public PathStairBlock createPathStairs(RegistryRock rock, StoneBlockType type)
     {
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new HogginSlabBlock(properties);
-    }
-
-    public GravelPathSlabBlock createGravelSlab()
-    {
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new GravelPathSlabBlock(properties);
-    }
-
-    public MacadamPathSlabBlock createMacadamSlab()
-    {
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new MacadamPathSlabBlock(properties);
-    }
-
-    public StonePathSlabBlock createStoneSlab()
-    {
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new StonePathSlabBlock(properties);
-    }
-
-    public PathStairBlock createPathStairs(RegistryRock rock)
-    {
-        //TODO: Route this to
         final Supplier<BlockState> state = () -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState();
         final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new PathStairBlock(state, properties);
+        if (type == StoneBlockType.MACADAM_ROAD)
+        {
+            return new PathStairBlock(state, properties, MacadamPathBlock.getDefaultSpeedFactor());
+        }
+        else if (type == StoneBlockType.GRAVEL_ROAD)
+        {
+            return new PathStairBlock(state, properties, GravelPathBlock.getDefaultSpeedFactor());
+        }
+        else
+        {
+            return new PathStairBlock(state, properties, StonePathBlock.getDefaultSpeedFactor());
+        }
+
     }
 
     @Override

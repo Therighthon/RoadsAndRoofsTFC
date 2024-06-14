@@ -75,9 +75,9 @@ public class PathStairBlock extends Block
         return voxelshape;
     }
 
-    public PathStairBlock(Supplier<BlockState> state, Properties properties)
+    public PathStairBlock(Supplier<BlockState> state, Properties properties, float speedFactor)
     {
-        super(properties);
+        super(properties.speedFactor(speedFactor));
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(SHAPE, StairsShape.STRAIGHT).setValue(WATERLOGGED, Boolean.valueOf(false)));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();
@@ -96,6 +96,7 @@ public class PathStairBlock extends Block
         return pState.getValue(SHAPE).ordinal() * 4 + pState.getValue(FACING).get2DDataValue();
     }
 
+    //TODO: Need to change neighbors when chiseling as well
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
         if (!pState.is(pState.getBlock())) {
             pLevel.neighborChanged(this.baseState, pPos, Blocks.AIR, pPos, false);

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "rnr:rock/cobbled_road/granite_slab",
+    "rnr:rock/cobbled_road/diorite_slab",
+    "rnr:rock/cobbled_road/gabbro_slab",
+    "rnr:rock/cobbled_road/shale_slab",
+    "rnr:rock/cobbled_road/claystone_slab",
+    "rnr:rock/cobbled_road/limestone_slab",
+    "rnr:rock/cobbled_road/conglomerate_slab",
+    "rnr:rock/cobbled_road/dolomite_slab",
+    "rnr:rock/cobbled_road/chert_slab",
+    "rnr:rock/cobbled_road/chalk_slab",
+    "rnr:rock/cobbled_road/rhyolite_slab",
+    "rnr:rock/cobbled_road/basalt_slab",
+    "rnr:rock/cobbled_road/andesite_slab",
+    "rnr:rock/cobbled_road/dacite_slab",
+    "rnr:rock/cobbled_road/quartzite_slab",
+    "rnr:rock/cobbled_road/slate_slab",
+    "rnr:rock/cobbled_road/phyllite_slab",
+    "rnr:rock/cobbled_road/schist_slab",
+    "rnr:rock/cobbled_road/gneiss_slab",
+    "rnr:rock/cobbled_road/marble_slab"
+  ]
+}

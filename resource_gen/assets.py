@@ -120,9 +120,33 @@ def make_path_stairs(rm, type, rock, stair_suffix: str = '_stairs', bottom_textu
     if top_texture is None:
         top_texture = block
 
-    rm.blockstate(stairs, variants=block_states.stairs_variants(block_stairs, block_stairs_inner, block_stairs_outer))
+    rm.blockstate(stairs, variants=path_stairs_variants(block_stairs, block_stairs_inner, block_stairs_outer))
     rm.block_model(stairs, textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_stairs')
     rm.block_model(stairs + '_inner', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_inner_stairs')
     rm.block_model(stairs + '_outer', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_outer_stairs')
     rm.item_model(stairs, parent=block_stairs, no_textures=True)
     return
+
+def path_stairs_variants(stairs: str, stairs_inner: str, stairs_outer: str) -> JsonObject:
+    return {
+        'facing=east,shape=straight': {'model': stairs},
+        'facing=west,shape=straight': {'model': stairs, 'y': 180, 'uvlock': True},
+        'facing=south,shape=straight': {'model': stairs, 'y': 90, 'uvlock': True},
+        'facing=north,shape=straight': {'model': stairs, 'y': 270, 'uvlock': True},
+        'facing=east,shape=outer_right': {'model': stairs_outer},
+        'facing=west,shape=outer_right': {'model': stairs_outer, 'y': 180, 'uvlock': True},
+        'facing=south,shape=outer_right': {'model': stairs_outer, 'y': 90, 'uvlock': True},
+        'facing=north,shape=outer_right': {'model': stairs_outer, 'y': 270, 'uvlock': True},
+        'facing=east,shape=outer_left': {'model': stairs_outer, 'y': 270, 'uvlock': True},
+        'facing=west,shape=outer_left': {'model': stairs_outer, 'y': 90, 'uvlock': True},
+        'facing=south,shape=outer_left': {'model': stairs_outer},
+        'facing=north,shape=outer_left': {'model': stairs_outer, 'y': 180, 'uvlock': True},
+        'facing=east,shape=inner_right': {'model': stairs_inner},
+        'facing=west,shape=inner_right': {'model': stairs_inner, 'y': 180, 'uvlock': True},
+        'facing=south,shape=inner_right': {'model': stairs_inner, 'y': 90, 'uvlock': True},
+        'facing=north,shape=inner_right': {'model': stairs_inner, 'y': 270, 'uvlock': True},
+        'facing=east,shape=inner_left': {'model': stairs_inner, 'y': 270, 'uvlock': True},
+        'facing=west,shape=inner_left': {'model': stairs_inner, 'y': 90, 'uvlock': True},
+        'facing=south,shape=inner_left': {'model': stairs_inner},
+        'facing=north,shape=inner_left': {'model': stairs_inner, 'y': 180, 'uvlock': True}
+    }

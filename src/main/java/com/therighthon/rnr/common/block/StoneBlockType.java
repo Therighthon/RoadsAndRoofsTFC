@@ -19,7 +19,7 @@ import net.dries007.tfc.util.registry.RegistryRock;
 public enum StoneBlockType implements StringRepresentable
 {
     GRAVEL_ROAD((rock, self) -> new GravelPathBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.5f), 4)), true),
-    OVER_HEIGHT_GRAVEL((rock, self) -> new OverHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.5f), 4)), true),
+    OVER_HEIGHT_GRAVEL((rock, self) -> new OverHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.5f), 4)), false),
     MACADAM_ROAD((rock, self) -> new MacadamPathBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(4f), 5)), true),
     FLAGSTONES((rock, self) -> new StonePathBlock(properties(rock).strength(rock.category().hardness(5f), 8)), true),
     SETT_ROAD((rock, self) -> new StonePathBlock(properties(rock).strength(rock.category().hardness(5f), 8)), true),
@@ -61,18 +61,52 @@ public enum StoneBlockType implements StringRepresentable
         return blockFactory.apply(rock, this);
     }
 
-    public SlabBlock createSlab(RegistryRock rock)
+    public Block createRockSlab(RegistryRock rock, StoneBlockType type)
     {
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new SlabBlock(properties);
+        if (type == StoneBlockType.GRAVEL_ROAD)
+        {
+            return createGravelSlab();
+        }
+        else if (type == StoneBlockType.MACADAM_ROAD)
+        {
+            return createMacadamSlab();
+        }
+        else
+        {
+            return createStoneSlab();
+        }
     }
 
-    public StairBlock createStairs(RegistryRock rock)
+    public HogginSlabBlock createHogginSlab()
     {
-        //TODO: Improve?
+        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
+        return new HogginSlabBlock(properties);
+    }
+
+    public GravelPathSlabBlock createGravelSlab()
+    {
+        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
+        return new GravelPathSlabBlock(properties);
+    }
+
+    public MacadamPathSlabBlock createMacadamSlab()
+    {
+        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
+        return new MacadamPathSlabBlock(properties);
+    }
+
+    public StonePathSlabBlock createStoneSlab()
+    {
+        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
+        return new StonePathSlabBlock(properties);
+    }
+
+    public PathStairBlock createPathStairs(RegistryRock rock)
+    {
+        //TODO: Route this to
         final Supplier<BlockState> state = () -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState();
         final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        return new StairBlock(state, properties);
+        return new PathStairBlock(state, properties);
     }
 
     @Override

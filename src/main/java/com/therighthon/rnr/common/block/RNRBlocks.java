@@ -5,7 +5,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.item.RNRItems;
-import com.therighthon.rnr.common.VariantBlockRegistryObject;
 import javax.annotation.Nullable;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -72,11 +71,18 @@ public class RNRBlocks
         )
     );
 
-    public static final Map<Rock, Map<StoneBlockType, VariantBlockRegistryObject>> ROCK_VARIANTS = Helpers.mapOfKeys(Rock.class, rock ->
-        Helpers.mapOfKeys(StoneBlockType.class, StoneBlockType::hasVariants, type -> new VariantBlockRegistryObject(
-            register(("rock/" + type.name() + "/" + rock.name()) + "_slab", () -> type.createSlab(rock)),
-            register(("rock/" + type.name() + "/" + rock.name()) + "_stairs", () -> type.createStairs(rock))
-        ))
+    //TODO
+    public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_SLABS = Helpers.mapOfKeys(Rock.class, rock ->
+        Helpers.mapOfKeys(StoneBlockType.class, StoneBlockType::hasVariants, type ->
+            register(("rock/" + type.name() + "/" + rock.name())+ "_slab", () -> type.createRockSlab(rock, type))
+        )
+    );
+
+    //TODO
+    public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_STAIRS = Helpers.mapOfKeys(Rock.class, rock ->
+        Helpers.mapOfKeys(StoneBlockType.class, StoneBlockType::hasVariants, type ->
+            register(("rock/" + type.name() + "/" + rock.name()) + "_stairs", () -> type.createPathStairs(rock))
+        )
     );
 
     public static final RegistryObject<Block> BROWN_SANDSTONE_FLAGSTONES = register("brown_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));

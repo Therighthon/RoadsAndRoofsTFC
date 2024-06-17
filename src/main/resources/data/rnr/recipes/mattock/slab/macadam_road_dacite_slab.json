@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/macadam_road/dacite",
   "result": "rnr:rock/macadam_road/dacite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/macadam_road/dacite_slab"
-  }
+  "mode": "slab"
 }

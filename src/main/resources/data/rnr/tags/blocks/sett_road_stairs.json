@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+	"rnr:brick_road_stairs",
     "rnr:rock/sett_road/granite_stairs",
     "rnr:rock/sett_road/diorite_stairs",
     "rnr:rock/sett_road/gabbro_stairs",

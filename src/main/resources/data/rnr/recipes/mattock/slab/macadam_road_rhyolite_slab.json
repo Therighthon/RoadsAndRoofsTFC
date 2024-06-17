@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/macadam_road/rhyolite",
   "result": "rnr:rock/macadam_road/rhyolite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/macadam_road/rhyolite_slab"
-  }
+  "mode": "slab"
 }

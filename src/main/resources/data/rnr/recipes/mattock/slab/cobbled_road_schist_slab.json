@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/cobbled_road/schist",
   "result": "rnr:rock/cobbled_road/schist_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/cobbled_road/schist_slab"
-  }
+  "mode": "slab"
 }

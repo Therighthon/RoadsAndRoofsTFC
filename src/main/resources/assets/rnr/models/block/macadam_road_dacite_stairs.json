@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/macadam_road/dacite",
-    "top": "rnr:block/rock/macadam_road/dacite",
-    "side": "rnr:block/rock/macadam_road/dacite"
-  }
-}

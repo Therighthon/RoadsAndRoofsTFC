@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/gravel_road/andesite",
   "result": "rnr:rock/gravel_road/andesite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/gravel_road/andesite_slab"
-  }
+  "mode": "slab"
 }

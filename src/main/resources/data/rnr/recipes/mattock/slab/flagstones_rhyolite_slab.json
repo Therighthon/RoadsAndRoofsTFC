@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/rhyolite",
   "result": "rnr:rock/flagstones/rhyolite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/rhyolite_slab"
-  }
+  "mode": "slab"
 }

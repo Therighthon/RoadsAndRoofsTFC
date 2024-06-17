@@ -20,6 +20,13 @@
     "rnr:rock/flagstones/phyllite_stairs",
     "rnr:rock/flagstones/schist_stairs",
     "rnr:rock/flagstones/gneiss_stairs",
-    "rnr:rock/flagstones/marble_stairs"
+    "rnr:rock/flagstones/marble_stairs",
+    "rnr:black_sandstone_flagstones_stairs",
+    "rnr:brown_sandstone_flagstones_stairs",
+    "rnr:green_sandstone_flagstones_stairs",
+    "rnr:pink_sandstone_flagstones_stairs",
+    "rnr:red_sandstone_flagstones_stairs",
+    "rnr:white_sandstone_flagstones_stairs",
+    "rnr:yellow_sandstone_flagstones_stairs"
   ]
 }

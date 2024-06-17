@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/phyllite",
   "result": "rnr:rock/flagstones/phyllite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/phyllite_slab"
-  }
+  "mode": "slab"
 }

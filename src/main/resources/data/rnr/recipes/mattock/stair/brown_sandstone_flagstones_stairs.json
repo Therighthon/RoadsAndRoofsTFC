@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:brown_sandstone_flagstones",
+  "result": "rnr:brown_sandstone_flagstones_stairs",
+  "mode": "stair"
+}

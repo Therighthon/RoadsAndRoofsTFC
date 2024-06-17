@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_inner_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/flagstones/diorite",
-    "top": "rnr:block/rock/flagstones/diorite",
-    "side": "rnr:block/rock/flagstones/diorite"
-  }
-}

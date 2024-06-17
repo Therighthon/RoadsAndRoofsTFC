@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/diorite",
   "result": "rnr:rock/flagstones/diorite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/diorite_slab"
-  }
+  "mode": "slab"
 }

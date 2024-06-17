@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/dacite",
-    "top": "rnr:block/rock/cobbled_road/dacite",
-    "side": "rnr:block/rock/cobbled_road/dacite"
-  }
-}

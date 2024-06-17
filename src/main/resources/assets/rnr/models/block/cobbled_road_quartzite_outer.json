@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/quartzite",
-    "top": "rnr:block/rock/cobbled_road/quartzite",
-    "side": "rnr:block/rock/cobbled_road/quartzite"
-  }
-}

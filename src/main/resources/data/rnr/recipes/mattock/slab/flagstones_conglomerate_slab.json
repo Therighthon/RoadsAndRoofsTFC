@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/conglomerate",
   "result": "rnr:rock/flagstones/conglomerate_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/conglomerate_slab"
-  }
+  "mode": "slab"
 }

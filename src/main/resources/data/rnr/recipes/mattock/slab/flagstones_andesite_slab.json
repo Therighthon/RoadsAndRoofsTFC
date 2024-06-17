@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/andesite",
   "result": "rnr:rock/flagstones/andesite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/andesite_slab"
-  }
+  "mode": "slab"
 }

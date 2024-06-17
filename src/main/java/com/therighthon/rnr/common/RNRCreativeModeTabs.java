@@ -58,6 +58,11 @@ public class RNRCreativeModeTabs
         out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.RED_STEEL).get());
         out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.BLUE_STEEL).get());
 
+
+        out.accept(RNRBlocks.HOGGIN.get());
+        out.accept(RNRBlocks.HOGGIN_SLAB.get());
+        out.accept(RNRBlocks.HOGGIN_STAIRS.get());
+
         for (Rock rock : Rock.VALUES)
         {
             for (StoneBlockType type : new StoneBlockType[] {
@@ -77,12 +82,26 @@ public class RNRCreativeModeTabs
         }
 
         out.accept(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_STAIRS.get());
         out.accept(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_STAIRS.get());
         out.accept(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_STAIRS.get());
         out.accept(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.PINK_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.PINK_SANDSTONE_FLAGSTONES_STAIRS.get());
         out.accept(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.RED_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.RED_SANDSTONE_FLAGSTONES_STAIRS.get());
         out.accept(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_STAIRS.get());
         out.accept(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get());
+        out.accept(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_SLAB.get());
+        out.accept(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_STAIRS.get());
 
         out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.BLACK).get());
         out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.BROWN).get());

@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/cobbled_road/marble",
   "result": "rnr:rock/cobbled_road/marble_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/cobbled_road/marble_slab"
-  }
+  "mode": "slab"
 }

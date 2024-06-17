@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/macadam_road/conglomerate",
   "result": "rnr:rock/macadam_road/conglomerate_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/macadam_road/conglomerate_slab"
-  }
+  "mode": "slab"
 }

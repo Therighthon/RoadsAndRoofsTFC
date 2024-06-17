@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/rhyolite",
-    "top": "rnr:block/rock/cobbled_road/rhyolite",
-    "side": "rnr:block/rock/cobbled_road/rhyolite"
-  }
-}

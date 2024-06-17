@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/sett_road/granite",
   "result": "rnr:rock/sett_road/granite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/sett_road/granite_slab"
-  }
+  "mode": "slab"
 }

@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/granite",
   "result": "rnr:rock/flagstones/granite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/granite_slab"
-  }
+  "mode": "slab"
 }

@@ -61,9 +61,14 @@ public class RNRBlocks
 
     public static final RegistryObject<Block> BASE_COURSE = register("base_course", () -> new BaseCourseBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> HOGGIN = register("hoggin", () -> new HogginBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> HOGGIN_SLAB = register("hoggin_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
+    public static final RegistryObject<Block> HOGGIN_STAIRS = register("hoggin_stairs", () -> new PathStairBlock(() -> HOGGIN.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL), 1.3f));
 
 
     public static final RegistryObject<Block> BRICK_ROAD = register("brick_road", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BRICK_ROAD_SLAB = register("brick_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BRICK_ROAD_STAIRS = register("brick_road_stairs", () -> new PathStairBlock(() -> BRICK_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE), 1.3f));
+
 
     public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_BLOCKS = Helpers.mapOfKeys(Rock.class, rock ->
         Helpers.mapOfKeys(StoneBlockType.class, type ->
@@ -86,11 +91,24 @@ public class RNRBlocks
     );
 
     public static final RegistryObject<Block> BROWN_SANDSTONE_FLAGSTONES = register("brown_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> WHITE_SANDSTONE_FLAGSTONES = register("white_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BROWN_SANDSTONE_FLAGSTONES_SLAB = register("brown_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BROWN_SANDSTONE_FLAGSTONES_STAIRS = register("brown_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> BROWN_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE), 1.3f));
     public static final RegistryObject<Block> BLACK_SANDSTONE_FLAGSTONES = register("black_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BLACK_SANDSTONE_FLAGSTONES_SLAB = register("black_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> BLACK_SANDSTONE_FLAGSTONES_STAIRS = register("black_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> BLACK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE), 1.3f));
     public static final RegistryObject<Block> RED_SANDSTONE_FLAGSTONES = register("red_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RED_SANDSTONE_FLAGSTONES_SLAB = register("red_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> RED_SANDSTONE_FLAGSTONES_STAIRS = register("red_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> RED_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE), 1.3f));
     public static final RegistryObject<Block> YELLOW_SANDSTONE_FLAGSTONES = register("yellow_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> YELLOW_SANDSTONE_FLAGSTONES_SLAB = register("yellow_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> YELLOW_SANDSTONE_FLAGSTONES_STAIRS = register("yellow_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> YELLOW_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE), 1.3f));
     public static final RegistryObject<Block> GREEN_SANDSTONE_FLAGSTONES = register("green_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> GREEN_SANDSTONE_FLAGSTONES_SLAB = register("green_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> GREEN_SANDSTONE_FLAGSTONES_STAIRS = register("green_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> GREEN_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE), 1.3f));
+    public static final RegistryObject<Block> WHITE_SANDSTONE_FLAGSTONES = register("white_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> WHITE_SANDSTONE_FLAGSTONES_SLAB = register("white_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> WHITE_SANDSTONE_FLAGSTONES_STAIRS = register("white_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> WHITE_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE), 1.3f));
     public static final RegistryObject<Block> PINK_SANDSTONE_FLAGSTONES = register("pink_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
-
+    public static final RegistryObject<Block> PINK_SANDSTONE_FLAGSTONES_SLAB = register("pink_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> PINK_SANDSTONE_FLAGSTONES_STAIRS = register("pink_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> PINK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE), 1.3f));
 }

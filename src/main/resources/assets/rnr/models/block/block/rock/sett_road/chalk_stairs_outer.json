@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/sett_road/chalk",
-    "top": "rnr:block/rock/sett_road/chalk",
-    "side": "rnr:block/rock/sett_road/chalk"
-  }
-}

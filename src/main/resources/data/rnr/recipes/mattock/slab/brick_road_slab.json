@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:brick_road",
+  "result": "rnr:brick_road_slab",
+  "mode": "slab"
+}

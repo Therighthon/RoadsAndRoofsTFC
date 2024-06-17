@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/macadam_road/dolomite",
   "result": "rnr:rock/macadam_road/dolomite_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/macadam_road/dolomite_slab"
-  }
+  "mode": "slab"
 }

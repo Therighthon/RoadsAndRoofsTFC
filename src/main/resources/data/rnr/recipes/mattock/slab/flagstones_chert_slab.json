@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/chert",
   "result": "rnr:rock/flagstones/chert_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/chert_slab"
-  }
+  "mode": "slab"
 }

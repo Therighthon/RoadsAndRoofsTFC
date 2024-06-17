@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+	"rnr:brick_road_slab",
     "rnr:rock/sett_road/granite_slab",
     "rnr:rock/sett_road/diorite_slab",
     "rnr:rock/sett_road/gabbro_slab",

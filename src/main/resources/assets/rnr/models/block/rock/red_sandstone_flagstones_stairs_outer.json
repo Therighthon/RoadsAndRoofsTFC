@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/red_sandstone_flagstones",
+    "top": "rnr:block/red_sandstone_flagstones",
+    "side": "rnr:block/red_sandstone_flagstones"
+  }
+}

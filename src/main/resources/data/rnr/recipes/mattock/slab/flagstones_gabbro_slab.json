@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/gabbro",
   "result": "rnr:rock/flagstones/gabbro_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/gabbro_slab"
-  }
+  "mode": "slab"
 }

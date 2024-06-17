@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/claystone",
   "result": "rnr:rock/flagstones/claystone_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/claystone_slab"
-  }
+  "mode": "slab"
 }

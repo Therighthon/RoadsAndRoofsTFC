@@ -3,8 +3,5 @@
   "type": "rnr:mattock",
   "ingredient": "rnr:rock/flagstones/shale",
   "result": "rnr:rock/flagstones/shale_slab",
-  "mode": "slab",
-  "extra_drop": {
-    "item": "rnr:rock/flagstones/shale_slab"
-  }
+  "mode": "slab"
 }

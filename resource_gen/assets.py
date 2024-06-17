@@ -35,11 +35,21 @@ def generate(rm: ResourceManager):
         'top': 'minecraft:block/dirt_path_top',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
+    rm.blockstate('rnr:hoggin_slab').with_block_model({
+        'top': 'minecraft:block/dirt_path_top',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block_slab').with_item_model()
+    make_path_stairs(rm, 'rnr:block/hoggin', 'hoggin_stairs')
 
     rm.blockstate('rnr:brick_road').with_block_model({
         'top': 'rnr:block/brick_road',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
+    rm.blockstate('rnr:brick_road_slab').with_block_model({
+        'top': 'rnr:block/brick_road',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block_slab').with_item_model()
+    make_path_stairs(rm, 'rnr:block/brick_road', 'rnr:brick_road_stairs')
 
     # Rock Type Blocks
     for rock, rock_data in ROCKS.items():
@@ -55,7 +65,7 @@ def generate(rm: ResourceManager):
                 'gravel': 'minecraft:block/gravel'
             }, parent='rnr:block/path_block').with_item_model()
             # Stairs
-            make_path_stairs(rm, block_type, rock)
+            make_rock_path_stairs(rm, block_type, rock)
             # Slabs
             rm.blockstate('rnr:rock/%s/%s_slab' % (block_type, rock)).with_block_model({
                 'top': 'rnr:block/rock/%s/%s' % (block_type, rock),
@@ -75,6 +85,15 @@ def generate(rm: ResourceManager):
             'top': 'rnr:block/rock/flagstones/%s_sandstone' % sand,
             'gravel': 'minecraft:block/gravel'
         }, parent='rnr:block/path_block').with_item_model()
+
+        rm.blockstate('rnr:%s_sandstone_flagstones_slab' % sand).with_block_model({
+            'top': 'rnr:block/rock/flagstones/%s_sandstone' % sand,
+            'gravel': 'minecraft:block/gravel'
+        }, parent='rnr:block/path_slab').with_item_model()
+
+        make_sandstone_path_stairs(rm, 'flagstones', sand)
+
+
 
     # Metal Items
     for metal, metal_data in METALS.items():
@@ -103,12 +122,28 @@ def slab_loot(rm: ResourceManager, loot: str):
     })
 
 
-def make_path_stairs(rm, type, rock, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
+def make_rock_path_stairs(rm, type, rock, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
     """
     Generates all blockstates and models required for a standard stair block
     """
     block = 'rnr:block/rock/%s/%s' % (type, rock)
     stairs = 'rnr:rock/%s/%s%s' % (type, rock, stair_suffix)
+
+    make_path_stairs(rm, block, stairs, stair_suffix, bottom_texture, side_texture, top_texture)
+    return
+
+def make_sandstone_path_stairs(rm, type, sand, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
+    """
+    Generates all blockstates and models required for a standard stair block
+    """
+    block = 'rnr:block/%s_sandstone_%s' % (sand, type)
+    stairs = 'rnr:rock/%s_sandstone_%s%s' % (sand, type, stair_suffix)
+
+
+    make_path_stairs(rm, block, stairs, stair_suffix, bottom_texture, side_texture, top_texture)
+    return
+
+def make_path_stairs(rm, block, stairs, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
     block_stairs = block + stair_suffix
     block_stairs_inner = block + stair_suffix + '_inner'
     block_stairs_outer = block + stair_suffix + '_outer'

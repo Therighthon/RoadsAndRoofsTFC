@@ -170,6 +170,11 @@ def generate(rm: ResourceManager):
         # TODO: Macadam recipes
         # chisel_recipe(rm, '%s_smooth' % rock, 'tfc:rock/raw/%s' % rock, 'tfc:rock/smooth/%s' % rock, 'smooth')
 
+    mattock_stair_slab('hoggin', 'rnr:hoggin')
+    mattock_stair_slab('brick_road', 'rnr:brick_road')
+    for sand in SAND_BLOCK_TYPES:
+        mattock_stair_slab(sand + '_sandstone_flagstones', 'rnr:%s_sandstone_flagstones' % sand)
+
     for soil in SOIL_BLOCK_VARIANTS:
         for block_type in SOIL_BLOCK_TYPES:
             mattock_recipe(rm, soil + '_' + block_type + '_tamping', 'tfc:' + block_type + '/' + soil, 'rnr:tamped_' + soil, 'smooth')
@@ -257,7 +262,7 @@ def mattock_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, in
         'ingredient': ingredient,
         'result': result,
         'mode': mode,
-        'extra_drop': item_stack_provider(result) if mode == 'slab' else None
+        'extra_drop': None
     })
 
 

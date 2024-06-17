@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_inner_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/gravel_road/phyllite",
-    "top": "rnr:block/rock/gravel_road/phyllite",
-    "side": "rnr:block/rock/gravel_road/phyllite"
-  }
-}

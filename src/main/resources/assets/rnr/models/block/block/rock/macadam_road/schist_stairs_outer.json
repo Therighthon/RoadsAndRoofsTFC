@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/macadam_road/schist",
-    "top": "rnr:block/rock/macadam_road/schist",
-    "side": "rnr:block/rock/macadam_road/schist"
-  }
-}

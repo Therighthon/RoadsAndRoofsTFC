@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/macadam_road/granite",
-    "top": "rnr:block/rock/macadam_road/granite",
-    "side": "rnr:block/rock/macadam_road/granite"
-  }
-}

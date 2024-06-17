@@ -42,7 +42,7 @@ public class PathHeightBlock extends Block
         if (Helpers.isItem(stack.getItem(), RNRTags.Items.ROAD_MATERIALS))
         {
             final BlockModRecipe recipe = BlockModRecipe.getRecipe(level.getBlockState(pos), stack);
-            if (recipe != null)
+            if (recipe != null && !(player.blockPosition().equals(pos)))
             {
                 final BlockState output = recipe.getOutputBlock();
                 if (stack.isDamageableItem())

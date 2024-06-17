@@ -37,7 +37,7 @@ public class TampedHeightBlock extends Block
     //TODO: Sounds
     public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack stack = player.getItemInHand(hand);
-        if (Helpers.isItem(stack.getItem(), RNRTags.Items.BASE_COURSE) ) {
+        if (Helpers.isItem(stack.getItem(), RNRTags.Items.BASE_COURSE) && !(player.blockPosition().equals(pos))) {
             stack.shrink(1);
             blockState = RNRBlocks.BASE_COURSE.get().defaultBlockState();
             level.setBlock(pos, blockState, 3);

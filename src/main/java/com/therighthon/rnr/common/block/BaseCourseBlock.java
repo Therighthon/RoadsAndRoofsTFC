@@ -1,5 +1,6 @@
 package com.therighthon.rnr.common.block;
 
+import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
@@ -30,7 +31,9 @@ public class BaseCourseBlock extends BaseCourseHeightBlock
         ItemStack stack = player.getItemInHand(hand);
         if (Helpers.isItem(stack.getItem(), RNRTags.Items.ROAD_MATERIALS) ) {
             final BlockModRecipe recipe = BlockModRecipe.getRecipe(RNRBlocks.BASE_COURSE.get().defaultBlockState(), stack);
-            if (recipe != null)
+            //Simple way to check that player is not standing on the block being modified.
+            //Doesn't entirely stop people glitching through, and blocks placements sometimes when it doesn't need to
+            if (recipe != null && !(player.blockPosition().equals(pos)))
             {
                 final BlockState output = recipe.getOutputBlock();
                 if (stack.isDamageableItem())

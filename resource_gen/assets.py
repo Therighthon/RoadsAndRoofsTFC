@@ -39,7 +39,7 @@ def generate(rm: ResourceManager):
         'top': 'minecraft:block/dirt_path_top',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_slab').with_item_model()
-    make_path_stairs(rm, 'rnr:hoggin', 'hoggin_stairs', '_stairs', 'minecraft:block/dirt_path_top', 'minecraft:block/dirt_path_top', 'minecraft:block/dirt_path_top')
+    make_path_stairs(rm, 'rnr:block/hoggin', 'hoggin_stairs', '_stairs', 'minecraft:block/dirt_path_top', 'minecraft:block/dirt_path_top', 'minecraft:block/dirt_path_top')
 
     rm.blockstate('rnr:brick_road').with_block_model({
         'top': 'rnr:block/brick_road',

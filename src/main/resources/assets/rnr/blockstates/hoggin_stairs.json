@@ -2,92 +2,92 @@
   "__comment__": "This file was automatically created by mcresources",
   "variants": {
     "facing=east,shape=straight": {
-      "model": "minecraft:block/dirt_path_top_stairs"
+      "model": "rnr:block/hoggin_stairs"
     },
     "facing=west,shape=straight": {
-      "model": "minecraft:block/dirt_path_top_stairs",
+      "model": "rnr:block/hoggin_stairs",
       "y": 180,
       "uvlock": true
     },
     "facing=south,shape=straight": {
-      "model": "minecraft:block/dirt_path_top_stairs",
+      "model": "rnr:block/hoggin_stairs",
       "y": 90,
       "uvlock": true
     },
     "facing=north,shape=straight": {
-      "model": "minecraft:block/dirt_path_top_stairs",
+      "model": "rnr:block/hoggin_stairs",
       "y": 270,
       "uvlock": true
     },
     "facing=east,shape=outer_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer"
+      "model": "rnr:block/hoggin_stairs_outer"
     },
     "facing=west,shape=outer_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer",
+      "model": "rnr:block/hoggin_stairs_outer",
       "y": 180,
       "uvlock": true
     },
     "facing=south,shape=outer_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer",
+      "model": "rnr:block/hoggin_stairs_outer",
       "y": 90,
       "uvlock": true
     },
     "facing=north,shape=outer_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer",
+      "model": "rnr:block/hoggin_stairs_outer",
       "y": 270,
       "uvlock": true
     },
     "facing=east,shape=outer_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer",
+      "model": "rnr:block/hoggin_stairs_outer",
       "y": 270,
       "uvlock": true
     },
     "facing=west,shape=outer_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer",
+      "model": "rnr:block/hoggin_stairs_outer",
       "y": 90,
       "uvlock": true
     },
     "facing=south,shape=outer_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer"
+      "model": "rnr:block/hoggin_stairs_outer"
     },
     "facing=north,shape=outer_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_outer",
+      "model": "rnr:block/hoggin_stairs_outer",
       "y": 180,
       "uvlock": true
     },
     "facing=east,shape=inner_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner"
+      "model": "rnr:block/hoggin_stairs_inner"
     },
     "facing=west,shape=inner_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner",
+      "model": "rnr:block/hoggin_stairs_inner",
       "y": 180,
       "uvlock": true
     },
     "facing=south,shape=inner_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner",
+      "model": "rnr:block/hoggin_stairs_inner",
       "y": 90,
       "uvlock": true
     },
     "facing=north,shape=inner_right": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner",
+      "model": "rnr:block/hoggin_stairs_inner",
       "y": 270,
       "uvlock": true
     },
     "facing=east,shape=inner_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner",
+      "model": "rnr:block/hoggin_stairs_inner",
       "y": 270,
       "uvlock": true
     },
     "facing=west,shape=inner_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner",
+      "model": "rnr:block/hoggin_stairs_inner",
       "y": 90,
       "uvlock": true
     },
     "facing=south,shape=inner_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner"
+      "model": "rnr:block/hoggin_stairs_inner"
     },
     "facing=north,shape=inner_left": {
-      "model": "minecraft:block/dirt_path_top_stairs_inner",
+      "model": "rnr:block/hoggin_stairs_inner",
       "y": 180,
       "uvlock": true
     }

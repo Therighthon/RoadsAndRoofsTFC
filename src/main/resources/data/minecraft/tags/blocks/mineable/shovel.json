@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+	"#rnr:gravel_road_blocks",
+	"#rnr:macadam_road_blocks",
+	"#rnr:overheight_gravel_blocks",
+	"#rnr:gravel_road_stairs",
+	"#rnr:macadam_road_stairs",
+	"#rnr:gravel_road_slabs",
+	"#rnr:macadam_road_slabs",
+	"rnr:base_course",
+	"rnr:hoggin",
+	"rnr:hoggin_slab",
+	"rnr:hoggin_stairs",
+	"rnr:tamped_kaolin",
+	"rnr:tamped_peat",
+	"rnr:tamped_silt",
+	"rnr:tamped_silty_loam",
+	"rnr:tamped_sandy_loam",
+	"rnr:tamped_loam",
+	"rnr:tamped_silt_mud",
+	"rnr:tamped_silty_loam_mud",
+	"rnr:tamped_sandy_loam_mud",
+	"rnr:tamped_loam_mud"
+  ]
+}

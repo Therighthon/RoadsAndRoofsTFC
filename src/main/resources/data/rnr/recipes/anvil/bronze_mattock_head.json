@@ -5,7 +5,7 @@
     "tag": "forge:ingots/bronze"
   },
   "result": {
-    "item": "tfc:metal/mattock_head/bronze"
+    "item": "rnr:metal/mattock_head/bronze"
   },
   "tier": 2,
   "rules": [

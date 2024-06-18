@@ -5,7 +5,7 @@
     "tag": "forge:ingots/wrought_iron"
   },
   "result": {
-    "item": "tfc:metal/mattock_head/wrought_iron"
+    "item": "rnr:metal/mattock_head/wrought_iron"
   },
   "tier": 3,
   "rules": [

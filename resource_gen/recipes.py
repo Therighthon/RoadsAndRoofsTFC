@@ -74,10 +74,20 @@ def generate(rm: ResourceManager):
             return 'tfc:wood/planks/%s_%s' % (wood, thing)
 
     # ============================
+    # Crafting Recipes
+    # ============================
+    for rock in ROCKS:
+        damage_shapeless(rm, 'crafting/flagstone/%s' % rock, ('tfc:rock/smooth/' + rock, '#tfc:chisels'), (4, 'rnr:flagstone/' + rock))
+        rm.crafting_shapeless('crafting/gravel_fill/%s' % rock, ('tfc:rock/gravel/' + rock), (4, 'rnr:gravel_fill/' + rock))
+    for sand in SAND_BLOCK_TYPES:
+        damage_shapeless(rm, 'crafting/flagstone/%s_sandstone' % sand, ('tfc:cut_sandstone/' + sand, '#tfc:chisels'), (4, 'rnr:flagstone/' + sand + '_sandstone'))
+    rm.crafting_shapeless('crafting/hoggin_mix', ('#forge:gravel', '#forge:sand', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
+    damage_shapeless(rm, 'crafting/base_course', ('#forge:gravel', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
+
+    # ============================
     # Collapse / Landslide Recipes
     # ============================
 
-    # TODO: Landslide Recipes
     for rock in ROCKS:
         for type in STONE_PATHS:
             def block(block_type: str):
@@ -204,7 +214,9 @@ def generate(rm: ResourceManager):
     metal = '?'
 
     def item(_variant: str) -> str:
-        return 'tfc:metal/%s/%s' % (_variant, metal)
+        return 'rnr:metal/%s/%s' % (_variant, metal)
+
+
 
     def item_tag(namespace: str, _variant: str) -> str:
         return '#%s:%ss/%s' % (namespace, _variant, metal)

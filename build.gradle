@@ -52,10 +52,14 @@ dependencies {
     implementation fg.deobf("curse.maven:terrafirmacraft-302973:${tfc_version}")
 
     // Immersive Engineering
-    implementation fg.deobf("curse.maven:immersive-engineering-231951:${ie_version}")
+//    implementation fg.deobf("curse.maven:immersive-engineering-231951:${ie_version}")
 
     // Create
-    implementation fg.deobf("curse.maven:create-328085:${create_version}")
+//    implementation fg.deobf("curse.maven:create-328085:${create_version}")
+    //JEI
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
 
     // Patchouli
     fg.deobf("curse.maven:patchouli-306770:${patchouli_version}")

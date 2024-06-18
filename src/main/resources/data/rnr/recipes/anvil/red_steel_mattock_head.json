@@ -5,7 +5,7 @@
     "tag": "forge:ingots/red_steel"
   },
   "result": {
-    "item": "tfc:metal/mattock_head/red_steel"
+    "item": "rnr:metal/mattock_head/red_steel"
   },
   "tier": 6,
   "rules": [

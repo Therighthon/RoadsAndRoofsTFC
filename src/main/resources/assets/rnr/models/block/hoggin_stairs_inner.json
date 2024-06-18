@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_inner_stairs",
   "textures": {
-    "bottom": "rnr:block/hoggin",
-    "top": "rnr:block/hoggin",
-    "side": "rnr:block/hoggin"
+    "bottom": "minecraft:block/dirt_path_top",
+    "top": "minecraft:block/dirt_path_top",
+    "side": "minecraft:block/dirt_path_top"
   }
 }

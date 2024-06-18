@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_inner_stairs",
-  "textures": {
-    "bottom": "rnr:block/brown_sandstone_flagstones",
-    "top": "rnr:block/brown_sandstone_flagstones",
-    "side": "rnr:block/brown_sandstone_flagstones"
-  }
-}

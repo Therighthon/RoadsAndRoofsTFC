@@ -38,8 +38,8 @@ def generate(rm: ResourceManager):
     rm.blockstate('rnr:hoggin_slab').with_block_model({
         'top': 'minecraft:block/dirt_path_top',
         'gravel': 'minecraft:block/gravel'
-    }, parent='rnr:block/path_block_slab').with_item_model()
-    make_path_stairs(rm, 'rnr:block/hoggin', 'hoggin_stairs')
+    }, parent='rnr:block/path_slab').with_item_model()
+    make_path_stairs(rm, 'rnr:hoggin', 'hoggin_stairs', '_stairs', 'minecraft:block/dirt_path_top', 'minecraft:block/dirt_path_top', 'minecraft:block/dirt_path_top')
 
     rm.blockstate('rnr:brick_road').with_block_model({
         'top': 'rnr:block/brick_road',
@@ -48,7 +48,7 @@ def generate(rm: ResourceManager):
     rm.blockstate('rnr:brick_road_slab').with_block_model({
         'top': 'rnr:block/brick_road',
         'gravel': 'minecraft:block/gravel'
-    }, parent='rnr:block/path_block_slab').with_item_model()
+    }, parent='rnr:block/path_slab').with_item_model()
     make_path_stairs(rm, 'rnr:block/brick_road', 'rnr:brick_road_stairs')
 
     # Rock Type Blocks
@@ -135,12 +135,25 @@ def make_rock_path_stairs(rm, type, rock, stair_suffix: str = '_stairs', bottom_
 def make_sandstone_path_stairs(rm, type, sand, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':
     """
     Generates all blockstates and models required for a standard stair block
+    make_path_stairs(rm, 'rnr:block/brick_road', 'rnr:brick_road_stairs')
     """
-    block = 'rnr:block/%s_sandstone_%s' % (sand, type)
-    stairs = 'rnr:rock/%s_sandstone_%s%s' % (sand, type, stair_suffix)
 
+    block = 'rnr:%s_sandstone_%s' % (sand, type)
+    stairs = 'rnr:%s_sandstone_%s' % (sand, type) + stair_suffix
 
-    make_path_stairs(rm, block, stairs, stair_suffix, bottom_texture, side_texture, top_texture)
+    block_stairs = 'rnr:block/%s_sandstone_%s_stairs' % (sand, type)
+    block_stairs_inner = block_stairs + '_inner'
+    block_stairs_outer = block_stairs + '_outer'
+
+    bottom_texture = 'rnr:block/rock/flagstones/%s_sandstone' % sand
+    side_texture = bottom_texture
+    top_texture = bottom_texture
+
+    rm.blockstate(stairs, variants=path_stairs_variants(block_stairs, block_stairs_inner, block_stairs_outer))
+    rm.block_model(stairs, textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_stairs')
+    rm.block_model(stairs + '_inner', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_inner_stairs')
+    rm.block_model(stairs + '_outer', textures={'bottom': bottom_texture, 'top': top_texture, 'side': side_texture}, parent='rnr:block/path_outer_stairs')
+    rm.item_model(stairs, parent=block_stairs, no_textures=True)
     return
 
 def make_path_stairs(rm, block, stairs, stair_suffix: str = '_stairs', bottom_texture: Optional[str] = None, side_texture: Optional[str] = None, top_texture: Optional[str] = None) -> 'BlockContext':

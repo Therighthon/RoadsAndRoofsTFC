@@ -5,7 +5,7 @@ from enum import Enum
 from itertools import repeat
 from typing import Union
 
-from mcresources import ResourceManager, RecipeContext, utils
+from mcresources import ResourceManager, RecipeContext, utils, loot_tables
 from mcresources.type_definitions import ResourceIdentifier, Json
 
 from constants import *
@@ -92,16 +92,55 @@ def generate(rm: ResourceManager):
         for type in STONE_PATHS:
             def block(block_type: str):
                 return 'rnr:rock/%s/%s' % (block_type, rock)
+
             def stair(block_type: str):
                 return 'rnr:rock/%s/%s_stairs' % (block_type, rock)
+
             def slab(block_type: str):
                 return 'rnr:rock/%s/%s_slab' % (block_type, rock)
+
             landslide_recipe(rm, '%s_%s' % (rock, type), block(type), block(type))
             landslide_recipe(rm, '%s_%s_slab' % (rock, type), slab(type), slab(type))
             landslide_recipe(rm, '%s_%s_stair' % (rock, type), stair(type), slab(type))
 
+            # Loot
+            for suffix in SUFFIXES:
+                rm.block(('rock', type, '%s%s' % (rock, suffix))).with_block_loot(({
+                                                                          'name': 'rnr:rock/%s/%s%s' % (type, rock, suffix)
+                                                                              }))
+
+        rm.block(('rock', 'over_height_gravel', rock)).with_block_loot(({
+            'name': 'rnr:rock/%s/%s' % ('over_height_gravel', rock)
+        }))
+
     for sand in SAND_BLOCK_TYPES:
         landslide_recipe(rm, '%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand)
+        for suffix in SUFFIXES:
+            rm.block((sand + '_sandstone_flagstones' + suffix)).with_block_loot(({
+                                                                                                  'name': 'rnr:%s_sandstone_flagstones%s' % (sand, suffix)
+                                                                                              }))
+
+    rm.block(('base_course')).with_block_loot(({
+        'name': 'rnr:base_course'
+    }))
+    rm.block(('brick_road')).with_block_loot(({
+        'name': 'rnr:brick_road'
+    }))
+    rm.block(('brick_road_slab')).with_block_loot(({
+        'name': 'rnr:brick_road_slab'
+    }))
+    rm.block(('brick_road_stairs')).with_block_loot(({
+        'name': 'rnr:brick_road_stairs'
+    }))
+    rm.block(('hoggin')).with_block_loot(({
+                                              'name': 'rnr:hoggin'
+                                          }))
+    rm.block(('hoggin_slab')).with_block_loot(({
+        'name': 'rnr:hoggin_slab'
+    }))
+    rm.block(('hoggin_stairs')).with_block_loot(({
+        'name': 'rnr:hoggin_stairs'
+    }))
 
     landslide_recipe(rm, 'base_course', 'rnr:base_course', 'rnr:base_course')
     landslide_recipe(rm, 'brick_road', 'rnr:brick_road', 'rnr:brick_road')
@@ -222,8 +261,6 @@ def generate(rm: ResourceManager):
 
     def item(_variant: str) -> str:
         return 'rnr:metal/%s/%s' % (_variant, metal)
-
-
 
     def item_tag(namespace: str, _variant: str) -> str:
         return '#%s:%ss/%s' % (namespace, _variant, metal)

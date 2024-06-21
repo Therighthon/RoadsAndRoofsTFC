@@ -8,23 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "rnr:rock/sett_road/chalk_slab",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "conditions": [
-                {
-                  "condition": "minecraft:block_state_property",
-                  "block": "rnr:rock/sett_road/chalk_slab",
-                  "properties": {
-                    "type": "double"
-                  }
-                }
-              ],
-              "count": 2,
-              "add": false
-            }
-          ]
+          "name": "rnr:rock/sett_road/chalk_slab"
         }
       ],
       "conditions": [

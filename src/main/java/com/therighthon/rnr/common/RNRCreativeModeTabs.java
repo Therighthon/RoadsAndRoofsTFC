@@ -25,7 +25,7 @@ public class RNRCreativeModeTabs
 {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, com.therighthon.rnr.RoadsAndRoofs.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> RNR_TAB = CREATIVE_TABS.register("roads_and_roofs",
+    public static final RegistryObject<CreativeModeTab> RNR_TAB = CREATIVE_TABS.register("rnr.creative_tab.roads_and_roofs",
         () -> CreativeModeTab.builder()
             .title(Component.translatable("roads_and_roofs"))
             .icon(() -> new ItemStack(RNRItems.MATTOCKS.get(Metal.Default.BISMUTH_BRONZE).get()))

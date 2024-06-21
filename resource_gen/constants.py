@@ -404,6 +404,7 @@ ROCK_BLOCK_TYPES = ('raw', 'hardened', 'bricks', 'cobble', 'gravel', 'smooth', '
 ROCK_BLOCKS_IN_JSON = ('raw', 'hardened', 'cobble', 'gravel', 'spike', 'loose')
 CUTTABLE_ROCKS = ('raw', 'bricks', 'cobble', 'smooth', 'mossy_cobble', 'mossy_bricks', 'cracked_bricks')
 STONE_PATHS = ('macadam_road', 'gravel_road', 'cobbled_road', 'sett_road', 'flagstones')
+SUFFIXES = ('', '_slab', '_stairs')
 ROCK_SPIKE_PARTS = ('base', 'middle', 'tip')
 SAND_BLOCK_TYPES = ('brown', 'white', 'black', 'red', 'yellow', 'green', 'pink')
 SANDSTONE_BLOCK_TYPES = ('raw', 'smooth', 'cut')

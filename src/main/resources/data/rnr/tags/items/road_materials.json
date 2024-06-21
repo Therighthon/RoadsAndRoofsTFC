@@ -6,6 +6,7 @@
     "#rnr:gravel_road_items",
     "#rnr:flagstone_road_items",
 	"rnr:hoggin_mix",
-	"minecraft:brick"
+	"minecraft:brick",
+	"rnr:crushed_base_course"
   ]
 }

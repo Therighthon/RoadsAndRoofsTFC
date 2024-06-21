@@ -1,6 +1,7 @@
 package com.therighthon.rnr.common.block;
 
 import com.therighthon.rnr.common.RNRTags;
+import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -35,18 +36,27 @@ public class TampedHeightBlock extends Block
     }
 
     //TODO: Sounds
-    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
+    {
         ItemStack stack = player.getItemInHand(hand);
-        if (Helpers.isItem(stack.getItem(), RNRTags.Items.BASE_COURSE) && !(player.blockPosition().equals(pos))) {
-            stack.shrink(1);
-            blockState = RNRBlocks.BASE_COURSE.get().defaultBlockState();
-            level.setBlock(pos, blockState, 3);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
+        final BlockModRecipe recipe = BlockModRecipe.getRecipe(level.getBlockState(pos), stack);
+        if (recipe != null && !(player.blockPosition().equals(pos)))
+        {
+            final BlockState output = recipe.getOutputBlock();
+            if (stack.isDamageableItem())
+            {
+                stack.setDamageValue(stack.getDamageValue() - 1);
+            }
+            else
+            {
+                stack.shrink(1);
+            }
             level.playLocalSound(pos, SoundEvents.GRAVEL_HIT, SoundSource.BLOCKS, 1f, 1f, false);
+            level.setBlock(pos, output, 3);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
             return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
-            return InteractionResult.FAIL;
         }
+        return InteractionResult.FAIL;
     }
 
 }

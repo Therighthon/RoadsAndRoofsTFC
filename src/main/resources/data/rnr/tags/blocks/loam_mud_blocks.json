@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "tfc:dirt/loam",
+	"tfc:grass/loam",
+	"tfc:grass_path/loam",
+	"tfc:clay/loam",
+	"tfc:glay_grass/loam",
+	"tfc:farmland/loam",
+	"tfc:rooted_dirt/loam",
+	"tfc:clay/loam",
+	"tfc:mud/loam",
+	"tfc:muddy_roots/loam"
+  ]
+}

@@ -166,6 +166,13 @@ def generate(rm: ResourceManager):
         block_mod_recipe(rm, sand + '_flagstones', 'rnr:flagstone/' + sand + '_sandstone', 'rnr:base_course', 'rnr:%s_sandstone_flagstones' % sand)
     block_mod_recipe(rm, 'hoggin', 'rnr:hoggin_mix', 'rnr:base_course', 'rnr:hoggin')
     block_mod_recipe(rm, 'brick_road', 'minecraft:brick', 'rnr:base_course', 'rnr:brick_road')
+
+    block_mod_recipe(rm, 'kaolin_base_course', 'rnr:crushed_base_course', 'rnr:tamped_kaolin', 'rnr:base_course')
+    block_mod_recipe(rm, 'peat_base_course', 'rnr:crushed_base_course', 'rnr:tamped_peat', 'rnr:base_course')
+    for dirt in SOIL_BLOCK_VARIANTS:
+        block_mod_recipe(rm, '%s_to_base_course' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s' % dirt, 'rnr:base_course')
+        block_mod_recipe(rm, '%s_mud_to_soil' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s_mud' % dirt, 'rnr:tamped_%s' % dirt)
+
     # ============
     # Mattock Recipes
     # ============

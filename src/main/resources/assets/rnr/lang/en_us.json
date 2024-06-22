@@ -428,6 +428,8 @@
   "item.rnr.crushed_base_course": "Crushed Base Course",
   "item.rnr.hoggin_mix": "Hoggin Mix",
   "rnr.creative_tab.roads_and_roofs": "Roads and Roofs",
-  "roads_and_roofs": "Roads and Roofs"
+  "roads_and_roofs": "Roads and Roofs",
+  "tfc.jei.block_mod": "Block Modification",
+  "tfc.jei.mattock": "Mattock"
 
 }

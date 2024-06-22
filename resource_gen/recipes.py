@@ -141,6 +141,13 @@ def generate(rm: ResourceManager):
     rm.block(('hoggin_stairs')).with_block_loot(({
         'name': 'rnr:hoggin_stairs'
     }))
+    for dirt in SOIL_BLOCK_VARIANTS:
+        rm.block(('tamped_' + dirt)).with_block_loot(({
+            'name': 'tfc:dirt/%s' % dirt
+        }))
+        rm.block(('tamped_' + dirt + '_mud')).with_block_loot(({
+            'name': 'tfc:mud/%s' % dirt
+        }))
 
     landslide_recipe(rm, 'base_course', 'rnr:base_course', 'rnr:base_course')
     landslide_recipe(rm, 'brick_road', 'rnr:brick_road', 'rnr:brick_road')
@@ -160,11 +167,6 @@ def generate(rm: ResourceManager):
     # STARTS include raw, ores
     # COLLAPSIBLE includes raw, hardened, ores (lossy), bricks, smooth, spikes (special)
     # NOT SOLID SUPPORTING includes blocks that don't count as a solid block below for support purposes, which is just smooth + all slabs, stairs, etc.
-    rm.block_tag('can_trigger_collapse', '#tfc:rock/raw', '#tfc:rock/hardened', '#tfc:rock/ores', '#tfc:rock/cracked_bricks')
-    rm.block_tag('can_start_collapse', '#tfc:rock/raw', '#tfc:rock/ores')
-    rm.block_tag('can_collapse', '#tfc:can_trigger_collapse', '#tfc:rock/smooth')
-    rm.block_tag('not_solid_supporting', '#tfc:rock/smooth')
-
     for rock in ROCKS:
         def block(block_type: str):
             return 'rnr:rock/%s/%s' % (block_type, rock)
@@ -232,8 +234,10 @@ def generate(rm: ResourceManager):
         mattock_stair_slab(sand + '_sandstone_flagstones', 'rnr:%s_sandstone_flagstones' % sand)
 
     for soil in SOIL_BLOCK_VARIANTS:
-        for block_type in SOIL_BLOCK_TYPES:
+        for block_type in SOIL_DRY_BLOCK_TYPES:
             mattock_recipe(rm, soil + '_' + block_type + '_tamping', 'tfc:' + block_type + '/' + soil, 'rnr:tamped_' + soil, 'smooth')
+        for block_type in SOIL_MUDDY_BLOCK_TYPES:
+            mattock_recipe(rm, soil + '_' + block_type + '_tamping', 'tfc:' + block_type + '/' + soil, 'rnr:tamped_' + soil + '_mud', 'smooth')
 
     mattock_recipe(rm, 'kaolin_tamping_g', 'tfc:kaolin_clay_grass', 'rnr:tamped_kaolin', 'smooth')
     mattock_recipe(rm, 'kaolin_tamping_w', 'tfc:white_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')

@@ -2,6 +2,6 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "rnr:mattock",
   "ingredient": "tfc:mud/sandy_loam",
-  "result": "rnr:tamped_sandy_loam",
+  "result": "rnr:tamped_sandy_loam_mud",
   "mode": "smooth"
 }

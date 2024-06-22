@@ -8,8 +8,6 @@
 	"tfc:glay_grass/sandy_loam",
 	"tfc:farmland/sandy_loam",
 	"tfc:rooted_dirt/sandy_loam",
-	"tfc:clay/sandy_loam",
-	"tfc:mud/sandy_loam",
-	"tfc:muddy_roots/sandy_loam"
+	"tfc:clay/sandy_loam"
   ]
 }

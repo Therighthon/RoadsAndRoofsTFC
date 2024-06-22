@@ -8,8 +8,6 @@
 	"tfc:glay_grass/loam",
 	"tfc:farmland/loam",
 	"tfc:rooted_dirt/loam",
-	"tfc:clay/loam",
-	"tfc:mud/loam",
-	"tfc:muddy_roots/loam"
+	"tfc:clay/loam"
   ]
 }

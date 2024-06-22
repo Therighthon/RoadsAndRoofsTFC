@@ -71,10 +71,18 @@ public class RNRCreativeModeTabs
                 StoneBlockType.FLAGSTONES,
                 StoneBlockType.GRAVEL_ROAD,
                 StoneBlockType.MACADAM_ROAD,
-                StoneBlockType.OVER_HEIGHT_GRAVEL
+                StoneBlockType.OVER_HEIGHT_GRAVEL,
+
+
             })
             {
                 accept(out, RNRBlocks.ROCK_BLOCKS.get(rock).get(type));
+                if (!type.equals(StoneBlockType.OVER_HEIGHT_GRAVEL))
+                {
+                    accept(out, RNRBlocks.ROCK_BLOCKS.get(rock).get(type));
+                    accept(out, RNRBlocks.ROCK_STAIRS.get(rock).get(type));
+                    accept(out, RNRBlocks.ROCK_SLABS.get(rock).get(type));
+                }
             }
 
             accept(out, RNRItems.GRAVEL_FILL.get(rock));

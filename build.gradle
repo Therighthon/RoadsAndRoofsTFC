@@ -97,7 +97,7 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
-                afc {
+                rnr {
                     source sourceSets.main
                 }
             }
@@ -117,7 +117,7 @@ minecraft {
 
 mixin {
     // MixinGradle Settings
-    add sourceSets.main, 'afc.refmap.json'
+    add sourceSets.main, 'rnr.refmap.json'
     //If you get duplicate refmap error, delete the existing refmap file, a new one should generate on build.
 }
 
@@ -133,7 +133,7 @@ tasks {
                     "Implementation-Version"  : project.jar.archiveVersion,
                     "Implementation-Vendor"   : mod_authors,
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                    "MixinConfigs":"afc.mixins.json"
+                    "MixinConfigs":"rnr.mixins.json"
             ])
         }
     }

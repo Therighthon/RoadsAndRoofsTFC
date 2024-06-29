@@ -1,8 +1,7 @@
 package com.therighthon.rnr.common.block;
 
+import java.util.function.Supplier;
 import com.therighthon.rnr.RNRHelpers;
-import com.therighthon.rnr.RoadsAndRoofs;
-import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -12,18 +11,21 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 
-import net.dries007.tfc.util.Helpers;
-
-public class BaseCourseBlock extends BaseCourseHeightBlock
+public class BlockModEnabledStairBlock extends StairBlock
 {
-
-    public BaseCourseBlock(Properties pProperties)
+    public BlockModEnabledStairBlock(Supplier<BlockState> baseState, Properties properties)
     {
-        super(pProperties.speedFactor(0.9f));
+        super(baseState, properties);
     }
 
+    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
+    {
+        return RNRHelpers.blockModRecipeCompatible(blockState, level, pos, player, hand, hit);
+    }
 }

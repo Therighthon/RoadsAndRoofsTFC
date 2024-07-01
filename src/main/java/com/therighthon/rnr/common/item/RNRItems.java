@@ -7,12 +7,14 @@ import com.therighthon.rnr.RoadsAndRoofs;
 
 import com.therighthon.rnr.common.item.MattockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
@@ -37,6 +39,14 @@ public class RNRItems
     public static final Map<SandBlockType, RegistryObject<Item>> SANDSTONE_FLAGSTONE = Helpers.mapOfKeys(SandBlockType.class, type ->
         register("flagstone/" + type.name() + "_sandstone")
     );
+
+    public static final RegistryObject<Item> UNFIRED_ROOF_TILE = register("unfired_roof_tile");
+    public static final RegistryObject<Item> UNFIRED_TERRACOTTA_ROOF_TILE = register("unfired_terracotta_roof_tile");
+    public static final RegistryObject<Item> CERAMIC_ROOF_TILE = register("ceramic_roof_tile");
+    public static final RegistryObject<Item> TERRACOTTA_ROOF_TILE = register("terracotta_roof_tile");
+    //TODO: AFC Compat
+    public static final Map<Wood, RegistryObject<Item>> WOOD_SHINGLE = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingle/" + wood.getSerializedName()));
+
 
     //Misc items
     public static final RegistryObject<Item> CRUSHED_BASE_COURSE = register("crushed_base_course");

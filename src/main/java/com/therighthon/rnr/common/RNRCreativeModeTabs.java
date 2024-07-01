@@ -133,6 +133,8 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.TAMPED_PEAT.get());
         out.accept(RNRBlocks.TAMPED_KAOLIN.get());
         out.accept(RNRBlocks.BRICK_ROAD.get());
+        out.accept(RNRBlocks.BRICK_ROAD_SLAB.get());
+        out.accept(RNRBlocks.BRICK_ROAD_STAIRS.get());
 
         out.accept(RNRBlocks.ROOF_FRAME.get());
         out.accept(RNRBlocks.ROOF_FRAME_SLAB.get());
@@ -142,9 +144,13 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.THATCH_ROOF_SLAB.get());
         out.accept(RNRBlocks.THATCH_ROOF_STAIRS.get());
 
+        out.accept(RNRItems.UNFIRED_TERRACOTTA_ROOF_TILE.get());
+        out.accept(RNRItems.TERRACOTTA_ROOF_TILE.get());
         out.accept(RNRBlocks.TERRACOTTA_ROOF.get());
         out.accept(RNRBlocks.TERRACOTTA_ROOF_SLAB.get());
         out.accept(RNRBlocks.TERRACOTTA_ROOF_STAIRS.get());
+        out.accept(RNRItems.UNFIRED_ROOF_TILE.get());
+        out.accept(RNRItems.CERAMIC_ROOF_TILE.get());
         out.accept(RNRBlocks.CERAMIC_ROOF.get());
         out.accept(RNRBlocks.CERAMIC_ROOF_SLAB.get());
         out.accept(RNRBlocks.CERAMIC_ROOF_STAIRS.get());
@@ -152,6 +158,7 @@ public class RNRCreativeModeTabs
         //TODO: AFC Compat
         for (Wood wood : Wood.VALUES)
         {
+            out.accept(RNRItems.WOOD_SHINGLE.get(wood).get());
             out.accept(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
             out.accept(RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
             out.accept(RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());

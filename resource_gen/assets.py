@@ -85,6 +85,12 @@ def generate(rm: ResourceManager):
         shingle.with_block_model(texture).with_item_model()
         shingle.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
         shingle.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
+        rm.item_model('rnr:wood/shingle/%s' % wood)
+
+    rm.item_model('unfired_roof_tile', 'rnr:item/unfired_roof_tile')
+    rm.item_model('unfired_terracotta_roof_tile', 'rnr:item/unfired_terracotta_roof_tile')
+    rm.item_model('ceramic_roof_tile', 'rnr:item/ceramic_roof_tile')
+    rm.item_model('terracotta_roof_tile', 'rnr:item/terracotta_roof_tile')
 
     # Rock Type Blocks
     for rock, rock_data in ROCKS.items():

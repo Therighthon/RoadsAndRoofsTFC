@@ -199,6 +199,19 @@ def generate(rm: ResourceManager):
     block_mod_recipe(rm, 'thatch_roof_slab', 'tfc:straw', 'rnr:roof_frame_slab', 'rnr:thatch_roof_slab')
     block_mod_recipe(rm, 'thatch_roof_stairs', 'tfc:straw', 'rnr:roof_frame_stairs', 'rnr:thatch_roof_stairs')
 
+    block_mod_recipe(rm, 'terracotta_roof', 'rnr:terracotta_roof_tile', 'rnr:roof_frame', 'rnr:terracotta_roof')
+    block_mod_recipe(rm, 'terracotta_roof_slab', 'rnr:terracotta_roof_tile', 'rnr:roof_frame_slab', 'rnr:terracotta_roof_slab')
+    block_mod_recipe(rm, 'terracotta_roof_stairs', 'rnr:terracotta_roof_tile', 'rnr:roof_frame_stairs', 'rnr:terracotta_roof_stairs')
+
+    block_mod_recipe(rm, 'ceramic_roof', 'rnr:ceramic_roof_tile', 'rnr:roof_frame', 'rnr:ceramic_roof')
+    block_mod_recipe(rm, 'ceramic_roof_slab', 'rnr:ceramic_roof_tile', 'rnr:roof_frame_slab', 'rnr:ceramic_roof_slab')
+    block_mod_recipe(rm, 'ceramic_roof_stairs', 'rnr:ceramic_roof_tile', 'rnr:roof_frame_stairs', 'rnr:ceramic_roof_stairs')
+
+    for wood in WOODS.keys():
+        block_mod_recipe(rm, '%s_shingle_roof' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame', 'rnr:wood/shingles/%s' % wood)
+        block_mod_recipe(rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
+        block_mod_recipe(rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
+
     for rock in ROCKS.keys():
         block_mod_recipe(rm, rock + '_flagstones', 'rnr:flagstone/' + rock, 'rnr:base_course', 'rnr:rock/flagstones/' + rock)
         block_mod_recipe(rm, rock + '_cobbled_road', 'tfc:rock/loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)

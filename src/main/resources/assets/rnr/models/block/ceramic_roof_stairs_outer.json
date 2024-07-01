@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/ceramic_tiles",
+    "top": "rnr:block/ceramic_tiles",
+    "side": "rnr:block/ceramic_tiles"
+  }
+}

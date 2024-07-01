@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "rnr:block/wood/shingles/rosewood",
+    "top": "rnr:block/wood/shingles/rosewood",
+    "side": "rnr:block/wood/shingles/rosewood"
+  }
+}

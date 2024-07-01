@@ -18,6 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.SelfTests;
 
@@ -133,7 +134,28 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.TAMPED_KAOLIN.get());
         out.accept(RNRBlocks.BRICK_ROAD.get());
 
+        out.accept(RNRBlocks.ROOF_FRAME.get());
+        out.accept(RNRBlocks.ROOF_FRAME_SLAB.get());
+        out.accept(RNRBlocks.ROOF_FRAME_STAIRS.get());
 
+        out.accept(RNRBlocks.THATCH_ROOF.get());
+        out.accept(RNRBlocks.THATCH_ROOF_SLAB.get());
+        out.accept(RNRBlocks.THATCH_ROOF_STAIRS.get());
+
+        out.accept(RNRBlocks.TERRACOTTA_ROOF.get());
+        out.accept(RNRBlocks.TERRACOTTA_ROOF_SLAB.get());
+        out.accept(RNRBlocks.TERRACOTTA_ROOF_STAIRS.get());
+        out.accept(RNRBlocks.CERAMIC_ROOF.get());
+        out.accept(RNRBlocks.CERAMIC_ROOF_SLAB.get());
+        out.accept(RNRBlocks.CERAMIC_ROOF_STAIRS.get());
+
+        //TODO: AFC Compat
+        for (Wood wood : Wood.VALUES)
+        {
+            out.accept(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
+            out.accept(RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
+            out.accept(RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());
+        }
     }
 
 

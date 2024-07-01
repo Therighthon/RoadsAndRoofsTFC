@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "rnr:block/wood/shingles/acacia",
+    "top": "rnr:block/wood/shingles/acacia",
+    "side": "rnr:block/wood/shingles/acacia"
+  }
+}

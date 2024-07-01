@@ -51,6 +51,41 @@ def generate(rm: ResourceManager):
     }, parent='rnr:block/path_slab').with_item_model()
     make_path_stairs(rm, 'rnr:block/brick_road', 'rnr:brick_road_stairs')
 
+    # Roof frame models
+    block = rm.blockstate('rnr:roof_frame')
+    texture = 'rnr:block/roof_frame'
+    block.with_block_model(texture).with_item_model()
+    block.make_stairs(bottom_texture=texture, side_texture='rnr:block/roof_frame_dense', top_texture='rnr:block/roof_frame_dense')
+    block.make_slab(bottom_texture=texture, side_texture='rnr:block/roof_frame_dense', top_texture=texture)
+
+    # thatch models
+    block = rm.blockstate('rnr:thatch_roof')
+    texture = 'tfc:block/thatch'
+    block.with_block_model(texture).with_item_model()
+    block.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
+    block.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
+
+    # terracotta models
+    block = rm.blockstate('rnr:terracotta_roof')
+    texture = 'rnr:block/terracotta_tiles'
+    block.with_block_model(texture).with_item_model()
+    block.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
+    block.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
+
+    # ceramic models
+    block = rm.blockstate('rnr:ceramic_roof')
+    texture = 'rnr:block/ceramic_tiles'
+    block.with_block_model(texture).with_item_model()
+    block.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
+    block.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
+
+    for wood in WOODS.keys():
+        shingle = rm.blockstate('rnr:wood/shingles/%s' % wood)
+        texture = 'rnr:block/wood/shingles/%s' % wood
+        shingle.with_block_model(texture).with_item_model()
+        shingle.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
+        shingle.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
+
     # Rock Type Blocks
     for rock, rock_data in ROCKS.items():
 

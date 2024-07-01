@@ -195,6 +195,10 @@ def generate(rm: ResourceManager):
     # Block Mod Recipes
     # ============
 
+    block_mod_recipe(rm, 'thatch_roof', 'tfc:straw', 'rnr:roof_frame', 'rnr:thatch_roof')
+    block_mod_recipe(rm, 'thatch_roof_slab', 'tfc:straw', 'rnr:roof_frame_slab', 'rnr:thatch_roof_slab')
+    block_mod_recipe(rm, 'thatch_roof_stairs', 'tfc:straw', 'rnr:roof_frame_stairs', 'rnr:thatch_roof_stairs')
+
     for rock in ROCKS.keys():
         block_mod_recipe(rm, rock + '_flagstones', 'rnr:flagstone/' + rock, 'rnr:base_course', 'rnr:rock/flagstones/' + rock)
         block_mod_recipe(rm, rock + '_cobbled_road', 'tfc:rock/loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)

@@ -21,16 +21,19 @@ public final class RNRHelpers
         final BlockModRecipe recipe = BlockModRecipe.getRecipe(level.getBlockState(pos), stack);
         if (recipe != null && !(player.blockPosition().equals(pos)))
         {
-            final BlockState output = recipe.getOutputBlock();
-            if (stack.isDamageableItem())
+            final BlockState output = recipe.getOutputBlock().getBlock().withPropertiesOf(blockState);
+            if (!player.isCreative())
             {
-                stack.setDamageValue(stack.getDamageValue() - 1);
+                if (stack.isDamageableItem())
+                {
+                    stack.setDamageValue(stack.getDamageValue() - 1);
+                }
+                else
+                {
+                    stack.shrink(1);
+                }
             }
-            else
-            {
-                stack.shrink(1);
-            }
-            level.playLocalSound(pos, SoundEvents.GRAVEL_HIT, SoundSource.BLOCKS, 1f, 1f, false);
+            level.playLocalSound(pos, output.getSoundType().getHitSound(), SoundSource.BLOCKS, 1f, 1f, false);
             level.setBlock(pos, output, 3);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
             return InteractionResult.sidedSuccess(level.isClientSide);

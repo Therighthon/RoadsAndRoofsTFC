@@ -93,7 +93,7 @@ public class BlockModRecipe extends SimpleBlockRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return Serializer.INSTANCE;
+        return RNRRecipeSerializers.BLOCK_MOD_RECIPE.get();
     }
 
     @Override

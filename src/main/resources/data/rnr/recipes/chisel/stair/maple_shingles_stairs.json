@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:chisel",
+  "ingredient": "rnr:wood/shingles/maple",
+  "result": "rnr:wood/shingles/maple_stairs",
+  "mode": "stair"
+}

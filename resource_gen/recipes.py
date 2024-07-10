@@ -81,8 +81,18 @@ def generate(rm: ResourceManager):
         rm.crafting_shapeless('crafting/gravel_fill/%s' % rock, ('tfc:rock/gravel/' + rock), (4, 'rnr:gravel_fill/' + rock))
     for sand in SAND_BLOCK_TYPES:
         damage_shapeless(rm, 'crafting/flagstone/%s_sandstone' % sand, ('tfc:cut_sandstone/' + sand, '#tfc:chisels'), (4, 'rnr:flagstone/' + sand + '_sandstone'))
+    #TODO: AFC Compat
+    for wood in WOODS.keys():
+        damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (8, 'rnr:wood/shingle/' + wood))
+
     rm.crafting_shapeless('crafting/hoggin_mix', ('#forge:gravel', '#forge:sand', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
     damage_shapeless(rm, 'crafting/base_course', ('#forge:gravel', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
+
+    clay_knapping(rm, 'roof_tile_a', ['XX XX', 'X   X', '     ', 'X   X', 'XX XX'], (4, 'rnr:unfired_roof_tile'))
+    clay_knapping(rm, 'roof_tile_b', [' X X ', 'XX XX', '     ', 'XX XX', ' X X '], (4, 'rnr:unfired_roof_tile'))
+    rm.crafting_shapeless('crafting/terracotta_tile', ('rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'tfc:powder/hematite', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile'), (8, 'rnr:unfired_terracotta_roof_tile'))
+    heat_recipe(rm, 'ceramic_roof_tile', 'rnr:unfired_roof_tile', POTTERY_MELT, 'rnr:ceramic_roof_tile')
+    heat_recipe(rm, 'terracotta_roof_tile', 'rnr:unfired_terracotta_roof_tile', POTTERY_MELT, 'rnr:terracotta_roof_tile')
 
     # ============================
     # Collapse / Landslide Recipes
@@ -230,6 +240,23 @@ def generate(rm: ResourceManager):
     for dirt in SOIL_BLOCK_VARIANTS:
         block_mod_recipe(rm, '%s_to_base_course' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s' % dirt, 'rnr:base_course')
         block_mod_recipe(rm, '%s_mud_to_soil' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s_mud' % dirt, 'rnr:tamped_%s' % dirt)
+
+
+
+    # ============
+    # Chisel Recipes
+    # ============
+
+    def chisel_stair_slab(name: str, ingredient: str):
+        chisel_recipe(rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
+        chisel_recipe(rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
+    #TODO: AFC Compat
+    for wood in WOODS.keys():
+        chisel_stair_slab(wood + '_shingles', 'rnr:wood/shingles/' + wood)
+    chisel_stair_slab('roof_frame', 'rnr:roof_frame')
+    chisel_stair_slab('thatch_roof', 'rnr:thatch_roof')
+    chisel_stair_slab('ceramic_roof', 'rnr:ceramic_roof')
+    chisel_stair_slab('terracotta_roof', 'rnr:terracotta_roof')
 
     # ============
     # Mattock Recipes

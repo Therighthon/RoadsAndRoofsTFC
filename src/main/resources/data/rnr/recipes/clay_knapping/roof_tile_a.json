@@ -3,14 +3,14 @@
   "type": "tfc:knapping",
   "knapping_type": "tfc:clay",
   "pattern": [
-    "XX XX",
+    "XXXXX",
     "X   X",
     "     ",
-    "X   X",
-    "XX XX"
+    "XXXXX",
+    "X   X"
   ],
   "result": {
     "item": "rnr:unfired_roof_tile",
-    "count": 4
+    "count": 2
   }
 }

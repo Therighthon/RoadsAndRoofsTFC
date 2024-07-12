@@ -83,7 +83,7 @@ def generate(rm: ResourceManager):
         damage_shapeless(rm, 'crafting/flagstone/%s_sandstone' % sand, ('tfc:cut_sandstone/' + sand, '#tfc:chisels'), (4, 'rnr:flagstone/' + sand + '_sandstone'))
     #TODO: AFC Compat
     for wood in WOODS.keys():
-        damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (8, 'rnr:wood/shingle/' + wood))
+        damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
 
     rm.crafting_shapeless('crafting/hoggin_mix', ('#forge:gravel', '#forge:sand', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
     damage_shapeless(rm, 'crafting/base_course', ('#forge:gravel', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
@@ -91,6 +91,9 @@ def generate(rm: ResourceManager):
     clay_knapping(rm, 'roof_tile_a', ['XXXXX', 'X   X', '     ', 'XXXXX', 'X   X'], (2, 'rnr:unfired_roof_tile'))
     clay_knapping(rm, 'roof_tile_b', ['     ', '     ', '     ', 'XXXXX', 'X   X'], (1, 'rnr:unfired_roof_tile'))
     clay_knapping(rm, 'roof_tile_c', ['XXXXX', 'X   X', '     ', '     ', '     '], (1, 'rnr:unfired_roof_tile'))
+
+    rm.crafting_shaped('crafting/roof_framing', ['XYX', 'Y Y', 'XYX'], {'X': '#tfc:lumber', 'Y': '#forge:rods/wooden'}, (4, 'rnr:roof_frame'))
+    craft_decorations('crafting/roof_framing', 'rnr:roof_frame', False)
     rm.crafting_shapeless('crafting/terracotta_tile', ('rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'tfc:powder/hematite', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile'), (8, 'rnr:unfired_terracotta_roof_tile'))
     heat_recipe(rm, 'ceramic_roof_tile', 'rnr:unfired_roof_tile', POTTERY_MELT, 'rnr:ceramic_roof_tile')
     heat_recipe(rm, 'terracotta_roof_tile', 'rnr:unfired_terracotta_roof_tile', POTTERY_MELT, 'rnr:terracotta_roof_tile')
@@ -254,6 +257,7 @@ def generate(rm: ResourceManager):
     #TODO: AFC Compat
     for wood in WOODS.keys():
         chisel_stair_slab(wood + '_shingles', 'rnr:wood/shingles/' + wood)
+        craft_decorations('crafting/' + wood + '_shingles', 'rnr:wood/shingles/' + wood, False)
     chisel_stair_slab('roof_frame', 'rnr:roof_frame')
     chisel_stair_slab('thatch_roof', 'rnr:thatch_roof')
     chisel_stair_slab('ceramic_roof', 'rnr:ceramic_roof')

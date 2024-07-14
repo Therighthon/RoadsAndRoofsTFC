@@ -6,7 +6,7 @@ from mcresources.type_definitions import ResourceIdentifier, JsonObject
 from constants import *
 
 
-def generate(rm: ResourceManager):
+def generate(rm: ResourceManager, afc_rm: ResourceManager):
     # Base Course
     rm.blockstate('rnr:base_course').with_block_model({
         'dirt': 'minecraft:block/gravel'
@@ -86,6 +86,14 @@ def generate(rm: ResourceManager):
         shingle.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
         shingle.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
         rm.item_model('rnr:wood/shingle/%s' % wood)
+
+    for wood in AFC_WOODS.keys():
+        shingle = afc_rm.blockstate('rnr:wood/shingles/%s' % wood)
+        texture = 'rnr:block/wood/shingles/%s' % wood
+        shingle.with_block_model(texture).with_item_model()
+        shingle.make_stairs(bottom_texture=texture, side_texture=texture, top_texture=texture)
+        shingle.make_slab(bottom_texture=texture, side_texture=texture, top_texture=texture)
+        afc_rm.item_model('rnr:wood/shingle/%s' % wood)
 
     rm.item_model('unfired_roof_tile', 'rnr:item/unfired_roof_tile')
     rm.item_model('unfired_terracotta_roof_tile', 'rnr:item/unfired_terracotta_roof_tile')

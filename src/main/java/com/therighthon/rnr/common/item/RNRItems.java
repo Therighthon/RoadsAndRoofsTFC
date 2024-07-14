@@ -27,7 +27,6 @@ public class RNRItems
     //Metal Items
     public static final Map<Metal.Default, RegistryObject<Item>> MATTOCK_HEADS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasUtilities, metal -> register("metal/mattock_head/" + metal.name()));
     public static final Map<Metal.Default, RegistryObject<Item>> MATTOCKS = Helpers.mapOfKeys(Metal.Default.class, Metal.Default::hasUtilities, metal -> register("metal/mattock/" + metal.name(), () -> new MattockItem(metal.toolTier(), ToolItem.calculateVanillaAttackDamage(0.27f, metal.toolTier()), -1.5F, Metal.ItemType.properties(metal))));
-    //TODO:
 
     //Stone items
     public static final Map<Rock, RegistryObject<Item>> FLAGSTONE = Helpers.mapOfKeys(Rock.class, type ->
@@ -44,7 +43,6 @@ public class RNRItems
     public static final RegistryObject<Item> UNFIRED_TERRACOTTA_ROOF_TILE = register("unfired_terracotta_roof_tile");
     public static final RegistryObject<Item> CERAMIC_ROOF_TILE = register("ceramic_roof_tile");
     public static final RegistryObject<Item> TERRACOTTA_ROOF_TILE = register("terracotta_roof_tile");
-    //TODO: AFC Compat
     public static final Map<Wood, RegistryObject<Item>> WOOD_SHINGLE = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingle/" + wood.getSerializedName()));
 
 

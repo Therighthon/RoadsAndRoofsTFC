@@ -19,6 +19,4 @@ public class BaseCourseHeightBlock extends BlockModEnabledBlock
     {
         super(pProperties);
     }
-
-    //TODO: Tool/Right click actions
 }

@@ -1,0 +1,19 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:damage_inputs_shapeless_crafting",
+  "recipe": {
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+      {
+        "item": "afc:wood/log/teak"
+      },
+      {
+        "tag": "tfc:chisels"
+      }
+    ],
+    "result": {
+      "item": "rnr:wood/shingle/teak",
+      "count": 4
+    }
+  }
+}

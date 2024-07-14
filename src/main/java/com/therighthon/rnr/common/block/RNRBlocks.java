@@ -96,7 +96,6 @@ public class RNRBlocks
     public static final RegistryObject<Block> CERAMIC_ROOF_SLAB = register("ceramic_roof_slab", () -> new SlabBlock(CERAMIC_PROPERTIES));
     public static final RegistryObject<Block> CERAMIC_ROOF_STAIRS = register("ceramic_roof_stairs", () -> new StairBlock(() -> TERRACOTTA_ROOF.get().defaultBlockState(), CERAMIC_PROPERTIES));
 
-    //TODO: AFC Compat
     public static final Map<Wood, RegistryObject<Block>> WOOD_SHINGLE_ROOFS = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingles/" + wood.getSerializedName(), () -> new Block(ROOF_PROPERTIES)));
     public static final Map<Wood, RegistryObject<Block>> WOOD_SHINGLE_ROOF_SLABS = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingles/" + wood.getSerializedName() + "_slab", () -> new SlabBlock(ROOF_PROPERTIES)));
     public static final Map<Wood, RegistryObject<Block>> WOOD_SHINGLE_ROOF_STAIRS = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingles/" + wood.getSerializedName() + "_stairs", () -> new StairBlock(WOOD_SHINGLE_ROOFS.get(wood).get().defaultBlockState(), ROOF_PROPERTIES)));
@@ -107,14 +106,12 @@ public class RNRBlocks
         )
     );
 
-    //TODO
     public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_SLABS = Helpers.mapOfKeys(Rock.class, rock ->
         Helpers.mapOfKeys(StoneBlockType.class, StoneBlockType::hasVariants, type ->
             register(("rock/" + type.name() + "/" + rock.name())+ "_slab", () -> type.createRockSlab(rock, type))
         )
     );
 
-    //TODO
     public static final Map<Rock, Map<StoneBlockType, RegistryObject<Block>>> ROCK_STAIRS = Helpers.mapOfKeys(Rock.class, rock ->
         Helpers.mapOfKeys(StoneBlockType.class, StoneBlockType::hasVariants, type ->
             register(("rock/" + type.name() + "/" + rock.name()) + "_stairs", () -> type.createPathStairs(rock, type))

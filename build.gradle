@@ -71,11 +71,11 @@ dependencies {
     // Only use Jade at runtime
     runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_version}"))
 
-    // FirmaLife
-    compileOnly(fg.deobf("curse.maven:firmalife-453394:${firmalife_version}"))
+    // AFC
+    compileOnly(fg.deobf("curse.maven:arborfirmacraft-877545:${afc_version}"))
 
-    // Only use FirmaLife at runtime
-    runtimeOnly(fg.deobf("curse.maven:firmalife-453394:${firmalife_version}"))
+    // Only use AFC at runtime
+    runtimeOnly(fg.deobf("curse.maven:arborfirmacraft-877545:${afc_version}"))
 
 }
 

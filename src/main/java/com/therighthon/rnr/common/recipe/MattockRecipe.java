@@ -38,7 +38,6 @@ import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.JsonHelpers;
 import net.dries007.tfc.util.collections.IndirectHashCollection;
 
-//TODO: JEI Compat
 //Mostly copied from TFC's ChiselRecipe.java and is under the TFC License
 public class MattockRecipe extends SimpleBlockRecipe
 {
@@ -89,7 +88,6 @@ public class MattockRecipe extends SimpleBlockRecipe
         return Either.right(InteractionResult.PASS);
     }
 
-    //TODO: Mattock specific complaints
     private static void complain(Player player, String message)
     {
         player.displayClientMessage(Component.translatable("rnr.mattock." + message), true);

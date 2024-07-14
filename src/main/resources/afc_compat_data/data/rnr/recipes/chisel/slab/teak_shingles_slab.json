@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:chisel",
+  "ingredient": "rnr:wood/shingles/teak",
+  "result": "rnr:wood/shingles/teak_slab",
+  "mode": "slab",
+  "extra_drop": {
+    "item": "rnr:wood/shingles/teak_slab"
+  }
+}

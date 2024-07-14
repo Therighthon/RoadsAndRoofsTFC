@@ -181,15 +181,17 @@ def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = Fals
 def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool):
     # do simple lang keys first, because it's ordered intentionally
     rm.lang(constants.DEFAULT_LANG)
+    afc_assets_rm = ResourceManager('rnr', resource_dir='./src/main/resources/afc_compat_assets')
+    afc_data_rm = ResourceManager('rnr', resource_dir='./src/main/resources/afc_compat_data')
 
     # generic assets / data
     if do_assets:
-        assets.generate(rm)
+        assets.generate(rm, afc_assets_rm)
     if do_data:
-        data.generate(rm)
+        data.generate(rm, afc_data_rm)
         tags.generate(rm)
     if do_recipes:
-        recipes.generate(rm)
+        recipes.generate(rm, afc_data_rm)
 
     if all((do_assets, do_data, do_worldgen, do_recipes, do_advancements)):
         # Only generate this when generating all, as it's shared

@@ -2,8 +2,12 @@ package com.therighthon.rnr.common;
 
 import java.util.Map;
 import java.util.function.Supplier;
+import com.therighthon.afc.common.blocks.AFCWood;
+import com.therighthon.rnr.RoadsAndRoofs;
+import com.therighthon.rnr.common.block.AFCCompatBlocks;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
+import com.therighthon.rnr.common.item.AFCCompatItems;
 import com.therighthon.rnr.common.item.RNRItems;
 
 import net.minecraft.core.registries.Registries;
@@ -12,6 +16,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -155,13 +160,22 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.CERAMIC_ROOF_SLAB.get());
         out.accept(RNRBlocks.CERAMIC_ROOF_STAIRS.get());
 
-        //TODO: AFC Compat
         for (Wood wood : Wood.VALUES)
         {
             out.accept(RNRItems.WOOD_SHINGLE.get(wood).get());
             out.accept(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
             out.accept(RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
             out.accept(RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());
+        }
+        if (ModList.get().isLoaded("afc"))
+        {
+            for (AFCWood wood : AFCWood.VALUES)
+            {
+                out.accept(AFCCompatItems.WOOD_SHINGLE.get(wood).get());
+                out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
+                out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
+                out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());
+            }
         }
     }
 

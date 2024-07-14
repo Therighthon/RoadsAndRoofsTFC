@@ -456,6 +456,19 @@ WOODS: Dict[str, Wood] = {
     'willow': Wood(603, 1000)
 }
 
+AFC_WOODS: Dict[str, Wood] = {
+    'cypress': Wood(650, 1000),
+    'tualang': Wood(696, 1300),
+    'hevea': Wood(700, 1800),
+    'teak': Wood(720, 1750),
+    'eucalyptus': Wood(720, 2100),
+    'baobab': Wood(707, 1000),
+    'fig': Wood(715, 1900),
+    'mahogany': Wood(790, 1600),
+    'ironwood': Wood(800, 1400),
+    'ipe': Wood(710, 1700)
+}
+
 # DO NOT EDIT DIRECTLY - Imported directly from spreadsheet
 # https://docs.google.com/spreadsheets/d/1Ghw3dCmVO5Gv0MMGBydUxox_nwLYmmcZkGSbbf0QSAE/
 CROPS: Dict[str, Crop] = {
@@ -795,7 +808,7 @@ MISC_PLANT_FEATURES = ('hanging_vines', 'hanging_vines_cave', 'spanish_moss', 's
 SURFACE_GRASS_FEATURES = ('fountain_', 'orchard_', 'rye', 'scutch_', 'timothy_', 'brome', 'blue', 'raddia_')
 UNDERGROUND_FEATURES = ('cave_column', 'cave_spike', 'large_cave_spike', 'water_spring', 'lava_spring', 'calcite', 'mega_calcite', 'icicle', 'underground_loose_rocks', 'underground_guano_patch')
 
-# todo: bush hydration / rainfall separation and proper ranges
+
 # When this gest updated, it needs to be updated in both the book (generate_book.py) and in the climate range (data.py) to use the new hydration and rainfall values
 # Alternatively, we ditch rainfall and/or hydration entirely.
 BERRIES: Dict[str, Berry] = {

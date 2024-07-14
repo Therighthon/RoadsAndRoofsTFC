@@ -44,12 +44,18 @@ class Rules(Enum):
     shrink_third_last = 'shrink_third_last'
 
 
-def generate(rm: ResourceManager):
+def generate(rm: ResourceManager, afc_rm: ResourceManager):
     def craft_decorations(recipe_name: str, base_block: str, has_wall: bool = True):
         rm.crafting_shaped(recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
         rm.crafting_shaped(recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
         if has_wall:
             rm.crafting_shaped(recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
+
+    def afc_craft_decorations(recipe_name: str, base_block: str, has_wall: bool = True):
+        afc_rm.crafting_shaped(recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
+        afc_rm.crafting_shaped(recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
+        if has_wall:
+            afc_rm.crafting_shaped(recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
 
     # Rock Things
     for rock in ROCKS.keys():
@@ -81,7 +87,10 @@ def generate(rm: ResourceManager):
         rm.crafting_shapeless('crafting/gravel_fill/%s' % rock, ('tfc:rock/gravel/' + rock), (4, 'rnr:gravel_fill/' + rock))
     for sand in SAND_BLOCK_TYPES:
         damage_shapeless(rm, 'crafting/flagstone/%s_sandstone' % sand, ('tfc:cut_sandstone/' + sand, '#tfc:chisels'), (4, 'rnr:flagstone/' + sand + '_sandstone'))
-    #TODO: AFC Compat
+
+    for wood in AFC_WOODS.keys():
+        damage_shapeless(afc_rm, 'crafting/shingle/%s' % wood, ('afc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
+
     for wood in WOODS.keys():
         damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
 
@@ -226,6 +235,11 @@ def generate(rm: ResourceManager):
         block_mod_recipe(rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
         block_mod_recipe(rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
 
+    for wood in AFC_WOODS.keys():
+        block_mod_recipe(afc_rm, '%s_shingle_roof' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame', 'rnr:wood/shingles/%s' % wood)
+        block_mod_recipe(afc_rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
+        block_mod_recipe(afc_rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
+
     for rock in ROCKS.keys():
         block_mod_recipe(rm, rock + '_flagstones', 'rnr:flagstone/' + rock, 'rnr:base_course', 'rnr:rock/flagstones/' + rock)
         block_mod_recipe(rm, rock + '_cobbled_road', 'tfc:rock/loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)
@@ -254,7 +268,14 @@ def generate(rm: ResourceManager):
     def chisel_stair_slab(name: str, ingredient: str):
         chisel_recipe(rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
         chisel_recipe(rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
-    #TODO: AFC Compat
+    def afc_chisel_stair_slab(name: str, ingredient: str):
+        chisel_recipe(afc_rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
+        chisel_recipe(afc_rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
+
+    for wood in AFC_WOODS.keys():
+        afc_chisel_stair_slab(wood + '_shingles', 'rnr:wood/shingles/' + wood)
+        afc_craft_decorations('crafting/' + wood + '_shingles', 'rnr:wood/shingles/' + wood, False)
+
     for wood in WOODS.keys():
         chisel_stair_slab(wood + '_shingles', 'rnr:wood/shingles/' + wood)
         craft_decorations('crafting/' + wood + '_shingles', 'rnr:wood/shingles/' + wood, False)
@@ -274,8 +295,6 @@ def generate(rm: ResourceManager):
     for rock in ROCKS.keys():
         for block_type in STONE_PATHS:
             mattock_stair_slab(block_type + '_' + rock, 'rnr:rock/%s/%s' % (block_type, rock))
-        # TODO: Macadam recipes
-        # chisel_recipe(rm, '%s_smooth' % rock, 'tfc:rock/raw/%s' % rock, 'tfc:rock/smooth/%s' % rock, 'smooth')
 
     mattock_stair_slab('hoggin', 'rnr:hoggin')
     mattock_stair_slab('brick_road', 'rnr:brick_road')

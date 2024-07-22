@@ -14,6 +14,7 @@ public class RNRTags
     public static class Blocks
     {
         public static final TagKey<Block> MINEABLE_WITH_MATTOCK = create("mineable_with_mattock");
+        public static final TagKey<Block> CONCRETE_SPREADABLE = create("concrete_spreadable");
 
         private static TagKey<Block> create(String id)
         {

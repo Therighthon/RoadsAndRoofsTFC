@@ -51,6 +51,28 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     }, parent='rnr:block/path_slab').with_item_model()
     make_path_stairs(rm, 'rnr:block/brick_road', 'rnr:brick_road_stairs')
 
+    # Concrete roads
+    rm.blockstate('rnr:concrete_road').with_block_model({
+        'top': 'rnr:block/concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+    # TODO: Stairs, slabs, variants
+
+    rm.blockstate('rnr:trodden_concrete_road').with_block_model({
+        'top': 'rnr:block/trodden_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:wet_concrete_road').with_block_model({
+        'top': 'rnr:block/wet_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:trodden_wet_concrete_road').with_block_model({
+        'top': 'rnr:block/trodden_wet_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
     # Roof frame models
     block = rm.blockstate('rnr:roof_frame')
     texture = 'rnr:block/roof_frame'

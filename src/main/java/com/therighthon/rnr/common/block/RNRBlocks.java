@@ -21,6 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import net.dries007.tfc.client.TFCSounds;
+import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
@@ -74,6 +75,16 @@ public class RNRBlocks
     public static final RegistryObject<Block> BRICK_ROAD = register("brick_road", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> BRICK_ROAD_SLAB = register("brick_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> BRICK_ROAD_STAIRS = register("brick_road_stairs", () -> new PathStairBlock(() -> BRICK_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE), 1.3f));
+
+    public static final RegistryObject<Block> CONCRETE_ROAD = register("concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TRODDEN_CONCRETE_ROAD = register("trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.2f));
+
+    public static final RegistryObject<Block> WET_CONCRETE_ROAD = register("wet_concrete_road", () -> new WetConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).mapColor(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
+    public static final RegistryObject<Block> TRODDEN_WET_CONCRETE_ROAD = register("trodden_wet_concrete_road", () -> new WetConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
+
+
+
+
 
     public static final BlockBehaviour.Properties ROOF_PROPERTIES = ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties();
 

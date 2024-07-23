@@ -566,6 +566,7 @@
   "rnr.creative_tab.roads_and_roofs": "Roads and Roofs",
   "roads_and_roofs": "Roads and Roofs",
   "tfc.jei.block_mod": "Block Modification",
-  "tfc.jei.mattock": "Mattock"
+  "tfc.jei.mattock": "Mattock",
+  "config.jade.plugin_tfc.wet_concrete": "Wet Concrete"
 
 }

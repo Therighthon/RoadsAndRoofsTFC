@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+	"rnr:wet_concrete_road",
+	"rnr:trodden_wet_concrete_road",
+	"rnr:wet_concrete_road_control_joint"
+  ]
+}

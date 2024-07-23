@@ -58,8 +58,23 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     }, parent='rnr:block/path_block').with_item_model()
     # TODO: Stairs, slabs, variants
 
+    rm.blockstate('rnr:concrete_road_control_joint').with_block_model({
+        'top': 'rnr:block/concrete_control_joint',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
     rm.blockstate('rnr:trodden_concrete_road').with_block_model({
         'top': 'rnr:block/trodden_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:cracked_concrete_road').with_block_model({
+        'top': 'rnr:block/cracked_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:cracked_trodden_concrete_road').with_block_model({
+        'top': 'rnr:block/cracked_trodden_concrete',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
 
@@ -70,6 +85,11 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
 
     rm.blockstate('rnr:trodden_wet_concrete_road').with_block_model({
         'top': 'rnr:block/trodden_wet_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:wet_concrete_road_control_joint').with_block_model({
+        'top': 'rnr:block/wet_concrete_control_joint',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
 

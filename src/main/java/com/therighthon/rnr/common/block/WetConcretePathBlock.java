@@ -1,8 +1,6 @@
 package com.therighthon.rnr.common.block;
 
-import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
-import com.therighthon.rnr.compat.jade.BlockEntityTooltips;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -14,10 +12,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -90,28 +86,43 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
             level.setBlock(pos, RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState().setValue(CONCRETE_LEVEL, 0), 3);
         }
 
-        //Cracking - Distance Update
+        //Cracking X - Distance Update
         final int oldDistanceX = state.getValue(DISTANCE_X);
-        int distance = updateDistance(level, pos);
-        if (distance != oldDistanceX)
+        int distanceX = updateDistanceX(level, pos);
+        if (distanceX != oldDistanceX)
         {
             level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
                 long oldUpdateTick = counter.getLastUpdateTick();
                 //Only update crack info within first 75% of drying process
                 if (counter.getTicksSinceUpdate() < 0.75 * ticksToDry)
                 {
-                    level.setBlockAndUpdate(pos, state.setValue(DISTANCE_X, Math.min(distance, maxJointDistance)));
+                    level.setBlockAndUpdate(pos, state.setValue(DISTANCE_X, Math.min(distanceX, maxJointDistance)));
                     counter.setLastUpdateTick(oldUpdateTick);
                 }
             });
         }
 
+        //Cracking Z - Distance Update
+        final int oldDistanceZ = state.getValue(DISTANCE_Z);
+        int distanceZ = updateDistanceZ(level, pos);
+        if (distanceZ != oldDistanceZ)
+        {
+            level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
+                long oldUpdateTick = counter.getLastUpdateTick();
+                //Only update crack info within first 75% of drying process
+                if (counter.getTicksSinceUpdate() < 0.75 * ticksToDry)
+                {
+                    level.setBlockAndUpdate(pos, state.setValue(DISTANCE_Z, Math.min(distanceZ, maxJointDistance)));
+                    counter.setLastUpdateTick(oldUpdateTick);
+                }
+            });
+        }
 
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
             if (counter.getTicksSinceUpdate() > ticksToDry)
             {
-                level.setBlockAndUpdate(pos, state.getValue(DISTANCE_X) >= maxJointDistance ? getOutputStateCracked(state) : getOutputState(state));
+                level.setBlockAndUpdate(pos, Math.max(state.getValue(DISTANCE_X), state.getValue(DISTANCE_Z)) >= maxJointDistance ? getOutputStateCracked(state) : getOutputState(state));
             }
 
             final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
@@ -189,13 +200,19 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
             // Check against this leaf block only, not any leaves
             return neighbor.getValue(DISTANCE_X);
         }
-        else if (Helpers.isBlock(block, RNRTags.Blocks.CRACKED_CONCRETE_ROADS))
+        else
         {
-            return 3;
+            return 0;
         }
-        else if (Helpers.isBlock(block, RNRTags.Blocks.DRY_CONCRETE_ROADS))
+    }
+
+    private int getDistanceZ(BlockState neighbor)
+    {
+        Block block = neighbor.getBlock();
+        if (Helpers.isBlock(block, RNRTags.Blocks.WET_CONCRETE_ROADS) && !Helpers.isBlock(neighbor.getBlock(), RNRTags.Blocks.CONCRETE_CONTROL_JOINTS))
         {
-            return 1;
+            // Check against this leaf block only, not any leaves
+            return neighbor.getValue(DISTANCE_Z);
         }
         else
         {
@@ -203,20 +220,19 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         }
     }
 
-
     @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos)
     {
-        final int distance = getDistanceX(facingState) + 1;
-        if (distance != 1 || state.getValue(DISTANCE_X) != distance)
+        final int distanceX = getDistanceX(facingState) + 1;
+        final int distanceZ = getDistanceZ(facingState) + 1;
+        if (distanceX != 1 || state.getValue(DISTANCE_X) != distanceX || distanceZ != 1 || state.getValue(DISTANCE_Z) != distanceZ)
         {
             level.scheduleTick(currentPos, this, 1);
         }
         return state;
     }
 
-    //TODO: Directional
-    private int updateDistance(LevelAccessor level, BlockPos pos)
+    private int updateDistanceX(LevelAccessor level, BlockPos pos)
     {
         int distance = 1 + maxJointDistance;
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
@@ -224,6 +240,22 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         {
             mutablePos.set(pos).move(direction);
             distance = Math.min(distance, getDistanceX(level.getBlockState(mutablePos)) + 1);
+            if (distance == 1)
+            {
+                break;
+            }
+        }
+        return distance;
+    }
+
+    private int updateDistanceZ(LevelAccessor level, BlockPos pos)
+    {
+        int distance = 1 + maxJointDistance;
+        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+        for (Direction direction : new Direction[] {Direction.NORTH, Direction.SOUTH})
+        {
+            mutablePos.set(pos).move(direction);
+            distance = Math.min(distance, getDistanceZ(level.getBlockState(mutablePos)) + 1);
             if (distance == 1)
             {
                 break;

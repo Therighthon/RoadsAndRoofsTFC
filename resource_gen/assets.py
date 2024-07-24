@@ -58,10 +58,25 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     }, parent='rnr:block/path_block').with_item_model()
     # TODO: Stairs, slabs, variants
 
-    rm.blockstate('rnr:concrete_road_control_joint').with_block_model({
-        'top': 'rnr:block/concrete_control_joint',
+    # rm.blockstate('rnr:concrete_road_control_joint').with_block_model({
+    #     'top': 'rnr:block/concrete_control_joint',
+    #     'gravel': 'minecraft:block/gravel'
+    # }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('concrete_road_control_joint', variants={
+        'axis=x': {'model': 'rnr:block/concrete_road_control_joint_ew'},
+        'axis=z': {'model': 'rnr:block/concrete_road_control_joint_ns'}}) \
+        .with_item_model()
+
+    rm.block_model('concrete_road_control_joint_ew', {
+        'top': 'rnr:block/concrete_control_joint_ew',
         'gravel': 'minecraft:block/gravel'
-    }, parent='rnr:block/path_block').with_item_model()
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('concrete_road_control_joint_ns', {
+        'top': 'rnr:block/concrete_control_joint_ns',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
 
     rm.blockstate('rnr:trodden_concrete_road').with_block_model({
         'top': 'rnr:block/trodden_concrete',
@@ -88,10 +103,25 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
 
-    rm.blockstate('rnr:wet_concrete_road_control_joint').with_block_model({
-        'top': 'rnr:block/wet_concrete_control_joint',
+    # rm.blockstate('rnr:wet_concrete_road_control_joint').with_block_model({
+    #     'top': 'rnr:block/wet_concrete_control_joint',
+    #     'gravel': 'minecraft:block/gravel'
+    # }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('wet_concrete_road_control_joint', variants={
+            'axis=x': {'model': 'rnr:block/wet_concrete_road_control_joint_ew'},
+            'axis=z': {'model': 'rnr:block/wet_concrete_road_control_joint_ns'}}) \
+        .with_item_model()
+
+    rm.block_model('wet_concrete_road_control_joint_ew', {
+        'top': 'rnr:block/wet_concrete_control_joint_ew',
         'gravel': 'minecraft:block/gravel'
-    }, parent='rnr:block/path_block').with_item_model()
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('wet_concrete_road_control_joint_ns', {
+        'top': 'rnr:block/wet_concrete_control_joint_ns',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
 
     # Roof frame models
     block = rm.blockstate('rnr:roof_frame')

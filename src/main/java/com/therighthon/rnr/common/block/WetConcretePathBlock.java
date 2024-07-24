@@ -130,7 +130,8 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
             {
                 cursor.setWithOffset(pos, d);
                 final BlockState stateAt = level.getBlockState(cursor);
-                if (stateAt.getBlock() instanceof WetConcretePathBlock)
+                //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
+                if (state.getBlock() instanceof WetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
                 {
                     level.scheduleTick(cursor, stateAt.getBlock(), 1);
                 }
@@ -148,11 +149,6 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         else if (input.is(RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get()))
         {
             return RNRBlocks.TRODDEN_CONCRETE_ROAD.get().defaultBlockState();
-        }
-        else if (input.is(RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get()))
-        {
-            //TODO: Control joints should be separate blocks as need to be orientable, and don't need 64 states to determine dist from a control joint
-            return RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get().defaultBlockState();
         }
         else
         {
@@ -197,7 +193,6 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         Block block = neighbor.getBlock();
         if (Helpers.isBlock(block, RNRTags.Blocks.WET_CONCRETE_ROADS) && !Helpers.isBlock(neighbor.getBlock(), RNRTags.Blocks.CONCRETE_CONTROL_JOINTS))
         {
-            // Check against this leaf block only, not any leaves
             return neighbor.getValue(DISTANCE_X);
         }
         else
@@ -211,7 +206,6 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         Block block = neighbor.getBlock();
         if (Helpers.isBlock(block, RNRTags.Blocks.WET_CONCRETE_ROADS) && !Helpers.isBlock(neighbor.getBlock(), RNRTags.Blocks.CONCRETE_CONTROL_JOINTS))
         {
-            // Check against this leaf block only, not any leaves
             return neighbor.getValue(DISTANCE_Z);
         }
         else

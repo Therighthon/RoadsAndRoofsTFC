@@ -1,8 +1,11 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "variants": {
-    "": {
-      "model": "rnr:block/wet_concrete_road_control_joint"
+    "axis=x": {
+      "model": "rnr:block/wet_concrete_road_control_joint_ew"
+    },
+    "axis=z": {
+      "model": "rnr:block/wet_concrete_road_control_joint_ns"
     }
   }
 }

@@ -64,17 +64,51 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     # }, parent='rnr:block/path_block').with_item_model()
 
     rm.blockstate('concrete_road_control_joint', variants={
-        'axis=x': {'model': 'rnr:block/concrete_road_control_joint_ew'},
-        'axis=z': {'model': 'rnr:block/concrete_road_control_joint_ns'}}) \
-        .with_item_model()
-
-    rm.block_model('concrete_road_control_joint_ew', {
+        'axis=x,connects_north_or_east=false,connects_south_or_west=false': {'model': 'rnr:block/concrete_road_control_joint'},
+        'axis=x,connects_north_or_east=true,connects_south_or_west=false': {'model': 'rnr:block/concrete_road_control_joint_new'},
+        'axis=x,connects_north_or_east=false,connects_south_or_west=true': {'model': 'rnr:block/concrete_road_control_joint_esw'},
+        'axis=x,connects_north_or_east=true,connects_south_or_west=true': {'model': 'rnr:block/concrete_road_control_joint_nesw'},
+        'axis=z,connects_north_or_east=false,connects_south_or_west=false': {'model': 'rnr:block/concrete_road_control_joint_ns'},
+        'axis=z,connects_north_or_east=true,connects_south_or_west=false': {'model': 'rnr:block/concrete_road_control_joint_nes'},
+        'axis=z,connects_north_or_east=false,connects_south_or_west=true': {'model': 'rnr:block/concrete_road_control_joint_nsw'},
+        'axis=z,connects_north_or_east=true,connects_south_or_west=true': {'model': 'rnr:block/concrete_road_control_joint_nesw'}}) \
+        .with_block_model({
         'top': 'rnr:block/concrete_control_joint_ew',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    # rm.block_model('concrete_road_control_joint_ew', {
+    #     'top': 'rnr:block/concrete_control_joint_ew',
+    #     'gravel': 'minecraft:block/gravel'
+    # }, parent='rnr:block/path_block')
+
+    rm.block_model('concrete_road_control_joint_new', {
+        'top': 'rnr:block/concrete_control_joint_new',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('concrete_road_control_joint_esw', {
+        'top': 'rnr:block/concrete_control_joint_esw',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('concrete_road_control_joint_nesw', {
+        'top': 'rnr:block/concrete_control_joint_nesw',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block')
 
     rm.block_model('concrete_road_control_joint_ns', {
         'top': 'rnr:block/concrete_control_joint_ns',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('concrete_road_control_joint_nes', {
+        'top': 'rnr:block/concrete_control_joint_nes',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('concrete_road_control_joint_nsw', {
+        'top': 'rnr:block/concrete_control_joint_nsw',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block')
 
@@ -109,17 +143,51 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     # }, parent='rnr:block/path_block').with_item_model()
 
     rm.blockstate('wet_concrete_road_control_joint', variants={
-            'axis=x': {'model': 'rnr:block/wet_concrete_road_control_joint_ew'},
-            'axis=z': {'model': 'rnr:block/wet_concrete_road_control_joint_ns'}}) \
-        .with_item_model()
+        'axis=x,connects_north_or_east=false,connects_south_or_west=false': {'model': 'rnr:block/wet_concrete_road_control_joint'},
+        'axis=x,connects_north_or_east=true,connects_south_or_west=false': {'model': 'rnr:block/wet_concrete_road_control_joint_new'},
+        'axis=x,connects_north_or_east=false,connects_south_or_west=true': {'model': 'rnr:block/wet_concrete_road_control_joint_esw'},
+        'axis=x,connects_north_or_east=true,connects_south_or_west=true': {'model': 'rnr:block/wet_concrete_road_control_joint_nesw'},
+        'axis=z,connects_north_or_east=false,connects_south_or_west=false': {'model': 'rnr:block/wet_concrete_road_control_joint_ns'},
+        'axis=z,connects_north_or_east=true,connects_south_or_west=false': {'model': 'rnr:block/wet_concrete_road_control_joint_nes'},
+        'axis=z,connects_north_or_east=false,connects_south_or_west=true': {'model': 'rnr:block/wet_concrete_road_control_joint_nsw'},
+        'axis=z,connects_north_or_east=true,connects_south_or_west=true': {'model': 'rnr:block/wet_concrete_road_control_joint_nesw'}}) \
+        .with_block_model({
+            'top': 'rnr:block/wet_concrete_control_joint_ew',
+            'gravel': 'minecraft:block/gravel'
+        }, parent='rnr:block/path_block').with_item_model()
 
-    rm.block_model('wet_concrete_road_control_joint_ew', {
-        'top': 'rnr:block/wet_concrete_control_joint_ew',
+    # rm.block_model('wet_concrete_road_control_joint_ew', {
+    #     'top': 'rnr:block/wet_concrete_control_joint_ew',
+    #     'gravel': 'minecraft:block/gravel'
+    # }, parent='rnr:block/path_block')
+
+    rm.block_model('wet_concrete_road_control_joint_new', {
+        'top': 'rnr:block/wet_concrete_control_joint_new',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('wet_concrete_road_control_joint_esw', {
+        'top': 'rnr:block/wet_concrete_control_joint_esw',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('wet_concrete_road_control_joint_nesw', {
+        'top': 'rnr:block/wet_concrete_control_joint_nesw',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block')
 
     rm.block_model('wet_concrete_road_control_joint_ns', {
         'top': 'rnr:block/wet_concrete_control_joint_ns',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('wet_concrete_road_control_joint_nes', {
+        'top': 'rnr:block/wet_concrete_control_joint_nes',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block')
+
+    rm.block_model('wet_concrete_road_control_joint_nsw', {
+        'top': 'rnr:block/wet_concrete_control_joint_nsw',
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block')
 

@@ -1,11 +1,29 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "variants": {
-    "axis=x": {
-      "model": "rnr:block/wet_concrete_road_control_joint_ew"
+    "axis=x,connects_north_or_east=false,connects_south_or_west=false": {
+      "model": "rnr:block/wet_concrete_road_control_joint"
     },
-    "axis=z": {
+    "axis=x,connects_north_or_east=true,connects_south_or_west=false": {
+      "model": "rnr:block/wet_concrete_road_control_joint_new"
+    },
+    "axis=x,connects_north_or_east=false,connects_south_or_west=true": {
+      "model": "rnr:block/wet_concrete_road_control_joint_esw"
+    },
+    "axis=x,connects_north_or_east=true,connects_south_or_west=true": {
+      "model": "rnr:block/wet_concrete_road_control_joint_nesw"
+    },
+    "axis=z,connects_north_or_east=false,connects_south_or_west=false": {
       "model": "rnr:block/wet_concrete_road_control_joint_ns"
+    },
+    "axis=z,connects_north_or_east=true,connects_south_or_west=false": {
+      "model": "rnr:block/wet_concrete_road_control_joint_nes"
+    },
+    "axis=z,connects_north_or_east=false,connects_south_or_west=true": {
+      "model": "rnr:block/wet_concrete_road_control_joint_nsw"
+    },
+    "axis=z,connects_north_or_east=true,connects_south_or_west=true": {
+      "model": "rnr:block/wet_concrete_road_control_joint_nesw"
     }
   }
 }

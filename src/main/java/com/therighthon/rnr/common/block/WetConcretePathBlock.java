@@ -59,6 +59,7 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
 
     //Based on minecraft pressure plates
     //TODO: doesn't need to run for already trodden blocks
+    //TODO: Would be swell if it didn't reset the dry timer
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!level.isClientSide) {
             if (entity instanceof LivingEntity)
@@ -188,6 +189,8 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         return true;
     }
 
+    //Distance checks won't care about control joint orientation, because if the cj is oriented wrong, the block would need to
+    //ask the cj how far it is from a cj, which isn't a blockstate for cjs and I don't want to quadruple the CJ blockstate count rn
     private int getDistanceX(BlockState neighbor)
     {
         Block block = neighbor.getBlock();

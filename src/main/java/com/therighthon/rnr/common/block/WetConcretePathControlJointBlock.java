@@ -29,12 +29,12 @@ import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.util.Helpers;
 
+//TODO: Now that this doesn't have spreading, it could probably just extend the ConcretePathControlJointBlock
 public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
 {
     private static final float defaultSpeedFactor = 0.7f;
     private final int ticksToDry = 24000;
 
-    public static final IntegerProperty CONCRETE_LEVEL = RNRBlockStateProperties.CONCRETE_LEVEL;
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     public static final BooleanProperty CONNECT_NORTH_OR_EAST = RNRBlockStateProperties.NORTH_EAST;
     public static final BooleanProperty CONNECT_SOUTH_OR_WEST = RNRBlockStateProperties.SOUTH_WEST;
@@ -54,17 +54,16 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
     {
         super(properties.speedFactor(defaultSpeedFactor).randomTicks(), InventoryRemoveBehavior.NOOP);
         //TODO: maybe remove?
-        this.registerDefaultState(this.defaultBlockState().setValue(CONCRETE_LEVEL, 0).setValue(AXIS, Direction.Axis.X).setValue(CONNECT_NORTH_OR_EAST, false).setValue(CONNECT_SOUTH_OR_WEST, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.X).setValue(CONNECT_NORTH_OR_EAST, false).setValue(CONNECT_SOUTH_OR_WEST, false));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(CONCRETE_LEVEL).add(AXIS).add(CONNECT_NORTH_OR_EAST).add(CONNECT_SOUTH_OR_WEST);
+        pBuilder.add(AXIS).add(CONNECT_NORTH_OR_EAST).add(CONNECT_SOUTH_OR_WEST);
     }
 
     //Based on minecraft pressure plates
-    //TODO: doesn't need to run for already trodden blocks
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!level.isClientSide) {
             if (entity instanceof LivingEntity)
@@ -81,22 +80,12 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
 
     //TODO: Pretty janky setup, but it does work for now
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        //Spreading
-        int concreteLevel = state.getValue(CONCRETE_LEVEL);
-        if (concreteLevel > 0)
-        {
-            spreadFluid(level, pos.north(), concreteLevel);
-            spreadFluid(level, pos.west(), concreteLevel);
-            spreadFluid(level, pos.east(), concreteLevel);
-            spreadFluid(level, pos.south(), concreteLevel);
-            level.setBlock(pos, RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState().setValue(CONCRETE_LEVEL, 0), 3);
-        }
 
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
             if (counter.getTicksSinceUpdate() > ticksToDry)
             {
-                level.setBlockAndUpdate(pos, getOutputState(state).setValue(AXIS, state.getValue(AXIS)));
+                level.setBlockAndUpdate(pos, getOutputState(state));
             }
 
             final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
@@ -118,19 +107,11 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
     {
         if (input.is(RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get()))
         {
-            return RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get().defaultBlockState();
+            return RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get().withPropertiesOf(input);
         }
         else
         {
             return Blocks.AIR.defaultBlockState();
-        }
-    }
-
-    private void spreadFluid(Level level, BlockPos spreadPos, int sourceLevel)
-    {
-        if(level.getBlockState(spreadPos).is(RNRTags.Blocks.CONCRETE_SPREADABLE))
-        {
-            level.setBlock(spreadPos, RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState().setValue(CONCRETE_LEVEL, sourceLevel - 1), 3);
         }
     }
 
@@ -144,18 +125,41 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context)
     {
-        return defaultBlockState().setValue(AXIS, context.getHorizontalDirection().getAxis()).setValue(CONNECT_SOUTH_OR_WEST, false).setValue(CONNECT_NORTH_OR_EAST, false);
+        BlockGetter blockgetter = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
+        BlockPos northPos = blockPos.north();
+        BlockPos eastPos = blockPos.east();
+        BlockPos southPos = blockPos.south();
+        BlockPos westPos = blockPos.west();
+        BlockState northState = blockgetter.getBlockState(northPos);
+        BlockState eastState = blockgetter.getBlockState(eastPos);
+        BlockState southState = blockgetter.getBlockState(southPos);
+        BlockState westState = blockgetter.getBlockState(westPos);
+        Direction.Axis axis = context.getHorizontalDirection().getAxis();
+
+        BlockState state = defaultBlockState().setValue(AXIS, axis);
+        state = updateControlJointShape(state, Direction.NORTH, northState);
+        state = updateControlJointShape(state, Direction.EAST, eastState);
+        state = updateControlJointShape(state, Direction.SOUTH, southState);
+        state = updateControlJointShape(state, Direction.WEST, westState);
+
+        return state;
     }
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        return updateControlJointShape(state, direction, neighborState);
+    }
+
+    public BlockState updateControlJointShape(BlockState state, Direction direction, BlockState neighborState)
+    {
         if (state.getValue(AXIS) == Direction.Axis.X)
         {
             return direction == Direction.NORTH
                 ? state.setValue(CONNECT_NORTH_OR_EAST, neighborState.is(RNRTags.Blocks.CONCRETE_CONTROL_JOINTS) && neighborState.getValue(AXIS) != state.getValue(AXIS))
                 : direction == Direction.SOUTH
                 ? state.setValue(CONNECT_SOUTH_OR_WEST, neighborState.is(RNRTags.Blocks.CONCRETE_CONTROL_JOINTS) && neighborState.getValue(AXIS) != state.getValue(AXIS))
-                : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+                : state;
 
         }
         else if (state.getValue(AXIS) == Direction.Axis.Z)
@@ -164,12 +168,17 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
                 ? state.setValue(CONNECT_NORTH_OR_EAST, neighborState.is(RNRTags.Blocks.CONCRETE_CONTROL_JOINTS) && neighborState.getValue(AXIS) != state.getValue(AXIS))
                 : direction == Direction.WEST
                 ? state.setValue(CONNECT_SOUTH_OR_WEST, neighborState.is(RNRTags.Blocks.CONCRETE_CONTROL_JOINTS) && neighborState.getValue(AXIS) != state.getValue(AXIS))
-                : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+                : state;
         }
         else
         {
-            RoadsAndRoofs.LOGGER.debug("Else");
-            return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+            return state;
+        }
+    }
+
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            this.baseState.onRemove(level, pos, newState, isMoving);
         }
     }
 

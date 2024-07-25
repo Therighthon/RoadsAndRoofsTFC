@@ -96,16 +96,16 @@ public class PathStairBlock extends Block
         return pState.getValue(SHAPE).ordinal() * 4 + pState.getValue(FACING).get2DDataValue();
     }
 
-    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
-        if (!pState.is(pState.getBlock())) {
-            pLevel.neighborChanged(this.baseState, pPos, Blocks.AIR, pPos, false);
-            this.base.onPlace(this.baseState, pLevel, pPos, pOldState, false);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (!state.is(state.getBlock())) {
+            level.neighborChanged(this.baseState, pos, Blocks.AIR, pos, false);
+            this.base.onPlace(this.baseState, level, pos, oldState, false);
         }
     }
 
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            this.baseState.onRemove(pLevel, pPos, pNewState, pIsMoving);
+    public void onRemove(BlockState pState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!pState.is(newState.getBlock())) {
+            this.baseState.onRemove(level, pos, newState, isMoving);
         }
     }
 

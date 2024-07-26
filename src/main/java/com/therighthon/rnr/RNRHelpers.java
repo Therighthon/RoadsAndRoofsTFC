@@ -1,5 +1,9 @@
 package com.therighthon.rnr;
 
+import com.therighthon.rnr.common.RNRTags;
+import com.therighthon.rnr.common.fluid.RNRFluids;
+import com.therighthon.rnr.common.fluid.SimpleRNRFluid;
+import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -8,10 +12,18 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+
+import net.dries007.tfc.common.capabilities.Capabilities;
+import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.util.Helpers;
 
 public final class RNRHelpers
 {
@@ -27,6 +39,28 @@ public final class RNRHelpers
                 if (stack.isDamageableItem())
                 {
                     stack.setDamageValue(stack.getDamageValue() - 1);
+                }
+                //TODO: This is hacky as all getup, should probably fix or trick Russian into going through
+                // my code so he fixes it for me with some method I've never heard of
+                else if (stack.is(TFCItems.WOODEN_BUCKET.get()))
+                {
+                    stack.shrink(1);
+                    player.setItemInHand(hand, new ItemStack(TFCItems.WOODEN_BUCKET.get()));
+                }
+                else if (stack.is(TFCItems.RED_STEEL_BUCKET.get()))
+                {
+                    stack.shrink(1);
+                    player.setItemInHand(hand, new ItemStack(TFCItems.RED_STEEL_BUCKET.get()));
+                }
+                else if (stack.is(TFCItems.BLUE_STEEL_BUCKET.get()))
+                {
+                    stack.shrink(1);
+                    player.setItemInHand(hand, new ItemStack(TFCItems.RED_STEEL_BUCKET.get()));
+                }
+                else if (stack.is(RNRTags.Items.CONCRETE_BUCKETS))
+                {
+                    stack.shrink(1);
+                    player.setItemInHand(hand, new ItemStack(Items.BUCKET));
                 }
                 else
                 {

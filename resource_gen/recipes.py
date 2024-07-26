@@ -107,6 +107,9 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     heat_recipe(rm, 'ceramic_roof_tile', 'rnr:unfired_roof_tile', POTTERY_MELT, 'rnr:ceramic_roof_tile')
     heat_recipe(rm, 'terracotta_roof_tile', 'rnr:unfired_terracotta_roof_tile', POTTERY_MELT, 'rnr:terracotta_roof_tile')
 
+    rm.crafting_shapeless('crafting/concrete_powder', ('rnr:crushed_base_course', 'tfc:powder/lime'), (1, 'rnr:concrete_powder'))
+
+
     # ============================
     # Collapse / Landslide Recipes
     # ============================
@@ -214,6 +217,10 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     #     rm.block_tag('can_landslide', 'tfc:sand/%s' % variant)
     #     landslide_recipe(rm, '%s_sand' % variant, 'tfc:sand/%s' % variant, 'tfc:sand/%s' % variant)
 
+    # Barrel
+    barrel_instant_recipe(rm, 'concrete_from_powder', 'rnr:concrete_powder', '100 minecraft:water', output_fluid='100 rnr:concrete')
+
+
     # ============
     # Block Mod Recipes
     # ============
@@ -259,6 +266,7 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         block_mod_recipe(rm, '%s_to_base_course' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s' % dirt, 'rnr:base_course')
         block_mod_recipe(rm, '%s_mud_to_soil' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s_mud' % dirt, 'rnr:tamped_%s' % dirt)
 
+    block_mod_recipe(rm, 'pouring_concrete', fluid_item_ingredient('1000 rnr:concrete'), 'rnr:base_course', 'rnr:pouring_concrete_road')
 
 
     # ============

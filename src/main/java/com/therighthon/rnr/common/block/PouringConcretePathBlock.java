@@ -29,8 +29,8 @@ public class PouringConcretePathBlock extends PathHeightBlock
     public PouringConcretePathBlock(ExtendedProperties properties)
     {
         super(properties.properties().speedFactor(defaultSpeedFactor));
-        //TODO: maybe remove?
-        this.registerDefaultState(this.defaultBlockState().setValue(CONCRETE_LEVEL, 0));
+        //TODO: Probably a less clumsy way of making sure the blockstate is 3 when placed via block interaction
+        this.registerDefaultState(this.defaultBlockState().setValue(CONCRETE_LEVEL, 3));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();
     }

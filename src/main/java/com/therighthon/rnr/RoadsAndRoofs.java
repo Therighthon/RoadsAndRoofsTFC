@@ -5,6 +5,7 @@ import com.therighthon.rnr.client.ClientEventHandler;
 import com.therighthon.rnr.common.RNRCreativeModeTabs;
 import com.therighthon.rnr.common.block.AFCCompatBlocks;
 import com.therighthon.rnr.common.block.RNRBlocks;
+import com.therighthon.rnr.common.fluid.RNRFluids;
 import com.therighthon.rnr.common.item.AFCCompatItems;
 import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.RNRRecipeSerializers;
@@ -35,6 +36,7 @@ public class RoadsAndRoofs
 
         RNRBlocks.BLOCKS.register(eventBus);
         RNRItems.ITEMS.register(eventBus);
+        RNRFluids.FLUIDS.register(eventBus);
         RNRRecipeTypes.RECIPE_TYPES.register(eventBus);
         RNRRecipeSerializers.RECIPE_SERIALIZERS.register(eventBus);
         RNRCreativeModeTabs.CREATIVE_TABS.register(eventBus);

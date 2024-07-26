@@ -245,6 +245,8 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     rm.item_model('ceramic_roof_tile', 'rnr:item/ceramic_roof_tile')
     rm.item_model('terracotta_roof_tile', 'rnr:item/terracotta_roof_tile')
 
+    rm.item_model('concrete_powder', 'rnr:item/concrete_powder')
+
     # Rock Type Blocks
     for rock, rock_data in ROCKS.items():
 

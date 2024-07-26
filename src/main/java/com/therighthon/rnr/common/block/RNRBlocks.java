@@ -1,19 +1,31 @@
 package com.therighthon.rnr.common.block;
 
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import com.therighthon.rnr.RoadsAndRoofs;
+import com.therighthon.rnr.common.fluid.SimpleRNRFluid;
 import com.therighthon.rnr.common.item.RNRItems;
+import com.therighthon.rnr.common.fluid.RNRFluids;
 import javax.annotation.Nullable;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraftforge.common.SoundActions;
+import net.minecraftforge.fluids.FluidType;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -24,11 +36,16 @@ import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.wood.Wood;
+import net.dries007.tfc.common.fluids.ExtendedFluidType;
+import net.dries007.tfc.common.fluids.FluidRegistryObject;
+import net.dries007.tfc.common.fluids.FluidTypeClientProperties;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistrationHelpers;
 
 public class RNRBlocks
 {
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, RoadsAndRoofs.MOD_ID);
+    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, RoadsAndRoofs.MOD_ID);
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RoadsAndRoofs.MOD_ID);
 
@@ -51,6 +68,10 @@ public class RNRBlocks
     {
         return RegistrationHelpers.registerBlock(BLOCKS, RNRItems.ITEMS, name, blockSupplier, blockItemFactory);
     }
+
+    public static final Map<SimpleRNRFluid, RegistryObject<LiquidBlock>> SIMPLE_RNR_FLUIDS = Helpers.mapOfKeys(SimpleRNRFluid.class, fluid ->
+        registerNoItem("fluid/" + fluid.getId(), () -> new LiquidBlock(RNRFluids.SIMPLE_RNR_FLUIDS.get(fluid).source(), BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()))
+    );
 
     public static final RegistryObject<Block> TAMPED_SILT = register("tamped_silt", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
     public static final RegistryObject<Block> TAMPED_LOAM = register("tamped_loam", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
@@ -153,4 +174,28 @@ public class RNRBlocks
     public static final RegistryObject<Block> PINK_SANDSTONE_FLAGSTONES = register("pink_sandstone_flagstones", () -> new StonePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> PINK_SANDSTONE_FLAGSTONES_SLAB = register("pink_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
     public static final RegistryObject<Block> PINK_SANDSTONE_FLAGSTONES_STAIRS = register("pink_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> PINK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE), 1.3f));
+
+    private static <F extends FlowingFluid> FluidRegistryObject<F> register(String name, Consumer<ForgeFlowingFluid.Properties> builder, FluidType.Properties typeProperties, FluidTypeClientProperties clientProperties, Function<ForgeFlowingFluid.Properties, F> sourceFactory, Function<ForgeFlowingFluid.Properties, F> flowingFactory)
+    {
+        // Names `metal/foo` to `metal/flowing_foo`
+        final int index = name.lastIndexOf('/');
+        final String flowingName = index == -1 ? "flowing_" + name : name.substring(0, index) + "/flowing_" + name.substring(index + 1);
+
+        return RegistrationHelpers.registerFluid(FLUID_TYPES, FLUIDS, name, name, flowingName, builder, () -> new ExtendedFluidType(typeProperties, clientProperties), sourceFactory, flowingFactory);
+    }
+
+    private static FluidType.Properties waterLike()
+    {
+        return FluidType.Properties.create()
+            .adjacentPathType(BlockPathTypes.WATER)
+            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+            .canConvertToSource(true)
+            .canDrown(true)
+            .canExtinguish(true)
+            .canHydrate(false)
+            .canPushEntity(true)
+            .canSwim(true)
+            .supportsBoating(true);
+    }
 }

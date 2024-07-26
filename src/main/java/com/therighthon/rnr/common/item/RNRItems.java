@@ -4,10 +4,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.Supplier;
 import com.therighthon.rnr.RoadsAndRoofs;
+import com.therighthon.rnr.common.fluid.RNRFluids;
+import com.therighthon.rnr.common.fluid.SimpleRNRFluid;
 
-import com.therighthon.rnr.common.item.MattockItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -43,6 +44,7 @@ public class RNRItems
     public static final RegistryObject<Item> UNFIRED_TERRACOTTA_ROOF_TILE = register("unfired_terracotta_roof_tile");
     public static final RegistryObject<Item> CERAMIC_ROOF_TILE = register("ceramic_roof_tile");
     public static final RegistryObject<Item> TERRACOTTA_ROOF_TILE = register("terracotta_roof_tile");
+    public static final RegistryObject<Item> CONCRETE_POWDER = register("concrete_powder");
     public static final Map<Wood, RegistryObject<Item>> WOOD_SHINGLE = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingle/" + wood.getSerializedName()));
 
 
@@ -59,5 +61,10 @@ public class RNRItems
     {
         return ITEMS.register(name.toLowerCase(Locale.ROOT), item);
     }
+
+    //Fluids
+    public static final Map<SimpleRNRFluid, RegistryObject<BucketItem>> SIMPLE_RNR_FLUID_BUCKETS = Helpers.mapOfKeys(SimpleRNRFluid.class, fluid ->
+        register("bucket/" + fluid.getSerializedName(), () -> new BucketItem(RNRFluids.SIMPLE_RNR_FLUIDS.get(fluid).source(), new Item.Properties()))
+    );
 }
 

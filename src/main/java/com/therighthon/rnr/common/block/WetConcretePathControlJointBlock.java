@@ -1,5 +1,6 @@
 package com.therighthon.rnr.common.block;
 
+import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -85,7 +86,7 @@ public class WetConcretePathControlJointBlock extends WetConcretePathBlock
         return updateControlJointShape(state, direction, neighborState);
     }
 
-    public BlockState updateControlJointShape(BlockState state, Direction direction, BlockState neighborState)
+    public static BlockState updateControlJointShape(BlockState state, Direction direction, BlockState neighborState)
     {
         if (state.getValue(AXIS) == Direction.Axis.X)
         {

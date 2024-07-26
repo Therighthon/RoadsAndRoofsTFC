@@ -322,6 +322,9 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     mattock_recipe(rm, 'peat_tamping', 'tfc:peat', 'rnr:tamped_peat', 'smooth')
     mattock_recipe(rm, 'peat_grass_tamping', 'tfc:peat_grass', 'rnr:tamped_peat', 'smooth')
 
+    mattock_recipe(rm, 'control_joint', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_control_joint', 'smooth')
+    mattock_recipe(rm, 'smooth_concrete', 'rnr:trodden_wet_concrete_road', 'rnr:wet_concrete_road', 'smooth')
+
     # ============
     # Heat Recipes
     # ============

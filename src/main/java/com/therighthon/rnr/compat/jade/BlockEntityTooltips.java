@@ -1,16 +1,13 @@
 package com.therighthon.rnr.compat.jade;
 
 import java.util.function.Consumer;
-import com.therighthon.rnr.common.block.WetConcretePathBlock;
+import com.therighthon.rnr.common.block.CrackingWetConcretePathBlock;
 import javax.annotation.Nullable;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
-import net.dries007.tfc.common.blocks.devices.BarrelBlock;
-import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
 import net.dries007.tfc.compat.jade.common.BlockEntityTooltip;
 import net.dries007.tfc.compat.jade.common.RegisterCallback;
 import net.dries007.tfc.config.TFCConfig;
@@ -20,11 +17,11 @@ public class BlockEntityTooltips
 {
     public static void register(RegisterCallback<BlockEntityTooltip, Block> callback)
     {
-        callback.register("wet_concrete", WET_CONCRETE, WetConcretePathBlock.class);
+        callback.register("wet_concrete", WET_CONCRETE, CrackingWetConcretePathBlock.class);
     }
 
     public static final BlockEntityTooltip WET_CONCRETE = (level, state, pos, entity, tooltip) -> {
-        if (entity instanceof TickCounterBlockEntity counter && state.getBlock() instanceof WetConcretePathBlock)
+        if (entity instanceof TickCounterBlockEntity counter && state.getBlock() instanceof CrackingWetConcretePathBlock)
         {
             //TODO: Lang
             timeLeft(level, tooltip, TFCConfig.SERVER.mudBricksTicks.get() - counter.getTicksSinceUpdate(), Component.translatable("rnr.jade.wet_concrete"));

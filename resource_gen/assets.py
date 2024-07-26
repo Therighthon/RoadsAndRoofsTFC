@@ -132,6 +132,11 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
 
+    rm.blockstate('rnr:pouring_concrete_road').with_block_model({
+        'top': 'rnr:block/wet_concrete',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
     rm.blockstate('rnr:trodden_wet_concrete_road').with_block_model({
         'top': 'rnr:block/trodden_wet_concrete',
         'gravel': 'minecraft:block/gravel'

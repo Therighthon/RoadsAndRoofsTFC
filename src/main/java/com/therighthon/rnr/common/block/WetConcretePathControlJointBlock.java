@@ -1,6 +1,5 @@
 package com.therighthon.rnr.common.block;
 
-import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,16 +17,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
-import net.dries007.tfc.util.Helpers;
 
 //TODO: Now that this doesn't have spreading, it could probably just extend the ConcretePathControlJointBlock
 public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
@@ -94,7 +90,7 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
                 cursor.setWithOffset(pos, d);
                 final BlockState stateAt = level.getBlockState(cursor);
                 //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
-                if (state.getBlock() instanceof WetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
                 {
                     level.scheduleTick(cursor, stateAt.getBlock(), 1);
                 }

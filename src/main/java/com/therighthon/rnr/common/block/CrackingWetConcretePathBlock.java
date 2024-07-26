@@ -23,11 +23,9 @@ import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.util.Helpers;
 
-public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
+public class CrackingWetConcretePathBlock extends WetConcretePathBlock
 {
-    private static final float defaultSpeedFactor = 0.7f;
     private final int maxJointDistance = 3;
-    private final int ticksToDry = 24000;
 
 
     public static final IntegerProperty DISTANCE_X = RNRBlockStateProperties.DISTANCE_X;
@@ -35,18 +33,9 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
     private final Block base;
     private final BlockState baseState;
 
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return BaseCourseHeightBlock.SHAPE;
-    }
-
-    public static float getDefaultSpeedFactor()
-    {
-        return defaultSpeedFactor;
-    }
-
     public CrackingWetConcretePathBlock(ExtendedProperties properties)
     {
-        super(properties.speedFactor(defaultSpeedFactor).randomTicks(), InventoryRemoveBehavior.NOOP);
+        super(properties.speedFactor(getDefaultSpeedFactor()).randomTicks());
         //TODO: maybe remove?
         this.registerDefaultState(this.defaultBlockState().setValue(DISTANCE_X, 1).setValue(DISTANCE_Z, 1));
         this.base = Blocks.AIR; // These are unused, fields are redirected
@@ -57,17 +46,7 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
         pBuilder.add(DISTANCE_X).add(DISTANCE_Z);
     }
 
-    //Based on minecraft pressure plates
-    //TODO: doesn't need to run for already trodden blocks
-    //TODO: Would be swell if it didn't reset the dry timer
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!level.isClientSide) {
-            if (entity instanceof LivingEntity)
-            {
-                level.setBlock(pos, RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get().withPropertiesOf(state), 3);
-            }
-        }
-    }
+
 
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
 //        level.scheduleTick(pos, this, 10);
@@ -83,7 +62,7 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
             level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
                 long oldUpdateTick = counter.getLastUpdateTick();
                 //Only update crack info within first 75% of drying process
-                if (counter.getTicksSinceUpdate() < 0.75 * ticksToDry)
+                if (counter.getTicksSinceUpdate() < 0.75 * getTicksToDry())
                 {
                     level.setBlockAndUpdate(pos, state.setValue(DISTANCE_X, Math.min(distanceX, maxJointDistance)));
                     counter.setLastUpdateTick(oldUpdateTick);
@@ -99,7 +78,7 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
             level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
                 long oldUpdateTick = counter.getLastUpdateTick();
                 //Only update crack info within first 75% of drying process
-                if (counter.getTicksSinceUpdate() < 0.75 * ticksToDry)
+                if (counter.getTicksSinceUpdate() < 0.75 * getTicksToDry())
                 {
                     level.setBlockAndUpdate(pos, state.setValue(DISTANCE_Z, Math.min(distanceZ, maxJointDistance)));
                     counter.setLastUpdateTick(oldUpdateTick);
@@ -109,7 +88,7 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
 
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
-            if (counter.getTicksSinceUpdate() > ticksToDry)
+            if (counter.getTicksSinceUpdate() > getTicksToDry())
             {
                 level.setBlockAndUpdate(pos, Math.max(state.getValue(DISTANCE_X), state.getValue(DISTANCE_Z)) >= maxJointDistance ? getOutputStateCracked(state) : getOutputState(state));
             }
@@ -129,24 +108,7 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
     }
 
     //TODO: Make this use actual recipes rather than hard-code?
-    private BlockState getOutputState(BlockState input)
-    {
-        if (input.is(RNRBlocks.WET_CONCRETE_ROAD.get()))
-        {
-            return RNRBlocks.CONCRETE_ROAD.get().defaultBlockState();
-        }
-        else if (input.is(RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get()))
-        {
-            return RNRBlocks.TRODDEN_CONCRETE_ROAD.get().defaultBlockState();
-        }
-        else
-        {
-            return Blocks.AIR.defaultBlockState();
-        }
-    }
-
-    //TODO: Make this use actual recipes rather than hard-code?
-    private BlockState getOutputStateCracked(BlockState input)
+    public BlockState getOutputStateCracked(BlockState input)
     {
         if (input.is(RNRBlocks.WET_CONCRETE_ROAD.get()))
         {
@@ -160,15 +122,6 @@ public class CrackingWetConcretePathBlock extends PathHeightDeviceBlock
         {
             return Blocks.AIR.defaultBlockState();
         }
-    }
-
-
-
-    //Needed for drying
-    @Override
-    public boolean isRandomlyTicking(BlockState state)
-    {
-        return true;
     }
 
     //Distance checks won't care about control joint orientation, because if the cj is oriented wrong, the block would need to

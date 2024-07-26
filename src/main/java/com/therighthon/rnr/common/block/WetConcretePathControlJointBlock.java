@@ -26,11 +26,8 @@ import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 
 //TODO: Now that this doesn't have spreading, it could probably just extend the ConcretePathControlJointBlock
-public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
+public class WetConcretePathControlJointBlock extends WetConcretePathBlock
 {
-    private static final float defaultSpeedFactor = 0.7f;
-    private final int ticksToDry = 24000;
-
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     public static final BooleanProperty CONNECT_NORTH_OR_EAST = RNRBlockStateProperties.NORTH_EAST;
     public static final BooleanProperty CONNECT_SOUTH_OR_WEST = RNRBlockStateProperties.SOUTH_WEST;
@@ -41,14 +38,9 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
         return BaseCourseHeightBlock.SHAPE;
     }
 
-    public static float getDefaultSpeedFactor()
-    {
-        return defaultSpeedFactor;
-    }
-
     public WetConcretePathControlJointBlock(ExtendedProperties properties)
     {
-        super(properties.speedFactor(defaultSpeedFactor).randomTicks(), InventoryRemoveBehavior.NOOP);
+        super(properties.speedFactor(getDefaultSpeedFactor()).randomTicks());
         //TODO: maybe remove?
         this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.X).setValue(CONNECT_NORTH_OR_EAST, false).setValue(CONNECT_SOUTH_OR_WEST, false));
         this.base = Blocks.AIR; // These are unused, fields are redirected
@@ -59,63 +51,9 @@ public class WetConcretePathControlJointBlock extends PathHeightDeviceBlock
         pBuilder.add(AXIS).add(CONNECT_NORTH_OR_EAST).add(CONNECT_SOUTH_OR_WEST);
     }
 
-    //Based on minecraft pressure plates
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!level.isClientSide) {
-            if (entity instanceof LivingEntity)
-            {
-                level.setBlock(pos, RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get().withPropertiesOf(state), 3);
-            }
-        }
-    }
-
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         level.scheduleTick(pos, this, 10);
         TickCounterBlockEntity.reset(level, pos);
-    }
-
-    //TODO: Pretty janky setup, but it does work for now
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-
-        //Drying
-        level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
-            if (counter.getTicksSinceUpdate() > ticksToDry)
-            {
-                level.setBlockAndUpdate(pos, getOutputState(state));
-            }
-
-            final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            for (Direction d : Direction.Plane.HORIZONTAL)
-            {
-                cursor.setWithOffset(pos, d);
-                final BlockState stateAt = level.getBlockState(cursor);
-                //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
-                if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
-                {
-                    level.scheduleTick(cursor, stateAt.getBlock(), 1);
-                }
-            }
-        });
-    }
-
-    //TODO: Make this use actual recipes rather than hard-code?
-    private BlockState getOutputState(BlockState input)
-    {
-        if (input.is(RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get()))
-        {
-            return RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get().withPropertiesOf(input);
-        }
-        else
-        {
-            return Blocks.AIR.defaultBlockState();
-        }
-    }
-
-    //Needed for drying
-    @Override
-    public boolean isRandomlyTicking(BlockState state)
-    {
-        return true;
     }
 
     @Override

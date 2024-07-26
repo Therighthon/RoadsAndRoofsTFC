@@ -33,6 +33,7 @@ public class RNRTags
         public static final TagKey<Item> MATTOCKS = create("mattocks");
         public static final TagKey<Item> BASE_COURSE = create("base_course");
         public static final TagKey<Item> ROAD_MATERIALS = create("road_materials");
+        //The vanilla bucket item with concrete in it
         public static final TagKey<Item> CONCRETE_BUCKETS = create("concrete_buckets");
 
         private static TagKey<Item> create(String id)

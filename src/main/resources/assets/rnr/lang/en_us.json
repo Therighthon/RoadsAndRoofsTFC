@@ -567,6 +567,8 @@
   "roads_and_roofs": "Roads and Roofs",
   "tfc.jei.block_mod": "Block Modification",
   "tfc.jei.mattock": "Mattock",
-  "config.jade.plugin_tfc.wet_concrete": "Wet Concrete"
+  "config.jade.plugin_tfc.wet_concrete": "Wet Concrete",
+  "rnr.jade.will_crack": "Will Crack When Dry",
+  "rnr.jade.will_not_crack": "Will Not Crack"
 
 }

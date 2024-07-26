@@ -55,7 +55,7 @@ public final class RNRHelpers
                 else if (stack.is(TFCItems.BLUE_STEEL_BUCKET.get()))
                 {
                     stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.RED_STEEL_BUCKET.get()));
+                    player.setItemInHand(hand, new ItemStack(TFCItems.BLUE_STEEL_BUCKET.get()));
                 }
                 else if (stack.is(RNRTags.Items.CONCRETE_BUCKETS))
                 {

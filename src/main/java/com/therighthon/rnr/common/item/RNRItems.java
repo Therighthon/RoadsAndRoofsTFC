@@ -47,7 +47,6 @@ public class RNRItems
     public static final RegistryObject<Item> CONCRETE_POWDER = register("concrete_powder");
     public static final Map<Wood, RegistryObject<Item>> WOOD_SHINGLE = Helpers.mapOfKeys(Wood.class, wood -> register("wood/shingle/" + wood.getSerializedName()));
 
-
     //Misc items
     public static final RegistryObject<Item> CRUSHED_BASE_COURSE = register("crushed_base_course");
     public static final RegistryObject<Item> HOGGIN_MIX = register("hoggin_mix");

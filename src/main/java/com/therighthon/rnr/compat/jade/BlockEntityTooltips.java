@@ -23,11 +23,16 @@ public class BlockEntityTooltips
     }
 
     public static final BlockEntityTooltip WET_CONCRETE = (level, state, pos, entity, tooltip) -> {
-        if (entity instanceof TickCounterBlockEntity counter && state.getBlock() instanceof CrackingWetConcretePathBlock)
+        if (entity instanceof TickCounterBlockEntity counter && (state.getBlock() instanceof WetConcretePathBlock))
         {
             //TODO: Dry time config
             timeLeft(level, tooltip, 24000 - counter.getTicksSinceUpdate(), Component.translatable("rnr.jade.wet_concrete"));
-            willCrack(level, tooltip, Math.max(state.getValue(CrackingWetConcretePathBlock.DISTANCE_X), state.getValue(CrackingWetConcretePathBlock.DISTANCE_Z)));
+
+            //TODO: For some reason, control joints don't show dry times
+            if (state.getBlock() instanceof CrackingWetConcretePathBlock)
+            {
+                willCrack(level, tooltip, Math.max(state.getValue(CrackingWetConcretePathBlock.DISTANCE_X), state.getValue(CrackingWetConcretePathBlock.DISTANCE_Z)));
+            }
         }
     };
 

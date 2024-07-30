@@ -27,14 +27,16 @@ public class BlockModRecipe extends SimpleBlockRecipe
     private final BlockIngredient inputBlock;
     private final BlockState outputBlock;
     private final Ingredient inputItem;
+    private final Boolean consumesItem;
 
-    public BlockModRecipe(ResourceLocation id, Ingredient inputItem, BlockIngredient inputBlock, BlockState outputBlock)
+    public BlockModRecipe(ResourceLocation id, Ingredient inputItem, BlockIngredient inputBlock, BlockState outputBlock, Boolean consumesItem)
     {
         super(id, inputBlock, outputBlock, false);
         this.id = id;
         this.inputItem = inputItem;
         this.inputBlock = inputBlock;
         this.outputBlock = outputBlock;
+        this.consumesItem = consumesItem;
     }
 
     public static final IndirectHashCollection<Block, BlockModRecipe> CACHE = IndirectHashCollection.createForRecipe(blockModRecipe -> blockModRecipe.getInputBlock().blocks(), RNRRecipeTypes.BLOCK_MOD_RECIPE);
@@ -70,6 +72,11 @@ public class BlockModRecipe extends SimpleBlockRecipe
     public BlockState getOutputBlock()
     {
         return outputBlock;
+    }
+
+    public Boolean consumesItem()
+    {
+        return consumesItem;
     }
 
     @Override
@@ -112,8 +119,10 @@ public class BlockModRecipe extends SimpleBlockRecipe
             final Ingredient inputItem = Ingredient.fromJson(json.get("input_item"));
             final BlockIngredient inputBlock = BlockIngredient.fromJson(JsonHelpers.get(json, "input_block"));
             final BlockState outputBlock = JsonHelpers.getBlockState(GsonHelper.getAsString(json, "output_block"));
+            final boolean consumeIngredient = json.has("consume_ingredient") ? JsonHelpers.getAsBoolean(json, "consume_ingredient") : Boolean.TRUE;
 
-            return new BlockModRecipe(id, inputItem, inputBlock, outputBlock);
+
+            return new BlockModRecipe(id, inputItem, inputBlock, outputBlock, consumeIngredient);
         }
 
         @Nullable
@@ -122,8 +131,9 @@ public class BlockModRecipe extends SimpleBlockRecipe
             final Ingredient inputItem = Ingredient.fromNetwork(buffer);
             final BlockIngredient inputBlock = BlockIngredient.fromNetwork(buffer);
             final BlockState outputBlock = buffer.readRegistryIdUnsafe(ForgeRegistries.BLOCKS).defaultBlockState();
+            final Boolean consumesItem = buffer.readBoolean();
 
-            return new BlockModRecipe(id, inputItem, inputBlock, outputBlock);
+            return new BlockModRecipe(id, inputItem, inputBlock, outputBlock, consumesItem);
         }
 
         @Override
@@ -131,6 +141,7 @@ public class BlockModRecipe extends SimpleBlockRecipe
             recipe.inputItem.toNetwork(buffer);
             recipe.inputBlock.toNetwork(buffer);
             buffer.writeRegistryIdUnsafe(ForgeRegistries.BLOCKS, recipe.outputBlock.getBlock());
+            buffer.writeBoolean(recipe.consumesItem);
         }
 
     }

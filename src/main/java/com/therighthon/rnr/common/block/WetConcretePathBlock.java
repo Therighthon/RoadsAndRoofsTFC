@@ -14,6 +14,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
+import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 
 public class WetConcretePathBlock extends PathHeightDeviceBlock
@@ -33,6 +34,10 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
     public static float getDefaultSpeedFactor()
     {
         return defaultSpeedFactor;
+    }
+
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        TickCounterBlockEntity.reset(level, pos);
     }
 
     //Based on minecraft pressure plates
@@ -84,6 +89,18 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         else if (input.is(RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get()))
         {
             return RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get().withPropertiesOf(input);
+        }
+        else if (input.is(RNRBlocks.WET_CONCRETE_ROAD_PANEL.get()))
+        {
+            return RNRBlocks.CONCRETE_ROAD_PANEL.get().withPropertiesOf(input);
+        }
+        else if (input.is(RNRBlocks.WET_CONCRETE_ROAD_SETT.get()))
+        {
+            return RNRBlocks.CONCRETE_ROAD_SETT.get().withPropertiesOf(input);
+        }
+        else if (input.is(RNRBlocks.WET_CONCRETE_ROAD_FLAGSTONES.get()))
+        {
+            return RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get().withPropertiesOf(input);
         }
         else
         {

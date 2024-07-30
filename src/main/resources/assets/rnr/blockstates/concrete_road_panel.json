@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "variants": {
+    "": {
+      "model": "rnr:block/concrete_road_panel"
+    }
+  }
+}

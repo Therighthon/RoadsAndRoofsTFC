@@ -142,6 +142,14 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.BRICK_ROAD_STAIRS.get());
 
         out.accept(RNRItems.CONCRETE_POWDER.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get());
+        out.accept(RNRBlocks.CRACKED_CONCRETE_ROAD.get());
+        out.accept(RNRBlocks.TRODDEN_CONCRETE_ROAD.get());
+        out.accept(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_PANEL.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_SETT.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get());
 
         out.accept(RNRBlocks.ROOF_FRAME.get());
         out.accept(RNRBlocks.ROOF_FRAME_SLAB.get());

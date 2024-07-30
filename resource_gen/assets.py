@@ -142,6 +142,36 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         'gravel': 'minecraft:block/gravel'
     }, parent='rnr:block/path_block').with_item_model()
 
+    rm.blockstate('rnr:wet_concrete_road_panel').with_block_model({
+        'top': 'rnr:block/wet_concrete_panel',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:wet_concrete_road_flagstones').with_block_model({
+        'top': 'rnr:block/wet_concrete_flagstones',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:wet_concrete_road_sett').with_block_model({
+        'top': 'rnr:block/wet_concrete_sett',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:concrete_road_panel').with_block_model({
+        'top': 'rnr:block/concrete_panel',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:concrete_road_flagstones').with_block_model({
+        'top': 'rnr:block/concrete_flagstones',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
+    rm.blockstate('rnr:concrete_road_sett').with_block_model({
+        'top': 'rnr:block/concrete_sett',
+        'gravel': 'minecraft:block/gravel'
+    }, parent='rnr:block/path_block').with_item_model()
+
     # rm.blockstate('rnr:wet_concrete_road_control_joint').with_block_model({
     #     'top': 'rnr:block/wet_concrete_control_joint',
     #     'gravel': 'minecraft:block/gravel'

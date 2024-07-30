@@ -260,6 +260,77 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     block_mod_recipe(rm, 'hoggin', 'rnr:hoggin_mix', 'rnr:base_course', 'rnr:hoggin')
     block_mod_recipe(rm, 'brick_road', 'minecraft:brick', 'rnr:base_course', 'rnr:brick_road')
 
+    # TODO: doesn't work with item tags
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_brick', 'minecraft:brick', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_granite', 'tfc:brick/granite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_granite', 'rnr:flagstone/granite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_granite', 'tfc:rock/smooth/granite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_diorite', 'tfc:brick/diorite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_diorite', 'rnr:flagstone/diorite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_diorite', 'tfc:rock/smooth/diorite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_gabbro', 'tfc:brick/gabbro', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_gabbro', 'rnr:flagstone/gabbro', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_gabbro', 'tfc:rock/smooth/gabbro', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_shale', 'tfc:brick/shale', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_shale', 'rnr:flagstone/shale', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_shale', 'tfc:rock/smooth/shale', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_claystone', 'tfc:brick/claystone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_claystone', 'rnr:flagstone/claystone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_claystone', 'tfc:rock/smooth/claystone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_limestone', 'tfc:brick/limestone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_limestone', 'rnr:flagstone/limestone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_limestone', 'tfc:rock/smooth/limestone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_conglomerate', 'tfc:brick/conglomerate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_conglomerate', 'rnr:flagstone/conglomerate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_conglomerate', 'tfc:rock/smooth/conglomerate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_dolomite', 'tfc:brick/dolomite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_dolomite', 'rnr:flagstone/dolomite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_dolomite', 'tfc:rock/smooth/dolomite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_chert', 'tfc:brick/chert', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_chert', 'rnr:flagstone/chert', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_chert', 'tfc:rock/smooth/chert', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_chalk', 'tfc:brick/chalk', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_chalk', 'rnr:flagstone/chalk', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_chalk', 'tfc:rock/smooth/chalk', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_rhyolite', 'tfc:brick/rhyolite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_rhyolite', 'rnr:flagstone/rhyolite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_rhyolite', 'tfc:rock/smooth/rhyolite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_basalt', 'tfc:brick/basalt', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_basalt', 'rnr:flagstone/basalt', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_basalt', 'tfc:rock/smooth/basalt', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_andesite', 'tfc:brick/andesite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_andesite', 'rnr:flagstone/andesite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_andesite', 'tfc:rock/smooth/andesite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_dacite', 'tfc:brick/dacite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_dacite', 'rnr:flagstone/dacite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_dacite', 'tfc:rock/smooth/dacite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_quartzite', 'tfc:brick/quartzite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_quartzite', 'rnr:flagstone/quartzite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_quartzite', 'tfc:rock/smooth/quartzite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_slate', 'tfc:brick/slate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_slate', 'rnr:flagstone/slate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_slate', 'tfc:rock/smooth/slate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_phyllite', 'tfc:brick/phyllite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_phyllite', 'rnr:flagstone/phyllite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_phyllite', 'tfc:rock/smooth/phyllite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_schist', 'tfc:brick/schist', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_schist', 'rnr:flagstone/schist', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_schist', 'tfc:rock/smooth/schist', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_gneiss', 'tfc:brick/gneiss', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_gneiss', 'rnr:flagstone/gneiss', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_gneiss', 'tfc:rock/smooth/gneiss', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+    block_mod_recipe_not_consumed(rm, 'concrete_sett_marble', 'tfc:brick/marble', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_marble', 'rnr:flagstone/marble', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_panel_marble', 'tfc:rock/smooth/marble', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
+
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_black', 'rnr:flagstone/black_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_brown', 'rnr:flagstone/brown_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_green', 'rnr:flagstone/green_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_red', 'rnr:flagstone/red_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_pink', 'rnr:flagstone/pink_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_white', 'rnr:flagstone/white_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_yellow', 'rnr:flagstone/yellow_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
+
     block_mod_recipe(rm, 'kaolin_base_course', 'rnr:crushed_base_course', 'rnr:tamped_kaolin', 'rnr:base_course')
     block_mod_recipe(rm, 'peat_base_course', 'rnr:crushed_base_course', 'rnr:tamped_peat', 'rnr:base_course')
     for dirt in SOIL_BLOCK_VARIANTS:
@@ -404,6 +475,13 @@ def mattock_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, in
         'extra_drop': None
     })
 
+def block_mod_recipe_not_consumed(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: str, input_block: utils.Json, result: str):
+    rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {
+        'input_item': utils.ingredient(input_item),
+        'input_block': input_block,
+        'output_block': result,
+        'consume_ingredient': False
+    })
 
 def block_mod_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: str, input_block: utils.Json, result: str):
     rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {

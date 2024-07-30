@@ -34,13 +34,13 @@ public final class RNRHelpers
         if (recipe != null && !(player.blockPosition().equals(pos)))
         {
             final BlockState output = recipe.getOutputBlock().getBlock().withPropertiesOf(blockState);
-            if (!player.isCreative())
+            if (!player.isCreative() && recipe.consumesItem())
             {
                 if (stack.isDamageableItem())
                 {
                     stack.setDamageValue(stack.getDamageValue() - 1);
                 }
-                //TODO: This is hacky as all getup, should probably fix or trick Russian into going through
+                //TODO: This bucket handling stuff is hacky as all getup, should probably fix or trick Russian into going through
                 // my code so he fixes it for me with some method I've never heard of
                 else if (stack.is(TFCItems.WOODEN_BUCKET.get()))
                 {

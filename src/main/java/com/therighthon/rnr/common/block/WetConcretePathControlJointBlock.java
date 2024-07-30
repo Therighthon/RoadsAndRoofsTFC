@@ -52,11 +52,6 @@ public class WetConcretePathControlJointBlock extends WetConcretePathBlock
         pBuilder.add(AXIS).add(CONNECT_NORTH_OR_EAST).add(CONNECT_SOUTH_OR_WEST);
     }
 
-    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-        level.scheduleTick(pos, this, 10);
-        TickCounterBlockEntity.reset(level, pos);
-    }
-
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context)
     {

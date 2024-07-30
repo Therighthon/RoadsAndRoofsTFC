@@ -96,6 +96,11 @@ public class RNRBlocks
     public static final RegistryObject<Block> BRICK_ROAD_STAIRS = register("brick_road_stairs", () -> new PathStairBlock(() -> BRICK_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE), 1.3f));
 
     public static final RegistryObject<Block> CONCRETE_ROAD = register("concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_PANEL = register("concrete_road_panel", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_SETT = register("concrete_road_sett", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_FLAGSTONES = register("concrete_road_flagstones", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+
+
     public static final RegistryObject<Block> TRODDEN_CONCRETE_ROAD = register("trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.1f));
     public static final RegistryObject<Block> CRACKED_CONCRETE_ROAD = register("cracked_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.2f));
     public static final RegistryObject<Block> CRACKED_TRODDEN_CONCRETE_ROAD = register("cracked_trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
@@ -107,8 +112,9 @@ public class RNRBlocks
     public static final RegistryObject<Block> TRODDEN_WET_CONCRETE_ROAD = register("trodden_wet_concrete_road", () -> new CrackingWetConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
     public static final RegistryObject<Block> WET_CONCRETE_ROAD_CONTROL_JOINT = register("wet_concrete_road_control_joint", () -> new WetConcretePathControlJointBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
 
-
-
+    public static final RegistryObject<Block> WET_CONCRETE_ROAD_PANEL = register("wet_concrete_road_panel", () -> new WetConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).mapColor(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
+    public static final RegistryObject<Block> WET_CONCRETE_ROAD_SETT = register("wet_concrete_road_sett", () -> new WetConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).mapColor(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
+    public static final RegistryObject<Block> WET_CONCRETE_ROAD_FLAGSTONES = register("wet_concrete_road_flagstones", () -> new WetConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).mapColor(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD).randomTicks().blockEntity(TFCBlockEntities.TICK_COUNTER)));
 
     public static final BlockBehaviour.Properties ROOF_PROPERTIES = ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties();
 

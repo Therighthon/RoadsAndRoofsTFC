@@ -17,7 +17,10 @@
 	"#rnr:gravel_road_slabs",
 	"#rnr:macadam_road_slabs",
 	"#rnr:cobbled_road_slabs",
-	
+	"#rnr:dry_concrete_roads",
+	"#rnr:dry_concrete_road_stairs",
+	"#rnr:dry_concrete_road_slabs",
+	"#rnr:wet_concrete_roads",
 	"rnr:base_course",
 	"rnr:hoggin",
 	"rnr:hoggin_slab",

@@ -109,7 +109,6 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
 
     rm.crafting_shapeless('crafting/concrete_powder', ('rnr:crushed_base_course', 'tfc:powder/lime'), (1, 'rnr:concrete_powder'))
 
-
     # ============================
     # Collapse / Landslide Recipes
     # ============================
@@ -132,8 +131,8 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
             # Loot
             for suffix in SUFFIXES:
                 rm.block(('rock', type, '%s%s' % (rock, suffix))).with_block_loot(({
-                                                                          'name': 'rnr:rock/%s/%s%s' % (type, rock, suffix)
-                                                                              }))
+                    'name': 'rnr:rock/%s/%s%s' % (type, rock, suffix)
+                }))
 
         rm.block(('rock', 'over_height_gravel', rock)).with_block_loot(({
             'name': 'rnr:rock/%s/%s' % ('over_height_gravel', rock)
@@ -143,8 +142,8 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         landslide_recipe(rm, '%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand)
         for suffix in SUFFIXES:
             rm.block((sand + '_sandstone_flagstones' + suffix)).with_block_loot(({
-                                                                                                  'name': 'rnr:%s_sandstone_flagstones%s' % (sand, suffix)
-                                                                                              }))
+                'name': 'rnr:%s_sandstone_flagstones%s' % (sand, suffix)
+            }))
 
     rm.block(('base_course')).with_block_loot(({
         'name': 'rnr:base_course'
@@ -159,8 +158,8 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         'name': 'rnr:brick_road_stairs'
     }))
     rm.block(('hoggin')).with_block_loot(({
-                                              'name': 'rnr:hoggin'
-                                          }))
+        'name': 'rnr:hoggin'
+    }))
     rm.block(('hoggin_slab')).with_block_loot(({
         'name': 'rnr:hoggin_slab'
     }))
@@ -175,20 +174,35 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
             'name': 'tfc:mud/%s' % dirt
         }))
 
-    landslide_recipe(rm, 'base_course', 'rnr:base_course', 'rnr:base_course')
-    landslide_recipe(rm, 'brick_road', 'rnr:brick_road', 'rnr:brick_road')
-    landslide_recipe(rm, 'base_course', 'rnr:base_course', 'rnr:base_course')
-    landslide_recipe(rm, 'hoggin', 'rnr:hoggin', 'rnr:hoggin')
-    landslide_recipe(rm, 'tamped_peat', 'rnr:tamped_peat', 'rnr:tamped_peat')
-    landslide_recipe(rm, 'tamped_kaolin', 'rnr:tamped_kaolin', 'rnr:tamped_kaolin')
-    landslide_recipe(rm, 'tamped_silt', 'rnr:tamped_silt', 'rnr:tamped_silt')
-    landslide_recipe(rm, 'tamped_silty_loam', 'rnr:tamped_silty_loam', 'rnr:tamped_silty_loam')
-    landslide_recipe(rm, 'tamped_sandy_loam', 'rnr:tamped_sandy_loam', 'rnr:tamped_sandy_loam')
-    landslide_recipe(rm, 'tamped_loam', 'rnr:tamped_loam', 'rnr:tamped_loam')
-    landslide_recipe(rm, 'tamped_silt_mud', 'rnr:tamped_silt_mud', 'rnr:tamped_silt_mud')
-    landslide_recipe(rm, 'tamped_silty_loam_mud', 'rnr:tamped_silty_loam_mud', 'rnr:tamped_silty_loam_mud')
-    landslide_recipe(rm, 'tamped_sandy_loam_mud', 'rnr:tamped_sandy_loam_mud', 'rnr:tamped_sandy_loam_mud')
-    landslide_recipe(rm, 'tamped_loam_mud', 'rnr:tamped_loam_mud', 'rnr:tamped_loam_mud')
+    simple_landslide_recipe(rm, 'base_course')
+    simple_landslide_recipe(rm, 'base_course')
+    simple_landslide_recipe(rm, 'tamped_peat')
+    simple_landslide_recipe(rm, 'tamped_kaolin')
+    simple_landslide_recipe(rm, 'tamped_silt')
+    simple_landslide_recipe(rm, 'tamped_silty_loam')
+    simple_landslide_recipe(rm, 'tamped_sandy_loam')
+    simple_landslide_recipe(rm, 'tamped_loam')
+    simple_landslide_recipe(rm, 'tamped_silt_mud')
+    simple_landslide_recipe(rm, 'tamped_silty_loam_mud')
+    simple_landslide_recipe(rm, 'tamped_sandy_loam_mud')
+    simple_landslide_recipe(rm, 'tamped_loam_mud')
+
+    simple_road_landslide_recipe(rm, 'brick_road')
+    simple_road_landslide_recipe(rm, 'hoggin')
+    simple_concrete_road_landslide_recipe(rm, 'concrete_road')
+    simple_road_landslide_recipe(rm, 'cracked_concrete_road')
+    simple_concrete_road_landslide_recipe(rm, 'trodden_concrete_road')
+    simple_road_landslide_recipe(rm, 'cracked_trodden_concrete_road')
+    simple_concrete_road_landslide_recipe(rm, 'concrete_road_panel')
+    simple_concrete_road_landslide_recipe(rm, 'concrete_road_sett')
+    simple_concrete_road_landslide_recipe(rm, 'concrete_road_flagstones')
+    landslide_recipe(rm, 'wet_concrete_road', 'rnr:wet_concrete_road', 'rnr:base_course')
+    landslide_recipe(rm, 'trodden_wet_concrete_road', 'rnr:trodden_wet_concrete_road', 'rnr:base_course')
+    landslide_recipe(rm, 'wet_concrete_road_control_joint', 'rnr:wet_concrete_road_control_joint', 'rnr:base_course')
+    landslide_recipe(rm, 'wet_concrete_road_panel', 'rnr:wet_concrete_road_panel', 'rnr:base_course')
+    landslide_recipe(rm, 'wet_concrete_road_sett', 'rnr:wet_concrete_road_sett', 'rnr:base_course')
+    landslide_recipe(rm, 'wet_concrete_road_flagstones', 'rnr:wet_concrete_road_flagstones', 'rnr:base_course')
+
     # TRIGGERS include raw, hardened, and ores
     # STARTS include raw, ores
     # COLLAPSIBLE includes raw, hardened, ores (lossy), bricks, smooth, spikes (special)
@@ -220,7 +234,6 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     # Barrel
     barrel_instant_recipe(rm, 'concrete_from_powder', 'rnr:concrete_powder', '100 minecraft:water', output_fluid='100 rnr:concrete')
 
-
     # ============
     # Block Mod Recipes
     # ============
@@ -242,10 +255,68 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         block_mod_recipe(rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
         block_mod_recipe(rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
 
+        rm.block_loot('rnr:wood/shingles/%s' % wood, 'rnr:wood/shingles/%s' % wood)
+        slab_loot(rm, 'rnr:wood/shingles/%s_slab' % wood)
+        rm.block_loot('rnr:wood/shingles/%s_stairs' % wood, 'rnr:wood/shingles/%s_stairs' % wood)
+
     for wood in AFC_WOODS.keys():
         block_mod_recipe(afc_rm, '%s_shingle_roof' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame', 'rnr:wood/shingles/%s' % wood)
         block_mod_recipe(afc_rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
         block_mod_recipe(afc_rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
+
+        afc_rm.block_loot('rnr:wood/shingles/%s' % wood, 'rnr:wood/shingles/%s' % wood)
+        slab_loot(afc_rm, 'rnr:wood/shingles/%s_slab' % wood)
+        afc_rm.block_loot('rnr:wood/shingles/%s_stairs' % wood, 'rnr:wood/shingles/%s_stairs' % wood)
+
+    rm.block_loot('rnr:ceramic_roof', 'rnr:ceramic_roof')
+    slab_loot(rm, 'rnr:ceramic_roof_slab')
+    rm.block_loot('rnr:ceramic_roof_stairs', 'rnr:ceramic_roof_stairs')
+
+    rm.block_loot('rnr:terracotta_roof', 'rnr:terracotta_roof')
+    slab_loot(rm, 'rnr:terracotta_roof_slab')
+    rm.block_loot('rnr:terracotta_roof_stairs', 'rnr:terracotta_roof_stairs')
+
+    rm.block_loot('rnr:thatch_roof', 'rnr:thatch_roof')
+    slab_loot(rm, 'rnr:thatch_roof_slab')
+    rm.block_loot('rnr:thatch_roof_stairs', 'rnr:thatch_roof_stairs')
+
+    rm.block_loot('rnr:roof_frame', 'rnr:roof_frame')
+    slab_loot(rm, 'rnr:roof_frame_slab')
+    rm.block_loot('rnr:roof_frame_stairs', 'rnr:roof_frame_stairs')
+
+    def self_loot(rm: ResourceManager, block: str):
+        rm.block_loot(block, block)
+
+    self_loot(rm, 'rnr:concrete_road')
+    self_loot(rm, 'rnr:concrete_road_slab')
+    self_loot(rm, 'rnr:concrete_road_stairs')
+    self_loot(rm, 'rnr:concrete_road_panel')
+    self_loot(rm, 'rnr:concrete_road_panel_slab')
+    self_loot(rm, 'rnr:concrete_road_panel_stairs')
+    self_loot(rm, 'rnr:concrete_road_sett')
+    self_loot(rm, 'rnr:concrete_road_sett_slab')
+    self_loot(rm, 'rnr:concrete_road_sett_stairs')
+    self_loot(rm, 'rnr:concrete_road_flagstones')
+    self_loot(rm, 'rnr:concrete_road_flagstones_slab')
+    self_loot(rm, 'rnr:concrete_road_flagstones_stairs')
+    self_loot(rm, 'rnr:trodden_concrete_road')
+    self_loot(rm, 'rnr:trodden_concrete_road_slab')
+    self_loot(rm, 'rnr:trodden_concrete_road_stairs')
+    self_loot(rm, 'rnr:cracked_trodden_concrete_road')
+    self_loot(rm, 'rnr:cracked_trodden_concrete_road_slab')
+    self_loot(rm, 'rnr:cracked_trodden_concrete_road_stairs')
+    self_loot(rm, 'rnr:cracked_concrete_road')
+    self_loot(rm, 'rnr:cracked_concrete_road_slab')
+    self_loot(rm, 'rnr:cracked_concrete_road_stairs')
+    self_loot(rm, 'rnr:concrete_road_control_joint')
+
+    rm.block_loot('rnr:wet_concrete_road', 'rnr:base_course')
+    rm.block_loot('rnr:wet_concrete_road_panel', 'rnr:base_course')
+    rm.block_loot('rnr:wet_concrete_road_sett', 'rnr:base_course')
+    rm.block_loot('rnr:wet_concrete_road_flagstones', 'rnr:base_course')
+    rm.block_loot('rnr:wet_concrete_road_control_joint', 'rnr:base_course')
+    rm.block_loot('rnr:trodden_wet_concrete_road', 'rnr:base_course')
+    rm.block_loot('rnr:pouring_concrete_road', 'rnr:base_course')
 
     for rock in ROCKS.keys():
         block_mod_recipe(rm, rock + '_flagstones', 'rnr:flagstone/' + rock, 'rnr:base_course', 'rnr:rock/flagstones/' + rock)
@@ -340,6 +411,7 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     block_mod_recipe(rm, 'pouring_concrete', fluid_item_ingredient('1000 rnr:concrete'), 'rnr:base_course', 'rnr:pouring_concrete_road')
 
 
+
     # ============
     # Chisel Recipes
     # ============
@@ -347,6 +419,7 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     def chisel_stair_slab(name: str, ingredient: str):
         chisel_recipe(rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
         chisel_recipe(rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
+
     def afc_chisel_stair_slab(name: str, ingredient: str):
         chisel_recipe(afc_rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
         chisel_recipe(afc_rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
@@ -379,6 +452,17 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     mattock_stair_slab('brick_road', 'rnr:brick_road')
     for sand in SAND_BLOCK_TYPES:
         mattock_stair_slab(sand + '_sandstone_flagstones', 'rnr:%s_sandstone_flagstones' % sand)
+
+    mattock_stair_slab('concrete_road', 'rnr:concrete_road')
+    mattock_stair_slab('concrete_road_panel', 'rnr:concrete_road_panel')
+    mattock_stair_slab('concrete_road_sett', 'rnr:concrete_road_sett')
+    mattock_stair_slab('concrete_road_flagstones', 'rnr:concrete_road_flagstones')
+    mattock_stair_slab('trodden_concrete_road', 'rnr:trodden_concrete_road')
+    mattock_stair_slab('cracked_trodden_concrete_road', 'rnr:cracked_trodden_concrete_road')
+
+    mattock_recipe(rm, 'concrete_road_control_joint_stairs', 'rnr:concrete_road_control_joint', 'rnr:concrete_road_stairs', 'stair')
+    mattock_recipe(rm, 'concrete_road_control_joint_slab', 'rnr:concrete_road_control_joint', 'rnr:concrete_road_slab', 'slab')
+
 
     for soil in SOIL_BLOCK_VARIANTS:
         for block_type in SOIL_DRY_BLOCK_TYPES:
@@ -425,6 +509,12 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         if 'tool' in metal_data.types:
             anvil_recipe(rm, '%s_mattock_head' % metal, item_tag('forge', 'ingot'), item('mattock_head'), metal_data.tier, Rules.punch_last, Rules.punch_not_last, Rules.bend_not_last, bonus=True)
 
+    for metal, metal_data in METALS.items():
+        melt_metal = metal if metal_data.melt_metal is None else metal_data.melt_metal
+        for item, item_data in METAL_ITEMS.items():
+            if item_data.type == 'all' or item_data.type in metal_data.types:
+                heat_recipe(rm, ('metal', '%s_%s' % (metal, item)), 'rnr:metal/%s/%s' % (item, metal), metal_data.melt_temperature, None, '%d tfc:metal/%s' % (item_data.smelt_amount, melt_metal), use_durability=item_data.durability)
+
 
 def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredients: Json, fluid: str, output_fluid: str = None, output_items: Json = None, duration: int = 2000, temp: int = 300):
     rm.recipe(('pot', name_parts), 'tfc:pot', {
@@ -458,6 +548,20 @@ def landslide_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, 
     })
 
 
+def simple_landslide_recipe(rm: ResourceManager, block: str, mod_id: str = "rnr"):
+    landslide_recipe(rm, block, mod_id + ":" + block, mod_id + ":" + block)
+
+def simple_road_landslide_recipe(rm: ResourceManager, block: str, mod_id: str = "rnr"):
+    simple_landslide_recipe(rm, block, mod_id)
+    simple_landslide_recipe(rm, block + "_slab", mod_id)
+    landslide_recipe(rm, block + "_stairs", mod_id + ":" + block + "_stairs", mod_id + ":" + block + "_slab")
+
+def simple_concrete_road_landslide_recipe(rm: ResourceManager, block: str, mod_id: str = "rnr"):
+    landslide_recipe(rm, block, mod_id + ":" + block, "rnr:cracked_concrete_road")
+    landslide_recipe(rm, block + "_slab", mod_id + ":" + block + "_slab", "rnr:cracked_concrete_road_slab")
+    landslide_recipe(rm, block + "_stairs", mod_id + ":" + block + "_stairs", "rnr:cracked_concrete_road_slab")
+
+
 def chisel_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: utils.Json, result: str, mode: str):
     rm.recipe(('chisel', mode, name_parts), 'tfc:chisel', {
         'ingredient': ingredient,
@@ -475,6 +579,7 @@ def mattock_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, in
         'extra_drop': None
     })
 
+
 def block_mod_recipe_not_consumed(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: str, input_block: utils.Json, result: str):
     rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {
         'input_item': utils.ingredient(input_item),
@@ -482,6 +587,7 @@ def block_mod_recipe_not_consumed(rm: ResourceManager, name_parts: utils.Resourc
         'output_block': result,
         'consume_ingredient': False
     })
+
 
 def block_mod_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: str, input_block: utils.Json, result: str):
     rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {
@@ -920,3 +1026,15 @@ def has_trait(ingredient: Json, trait: str, invert: bool = False) -> Json:
 
 def lacks_trait(ingredient: Json, trait: str) -> Json:
     return has_trait(ingredient, trait, True)
+
+
+def slab_loot(rm: ResourceManager, loot: str):
+    return rm.block_loot(loot, {
+        'name': loot,
+        'functions': [{
+            'function': 'minecraft:set_count',
+            'conditions': [loot_tables.block_state_property(loot + '[type=double]')],
+            'count': 2,
+            'add': False
+        }]
+    })

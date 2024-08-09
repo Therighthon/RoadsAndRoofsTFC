@@ -96,14 +96,33 @@ public class RNRBlocks
     public static final RegistryObject<Block> BRICK_ROAD_STAIRS = register("brick_road_stairs", () -> new PathStairBlock(() -> BRICK_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE), 1.3f));
 
     public static final RegistryObject<Block> CONCRETE_ROAD = register("concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_SLAB = register("concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+    public static final RegistryObject<Block> CONCRETE_ROAD_STAIRS = register("concrete_road_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+
     public static final RegistryObject<Block> CONCRETE_ROAD_PANEL = register("concrete_road_panel", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_PANEL_SLAB = register("concrete_road_panel_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+    public static final RegistryObject<Block> CONCRETE_ROAD_PANEL_STAIRS = register("concrete_road_panel_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD_PANEL.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+
     public static final RegistryObject<Block> CONCRETE_ROAD_SETT = register("concrete_road_sett", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_SETT_SLAB = register("concrete_road_sett_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+    public static final RegistryObject<Block> CONCRETE_ROAD_SETT_STAIRS = register("concrete_road_sett_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD_SETT.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+
     public static final RegistryObject<Block> CONCRETE_ROAD_FLAGSTONES = register("concrete_road_flagstones", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> CONCRETE_ROAD_FLAGSTONES_SLAB = register("concrete_road_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
+    public static final RegistryObject<Block> CONCRETE_ROAD_FLAGSTONES_STAIRS = register("concrete_road_flagstones_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.3f));
 
+    public static final RegistryObject<Block> TRODDEN_CONCRETE_ROAD = register("trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
+    public static final RegistryObject<Block> TRODDEN_CONCRETE_ROAD_SLAB = register("trodden_concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
+    public static final RegistryObject<Block> TRODDEN_CONCRETE_ROAD_STAIRS = register("trodden_concrete_road_stairs", () -> new PathStairBlock(() -> TRODDEN_CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
 
-    public static final RegistryObject<Block> TRODDEN_CONCRETE_ROAD = register("trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.1f));
-    public static final RegistryObject<Block> CRACKED_CONCRETE_ROAD = register("cracked_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.2f));
-    public static final RegistryObject<Block> CRACKED_TRODDEN_CONCRETE_ROAD = register("cracked_trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
+    public static final RegistryObject<Block> CRACKED_CONCRETE_ROAD = register("cracked_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
+    public static final RegistryObject<Block> CRACKED_CONCRETE_ROAD_SLAB = register("cracked_concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
+    public static final RegistryObject<Block> CRACKED_CONCRETE_ROAD_STAIRS = register("cracked_concrete_road_stairs", () -> new PathStairBlock(() -> CRACKED_CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 1.0f));
+
+    public static final RegistryObject<Block> CRACKED_TRODDEN_CONCRETE_ROAD = register("cracked_trodden_concrete_road", () -> new ConcretePathBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 0.9f));
+    public static final RegistryObject<Block> CRACKED_TRODDEN_CONCRETE_ROAD_SLAB = register("cracked_trodden_concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 0.9f));
+    public static final RegistryObject<Block> CRACKED_TRODDEN_CONCRETE_ROAD_STAIRS = register("cracked_trodden_concrete_road_stairs", () -> new PathStairBlock(() -> CRACKED_TRODDEN_CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE), 0.9f));
+
     public static final RegistryObject<Block> CONCRETE_ROAD_CONTROL_JOINT = register("concrete_road_control_joint", () -> new ConcretePathControlJointBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> POURING_CONCRETE_ROAD = register("pouring_concrete_road", () -> new PouringConcretePathBlock(ExtendedProperties.of(MapColor.COLOR_GRAY).mapColor(MapColor.COLOR_GRAY).strength(2.5F).sound(SoundType.MUD)));

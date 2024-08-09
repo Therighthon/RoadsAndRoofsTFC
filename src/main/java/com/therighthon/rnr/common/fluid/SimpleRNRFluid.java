@@ -6,7 +6,7 @@ import net.minecraft.util.StringRepresentable;
 public enum SimpleRNRFluid implements StringRepresentable
 {
 
-    CONCRETE(0xBBDCDCDC);
+    CONCRETE(0xFFDCDCDC);
 
     private final String id;
     private final int color;
@@ -35,7 +35,7 @@ public enum SimpleRNRFluid implements StringRepresentable
 
     public boolean isTransparent()
     {
-        return true;
+        return false;
     }
 
 }

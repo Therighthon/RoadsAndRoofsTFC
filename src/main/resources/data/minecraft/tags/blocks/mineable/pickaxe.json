@@ -9,6 +9,9 @@
 	"#rnr:cobbled_road_stairs",
 	"#rnr:sett_road_slabs",
 	"#rnr:flagstones_slabs",
-	"#rnr:cobbled_road_slabs"
+	"#rnr:cobbled_road_slabs",
+	"#rnr:dry_concrete_roads",
+	"#rnr:dry_concrete_road_stairs",
+	"#rnr:dry_concrete_road_slabs"
   ]
 }

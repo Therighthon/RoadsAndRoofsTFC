@@ -42,6 +42,7 @@ public class RNRCreativeModeTabs
     private static void fillTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output out)
     {
         out.accept(RNRItems.CRUSHED_BASE_COURSE.get());
+        out.accept(RNRBlocks.BASE_COURSE.get());
         out.accept(RNRItems.HOGGIN_MIX.get());
 
         out.accept(RNRItems.MATTOCKS.get(Metal.Default.COPPER).get());
@@ -150,6 +151,22 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.CONCRETE_ROAD_PANEL.get());
         out.accept(RNRBlocks.CONCRETE_ROAD_SETT.get());
         out.accept(RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get());
+
+        out.accept(RNRBlocks.CONCRETE_ROAD_STAIRS.get());
+        out.accept(RNRBlocks.CRACKED_CONCRETE_ROAD_STAIRS.get());
+        out.accept(RNRBlocks.TRODDEN_CONCRETE_ROAD_STAIRS.get());
+        out.accept(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD_STAIRS.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_PANEL_STAIRS.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_SETT_STAIRS.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_FLAGSTONES_STAIRS.get());
+
+        out.accept(RNRBlocks.CONCRETE_ROAD_SLAB.get());
+        out.accept(RNRBlocks.CRACKED_CONCRETE_ROAD_SLAB.get());
+        out.accept(RNRBlocks.TRODDEN_CONCRETE_ROAD_SLAB.get());
+        out.accept(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD_SLAB.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_PANEL_SLAB.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_SETT_SLAB.get());
+        out.accept(RNRBlocks.CONCRETE_ROAD_FLAGSTONES_SLAB.get());
 
         out.accept(RNRBlocks.ROOF_FRAME.get());
         out.accept(RNRBlocks.ROOF_FRAME_SLAB.get());

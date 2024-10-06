@@ -2,7 +2,7 @@ package com.therighthon.rnr.common.block;
 
 public class ConcretePathBlock extends PathHeightBlock
 {
-    private static final float defaultSpeedFactor = 1.3f;
+    private static final float defaultSpeedFactor = 1.0f; //1.3f;
 
     public static float getDefaultSpeedFactor()
     {

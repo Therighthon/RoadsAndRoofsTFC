@@ -4,7 +4,7 @@ import net.dries007.tfc.util.Helpers;
 
 public class HogginBlock extends PathHeightBlock
 {
-    private static final float speedFactor = 1.1f;
+    private static final float speedFactor = 1.0f; // 1.1f;
 
     public static float getDefaultSpeedFactor()
     {

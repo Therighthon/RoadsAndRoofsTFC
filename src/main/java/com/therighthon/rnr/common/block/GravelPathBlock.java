@@ -3,7 +3,7 @@ package com.therighthon.rnr.common.block;
 //Full height block
 public class GravelPathBlock extends PathHeightBlock
 {
-    private static final float speedFactor = 1.1f;
+    private static final float speedFactor = 1.0f; //1.1f;
 
     public static float getDefaultSpeedFactor()
     {

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+	"rnr:concrete_road_slab",
+	"rnr:concrete_road_sett_slab",
+	"rnr:concrete_road_panel_slab",
+	"rnr:concrete_road_flagstones_slab"
+  ]
+}

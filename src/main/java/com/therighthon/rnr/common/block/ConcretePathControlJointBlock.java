@@ -21,7 +21,7 @@ import net.dries007.tfc.common.blocks.ExtendedProperties;
 
 public class ConcretePathControlJointBlock extends PathHeightBlock
 {
-    private static final float defaultSpeedFactor = 1.3f;
+    private static final float defaultSpeedFactor = 1.0f; // 1.3f;
 
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     public static final BooleanProperty CONNECT_NORTH_OR_EAST = RNRBlockStateProperties.NORTH_EAST;

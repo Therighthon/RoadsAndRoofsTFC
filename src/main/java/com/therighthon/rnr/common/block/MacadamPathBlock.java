@@ -3,7 +3,7 @@ package com.therighthon.rnr.common.block;
 
 public class MacadamPathBlock extends PathHeightBlock
 {
-    private static final float speedFactor = 1.2f;
+    private static final float speedFactor = 1.0f; // 1.2f;
 
     public static float getDefaultSpeedFactor()
     {

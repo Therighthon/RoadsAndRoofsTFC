@@ -1,0 +1,10 @@
+loam
+sandy_loam
+silty_loam
+silt
+loam_mud
+sandy_loam_mud
+silty_loam_mud
+silt_mud
+kaolin
+peat

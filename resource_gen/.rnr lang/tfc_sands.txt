@@ -1,0 +1,7 @@
+black
+brown
+green
+pink
+red
+white
+yellow

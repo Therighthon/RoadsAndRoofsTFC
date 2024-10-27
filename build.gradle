@@ -89,12 +89,12 @@ minecraft {
 
     runs {
         all {
-            arg "-mixin.config=rnr.mixins.json"
+//            arg "-mixin.config=rnr.mixins.json"
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+//            property 'mixin.env.remapRefMap', 'true'
+//            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 rnr {
@@ -115,11 +115,11 @@ minecraft {
     }
 }
 
-mixin {
-    // MixinGradle Settings
-    add sourceSets.main, 'rnr.refmap.json'
-    //If you get duplicate refmap error, delete the existing refmap file, a new one should generate on build.
-}
+//mixin {
+//    // MixinGradle Settings
+////    add sourceSets.main, 'rnr.refmap.json'
+//    //If you get duplicate refmap error, delete the existing refmap file, a new one should generate on build.
+//}
 
 // Example for how to get properties into the manifest for reading at runtime.
 tasks {
@@ -132,8 +132,8 @@ tasks {
                     "Implementation-Title"    : project.name,
                     "Implementation-Version"  : project.jar.archiveVersion,
                     "Implementation-Vendor"   : mod_authors,
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                    "MixinConfigs":"rnr.mixins.json"
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                    // "MixinConfigs":"rnr.mixins.json"
             ])
         }
     }

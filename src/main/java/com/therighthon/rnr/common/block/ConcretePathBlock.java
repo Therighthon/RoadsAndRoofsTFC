@@ -1,8 +1,10 @@
 package com.therighthon.rnr.common.block;
 
+import com.therighthon.rnr.RoadsAndRoofs;
+
 public class ConcretePathBlock extends PathHeightBlock
 {
-    private static final float defaultSpeedFactor = 1.3f;
+    private static final float defaultSpeedFactor = RoadsAndRoofs.FAST_PATH_SPEED;
 
     public static float getDefaultSpeedFactor()
     {

@@ -27,6 +27,12 @@ public class RoadsAndRoofs
 {
     public static final String MOD_ID = "rnr";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final boolean BLOCK_RUNNER_LOADED = ModList.get().isLoaded("blockrunner");
+    public static final float DAMAGED_PATH_SPEED = BLOCK_RUNNER_LOADED ? 1.0f : 0.9f;
+    public static final float SLOW_PATH_SPEED = BLOCK_RUNNER_LOADED ? 1.0f : 1.08f;
+    public static final float NORMAL_PATH_SPEED = BLOCK_RUNNER_LOADED ? 1.0f : 1.15f;
+    public static final float FAST_PATH_SPEED = BLOCK_RUNNER_LOADED ? 1.0f : 1.2f;
+
 
     public RoadsAndRoofs()
     {

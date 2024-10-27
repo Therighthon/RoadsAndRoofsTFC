@@ -1,0 +1,7 @@
+//Last one. I could have just done all the mattocks using the mattock tag but I realised halfway through. Oh well. Now you can tweak them indiviually if you want.
+{
+  "ingredient": {
+    "item": "rnr:metal/mattock_head/blue_steel"
+  },
+  "heat_capacity": 2.857
+}

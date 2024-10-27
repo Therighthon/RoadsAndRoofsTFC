@@ -34,6 +34,9 @@
 	"rnr:tamped_silt_mud",
 	"rnr:tamped_silty_loam_mud",
 	"rnr:tamped_sandy_loam_mud",
-	"rnr:tamped_loam_mud"
+	"rnr:tamped_loam_mud",
+	"rnr:wet_concrete_road_panel",
+	"rnr:wet_concrete_road_flagstones",
+	"rnr:wet_concrete_road_sett"  
   ]
 }

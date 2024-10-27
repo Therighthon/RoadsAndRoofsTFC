@@ -1,0 +1,7 @@
+//This is the real steel.
+{
+  "ingredient": {
+    "item": "rnr:metal/mattock/steel"
+  },
+  "heat_capacity": 2.857
+}

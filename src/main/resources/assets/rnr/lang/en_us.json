@@ -600,6 +600,7 @@
   "tfc.jei.mattock": "Mattock",
   "config.jade.plugin_tfc.wet_concrete": "Wet Concrete",
   "rnr.jade.will_crack": "Will crack when dry",
-  "rnr.jade.will_not_crack": "Will not crack"
+  "rnr.jade.will_not_crack": "Will not crack",
+  "item.rnr.crushed_base_course": "Crushed Base Course"
 
 }

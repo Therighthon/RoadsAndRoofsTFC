@@ -1,0 +1,7 @@
+//Fun fact: All the tfc tools have the exact same heat capacity, regardless of their material.
+{
+  "ingredient": {
+    "item": "rnr:metal/mattock_head/wrought_iron"
+  },
+  "heat_capacity": 2.857
+}

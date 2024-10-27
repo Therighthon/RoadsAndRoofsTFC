@@ -1,9 +1,11 @@
 package com.therighthon.rnr.common.block;
 
+import com.therighthon.rnr.RoadsAndRoofs;
+
 //Full height block
 public class GravelPathBlock extends PathHeightBlock
 {
-    private static final float speedFactor = 1.0f; //1.1f;
+    private static final float speedFactor = RoadsAndRoofs.SLOW_PATH_SPEED;
 
     public static float getDefaultSpeedFactor()
     {

@@ -11,15 +11,15 @@
       "type": "patchouli:crafting",
       "anchor": "gneiss_flagstones",
       "recipe": "rnr:crafting/flagstone/gneiss",
-      "title": "制作铺路石",
-      "text": "铺路石可由平滑石头或砂岩方块制作。."
+      "title": "制作铺路砖",
+      "text": "铺路砖可由平滑石头或砂岩方块制作。."
     },
 	{
       "type": "patchouli:crafting",
       "anchor": "pink_sandstone_flagstones",
       "recipe": "rnr:crafting/flagstone/pink_sandstone",
-      "title": "制作铺路石",
-      "text": "铺路石可由平滑石头或砂岩方块制作。"
+      "title": "制作铺路砖",
+      "text": "铺路砖可由平滑石头或砂岩方块制作。"
     },
 	{
 		"type": "patchouli:image",

@@ -2,6 +2,7 @@ package com.therighthon.rnr.common.recipe;
 
 import com.google.gson.JsonObject;
 import com.therighthon.rnr.RoadsAndRoofs;
+import java.util.Optional;
 import javax.annotation.Nullable;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -13,15 +14,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import net.dries007.tfc.common.recipes.SimpleBlockRecipe;
+import net.dries007.tfc.common.recipes.BlockRecipe;
 import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 
-import net.dries007.tfc.util.JsonHelpers;
 import net.dries007.tfc.util.collections.IndirectHashCollection;
 
-public class BlockModRecipe extends SimpleBlockRecipe
+public class BlockModRecipe extends BlockRecipe
 {
     private final ResourceLocation id;
     private final BlockIngredient inputBlock;
@@ -29,13 +28,13 @@ public class BlockModRecipe extends SimpleBlockRecipe
     private final Ingredient inputItem;
     private final Boolean consumesItem;
 
-    public BlockModRecipe(ResourceLocation id, Ingredient inputItem, BlockIngredient inputBlock, BlockState outputBlock, Boolean consumesItem)
+    public BlockModRecipe(ResourceLocation id, Ingredient inputItem, BlockIngredient inputBlock, Optional<BlockState> outputBlock, Boolean consumesItem)
     {
-        super(id, inputBlock, outputBlock, false);
+        super(inputBlock, outputBlock);
         this.id = id;
         this.inputItem = inputItem;
         this.inputBlock = inputBlock;
-        this.outputBlock = outputBlock;
+        this.outputBlock = outputBlock.get() != null ? outputBlock.get() : inputBlock.blocks().get(0).defaultBlockState();
         this.consumesItem = consumesItem;
     }
 

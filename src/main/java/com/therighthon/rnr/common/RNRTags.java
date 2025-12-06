@@ -7,8 +7,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-import net.dries007.tfc.util.Helpers;
-
 public class RNRTags
 {
     public static class Blocks

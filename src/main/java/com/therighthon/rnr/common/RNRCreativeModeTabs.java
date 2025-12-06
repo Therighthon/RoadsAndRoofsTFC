@@ -16,9 +16,9 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.common.blocks.rock.Rock;
@@ -31,13 +31,8 @@ public class RNRCreativeModeTabs
 {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, com.therighthon.rnr.RoadsAndRoofs.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> RNR_TAB = CREATIVE_TABS.register("rnr.creative_tab.roads_and_roofs",
-        () -> CreativeModeTab.builder()
-            .title(Component.translatable("roads_and_roofs"))
-            .icon(() -> new ItemStack(RNRItems.MATTOCKS.get(Metal.Default.BISMUTH_BRONZE).get()))
-            .displayItems(RNRCreativeModeTabs::fillTab)
-            .build()
-    );
+    public static final Id RNR_TAB = register("roads_and_roofs", () -> new ItemStack(RNRItems.HOGGIN_MIX), RNRCreativeModeTabs::fillTab);
+
 
     private static void fillTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output out)
     {
@@ -45,25 +40,25 @@ public class RNRCreativeModeTabs
         out.accept(RNRBlocks.BASE_COURSE.get());
         out.accept(RNRItems.HOGGIN_MIX.get());
 
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.COPPER).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.BRONZE).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.BISMUTH_BRONZE).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.BLACK_BRONZE).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.WROUGHT_IRON).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.STEEL).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.BLACK_STEEL).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.RED_STEEL).get());
-        out.accept(RNRItems.MATTOCKS.get(Metal.Default.BLUE_STEEL).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.COPPER).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.BRONZE).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.BISMUTH_BRONZE).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.BLACK_BRONZE).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.WROUGHT_IRON).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.STEEL).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.BLACK_STEEL).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.RED_STEEL).get());
+        out.accept(RNRItems.MATTOCKS.get(Metal.BLUE_STEEL).get());
 
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.COPPER).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.BRONZE).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.BISMUTH_BRONZE).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.BLACK_BRONZE).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.WROUGHT_IRON).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.STEEL).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.BLACK_STEEL).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.RED_STEEL).get());
-        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.Default.BLUE_STEEL).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.COPPER).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.BRONZE).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.BISMUTH_BRONZE).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.BLACK_BRONZE).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.WROUGHT_IRON).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.STEEL).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.BLACK_STEEL).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.RED_STEEL).get());
+        out.accept(RNRItems.MATTOCK_HEADS.get(Metal.BLUE_STEEL).get());
 
 
         out.accept(RNRBlocks.HOGGIN.get());
@@ -199,7 +194,7 @@ public class RNRCreativeModeTabs
             for (AFCWood wood : AFCWood.VALUES)
             {
                 out.accept(AFCCompatItems.WOOD_SHINGLE.get(wood).get());
-                out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
+                out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood));
                 out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
                 out.accept(AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());
             }
@@ -233,5 +228,31 @@ public class RNRCreativeModeTabs
             return;
         }
         out.accept(reg.get());
+    }
+
+    //Helpers from TFC
+    private static RNRCreativeModeTabs.Id register(String name, Supplier<ItemStack> icon, CreativeModeTab.DisplayItemsGenerator displayItems)
+    {
+        final var holder = CREATIVE_TABS.register(name, () -> CreativeModeTab.builder()
+            .icon(icon)
+            .title(Component.translatable("rnr.creative_tab." + name))
+            .displayItems(displayItems)
+            .build());
+        return new RNRCreativeModeTabs.Id(holder, displayItems);
+    }
+
+    public static record Id(DeferredHolder<CreativeModeTab, CreativeModeTab> tab, CreativeModeTab.DisplayItemsGenerator generator) {
+        public Id(DeferredHolder<CreativeModeTab, CreativeModeTab> tab, CreativeModeTab.DisplayItemsGenerator generator) {
+            this.tab = tab;
+            this.generator = generator;
+        }
+
+        public DeferredHolder<CreativeModeTab, CreativeModeTab> tab() {
+            return this.tab;
+        }
+
+        public CreativeModeTab.DisplayItemsGenerator generator() {
+            return this.generator;
+        }
     }
 }

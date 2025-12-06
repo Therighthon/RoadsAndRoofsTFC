@@ -1,7 +1,6 @@
 package com.therighthon.rnr.common.block;
 
 import com.therighthon.rnr.RoadsAndRoofs;
-import net.minecraftforge.fml.ModList;
 
 public class StonePathBlock extends PathHeightBlock
 {

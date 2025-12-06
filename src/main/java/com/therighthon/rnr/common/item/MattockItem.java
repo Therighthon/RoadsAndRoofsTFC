@@ -19,11 +19,11 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 import net.dries007.tfc.common.TFCTags;
-import net.dries007.tfc.common.capabilities.player.PlayerDataCapability;
 import net.dries007.tfc.common.items.ToolItem;
+import net.dries007.tfc.common.player.IPlayerInfo;
 import net.dries007.tfc.common.recipes.CollapseRecipe;
 import net.dries007.tfc.config.TFCConfig;
 import net.dries007.tfc.util.Helpers;
@@ -32,9 +32,9 @@ import net.dries007.tfc.util.advancements.TFCAdvancements;
 //Mostly copied from TFC's ChiselItem.java and is under the TFC License
 public class MattockItem extends ToolItem
 {
-    public MattockItem(Tier tier, float attackDamage, float attackSpeed, Properties properties)
+    public MattockItem(Tier tier, Properties properties)
     {
-        super(tier, attackDamage, attackSpeed, RNRTags.Blocks.MINEABLE_WITH_MATTOCK, properties);
+        super(tier, TFCTags.Blocks.MINEABLE_WITH_CHISEL, properties);
     }
 
     @Override
@@ -61,19 +61,17 @@ public class MattockItem extends ToolItem
                         }
                     }
 
-                    player.getCapability(PlayerDataCapability.CAPABILITY).ifPresent(cap -> {
-                        final MattockRecipe recipeUsed = MattockRecipe.getRecipe(state, held, cap.getChiselMode());
-                        if (recipeUsed != null)
+                    final MattockRecipe recipeUsed = MattockRecipe.getRecipe(state, IPlayerInfo.get(player).chiselMode());
+                    if (recipeUsed != null)
+                    {
+                        ItemStack extraDrop = recipeUsed.getExtraDrop(held);
+                        if (!extraDrop.isEmpty())
                         {
-                            ItemStack extraDrop = recipeUsed.getExtraDrop(held);
-                            if (!extraDrop.isEmpty())
-                            {
-                                ItemHandlerHelper.giveItemToPlayer(player, extraDrop);
-                            }
+                            ItemHandlerHelper.giveItemToPlayer(player, extraDrop);
                         }
-                    });
+                    }
                 }
-                //Silly hard code to make joints connect properly
+                // Silly hard-code to make joints connect properly
                 if (resultState.getBlock() instanceof WetConcretePathControlJointBlock)
                 {
                     resultState = WetConcretePathControlJointBlock.updateControlJointShape(resultState, Direction.NORTH, level.getBlockState(pos.north()));
@@ -83,8 +81,7 @@ public class MattockItem extends ToolItem
                 }
                 level.setBlockAndUpdate(pos, resultState);
 
-
-                held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                Helpers.damageItem(held, player, InteractionHand.MAIN_HAND);
                 player.getCooldowns().addCooldown(this, 5);
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }, Function.identity()); // returns the interaction result if we are given one

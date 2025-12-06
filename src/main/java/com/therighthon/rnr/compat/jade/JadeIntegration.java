@@ -10,7 +10,7 @@ import snownee.jade.api.IWailaPlugin;
 import snownee.jade.api.WailaPlugin;
 import snownee.jade.api.config.IPluginConfig;
 
-import net.dries007.tfc.compat.jade.common.BlockEntityTooltip;
+import net.dries007.tfc.util.tooltip.BlockEntityTooltip;
 
 @WailaPlugin
 public class JadeIntegration implements IWailaPlugin

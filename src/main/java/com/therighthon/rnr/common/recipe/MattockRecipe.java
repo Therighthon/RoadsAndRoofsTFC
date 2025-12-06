@@ -1,46 +1,70 @@
 package com.therighthon.rnr.common.recipe;
 
-import java.util.Locale;
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.datafixers.util.Either;
-import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-import net.dries007.tfc.common.TFCTags;
-import net.dries007.tfc.common.capabilities.player.PlayerDataCapability;
 import net.dries007.tfc.common.fluids.FluidHelpers;
-import net.dries007.tfc.common.recipes.ChiselRecipe;
-import net.dries007.tfc.common.recipes.RecipeSerializerImpl;
-import net.dries007.tfc.common.recipes.SimpleBlockRecipe;
+import net.dries007.tfc.common.player.ChiselMode;
+import net.dries007.tfc.common.player.IPlayerInfo;
+import net.dries007.tfc.common.recipes.INoopInputRecipe;
 import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 import net.dries007.tfc.common.recipes.outputs.ItemStackProvider;
+import net.dries007.tfc.network.StreamCodecs;
 import net.dries007.tfc.util.Helpers;
-import net.dries007.tfc.util.JsonHelpers;
 import net.dries007.tfc.util.collections.IndirectHashCollection;
+import net.dries007.tfc.world.Codecs;
+
+// TODO: I removed the optional item ingredient because it didn't seem to do anything, may need to revisit that decision
 
 //Mostly copied from TFC's ChiselRecipe.java and is under the TFC License
-public class MattockRecipe extends SimpleBlockRecipe
+public class MattockRecipe implements INoopInputRecipe
 {
+    public static final IndirectHashCollection<Block, MattockRecipe> CACHE = IndirectHashCollection.createForRecipe(r -> r.ingredient.blocks(), RNRRecipeTypes.MATTOCK_RECIPE);
+
+    private final BlockIngredient ingredient;
+    private final BlockState output;
+    private final ChiselMode mode;
+    private final ItemStackProvider extraDrop;
+
+    public MattockRecipe(BlockIngredient ingredient, BlockState outputState, ChiselMode mode, @Nullable ItemStackProvider extraDrop)
+    {
+        this.ingredient = ingredient;
+        this.output = outputState;
+        this.mode = mode;
+        this.extraDrop = extraDrop;
+    }
+
+    public static final MapCodec<MattockRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+        BlockIngredient.CODEC.fieldOf("ingredient").forGetter(c -> c.ingredient),
+        Codecs.BLOCK_STATE.fieldOf("result").forGetter(c -> c.output),
+        ChiselMode.REGISTRY.byNameCodec().fieldOf("mode").forGetter(c -> c.mode),
+        ItemStackProvider.CODEC.optionalFieldOf("extra_drop", ItemStackProvider.empty()).forGetter(c -> c.extraDrop)
+    ).apply(i, MattockRecipe::new));
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, MattockRecipe> STREAM_CODEC = StreamCodec.composite(
+        BlockIngredient.STREAM_CODEC, c -> c.ingredient,
+        StreamCodecs.BLOCK_STATE, c -> c.output,
+        ByteBufCodecs.registry(ChiselMode.KEY), c -> c.mode,
+        ItemStackProvider.STREAM_CODEC, c -> c.extraDrop,
+        MattockRecipe::new
+    );
+
     /**
      * In a sentence, this method returns "Either" a BlockState, which the caller must handle, or an InteractionResult to be returned
      */
@@ -50,40 +74,27 @@ public class MattockRecipe extends SimpleBlockRecipe
         ItemStack held = player.getMainHandItem();
         if (Helpers.isItem(held, RNRTags.Items.MATTOCKS))
         {
+            final ChiselMode mode = IPlayerInfo.get(player).chiselMode();
+            final MattockRecipe recipe = MattockRecipe.getRecipe(state, held, mode);
             BlockPos pos = hit.getBlockPos();
-            return player.getCapability(PlayerDataCapability.CAPABILITY).map(cap -> {
-                final ChiselRecipe.Mode mode = cap.getChiselMode();
-                final MattockRecipe recipe = MattockRecipe.getRecipe(state, held, mode);
-                if (recipe == null)
+            if (recipe == null)
+            {
+                if (informWhy) complain(player, "no_recipe");
+                return Either.<BlockState, InteractionResult>right(InteractionResult.PASS);
+            }
+            else
+            {
+                @Nullable BlockState chiseled = mode.modifyStateForPlacement(state, recipe.output, player, hit);
+                // covers case where a waterlogged block is chiseled and the new block can't take the fluid contained
+                chiseled = FluidHelpers.fillWithFluid(chiseled, player.level().getFluidState(pos).getType());
+                if (chiseled == null)
                 {
-                    if (informWhy) complain(player, "no_recipe");
-                    return Either.<BlockState, InteractionResult>right(InteractionResult.PASS);
+                    if (informWhy) complain(player, "bad_fluid");
+                    return Either.<BlockState, InteractionResult>right(InteractionResult.FAIL);
                 }
-                else
-                {
-                    BlockState chiseled = recipe.getBlockCraftingResult(state);
-                    chiseled = chiseled.getBlock().getStateForPlacement(new BlockPlaceContext(player, InteractionHand.MAIN_HAND, new ItemStack(chiseled.getBlock()), hit));
-                    if (chiseled == null)
-                    {
-                        if (informWhy) complain(player, "cannot_place");
-                        return Either.<BlockState, InteractionResult>right(InteractionResult.FAIL);
-                    }
-                    else
-                    {
-                        // covers case where a waterlogged block is chiseled and the new block can't take the fluid contained
-                        chiseled = FluidHelpers.fillWithFluid(chiseled, player.level().getFluidState(pos).getType());
-                        if (chiseled == null)
-                        {
-                            if (informWhy) complain(player, "bad_fluid");
-                            return Either.<BlockState, InteractionResult>right(InteractionResult.FAIL);
-                        }
-                        else
-                        {
-                            return Either.<BlockState, InteractionResult>left(chiseled);
-                        }
-                    }
-                }
-            }).orElse(Either.right(InteractionResult.PASS));
+                return Either.left(chiseled);
+            }
+
         }
         return Either.right(InteractionResult.PASS);
     }
@@ -93,10 +104,8 @@ public class MattockRecipe extends SimpleBlockRecipe
         player.displayClientMessage(Component.translatable("rnr.mattock." + message), true);
     }
 
-    public static final IndirectHashCollection<Block, MattockRecipe> CACHE = IndirectHashCollection.createForRecipe(recipe -> recipe.getBlockIngredient().blocks(), RNRRecipeTypes.MATTOCK_RECIPE);
-
     @Nullable
-    public static MattockRecipe getRecipe(BlockState state, ItemStack held, ChiselRecipe.Mode mode)
+    public static MattockRecipe getRecipe(BlockState state, ItemStack held, ChiselMode mode)
     {
         for (MattockRecipe recipe : CACHE.getAll(state.getBlock()))
         {
@@ -106,19 +115,6 @@ public class MattockRecipe extends SimpleBlockRecipe
             }
         }
         return null;
-    }
-
-    private final ChiselRecipe.Mode mode;
-    @Nullable
-    private final Ingredient itemIngredient;
-    private final ItemStackProvider extraDrop;
-
-    public MattockRecipe(ResourceLocation id, BlockIngredient ingredient, BlockState outputState, ChiselRecipe.Mode mode, @Nullable Ingredient itemIngredient, ItemStackProvider extraDrop)
-    {
-        super(id, ingredient, outputState, false);
-        this.mode = mode;
-        this.itemIngredient = itemIngredient;
-        this.extraDrop = extraDrop;
     }
 
     @Override
@@ -133,64 +129,18 @@ public class MattockRecipe extends SimpleBlockRecipe
         return RNRRecipeTypes.MATTOCK_RECIPE.get();
     }
 
-    public boolean matches(BlockState state, ItemStack stack, ChiselRecipe.Mode mode)
+    public boolean matches(BlockState state, ItemStack stack, ChiselMode mode)
     {
-        if (itemIngredient != null && !itemIngredient.test(stack))
-        {
-            return false;
-        }
-        return mode == this.mode && matches(state);
+        return mode == this.mode && ingredient.test(state.getBlock());
     }
 
-    public ChiselRecipe.Mode getMode()
+    public ChiselMode getMode()
     {
         return mode;
-    }
-
-    @Nullable
-    public Ingredient getItemIngredient()
-    {
-        return itemIngredient;
     }
 
     public ItemStack getExtraDrop(ItemStack mattock)
     {
         return extraDrop.getSingleStack(mattock);
-    }
-
-    public static class Serializer extends RecipeSerializerImpl<MattockRecipe>
-    {
-        @Override
-        public MattockRecipe fromJson(ResourceLocation recipeId, JsonObject json)
-        {
-            BlockIngredient ingredient = BlockIngredient.fromJson(JsonHelpers.get(json, "ingredient"));
-            BlockState state = JsonHelpers.getBlockState(GsonHelper.getAsString(json, "result"));
-            ChiselRecipe.Mode mode = JsonHelpers.getEnum(json, "mode", ChiselRecipe.Mode.class, ChiselRecipe.Mode.SMOOTH);
-            Ingredient itemIngredient = json.has("item_ingredient") ? Ingredient.fromJson(json.get("item_ingredient")) : null;
-            ItemStackProvider drop = json.has("extra_drop") ? ItemStackProvider.fromJson(JsonHelpers.getAsJsonObject(json, "extra_drop")) : ItemStackProvider.empty();
-            return new MattockRecipe(recipeId, ingredient, state, mode, itemIngredient, drop);
-        }
-
-        @Nullable
-        @Override
-        public MattockRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
-        {
-            final BlockIngredient ingredient = BlockIngredient.fromNetwork(buffer);
-            final BlockState state = buffer.readRegistryIdUnsafe(ForgeRegistries.BLOCKS).defaultBlockState();
-            final ChiselRecipe.Mode mode = buffer.readEnum(ChiselRecipe.Mode.class);
-            final Ingredient itemIngredient = Helpers.decodeNullable(buffer, Ingredient::fromNetwork);
-            final ItemStackProvider drop = ItemStackProvider.fromNetwork(buffer);
-            return new MattockRecipe(recipeId, ingredient, state, mode, itemIngredient, drop);
-        }
-
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, MattockRecipe recipe)
-        {
-            recipe.ingredient.toNetwork(buffer);
-            buffer.writeRegistryIdUnsafe(ForgeRegistries.BLOCKS, recipe.outputState.getBlock());
-            buffer.writeEnum(recipe.getMode());
-            Helpers.encodeNullable(recipe.itemIngredient, buffer, Ingredient::toNetwork);
-            recipe.extraDrop.toNetwork(buffer);
-        }
     }
 }

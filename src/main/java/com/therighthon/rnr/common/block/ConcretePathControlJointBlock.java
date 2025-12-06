@@ -15,10 +15,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fml.ModList;
-
-import net.dries007.tfc.common.blocks.ExtendedProperties;
 
 public class ConcretePathControlJointBlock extends PathHeightBlock
 {

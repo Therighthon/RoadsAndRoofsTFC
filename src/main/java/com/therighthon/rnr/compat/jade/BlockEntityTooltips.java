@@ -2,7 +2,6 @@ package com.therighthon.rnr.compat.jade;
 
 import java.util.function.Consumer;
 import com.therighthon.rnr.common.block.CrackingWetConcretePathBlock;
-import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.WetConcretePathBlock;
 import javax.annotation.Nullable;
 import net.minecraft.network.chat.Component;
@@ -10,9 +9,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
-import net.dries007.tfc.compat.jade.common.BlockEntityTooltip;
-import net.dries007.tfc.compat.jade.common.RegisterCallback;
-import net.dries007.tfc.config.TFCConfig;
+import net.dries007.tfc.util.tooltip.BlockEntityTooltip;
+import net.dries007.tfc.util.tooltip.RegisterCallback;
 import net.dries007.tfc.util.calendar.Calendars;
 
 public class BlockEntityTooltips

@@ -17,21 +17,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import net.dries007.tfc.client.IngameOverlays;
+import net.dries007.tfc.common.player.ChiselMode;
 import net.dries007.tfc.common.recipes.ChiselRecipe;
 import net.dries007.tfc.compat.jei.category.BaseRecipeCategory;
 import net.dries007.tfc.util.Metal;
 
 public class MattockCategory extends BaseRecipeCategory<MattockRecipe>
 {
-    private final Map<ChiselRecipe.Mode, IDrawableStatic> modes;
+    private final Map<ChiselMode, IDrawableStatic> modes;
 
     public MattockCategory(RecipeType<MattockRecipe> type, IGuiHelper helper)
     {
         super(type, helper, helper.createBlankDrawable(118, 26), new ItemStack(RNRItems.MATTOCKS.get(Metal.Default.BISMUTH_BRONZE).get()));
         modes = ImmutableMap.of(
-            ChiselRecipe.Mode.SLAB, helper.createDrawable(IngameOverlays.TEXTURE, 40, 58, 20, 20),
-            ChiselRecipe.Mode.STAIR, helper.createDrawable(IngameOverlays.TEXTURE, 20, 58, 20, 20),
-            ChiselRecipe.Mode.SMOOTH, helper.createDrawable(IngameOverlays.TEXTURE, 0, 58, 20, 20)
+            ChiselMode.SLAB, helper.createDrawable(IngameOverlays.TEXTURE, 40, 58, 20, 20),
+            ChiselMode.STAIR, helper.createDrawable(IngameOverlays.TEXTURE, 20, 58, 20, 20),
+            ChiselMode.SMOOTH, helper.createDrawable(IngameOverlays.TEXTURE, 0, 58, 20, 20)
         );
     }
 

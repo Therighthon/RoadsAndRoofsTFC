@@ -1,9 +1,6 @@
 package com.therighthon.rnr.common.block;
 
 import com.therighthon.rnr.RoadsAndRoofs;
-import net.minecraftforge.fml.ModList;
-
-import net.dries007.tfc.util.Helpers;
 
 public class HogginBlock extends PathHeightBlock
 {

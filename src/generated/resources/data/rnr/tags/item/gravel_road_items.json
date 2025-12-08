@@ -1,0 +1,25 @@
+{
+  "values": [
+    "rnr:gravel_fill/granite",
+    "rnr:gravel_fill/diorite",
+    "rnr:gravel_fill/gabbro",
+    "rnr:gravel_fill/shale",
+    "rnr:gravel_fill/claystone",
+    "rnr:gravel_fill/limestone",
+    "rnr:gravel_fill/conglomerate",
+    "rnr:gravel_fill/dolomite",
+    "rnr:gravel_fill/chert",
+    "rnr:gravel_fill/chalk",
+    "rnr:gravel_fill/tuff",
+    "rnr:gravel_fill/rhyolite",
+    "rnr:gravel_fill/basalt",
+    "rnr:gravel_fill/andesite",
+    "rnr:gravel_fill/dacite",
+    "rnr:gravel_fill/quartzite",
+    "rnr:gravel_fill/slate",
+    "rnr:gravel_fill/phyllite",
+    "rnr:gravel_fill/schist",
+    "rnr:gravel_fill/gneiss",
+    "rnr:gravel_fill/marble"
+  ]
+}

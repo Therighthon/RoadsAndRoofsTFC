@@ -1,0 +1,25 @@
+{
+  "values": [
+    "rnr:rock/flagstones/granite_stairs",
+    "rnr:rock/flagstones/diorite_stairs",
+    "rnr:rock/flagstones/gabbro_stairs",
+    "rnr:rock/flagstones/shale_stairs",
+    "rnr:rock/flagstones/claystone_stairs",
+    "rnr:rock/flagstones/limestone_stairs",
+    "rnr:rock/flagstones/conglomerate_stairs",
+    "rnr:rock/flagstones/dolomite_stairs",
+    "rnr:rock/flagstones/chert_stairs",
+    "rnr:rock/flagstones/chalk_stairs",
+    "rnr:rock/flagstones/tuff_stairs",
+    "rnr:rock/flagstones/rhyolite_stairs",
+    "rnr:rock/flagstones/basalt_stairs",
+    "rnr:rock/flagstones/andesite_stairs",
+    "rnr:rock/flagstones/dacite_stairs",
+    "rnr:rock/flagstones/quartzite_stairs",
+    "rnr:rock/flagstones/slate_stairs",
+    "rnr:rock/flagstones/phyllite_stairs",
+    "rnr:rock/flagstones/schist_stairs",
+    "rnr:rock/flagstones/gneiss_stairs",
+    "rnr:rock/flagstones/marble_stairs"
+  ]
+}

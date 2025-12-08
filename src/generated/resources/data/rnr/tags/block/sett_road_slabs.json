@@ -1,0 +1,25 @@
+{
+  "values": [
+    "rnr:rock/sett_road/granite_slab",
+    "rnr:rock/sett_road/diorite_slab",
+    "rnr:rock/sett_road/gabbro_slab",
+    "rnr:rock/sett_road/shale_slab",
+    "rnr:rock/sett_road/claystone_slab",
+    "rnr:rock/sett_road/limestone_slab",
+    "rnr:rock/sett_road/conglomerate_slab",
+    "rnr:rock/sett_road/dolomite_slab",
+    "rnr:rock/sett_road/chert_slab",
+    "rnr:rock/sett_road/chalk_slab",
+    "rnr:rock/sett_road/tuff_slab",
+    "rnr:rock/sett_road/rhyolite_slab",
+    "rnr:rock/sett_road/basalt_slab",
+    "rnr:rock/sett_road/andesite_slab",
+    "rnr:rock/sett_road/dacite_slab",
+    "rnr:rock/sett_road/quartzite_slab",
+    "rnr:rock/sett_road/slate_slab",
+    "rnr:rock/sett_road/phyllite_slab",
+    "rnr:rock/sett_road/schist_slab",
+    "rnr:rock/sett_road/gneiss_slab",
+    "rnr:rock/sett_road/marble_slab"
+  ]
+}

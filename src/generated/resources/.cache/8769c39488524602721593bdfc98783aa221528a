@@ -1,0 +1,7 @@
+// 1.21.1	2025-12-08T14:47:22.5365025	Tags for minecraft:item mod id rnr
+b5ec06fa1df77c90fba71605e004d8ae8821d674 data/rnr/tags/item/base_course.json
+7cbea2dac23e7025147db0a64aa670545424e71b data/rnr/tags/item/cobble_road_items.json
+a2480ace1097fef7e48d1c63c008fa4692cce481 data/rnr/tags/item/flagstone_road_items.json
+6b4cc55be9c1ec92e7546541d30457c58264f060 data/rnr/tags/item/gravel_road_items.json
+457944d10685fdf921b2a2015e0eaa4f136037f9 data/rnr/tags/item/road_materials.json
+e361f4a8efdc24a97ceba65560b5c850b606546d data/rnr/tags/item/sett_road_items.json

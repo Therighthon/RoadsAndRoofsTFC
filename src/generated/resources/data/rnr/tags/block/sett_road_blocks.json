@@ -1,0 +1,25 @@
+{
+  "values": [
+    "rnr:rock/sett_road/granite",
+    "rnr:rock/sett_road/diorite",
+    "rnr:rock/sett_road/gabbro",
+    "rnr:rock/sett_road/shale",
+    "rnr:rock/sett_road/claystone",
+    "rnr:rock/sett_road/limestone",
+    "rnr:rock/sett_road/conglomerate",
+    "rnr:rock/sett_road/dolomite",
+    "rnr:rock/sett_road/chert",
+    "rnr:rock/sett_road/chalk",
+    "rnr:rock/sett_road/tuff",
+    "rnr:rock/sett_road/rhyolite",
+    "rnr:rock/sett_road/basalt",
+    "rnr:rock/sett_road/andesite",
+    "rnr:rock/sett_road/dacite",
+    "rnr:rock/sett_road/quartzite",
+    "rnr:rock/sett_road/slate",
+    "rnr:rock/sett_road/phyllite",
+    "rnr:rock/sett_road/schist",
+    "rnr:rock/sett_road/gneiss",
+    "rnr:rock/sett_road/marble"
+  ]
+}

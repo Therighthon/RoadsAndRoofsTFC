@@ -1,13 +1,12 @@
 package com.therighthon.rnr.common.recipe;
 
-import com.google.gson.JsonObject;
-import com.therighthon.rnr.RoadsAndRoofs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -18,25 +17,40 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.dries007.tfc.common.recipes.BlockRecipe;
 import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 
+import net.dries007.tfc.network.StreamCodecs;
 import net.dries007.tfc.util.collections.IndirectHashCollection;
+import net.dries007.tfc.world.Codecs;
 
 public class BlockModRecipe extends BlockRecipe
 {
-    private final ResourceLocation id;
     private final BlockIngredient inputBlock;
     private final BlockState outputBlock;
     private final Ingredient inputItem;
     private final Boolean consumesItem;
 
-    public BlockModRecipe(ResourceLocation id, Ingredient inputItem, BlockIngredient inputBlock, Optional<BlockState> outputBlock, Boolean consumesItem)
+    public BlockModRecipe(Ingredient inputItem, BlockIngredient inputBlock, BlockState outputBlock, Boolean consumesItem)
     {
-        super(inputBlock, outputBlock);
-        this.id = id;
+        super(inputBlock, Optional.of(outputBlock));
         this.inputItem = inputItem;
         this.inputBlock = inputBlock;
-        this.outputBlock = outputBlock.get() != null ? outputBlock.get() : inputBlock.blocks().get(0).defaultBlockState();
+        this.outputBlock = outputBlock;
         this.consumesItem = consumesItem;
     }
+
+    public static final MapCodec<BlockModRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+        Ingredient.CODEC.fieldOf("input_item").forGetter(c -> c.inputItem),
+        BlockIngredient.CODEC.fieldOf("input_block").forGetter(c -> c.inputBlock),
+        Codecs.BLOCK_STATE.fieldOf("output_block").forGetter(c -> c.outputBlock),
+        Codec.BOOL.optionalFieldOf("consume_ingredient", Boolean.TRUE).forGetter(c -> c.consumesItem)
+    ).apply(i, BlockModRecipe::new));
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, BlockModRecipe> STREAM_CODEC = StreamCodec.composite(
+        Ingredient.CONTENTS_STREAM_CODEC, c -> c.inputItem,
+        BlockIngredient.STREAM_CODEC, c -> c.inputBlock,
+        StreamCodecs.BLOCK_STATE, c -> c.outputBlock,
+        ByteBufCodecs.BOOL, c -> c.consumesItem,
+        BlockModRecipe::new
+    );
 
     public static final IndirectHashCollection<Block, BlockModRecipe> CACHE = IndirectHashCollection.createForRecipe(blockModRecipe -> blockModRecipe.getInputBlock().blocks(), RNRRecipeTypes.BLOCK_MOD_RECIPE);
 
@@ -85,18 +99,6 @@ public class BlockModRecipe extends BlockRecipe
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess)
-    {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public ResourceLocation getId()
-    {
-        return id;
-    }
-
-    @Override
     public RecipeSerializer<?> getSerializer()
     {
         return RNRRecipeSerializers.BLOCK_MOD_RECIPE.get();
@@ -106,42 +108,5 @@ public class BlockModRecipe extends BlockRecipe
     public RecipeType<?> getType()
     {
         return RNRRecipeTypes.BLOCK_MOD_RECIPE.get();
-    }
-
-    public static class Serializer implements RecipeSerializer<BlockModRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID =
-            new ResourceLocation(RoadsAndRoofs.MOD_ID,"block_mod");
-
-        @Override
-        public BlockModRecipe fromJson(ResourceLocation id, JsonObject json) {
-            final Ingredient inputItem = Ingredient.fromJson(json.get("input_item"));
-            final BlockIngredient inputBlock = BlockIngredient.fromJson(JsonHelpers.get(json, "input_block"));
-            final BlockState outputBlock = JsonHelpers.getBlockState(GsonHelper.getAsString(json, "output_block"));
-            final boolean consumeIngredient = json.has("consume_ingredient") ? JsonHelpers.getAsBoolean(json, "consume_ingredient") : Boolean.TRUE;
-
-
-            return new BlockModRecipe(id, inputItem, inputBlock, outputBlock, consumeIngredient);
-        }
-
-        @Nullable
-        @Override
-        public BlockModRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
-            final Ingredient inputItem = Ingredient.fromNetwork(buffer);
-            final BlockIngredient inputBlock = BlockIngredient.fromNetwork(buffer);
-            final BlockState outputBlock = buffer.readRegistryIdUnsafe(ForgeRegistries.BLOCKS).defaultBlockState();
-            final Boolean consumesItem = buffer.readBoolean();
-
-            return new BlockModRecipe(id, inputItem, inputBlock, outputBlock, consumesItem);
-        }
-
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, BlockModRecipe recipe) {
-            recipe.inputItem.toNetwork(buffer);
-            recipe.inputBlock.toNetwork(buffer);
-            buffer.writeRegistryIdUnsafe(ForgeRegistries.BLOCKS, recipe.outputBlock.getBlock());
-            buffer.writeBoolean(recipe.consumesItem);
-        }
-
     }
 }

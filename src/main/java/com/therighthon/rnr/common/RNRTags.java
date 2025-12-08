@@ -1,5 +1,6 @@
 package com.therighthon.rnr.common;
 
+import com.therighthon.rnr.RNRHelpers;
 import com.therighthon.rnr.RoadsAndRoofs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +23,7 @@ public class RNRTags
 
         private static TagKey<Block> create(String id)
         {
-            return TagKey.create(Registries.BLOCK, new ResourceLocation(RoadsAndRoofs.MOD_ID, id));
+            return TagKey.create(Registries.BLOCK, RNRHelpers.modIdentifier(id));
         }
     }
 
@@ -36,7 +37,7 @@ public class RNRTags
 
         private static TagKey<Item> create(String id)
         {
-            return TagKey.create(Registries.ITEM, new ResourceLocation(RoadsAndRoofs.MOD_ID, id));
+            return TagKey.create(Registries.ITEM, RNRHelpers.modIdentifier(id));
         }
     }
 }

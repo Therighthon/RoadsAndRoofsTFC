@@ -21,7 +21,7 @@ import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.RegistryHolder;
-
+import net.dries007.tfc.util.registry.RegistryMetal;
 
 public class RNRItems
 {
@@ -29,7 +29,7 @@ public class RNRItems
 
     //Metal Items
     public static final Map<Metal, ItemId> MATTOCK_HEADS = Helpers.mapOf(Metal.class, Metal::allParts, metal -> register("metal/mattock_head/" + metal.name()));
-    public static final Map<Metal, ItemId> MATTOCKS = Helpers.mapOf(Metal.class, Metal::allParts, metal -> register("metal/mattock/" + metal.name(), () -> new MattockItem(metal.toolTier(), ToolItem.calculateVanillaAttackDamage(0.27f, metal.toolTier()), -1.5F, Metal.ItemType.properties(metal))));
+    public static final Map<Metal, ItemId> MATTOCKS = Helpers.mapOf(Metal.class, Metal::allParts, metal -> register("metal/mattock/" + metal.name(), () -> new MattockItem(metal.toolTier(), tool(metal, 0.8f, -3.0f))));
 
     //Stone items
     public static final Map<Rock, ItemId> FLAGSTONE = Helpers.mapOf(Rock.class, type ->
@@ -78,5 +78,17 @@ public class RNRItems
             return get();
         }
     }
+
+    // From TFC's Metal.java
+    private static Item.Properties tool(RegistryMetal metal, float attackDamageFactor, float attackSpeed)
+    {
+        return base(metal).attributes(ToolItem.productAttributes(metal.toolTier(), attackDamageFactor, attackSpeed));
+    }
+
+    private static Item.Properties base(RegistryMetal metal)
+    {
+        return new Item.Properties().rarity(metal.rarity());
+    }
+
 }
 

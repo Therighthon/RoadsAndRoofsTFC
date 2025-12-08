@@ -18,7 +18,7 @@ public class BlockModCategory extends BaseRecipeCategory<BlockModRecipe>
 
     public BlockModCategory(RecipeType<BlockModRecipe> type, IGuiHelper helper)
     {
-        super(type, helper, helper.createBlankDrawable(118, 26), new ItemStack(RNRItems.CRUSHED_BASE_COURSE.get()));
+        super(type, helper,118, 26, new ItemStack(RNRItems.CRUSHED_BASE_COURSE.get()));
 
     }
 

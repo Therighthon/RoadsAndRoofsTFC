@@ -18,7 +18,6 @@ import net.dries007.tfc.util.Helpers;
 
 public class AFCCompatBlocks
 {
-
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, RoadsAndRoofs.MOD_ID);
 
     public static final BlockBehaviour.Properties ROOF_PROPERTIES = ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties();

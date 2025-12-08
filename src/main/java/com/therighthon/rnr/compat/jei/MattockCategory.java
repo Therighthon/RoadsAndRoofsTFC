@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.MattockRecipe;
+import java.util.stream.Collectors;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -17,8 +18,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import net.dries007.tfc.client.IngameOverlays;
+import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.player.ChiselMode;
 import net.dries007.tfc.common.recipes.ChiselRecipe;
+import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 import net.dries007.tfc.compat.jei.category.BaseRecipeCategory;
 import net.dries007.tfc.util.Metal;
 
@@ -28,25 +31,21 @@ public class MattockCategory extends BaseRecipeCategory<MattockRecipe>
 
     public MattockCategory(RecipeType<MattockRecipe> type, IGuiHelper helper)
     {
-        super(type, helper, helper.createBlankDrawable(118, 26), new ItemStack(RNRItems.MATTOCKS.get(Metal.Default.BISMUTH_BRONZE).get()));
-        modes = ImmutableMap.of(
-            ChiselMode.SLAB, helper.createDrawable(IngameOverlays.TEXTURE, 40, 58, 20, 20),
-            ChiselMode.STAIR, helper.createDrawable(IngameOverlays.TEXTURE, 20, 58, 20, 20),
-            ChiselMode.SMOOTH, helper.createDrawable(IngameOverlays.TEXTURE, 0, 58, 20, 20)
-        );
+        super(type, helper, 118, 26, new ItemStack(RNRItems.MATTOCKS.get(Metal.BISMUTH_BRONZE)));
+        modes = ChiselMode.REGISTRY.stream()
+            .collect(Collectors.toMap(
+                e -> e,
+                e -> e.createIcon(helper::createDrawable)
+            ));
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, MattockRecipe recipe, IFocusGroup focuses)
     {
-        Ingredient mattockIngredient = recipe.getItemIngredient();
-        if (mattockIngredient == null)
-        {
-            mattockIngredient = Ingredient.of(RNRTags.Items.MATTOCKS);
-        }
+        Ingredient mattockIngredient = Ingredient.of(RNRTags.Items.MATTOCKS);
 
         builder.addSlot(RecipeIngredientRole.INPUT, 6, 5)
-            .addIngredients(collapse(recipe.getBlockIngredient()))
+            .addIngredients(collapse(recipe.getIngredient()))
             .setBackground(slot, -1, -1);
 
         builder.addSlot(RecipeIngredientRole.INPUT, 26, 5)
@@ -54,7 +53,7 @@ public class MattockCategory extends BaseRecipeCategory<MattockRecipe>
             .setBackground(slot, -1, -1);
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 76, 5)
-            .addItemStack(new ItemStack(recipe.getBlockRecipeOutput()))
+            .addItemStack(new ItemStack(recipe.getOutputBlock().getBlock()))
             .setBackground(slot, -1, -1);
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 96, 5)
@@ -67,5 +66,4 @@ public class MattockCategory extends BaseRecipeCategory<MattockRecipe>
     {
         modes.get(recipe.getMode()).draw(stack, 48, 3);
     }
-
 }

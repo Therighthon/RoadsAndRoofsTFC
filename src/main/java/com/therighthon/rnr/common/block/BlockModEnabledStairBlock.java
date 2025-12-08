@@ -24,13 +24,13 @@ public class BlockModEnabledStairBlock extends StairBlock
 
     public BlockModEnabledStairBlock(Supplier<BlockState> baseState, Properties properties, Boolean isTransparent)
     {
-        super(baseState, properties);
+        super(baseState.get(), properties);
         this.isTransparent = isTransparent;
     }
 
     public BlockModEnabledStairBlock(Supplier<BlockState> baseState, Properties properties)
     {
-        super(baseState, properties);
+        super(baseState.get(), properties);
         this.isTransparent = false;
     }
 

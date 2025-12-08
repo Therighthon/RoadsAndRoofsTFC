@@ -1,10 +1,13 @@
 package com.therighthon.rnr.compat.jei;
 
+import com.therighthon.rnr.RNRHelpers;
 import java.util.List;
 import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import com.therighthon.rnr.common.recipe.MattockRecipe;
 import com.therighthon.rnr.common.recipe.RNRRecipeTypes;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -14,6 +17,8 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeInput;
 
 import net.dries007.tfc.client.ClientHelpers;
 
@@ -23,7 +28,7 @@ public class JEIIntegration implements IModPlugin
     @Override
     public ResourceLocation getPluginUid()
     {
-        return new ResourceLocation(RoadsAndRoofs.MOD_ID, "jei");
+        return RNRHelpers.modIdentifier("jei");
     }
 
     private static <T> RecipeType<T> type(String name, Class<T> tClass)
@@ -45,12 +50,22 @@ public class JEIIntegration implements IModPlugin
     @Override
     public void registerRecipes(IRecipeRegistration r)
     {
-        r.addRecipes(MATTOCK, recipes(RNRRecipeTypes.MATTOCK_RECIPE.get()));
-        r.addRecipes(BLOCK_MOD, recipes(RNRRecipeTypes.BLOCK_MOD_RECIPE.get()));
+        r.addRecipes(MATTOCK, recipes(RNRRecipeTypes.MATTOCK_RECIPE));
+        r.addRecipes(BLOCK_MOD, recipes(RNRRecipeTypes.BLOCK_MOD_RECIPE));
     }
 
-    private static <C extends Container, T extends Recipe<C>> List<T> recipes(net.minecraft.world.item.crafting.RecipeType<T> type)
+    private static <C extends RecipeInput, T extends Recipe<C>> List<T> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type)
     {
-        return ClientHelpers.getLevelOrThrow().getRecipeManager().getAllRecipesFor(type);
+        return recipes(type, e -> true);
+    }
+
+    private static <C extends RecipeInput, T extends Recipe<C>> List<T> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type, Predicate<T> filter)
+    {
+        return ClientHelpers.getLevelOrThrow().getRecipeManager()
+            .getAllRecipesFor(type.get())
+            .stream()
+            .map(RecipeHolder::value)
+            .filter(filter)
+            .toList();
     }
 }

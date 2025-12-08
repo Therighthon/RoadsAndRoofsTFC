@@ -1,12 +1,9 @@
 package com.therighthon.rnr;
 
 import com.therighthon.rnr.common.RNRTags;
-import com.therighthon.rnr.common.fluid.RNRFluids;
-import com.therighthon.rnr.common.fluid.SimpleRNRFluid;
-import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -17,16 +14,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 
-import net.dries007.tfc.common.capabilities.Capabilities;
 import net.dries007.tfc.common.items.TFCItems;
-import net.dries007.tfc.util.Helpers;
+
+import static net.dries007.tfc.util.Helpers.*;
 
 public final class RNRHelpers
 {
+    public static ResourceLocation modIdentifier(String name) {
+        return resourceLocation("rnr", name);
+    }
+
     public static InteractionResult blockModRecipeCompatible(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
     {
         ItemStack stack = player.getItemInHand(hand);

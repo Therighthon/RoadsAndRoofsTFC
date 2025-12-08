@@ -22,7 +22,8 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
     private static final float defaultSpeedFactor = 0.7f;
     private final int ticksToDry = 24000;
 
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+    {
         return BaseCourseHeightBlock.SHAPE;
     }
 
@@ -36,14 +37,17 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         return defaultSpeedFactor;
     }
 
-    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston)
+    {
         TickCounterBlockEntity.reset(level, pos);
     }
 
     //Based on minecraft pressure plates
     //TODO: Would be swell if it didn't reset the dry timer
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!level.isClientSide) {
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
+    {
+        if (!level.isClientSide)
+        {
             if (entity instanceof LivingEntity)
             {
                 level.setBlock(pos, RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get().withPropertiesOf(state), 3);
@@ -52,7 +56,8 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
     }
 
     //TODO: Pretty janky setup, but it does work for now
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random)
+    {
 
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {

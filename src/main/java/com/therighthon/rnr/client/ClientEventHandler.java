@@ -9,13 +9,12 @@ import net.minecraft.client.renderer.Sheets;
 import com.therighthon.rnr.client.IngameOverlays;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
 
 public final class ClientEventHandler
 {
-    public static void init()
+    public static void init(IEventBus bus)
     {
-        final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
         bus.addListener(ClientEventHandler::clientSetup);
         bus.addListener(IngameOverlays::registerOverlays);
     }

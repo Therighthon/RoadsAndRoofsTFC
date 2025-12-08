@@ -9,19 +9,14 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import net.dries007.tfc.common.blocks.rock.Rock;
-import net.dries007.tfc.common.blocks.soil.SandBlockType;
-import net.dries007.tfc.common.blocks.wood.Wood;
-import net.dries007.tfc.common.items.ToolItem;
 import net.dries007.tfc.util.Helpers;
-import net.dries007.tfc.util.Metal;
 
 
 public class AFCCompatItems
 {
-    public static final RNRItems.ItemId ITEMS = DeferredRegister.create(Registries.ITEM, RoadsAndRoofs.MOD_ID);
+    public static final DeferredRegister<Item> AFC_COMPAT_ITEMS = DeferredRegister.create(Registries.ITEM, RoadsAndRoofs.MOD_ID);
 
-    public static final Map<AFCWood, RNRItems.ItemId> WOOD_SHINGLE = Helpers.mapOfKeys(AFCWood.class, wood -> register("wood/shingle/" + wood.getSerializedName()));
+    public static final Map<AFCWood, RNRItems.ItemId> WOOD_SHINGLE = Helpers.mapOf(AFCWood.class, wood -> register("wood/shingle/" + wood.getSerializedName()));
 
     private static RNRItems.ItemId register(String name)
     {
@@ -30,7 +25,7 @@ public class AFCCompatItems
 
     private static <T extends Item> RNRItems.ItemId register(String name, Supplier<T> item)
     {
-        return ITEMS.register(name.toLowerCase(Locale.ROOT), item);
+        return new RNRItems.ItemId(AFC_COMPAT_ITEMS.register(name.toLowerCase(Locale.ROOT), item));
     }
 }
 

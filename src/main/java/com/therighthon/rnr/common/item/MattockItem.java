@@ -61,7 +61,7 @@ public class MattockItem extends ToolItem
                         }
                     }
 
-                    final MattockRecipe recipeUsed = MattockRecipe.getRecipe(state, IPlayerInfo.get(player).chiselMode());
+                    final MattockRecipe recipeUsed = MattockRecipe.getRecipe(state, player.getMainHandItem(), IPlayerInfo.get(player).chiselMode());
                     if (recipeUsed != null)
                     {
                         ItemStack extraDrop = recipeUsed.getExtraDrop(held);

@@ -1,0 +1,30 @@
+modLoader="javafml" #mandatory
+loaderVersion="[4,)"
+license="EUPL"
+[[mods]] #mandatory
+modId="rnr" #mandatory
+version="1.0.0-1.21.1" #mandatory
+displayName="Roads and Roofs" #mandatory
+logoFile="examplemod.png" #optional
+authors="Therighthon" #optional
+description='''
+An addon for TerraFirmaCraft adding functional roads and decorative roofs.
+'''
+[[dependencies.rnr]]
+modId="tfc"
+mandatory=true
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.rnr]]
+modId="neoforge"
+mandatory=true
+versionRange="[21.0.143,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.rnr]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.21,1.22)"
+ordering="AFTER"
+side="BOTH"

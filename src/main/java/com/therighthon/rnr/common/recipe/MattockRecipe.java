@@ -143,4 +143,19 @@ public class MattockRecipe implements INoopInputRecipe
     {
         return extraDrop.getSingleStack(mattock);
     }
+
+    public BlockIngredient getIngredient()
+    {
+        return ingredient;
+    }
+
+    public BlockState getOutputBlock()
+    {
+        return output;
+    }
+
+    public ItemStackProvider getExtraDrop()
+    {
+        return extraDrop;
+    }
 }

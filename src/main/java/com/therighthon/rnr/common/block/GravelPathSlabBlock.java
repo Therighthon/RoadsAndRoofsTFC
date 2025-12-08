@@ -24,7 +24,7 @@ public class GravelPathSlabBlock extends Block implements SimpleWaterloggedBlock
 
     public GravelPathSlabBlock(Properties pProperties)
     {
-        super(pProperties.speedFactor(GravelPathBlock.getDefaultSpeedFactor()));
+        super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(false)));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();

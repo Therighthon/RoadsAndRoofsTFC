@@ -1,12 +1,10 @@
 package com.therighthon.rnr.common.block;
 
-import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -18,18 +16,11 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 public class ConcretePathControlJointBlock extends PathHeightBlock
 {
-    private static final float defaultSpeedFactor = RoadsAndRoofs.FAST_PATH_SPEED;
-
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     public static final BooleanProperty CONNECT_NORTH_OR_EAST = RNRBlockStateProperties.NORTH_EAST;
     public static final BooleanProperty CONNECT_SOUTH_OR_WEST = RNRBlockStateProperties.SOUTH_WEST;
     private final Block base;
     private final BlockState baseState;
-
-    public static float getDefaultSpeedFactor()
-    {
-        return defaultSpeedFactor;
-    }
 
     public ConcretePathControlJointBlock(Properties properties, float speedFactor)
     {
@@ -45,7 +36,7 @@ public class ConcretePathControlJointBlock extends PathHeightBlock
 
     public ConcretePathControlJointBlock(Properties pProperties)
     {
-        super(pProperties.speedFactor(defaultSpeedFactor));
+        super(pProperties);
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();
     }

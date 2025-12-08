@@ -17,6 +17,12 @@ versionRange="[0,)"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.rnr]]
+modId="blockrunner"
+mandatory=true
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.rnr]]
 modId="neoforge"
 mandatory=true
 versionRange="[21.0.143,)"

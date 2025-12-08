@@ -82,9 +82,9 @@ public class PathStairBlock extends Block
         return voxelshape;
     }
 
-    public PathStairBlock(Supplier<BlockState> state, Properties properties, float speedFactor)
+    public PathStairBlock(Supplier<BlockState> state, Properties properties)
     {
-        super(properties.speedFactor(speedFactor));
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(SHAPE, StairsShape.STRAIGHT).setValue(WATERLOGGED, Boolean.valueOf(false)));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();

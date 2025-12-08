@@ -148,16 +148,14 @@ dependencies {
     implementation("curse.maven:terrafirmacraft-302973:${tfc_version}")
 //    implementation files("libs/TerraFirmaCraft-NeoForge-1.21.1-0.0.0-indev.jar")
 
+    // Block Runner
+    implementation("curse.maven:block-runner-442842:${blockrunner_version}")
+    implementation("curse.maven:puzzles-lib-495476:${puzzleslib_version}")
+
     // AFC
     implementation("curse.maven:arborfirmacraft-877545:${afc_version}")
 
     implementation("curse.maven:cyanide-541676:$cyanide_version")
-
-    // TODO: FirmaLife
-//    compileOnly(fg.deobf("curse.maven:firmalife-453394:${firmalife_version}"))
-
-    // Only use FirmaLife at runtime
-//    runtimeOnly(fg.deobf("curse.maven:firmalife-453394:${firmalife_version}"))
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

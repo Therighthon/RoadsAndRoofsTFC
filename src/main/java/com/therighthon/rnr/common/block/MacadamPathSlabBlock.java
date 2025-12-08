@@ -13,7 +13,7 @@ public class MacadamPathSlabBlock extends Block
 
     public MacadamPathSlabBlock(Properties pProperties)
     {
-        super(pProperties.speedFactor(MacadamPathBlock.getDefaultSpeedFactor()));
+        super(pProperties);
     }
 
     public VoxelShape getShape(BlockState p_153143_, BlockGetter p_153144_, BlockPos p_153145_, CollisionContext p_153146_) {

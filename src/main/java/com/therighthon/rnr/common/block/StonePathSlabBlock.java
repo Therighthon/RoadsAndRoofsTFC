@@ -25,7 +25,7 @@ public class StonePathSlabBlock extends Block implements SimpleWaterloggedBlock
 
     public StonePathSlabBlock(Properties pProperties)
     {
-        super(pProperties.speedFactor(StonePathBlock.getDefaultSpeedFactor()));
+        super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(false)));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();

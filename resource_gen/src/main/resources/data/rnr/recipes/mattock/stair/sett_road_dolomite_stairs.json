@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/sett_road/dolomite",
+  "result": "rnr:rock/sett_road/dolomite_stairs",
+  "mode": "stair"
+}

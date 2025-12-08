@@ -72,7 +72,7 @@ In addition, here's some useful things for dev work, and also making standardize
 from argparse import ArgumentParser
 from typing import Optional
 
-from constants import CROPS, METALS, FRUITS, BERRIES, GRAINS
+from constants import METALS
 from data import hydration_from_rainfall
 from patchouli import *
 

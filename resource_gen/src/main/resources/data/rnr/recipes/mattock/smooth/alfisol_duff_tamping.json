@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "tfc:duff/alfisol",
+  "result": "rnr:tamped_alfisol",
+  "mode": "smooth"
+}

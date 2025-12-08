@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "rnr:block/wood/shingles/chestnut",
+    "top": "rnr:block/wood/shingles/chestnut",
+    "side": "rnr:block/wood/shingles/chestnut"
+  }
+}

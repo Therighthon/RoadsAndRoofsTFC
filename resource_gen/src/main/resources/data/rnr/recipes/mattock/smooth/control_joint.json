@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:wet_concrete_road",
+  "result": "rnr:wet_concrete_road_control_joint",
+  "mode": "smooth"
+}

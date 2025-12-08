@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:chisel",
+  "ingredient": "rnr:wood/shingles/ash",
+  "result": "rnr:wood/shingles/ash_slab",
+  "mode": "slab",
+  "extra_drop": {
+    "item": "rnr:wood/shingles/ash_slab"
+  }
+}

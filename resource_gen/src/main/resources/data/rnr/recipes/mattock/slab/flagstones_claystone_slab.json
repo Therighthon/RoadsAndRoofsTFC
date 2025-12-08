@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/flagstones/claystone",
+  "result": "rnr:rock/flagstones/claystone_slab",
+  "mode": "slab"
+}

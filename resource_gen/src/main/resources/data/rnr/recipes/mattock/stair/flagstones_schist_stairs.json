@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/flagstones/schist",
+  "result": "rnr:rock/flagstones/schist_stairs",
+  "mode": "stair"
+}

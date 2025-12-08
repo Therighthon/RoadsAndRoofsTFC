@@ -1,0 +1,6 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:landslide",
+  "ingredient": "rnr:concrete_road_flagstones_stairs",
+  "result": "rnr:cracked_concrete_road_slab"
+}

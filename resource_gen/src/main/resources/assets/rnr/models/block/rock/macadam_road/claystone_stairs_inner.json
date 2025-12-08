@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_inner_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/macadam_road/claystone",
+    "top": "rnr:block/rock/macadam_road/claystone",
+    "side": "rnr:block/rock/macadam_road/claystone"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_inner_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/cobbled_road/tuff",
+    "top": "rnr:block/rock/cobbled_road/tuff",
+    "side": "rnr:block/rock/cobbled_road/tuff"
+  }
+}

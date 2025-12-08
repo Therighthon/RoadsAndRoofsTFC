@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "rnr:block/wood/shingles/white_cedar",
+    "top": "rnr:block/wood/shingles/white_cedar",
+    "side": "rnr:block/wood/shingles/white_cedar"
+  }
+}

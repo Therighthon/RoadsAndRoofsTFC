@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "tfc:coarse_dirt/aridisol",
+  "result": "rnr:tamped_aridisol",
+  "mode": "smooth"
+}

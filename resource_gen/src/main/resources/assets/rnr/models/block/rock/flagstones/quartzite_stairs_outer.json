@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/flagstones/quartzite",
+    "top": "rnr:block/rock/flagstones/quartzite",
+    "side": "rnr:block/rock/flagstones/quartzite"
+  }
+}

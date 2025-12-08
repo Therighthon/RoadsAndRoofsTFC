@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_outer_stairs",
+  "textures": {
+    "bottom": "rnr:block/cracked_concrete",
+    "top": "rnr:block/cracked_concrete",
+    "side": "rnr:block/cracked_concrete"
+  }
+}

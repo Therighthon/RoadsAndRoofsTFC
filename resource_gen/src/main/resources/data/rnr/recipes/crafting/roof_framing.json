@@ -1,0 +1,21 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "Y Y",
+    "XYX"
+  ],
+  "key": {
+    "X": {
+      "tag": "tfc:lumber"
+    },
+    "Y": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "rnr:roof_frame",
+    "count": 4
+  }
+}

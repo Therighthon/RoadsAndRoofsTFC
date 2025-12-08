@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/flagstones/pink_sandstone",
+    "top": "rnr:block/rock/flagstones/pink_sandstone",
+    "side": "rnr:block/rock/flagstones/pink_sandstone"
+  }
+}

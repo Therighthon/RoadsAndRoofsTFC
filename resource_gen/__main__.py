@@ -19,10 +19,7 @@ from mcresources import ResourceManager, utils
 
 import assets
 import constants
-import data
-import tags
 import format_lang
-import generate_book
 import generate_textures
 import recipes
 import validate_assets
@@ -67,29 +64,15 @@ def main():
         elif action == 'validate_assets':
             validate_assets.main()
         elif action == 'all':
-            resources(hotswap=hotswap, do_assets=True, do_data=True, do_recipes=True, do_worldgen=True, do_advancements=True)
-            # format_lang.main(False, 'minecraft', MOD_LANGUAGES)  # format_lang
-            format_lang.main(False, 'rnr', MOD_LANGUAGES)
-            for lang in BOOK_LANGUAGES:  # Translate all
-                generate_book.main(lang, args.local, False)
+            resources(hotswap=hotswap, do_assets=True, do_recipes=True)
         elif action == 'assets':
             resources(hotswap=hotswap, do_assets=True)
         elif action == 'data':
             resources(hotswap=hotswap, do_data=True)
         elif action == 'recipes':
             resources(hotswap=hotswap, do_recipes=True)
-        elif action == 'worldgen':
-            resources(hotswap=hotswap, do_worldgen=True)
-        elif action == 'advancements':
-            resources(hotswap=hotswap, do_advancements=True)
         elif action == 'textures':
             generate_textures.main()
-        elif action == 'book':
-            if args.translate_all:
-                for lang in BOOK_LANGUAGES:
-                    generate_book.main(lang, args.local, validate=False, reverse_translate=args.reverse_translate)
-            else:
-                generate_book.main(args.translate, args.local, validate=False, reverse_translate=args.reverse_translate)
         elif action == 'format_lang':
             format_lang.main(False, 'minecraft', MOD_LANGUAGES)
             format_lang.main(False, 'rnr', MOD_LANGUAGES)
@@ -118,14 +101,6 @@ def validate_resources():
     rm = ValidatingResourceManager('rnr', './src/main/resources')
     resources_at(rm, True, True, True, True, True)
     error = rm.error_files != 0
-
-    for lang in BOOK_LANGUAGES:
-        try:
-            generate_book.main(lang, None, True, rm)
-            error |= rm.error_files != 0
-        except AssertionError as e:
-            print(e)
-            error = True
 
     for lang in MOD_LANGUAGES:
         try:
@@ -187,9 +162,6 @@ def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes
     # generic assets / data
     if do_assets:
         assets.generate(rm, afc_assets_rm)
-    if do_data:
-        data.generate(rm, afc_data_rm)
-        tags.generate(rm)
     if do_recipes:
         recipes.generate(rm, afc_data_rm)
 

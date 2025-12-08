@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_stairs",
+  "textures": {
+    "bottom": "rnr:block/rock/macadam_road/gabbro",
+    "top": "rnr:block/rock/macadam_road/gabbro",
+    "side": "rnr:block/rock/macadam_road/gabbro"
+  }
+}

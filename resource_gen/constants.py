@@ -196,6 +196,7 @@ ROCKS: Dict[str, Rock] = {
     'dolomite': Rock('sedimentary', 'black'),
     'chert': Rock('sedimentary', 'yellow'),
     'chalk': Rock('sedimentary', 'white'),
+    'tuff': Rock('sedimentary', 'black'),
     'rhyolite': Rock('igneous_extrusive', 'red'),
     'basalt': Rock('igneous_extrusive', 'red'),
     'andesite': Rock('igneous_extrusive', 'red'),
@@ -409,9 +410,9 @@ ROCK_SPIKE_PARTS = ('base', 'middle', 'tip')
 SAND_BLOCK_TYPES = ('brown', 'white', 'black', 'red', 'yellow', 'green', 'pink')
 SANDSTONE_BLOCK_TYPES = ('raw', 'smooth', 'cut')
 SOIL_BLOCK_TYPES = ('dirt', 'grass', 'grass_path', 'clay', 'clay_grass', 'farmland', 'rooted_dirt', 'mud', 'mud_bricks', 'drying_bricks', 'muddy_roots')
-SOIL_DRY_BLOCK_TYPES = ('dirt', 'grass', 'grass_path', 'clay', 'clay_grass', 'farmland', 'rooted_dirt')
+SOIL_DRY_BLOCK_TYPES = ('dirt', 'grass', 'duff', 'grass_path', 'clay', 'clay_grass', 'clay_duff', 'farmland', 'rooted_dirt', 'coarse_dirt')
 SOIL_MUDDY_BLOCK_TYPES = ('mud', 'muddy_roots')
-SOIL_BLOCK_VARIANTS = ('silt', 'loam', 'sandy_loam', 'silty_loam')
+SOIL_BLOCK_VARIANTS = ('entisol', 'alfisol', 'podzol', 'oxisol', 'aridisol', 'mollisol', 'fluvisol', 'andisol')
 KAOLIN_CLAY_TYPES = ('red', 'pink', 'white')
 SOIL_BLOCK_TAGS: Dict[str, List[str]] = {
     'grass': ['grass'],
@@ -436,16 +437,16 @@ ALCOHOLS = ('beer', 'cider', 'rum', 'sake', 'vodka', 'whiskey', 'corn_whiskey', 
 WOODS: Dict[str, Wood] = {
     'acacia': Wood(650, 1000),
     'ash': Wood(696, 1250),
-    'aspen': Wood(611, 1000),
+    'aspen': Wood(620, 1200),
     'birch': Wood(652, 1750),
     'blackwood': Wood(720, 1750),
     'chestnut': Wood(651, 1500),
     'douglas_fir': Wood(707, 1500),
     'hickory': Wood(762, 2000),
     'kapok': Wood(645, 1000),
-    'mangrove': Wood(655, 1000),
+    'mangrove': Wood(750, 2500),
     'maple': Wood(745, 2000),
-    'oak': Wood(728, 2250),
+    'oak': Wood(728, 1800),
     'palm': Wood(730, 1250),
     'pine': Wood(627, 1250),
     'rosewood': Wood(640, 1500),
@@ -466,273 +467,11 @@ AFC_WOODS: Dict[str, Wood] = {
     'fig': Wood(715, 1900),
     'mahogany': Wood(790, 1600),
     'ironwood': Wood(800, 1400),
-    'ipe': Wood(710, 1700)
-}
-
-# DO NOT EDIT DIRECTLY - Imported directly from spreadsheet
-# https://docs.google.com/spreadsheets/d/1Ghw3dCmVO5Gv0MMGBydUxox_nwLYmmcZkGSbbf0QSAE/
-CROPS: Dict[str, Crop] = {
-    # Grains
-    'barley': Crop('default', 8, 'nitrogen', -8, 26, 70, 310, 18, 75, None, 'edge'),
-    'oat': Crop('default', 8, 'phosphorus', 3, 40, 140, 400, 35, 100, None, 'edge'),
-    'rye': Crop('default', 8, 'phosphorus', -11, 30, 100, 350, 25, 85, None, 'edge'),
-    'maize': Crop('double', 6, 'phosphorus', 13, 40, 300, 500, 75, 100, None, 'edge'),
-    'wheat': Crop('default', 8, 'phosphorus', -4, 35, 100, 400, 25, 100, None, 'edge'),
-    'rice': Crop('default', 8, 'phosphorus', 15, 30, 100, 500, 25, 100, 'normal', None),
-    # Vegetables
-    'beet': Crop('default', 6, 'potassium', -5, 20, 70, 300, 18, 85, None, None),
-    'cabbage': Crop('default', 6, 'nitrogen', -10, 27, 60, 280, 15, 65, None, None),
-    'carrot': Crop('default', 5, 'potassium', 3, 30, 100, 400, 25, 100, None, None),
-    'garlic': Crop('default', 5, 'nitrogen', -20, 18, 60, 310, 15, 75, None, None),
-    'green_bean': Crop('double_stick', 8, 'nitrogen', 2, 35, 150, 410, 38, 100, 'normal', None),
-    'melon': Crop('spreading', 8, 'phosphorus', 5, 37, 200, 500, 75, 100, 'normal', None),
-    'potato': Crop('default', 7, 'potassium', -1, 37, 200, 410, 50, 100, None, None),
-    'pumpkin': Crop('spreading', 8, 'phosphorus', 0, 30, 120, 390, 30, 80, None, None),
-    'onion': Crop('default', 7, 'nitrogen', 0, 30, 100, 390, 25, 90, None, None),
-    'soybean': Crop('default', 7, 'nitrogen', 8, 30, 160, 410, 40, 100, 'normal', None),
-    'squash': Crop('default', 8, 'potassium', 5, 33, 90, 390, 23, 95, 'normal', None),
-    'sugarcane': Crop('double', 8, 'potassium', 12, 38, 160, 500, 40, 100, None, None),
-    'tomato': Crop('double_stick', 8, 'potassium', 0, 36, 120, 390, 30, 95, 'normal', None),
-    'jute': Crop('double', 6, 'potassium', 5, 37, 100, 410, 25, 100, None, None),
-    'papyrus': Crop('double', 6, 'potassium', 19, 37, 310, 500, 70, 100, None, None),
-    'red_bell_pepper': Crop('pickable', 7, 'potassium', 16, 30, 190, 400, 25, 60, None, None),
-    'yellow_bell_pepper': Crop('pickable', 7, 'potassium', 16, 30, 190, 400, 25, 60, None, None),
-}
-
-PLANTS: Dict[str, Plant] = {
-    'athyrium_fern': Plant(True, -3.9, 15.7, 270, 500, 'standard'),
-    'canna': Plant(True, 13.9, 40, 290, 500, 'standard'),
-    'goldenrod': Plant(True, -12.9, -2.1, 75, 500, 'standard'),
-    'pampas_grass': Plant(True, 10.4, 40, 0, 300, 'tall_grass'),
-    'perovskia': Plant(True, -5.7, 13.9, 0, 280, 'dry'),
-
-    'beachgrass': Plant(False, -8, 30, 190, 500, 'beach_grass', False),
-    'bluegrass': Plant(False, -0.4, 13.9, 110, 280, 'short_grass', False),
-    'bromegrass': Plant(False, 6.8, 21.1, 140, 360, 'short_grass', False),
-    'fountain_grass': Plant(False, 3.2, 26.4, 75, 150, 'short_grass', False),
-    'manatee_grass': Plant(False, 13.9, 40, 250, 500, 'grass_water', False),
-    'orchard_grass': Plant(False, -30, 12.1, 75, 300, 'short_grass', False),
-    'ryegrass': Plant(False, -18.2, 40, 150, 320, 'short_grass', False),
-    'scutch_grass': Plant(False, 3.2, 40, 150, 500, 'short_grass', False),
-    'star_grass': Plant(False, 5, 40, 50, 260, 'grass_water', False),
-    'timothy_grass': Plant(False, -16.4, 17.5, 289, 500, 'short_grass', False),
-    'raddia_grass': Plant(False, 19.3, 40, 330, 500, 'short_grass', False),
-
-    'allium': Plant(False, -5.7, 1.4, 150, 400, 'standard'),
-    'anthurium': Plant(False, 13.9, 40, 290, 500, 'standard'),
-    'arrowhead': Plant(False, -5.7, 22.9, 180, 500, 'emergent_fresh'),
-    'houstonia': Plant(False, -7.5, 12.1, 150, 500, 'standard'),
-    'badderlocks': Plant(False, -12.9, 5, 150, 500, 'submerged_tall'),
-    'cordgrass': Plant(False, -16.4, 22.9, 50, 500, 'emergent'),
-    'barrel_cactus': Plant(False, 6.8, 19.3, 0, 85, 'cactus'),
-    'blood_lily': Plant(False, 10.4, 19.3, 200, 500, 'standard'),
-    'blue_orchid': Plant(False, 12.1, 40, 250, 390, 'standard'),
-    'blue_ginger': Plant(False, 17.5, 26.4, 300, 450, 'standard'),
-    'calendula': Plant(False, 6.8, 22.9, 130, 300, 'standard'),
-    'cattail': Plant(False, -11.1, 22.9, 150, 500, 'emergent_fresh'),
-    'laminaria': Plant(False, -18.2, 1.4, 100, 500, 'water'),
-    'marigold': Plant(False, -3.9, 19.3, 50, 390, 'emergent_fresh'),
-    'bur_reed': Plant(False, -11.1, 6.8, 250, 400, 'emergent_fresh'),
-    'butterfly_milkweed': Plant(False, -11.1, 19.3, 75, 300, 'standard'),
-    'black_orchid': Plant(False, 15.7, 40, 290, 410, 'standard'),
-    'cobblestone_lichen': Plant(False, -30, 20, 25, 450, 'creeping'),
-    'coontail': Plant(False, 5, 19.3, 250, 500, 'grass_water_fresh'),
-    'dandelion': Plant(False, -16.4, 40, 120, 400, 'standard'),
-    'dead_bush': Plant(False, -7.5, 40, 0, 120, 'dry'),
-    'desert_flame': Plant(False, 3.2, 21.1, 40, 170, 'standard'),
-    'duckweed': Plant(False, 12.1, 40, 0, 500, 'floating_fresh'),
-    'eel_grass': Plant(False, 8.6, 40, 200, 500, 'grass_water_fresh'),
-    'field_horsetail': Plant(False, -7.5, 21.1, 300, 500, 'standard'),
-    'foxglove': Plant(False, -3.9, 17.5, 150, 300, 'tall_plant'),
-    'grape_hyacinth': Plant(False, -5.7, 12.1, 150, 250, 'standard'),
-    'green_algae': Plant(False, -20, 30, 215, 450, 'floating_fresh'),
-    'gutweed': Plant(False, -2.1, 19.3, 100, 500, 'water'),
-    'heliconia': Plant(False, 15.7, 40, 320, 500, 'standard'),
-    'heather': Plant(False, -2.1, 8.6, 180, 380, 'standard'),
-    'hibiscus': Plant(False, 12.1, 24.6, 260, 450, 'tall_plant'),
-    'ivy': Plant(False, -4, 14, 90, 450, 'creeping'),
-    'kangaroo_paw': Plant(False, 15.7, 40, 100, 300, 'standard'),
-    'king_fern': Plant(False, 19.3, 40, 350, 500, 'tall_plant'),
-    'labrador_tea': Plant(False, -12.9, 3.2, 200, 380, 'standard'),
-    'lady_fern': Plant(False, -5.7, 10.4, 200, 500, 'standard'),
-    'licorice_fern': Plant(False, 5, 12.1, 300, 400, 'epiphyte'),
-    'artists_conk': Plant(False, -12, 21, 150, 420, 'epiphyte'),
-    'lily_of_the_valley': Plant(False, -11.1, 15.7, 180, 415, 'standard'),
-    'lilac': Plant(False, -5.7, 8.6, 150, 300, 'tall_plant'),
-    'lotus': Plant(False, -0.4, 19.3, 0, 500, 'floating_fresh'),
-    'maiden_pink': Plant(False, 5, 25, 100, 350, 'standard'),
-
-    'meads_milkweed': Plant(False, -5.7, 5, 130, 380, 'standard'),
-    'milfoil': Plant(False, -9.3, 22.9, 250, 500, 'water_fresh'),
-    'morning_glory': Plant(False, -14, 19, 300, 500, 'creeping'),
-    'philodendron': Plant(False, 16, 30, 380, 500, 'creeping'),
-    'moss': Plant(False, -10, 30, 250, 450, 'creeping'),
-    'nasturtium': Plant(False, 8.6, 22.9, 150, 380, 'standard'),
-    'ostrich_fern': Plant(False, -9.3, 8.6, 290, 470, 'tall_plant'),
-    'oxeye_daisy': Plant(False, -9.3, 12.1, 120, 300, 'standard'),
-    'phragmite': Plant(False, -2.1, 19.3, 50, 250, 'emergent_fresh'),
-    'pickerelweed': Plant(False, -9.3, 17.5, 200, 500, 'emergent_fresh'),
-    'pistia': Plant(False, 8.6, 26.4, 0, 400, 'floating_fresh'),
-    'poppy': Plant(False, -7.5, 15.7, 150, 250, 'standard'),
-    'primrose': Plant(False, -3.9, 12.1, 150, 300, 'standard'),
-    'pulsatilla': Plant(False, -5.7, 5, 50, 200, 'standard'),
-    'red_algae': Plant(False, -20, 30, 215, 450, 'floating'),
-    'red_sealing_wax_palm': Plant(False, 19.3, 40, 280, 500, 'tall_plant'),
-    'reindeer_lichen': Plant(False, -30, -8, 50, 470, 'creeping'),
-    'rose': Plant(True, -5, 20, 150, 300, 'tall_plant'),
-    'sacred_datura': Plant(False, 6.8, 19.3, 75, 150, 'standard'),
-    'sagebrush': Plant(False, -5.7, 15.7, 0, 120, 'dry'),
-    'sago': Plant(False, -12.9, 19.3, 200, 500, 'water_fresh'),
-    'saguaro_fruit': Plant(False, -18, 18, 200, 500, 'cactus_fruit', False),
-    'sapphire_tower': Plant(False, 12.1, 22.9, 75, 200, 'tall_plant'),
-    'sargassum': Plant(False, -5.7, 17.5, 0, 500, 'floating'),
-    'sea_lavender': Plant(False, -5.7, 13.9, 300, 450, 'emergent'),
-    'sea_palm': Plant(False, -18, 20, 10, 450, 'dry', False),
-    'guzmania': Plant(False, 21.1, 40, 290, 480, 'epiphyte'),
-    'silver_spurflower': Plant(False, 15.7, 24.6, 230, 400, 'standard'),
-    'snapdragon_pink': Plant(False, 17.5, 24.6, 150, 300, 'standard'),
-    'snapdragon_red': Plant(False, 13.9, 21.1, 150, 300, 'standard'),
-    'snapdragon_white': Plant(False, 10.4, 17.5, 150, 300, 'standard'),
-    'snapdragon_yellow': Plant(False, 8.6, 24.6, 150, 300, 'standard'),
-    'strelitzia': Plant(False, 15.7, 26.4, 50, 300, 'standard'),
-    'switchgrass': Plant(False, -2.1, 22.9, 110, 390, 'tall_grass'),
-    'sword_fern': Plant(False, -7.5, 13.9, 100, 500, 'standard'),
-    'tall_fescue_grass': Plant(False, -5.7, 12.1, 280, 430, 'tall_grass'),
-    'toquilla_palm': Plant(False, 17.5, 40, 250, 500, 'tall_plant'),
-    'trillium': Plant(False, -5.7, 10.4, 250, 500, 'standard'),
-    'tropical_milkweed': Plant(False, 10.4, 24.6, 120, 300, 'standard'),
-    'tulip_orange': Plant(False, 5, 12.1, 200, 400, 'standard'),
-    'tulip_pink': Plant(False, -2.1, 5, 200, 400, 'standard'),
-    'tulip_red': Plant(False, 3.2, 6.8, 200, 400, 'standard'),
-    'tulip_white': Plant(False, -7.5, -0.4, 200, 400, 'standard'),
-    'turtle_grass': Plant(False, 15.7, 40, 240, 500, 'grass_water'),
-    'vriesea': Plant(False, 15.7, 40, 200, 400, 'epiphyte'),
-    'water_canna': Plant(True, 13.9, 40, 150, 500, 'floating_fresh'),
-    'water_lily': Plant(False, -7.5, 40, 0, 500, 'floating_fresh'),
-    'water_taro': Plant(False, 13.9, 40, 260, 500, 'emergent_fresh'),
-    'yucca': Plant(False, -0.4, 22.9, 0, 75, 'dry'),
-}
-
-SMALL_FLOWERS = ('allium', 'anthurium', 'black_orchid', 'blood_lily', 'blue_orchid', 'blue_ginger', 'butterfly_milkweed', 'calendula', 'canna', 'dandelion', 'desert_flame', 'goldenrod', 'grape_hyacinth', 'guzmania', 'kangaroo_paw', 'labrador_tea', 'lily_of_the_valley', 'lotus', 'nasturtium', 'oxeye_daisy', 'pistia', 'poppy', 'primrose', 'pulsatilla', 'rose', 'sacred_datura', 'sagebrush', 'sapphire_tower', 'sargassum', 'silver_spurflower', 'snapdragon_red', 'snapdragon_pink', 'snapdragon_white', 'snapdragon_yellow', 'strelitzia', 'trillium', 'tropical_milkweed', 'tulip_orange', 'tulip_red', 'tulip_pink', 'tulip_white', 'vriesea', 'water_lily', 'yucca')
-
-TALL_FLOWERS = ('foxglove', 'hibiscus', 'lilac', 'toquilla_palm', 'marigold')
-
-FLOWERPOT_CROSS_PLANTS = {
-    'allium': 'allium_2',
-    'anthurium': 'anthurium_0',
-    'athyrium_fern': 'single',
-    'black_orchid': 'black_orchid_0',
-    'blood_lily': 'blood_lily_0',
-    'blue_orchid': 'blue_orchid_1',
-    'blue_ginger': 'blue_ginger_0',
-    'butterfly_milkweed': 'potted',
-    'calendula': 'calendula_3',
-    'canna': 'canna_3',
-    'dandelion': 'dandelion_2',
-    'dead_bush': 'dead_bush0',
-    'desert_flame': 'desert_flame_0',
-    'field_horsetail': 'potted',
-    'foxglove': 'item',
-    'goldenrod': 'goldenrod_2',
-    'grape_hyacinth': 'grape_hyacinth_1',
-    'heliconia': 'heliconia_0',
-    'heather': 'potted',
-    'houstonia': 'houstonia_1',
-    'kangaroo_paw': 'item',
-    'labrador_tea': 'labrador_tea_4',
-    'lady_fern': 'item',
-    'lily_of_the_valley': 'lily_of_the_valley_3',
-    'maiden_pink': 'potted',
-    'meads_milkweed': 'meads_milkweed_3',
-    'nasturtium': 'nasturtium_2',
-    'ostrich_fern': 'ostrich_fern_3',
-    'oxeye_daisy': 'oxeye_daisy_3',
-    'perovskia': 'perovskia_3',
-    'poppy': 'poppy_2',
-    'primrose': 'primrose',
-    'pulsatilla': 'pulsatilla_3',
-    'rose': 'classic',
-    'sacred_datura': 'sacred_datura_3',
-    'sagebrush': 'sagebrush_4',
-    'saguaro_fruit': 'saguaro_fruit_1',
-    'sapphire_tower': 'potted',
-    'silver_spurflower': 'silver_spurflower_2',
-    'snapdragon_pink': 'snapdragon_pink_1',
-    'snapdragon_red': 'snapdragon_red_1',
-    'snapdragon_white': 'snapdragon_white_1',
-    'snapdragon_yellow': 'snapdragon_yellow_1',
-    'strelitzia': 'strelitzia_0',
-    'sword_fern': 'potted',
-    'toquilla_palm': 'potted',
-    'trillium': 'trillium',
-    'tropical_milkweed': 'tropical_milkweed_3',
-    'tulip_orange': 'tulip_orange_1',
-    'tulip_pink': 'tulip_pink_1',
-    'tulip_red': 'tulip_red_1',
-    'tulip_white': 'tulip_white_1',
-    'yucca': 'potted'
-}
-
-SIMPLE_TALL_PLANTS = {
-    'foxglove': 5
-}
-MISC_POTTED_PLANTS = ['barrel_cactus', 'morning_glory', 'moss', 'reindeer_lichen', 'rose', 'toquilla_palm', 'tree_fern', 'sea_palm', 'philodendron']
-
-SIMPLE_STAGE_PLANTS: Dict[str, int] = {
-    'allium': 8,
-    'anthurium': 2,
-    'black_orchid': 3,
-    'blood_lily': 4,
-    'blue_ginger': 2,
-    'blue_orchid': 3,
-    'butterfly_milkweed': 7,
-    'desert_flame': 2,
-    'heliconia': 3,
-    'houstonia': 3,
-    'goldenrod': 5,
-    'grape_hyacinth': 4,
-    'kangaroo_paw': 2,  # tinted
-    'labrador_tea': 7,
-    'lily_of_the_valley': 6,
-    'meads_milkweed': 7,
-    'nasturtium': 5,
-    'oxeye_daisy': 6,
-    'perovskia': 6,
-    'poppy': 5,
-    'primrose': 3,
-    'pulsatilla': 6,
-    'sacred_datura': 5,  # different
-    'saguaro_fruit': 2,
-    'silver_spurflower': 3,
-    'strelitzia': 3,
-    'trillium': 6,  # different
-    'tropical_milkweed': 4,
-    'yucca': 4
-}
-
-MODEL_PLANTS: List[str] = ['arundo', 'arundo_plant', 'athyrium_fern', 'dry_phragmite', 'dry_phragmite_plant', 'hanging_vines', 'hanging_vines_plant', 'spanish_moss', 'spanish_moss_plant', 'lady_fern', 'laminaria', 'liana', 'liana_plant', 'milfoil', 'sago', 'sword_fern', 'tree_fern', 'tree_fern_plant', 'winged_kelp', 'winged_kelp_plant', 'sea_palm']
-SEAGRASS: List[str] = ['star_grass', 'manatee_grass', 'eel_grass', 'turtle_grass', 'coontail']
-
-UNIQUE_PLANTS: List[str] = ['hanging_vines_plant', 'hanging_vines', 'spanish_moss', 'spanish_moss_plant', 'liana_plant', 'liana', 'tree_fern_plant', 'tree_fern', 'arundo_plant', 'arundo', 'dry_phragmite', 'dry_phragmite_plant', 'winged_kelp_plant', 'winged_kelp', 'leafy_kelp_plant', 'leafy_kelp', 'giant_kelp_plant', 'giant_kelp_flower', 'jungle_vines', 'saguaro', 'saguaro_plant']
-BROWN_COMPOST_PLANTS: List[str] = ['hanging_vines', 'spanish_moss', 'liana', 'tree_fern', 'arundo', 'dry_phragmite', 'jungle_vines']
-SEAWEED: List[str] = ['sago', 'gutweed', 'laminaria', 'milfoil']
-CORALS: List[str] = ['tube', 'brain', 'bubble', 'fire', 'horn']
-CORAL_BLOCKS: List[str] = ['dead_coral', 'dead_coral', 'dead_coral_fan', 'coral_fan', 'dead_coral_wall_fan', 'coral_wall_fan']
-
-PLANT_COLORS: Dict[str, List[str]] = {
-    'white': ['houstonia', 'oxeye_daisy', 'primrose', 'snapdragon_white', 'trillium', 'spanish_moss', 'tulip_white', 'water_lily', 'lily_of_the_valley'],
-    'orange': ['butterfly_milkweed', 'canna', 'nasturtium', 'strelitzia', 'tulip_orange', 'water_canna', 'marigold'],
-    'magenta': ['athyrium_fern', 'morning_glory', 'pulsatilla', 'lilac', 'silver_spurflower'],
-    'light_blue': ['labrador_tea', 'sapphire_tower'],
-    'yellow': ['calendula', 'dandelion', 'meads_milkweed', 'goldenrod', 'snapdragon_yellow', 'desert_flame'],
-    'lime': ['moss'],
-    'pink': ['foxglove', 'sacred_datura', 'tulip_pink', 'snapdragon_pink', 'hibiscus', 'lotus', 'maiden_pink'],
-    'light_gray': ['yucca'],
-    'purple': ['allium', 'black_orchid', 'perovskia', 'blue_ginger', 'pickerelweed', 'heather'],
-    'blue': ['blue_orchid', 'grape_hyacinth'],
-    'brown': ['field_horsetail', 'sargassum'],
-    'green': ['barrel_cactus', 'reindeer_lichen'],
-    'red': ['guzmania', 'poppy', 'rose', 'snapdragon_red', 'tropical_milkweed', 'tulip_red', 'vriesea', 'anthurium', 'blood_lily', 'heliconia', 'kangaroo_paw']
+    'ipe': Wood(710, 1700),
+    'araucaria': Wood(690, 1700),
+    'beech': Wood(750, 1800),
+    'ginkgo': Wood(720, 1800),
+    'mahoe': Wood(730, 1700)
 }
 
 COLOR_COMBOS = [

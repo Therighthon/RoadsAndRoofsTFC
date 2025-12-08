@@ -1,0 +1,9 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:block_mod",
+  "input_item": {
+    "item": "rnr:crushed_base_course"
+  },
+  "input_block": "rnr:tamped_peat",
+  "output_block": "rnr:base_course"
+}

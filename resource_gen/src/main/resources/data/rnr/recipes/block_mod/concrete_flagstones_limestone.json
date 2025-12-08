@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:block_mod",
+  "input_item": {
+    "item": "rnr:flagstone/limestone"
+  },
+  "input_block": "rnr:wet_concrete_road",
+  "output_block": "rnr:wet_concrete_road_flagstones",
+  "consume_ingredient": false
+}

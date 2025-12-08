@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/over_height_gravel/limestone",
+  "result": "rnr:rock/macadam_road/limestone",
+  "mode": "smooth"
+}

@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/base_course_shape",
+  "textures": {
+    "dirt": "minecraft:block/gravel"
+  }
+}

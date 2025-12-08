@@ -1,0 +1,11 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "rnr:unfired_terracotta_roof_tile"
+  },
+  "result_item": {
+    "item": "rnr:terracotta_roof_tile"
+  },
+  "temperature": 1399
+}

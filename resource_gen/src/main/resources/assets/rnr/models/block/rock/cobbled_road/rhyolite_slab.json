@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "rnr:block/path_slab",
+  "textures": {
+    "top": "rnr:block/rock/cobbled_road/rhyolite",
+    "gravel": "minecraft:block/gravel"
+  }
+}

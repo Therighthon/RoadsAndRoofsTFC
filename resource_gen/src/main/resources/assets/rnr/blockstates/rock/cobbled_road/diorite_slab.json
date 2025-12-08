@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "variants": {
+    "": {
+      "model": "rnr:block/rock/cobbled_road/diorite_slab"
+    }
+  }
+}

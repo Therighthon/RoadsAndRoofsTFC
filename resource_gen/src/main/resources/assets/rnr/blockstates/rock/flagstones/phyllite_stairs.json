@@ -1,0 +1,95 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "variants": {
+    "facing=east,shape=straight": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs"
+    },
+    "facing=west,shape=straight": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=south,shape=straight": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north,shape=straight": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,shape=outer_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer"
+    },
+    "facing=west,shape=outer_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=south,shape=outer_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north,shape=outer_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,shape=outer_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=west,shape=outer_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south,shape=outer_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer"
+    },
+    "facing=north,shape=outer_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_outer",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=east,shape=inner_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner"
+    },
+    "facing=west,shape=inner_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=south,shape=inner_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north,shape=inner_right": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,shape=inner_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=west,shape=inner_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south,shape=inner_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner"
+    },
+    "facing=north,shape=inner_left": {
+      "model": "rnr:block/rock/flagstones/phyllite_stairs_inner",
+      "y": 180,
+      "uvlock": true
+    }
+  }
+}

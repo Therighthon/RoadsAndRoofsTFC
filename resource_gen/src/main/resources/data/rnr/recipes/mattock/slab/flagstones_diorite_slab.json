@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "rnr:rock/flagstones/diorite",
+  "result": "rnr:rock/flagstones/diorite_slab",
+  "mode": "slab"
+}

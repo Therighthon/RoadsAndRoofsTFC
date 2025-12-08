@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:chisel",
+  "ingredient": "rnr:wood/shingles/mahogany",
+  "result": "rnr:wood/shingles/mahogany_stairs",
+  "mode": "stair"
+}

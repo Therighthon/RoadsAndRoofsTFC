@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "tfc:mud/fluvisol",
+  "result": "rnr:tamped_fluvisol_mud",
+  "mode": "smooth"
+}

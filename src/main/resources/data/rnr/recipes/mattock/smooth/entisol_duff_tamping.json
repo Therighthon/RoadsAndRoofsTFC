@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "rnr:mattock",
+  "ingredient": "tfc:duff/entisol",
+  "result": "rnr:tamped_entisol",
+  "mode": "smooth"
+}

@@ -27,7 +27,7 @@ import validate_assets
 BOOK_LANGUAGES = ('en_us', 'ja_jp', 'ko_kr', 'pt_br', 'uk_ua', 'zh_cn', 'zh_tw', 'zh_hk')
 MOD_LANGUAGES = 'en_us'
 
-
+# TODO: Fix RM to generate in the correct folder
 def main():
     parser = ArgumentParser(description='Entrypoint for all common scripting infrastructure.')
     parser.add_argument('actions', nargs='+', choices=(

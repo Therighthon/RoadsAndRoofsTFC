@@ -1,0 +1,13 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tfc:rock/gravel/tuff"
+    }
+  ],
+  "result": {
+    "item": "rnr:gravel_fill/tuff",
+    "count": 4
+  }
+}

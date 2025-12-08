@@ -3,7 +3,6 @@ package com.therighthon.rnr.common;
 import java.util.Map;
 import java.util.function.Supplier;
 import com.therighthon.afc.common.blocks.AFCWood;
-import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.block.AFCCompatBlocks;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
@@ -21,8 +20,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.dries007.tfc.TerraFirmaCraft;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
+import net.dries007.tfc.common.blocks.soil.SoilBlockType;
 import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.SelfTests;
@@ -121,15 +122,13 @@ public class RNRCreativeModeTabs
         out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.WHITE).get());
         out.accept(RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.YELLOW).get());
 
-        out.accept(RNRBlocks.TAMPED_SILT.get());
-        out.accept(RNRBlocks.TAMPED_SILTY_LOAM.get());
-        out.accept(RNRBlocks.TAMPED_SANDY_LOAM.get());
-        out.accept(RNRBlocks.TAMPED_LOAM.get());
-
-        out.accept(RNRBlocks.TAMPED_SILT_MUD.get());
-        out.accept(RNRBlocks.TAMPED_SILTY_LOAM_MUD.get());
-        out.accept(RNRBlocks.TAMPED_SANDY_LOAM_MUD.get());
-        out.accept(RNRBlocks.TAMPED_LOAM_MUD.get());
+        for (SoilBlockType.Variant variant : SoilBlockType.Variant.values())
+        {
+            for (RNRBlocks.RNRSoilBlockType type : RNRBlocks.RNRSoilBlockType.values())
+            {
+                accept(out, RNRBlocks.TAMPED_SOILS, type, variant);
+            }
+        }
 
         out.accept(RNRBlocks.TAMPED_PEAT.get());
         out.accept(RNRBlocks.TAMPED_KAOLIN.get());

@@ -29,6 +29,7 @@ import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
+import net.dries007.tfc.common.blocks.soil.SoilBlockType;
 import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistrationHelpers;
@@ -44,15 +45,24 @@ public class RNRBlocks
     public static final DeferredRegister<Block> FLUID_BLOCKS =
         DeferredRegister.create(Registries.BLOCK, RoadsAndRoofs.MOD_ID);
 
-    public static final Id<Block> TAMPED_SILT = register("tamped_silt", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
-    public static final Id<Block> TAMPED_LOAM = register("tamped_loam", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
-    public static final Id<Block> TAMPED_SANDY_LOAM = register("tamped_sandy_loam", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
-    public static final Id<Block> TAMPED_SILTY_LOAM = register("tamped_silty_loam", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
+    public enum RNRSoilBlockType
+    {
+        TAMPED("tamped_", ""),
+        TAMPED_MUD("tamped_", "_mud");
 
-    public static final Id<Block> TAMPED_SILT_MUD = register("tamped_silt_mud", () -> new TampedMudBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
-    public static final Id<Block> TAMPED_LOAM_MUD = register("tamped_loam_mud", () -> new TampedMudBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
-    public static final Id<Block> TAMPED_SANDY_LOAM_MUD = register("tamped_sandy_loam_mud", () -> new TampedMudBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
-    public static final Id<Block> TAMPED_SILTY_LOAM_MUD = register("tamped_silty_loam_mud", () -> new TampedMudBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)));
+        public final String prefix;
+        public final String suffix;
+
+        RNRSoilBlockType(String prefix, String suffix)
+        {
+            this.prefix = prefix;
+            this.suffix = suffix;
+        }
+    }
+
+    public static final Map<RNRSoilBlockType, Map<SoilBlockType.Variant, Id<Block>>> TAMPED_SOILS =
+        Helpers.mapOf(RNRBlocks.RNRSoilBlockType.class, type -> Helpers.mapOf(SoilBlockType.Variant.class, variant ->
+            register(type.prefix + variant.name() + type.suffix, () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(3.0F).sound(SoundType.ROOTED_DIRT)))));
 
     public static final Id<Block> TAMPED_PEAT = register("tamped_peat", () -> new TampedMudBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(3.0F).sound(TFCSounds.PEAT)));
     public static final Id<Block> TAMPED_KAOLIN = register("tamped_kaolin", () -> new TampedSoilBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).randomTicks().strength(5.0F).sound(SoundType.GRAVEL)));
@@ -139,7 +149,7 @@ public class RNRBlocks
 
     public static final Map<Rock, Map<StoneBlockType, Id<Block>>> ROCK_SLABS = Helpers.mapOf(Rock.class, rock ->
         Helpers.mapOf(StoneBlockType.class, StoneBlockType::hasVariants, type ->
-            register(("rock/" + type.name() + "/" + rock.name())+ "_slab", () -> type.createRockSlab(rock, type))
+            register(("rock/" + type.name() + "/" + rock.name()) + "_slab", () -> type.createRockSlab(rock, type))
         )
     );
 

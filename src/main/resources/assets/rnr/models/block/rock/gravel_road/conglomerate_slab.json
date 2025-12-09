@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_slab",
   "textures": {
-    "top": "rnr:block/rock/gravel_road/conglomerate",
+    "top": "tfc:block/rock/gravel/conglomerate",
     "gravel": "minecraft:block/gravel"
   }
 }

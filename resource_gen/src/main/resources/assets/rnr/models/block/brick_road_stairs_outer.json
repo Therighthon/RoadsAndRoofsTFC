@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/brick_road",
-    "top": "rnr:block/brick_road",
-    "side": "rnr:block/brick_road"
-  }
-}

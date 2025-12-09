@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/wood/shingles/hevea",
-    "top": "rnr:block/wood/shingles/hevea",
-    "side": "rnr:block/wood/shingles/hevea"
-  }
-}

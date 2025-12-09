@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "rnr:block/wood/shingles/teak",
-    "top": "rnr:block/wood/shingles/teak",
-    "side": "rnr:block/wood/shingles/teak"
-  }
-}

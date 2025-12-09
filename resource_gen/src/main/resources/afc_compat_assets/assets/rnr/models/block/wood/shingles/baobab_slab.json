@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "rnr:block/wood/shingles/baobab",
-    "top": "rnr:block/wood/shingles/baobab",
-    "side": "rnr:block/wood/shingles/baobab"
-  }
-}

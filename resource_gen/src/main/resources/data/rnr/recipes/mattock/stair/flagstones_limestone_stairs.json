@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:mattock",
-  "ingredient": "rnr:rock/flagstones/limestone",
-  "result": "rnr:rock/flagstones/limestone_stairs",
-  "mode": "stair"
-}

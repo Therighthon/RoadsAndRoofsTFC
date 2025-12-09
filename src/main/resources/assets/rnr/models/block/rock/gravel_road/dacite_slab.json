@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_slab",
   "textures": {
-    "top": "rnr:block/rock/gravel_road/dacite",
+    "top": "tfc:block/rock/gravel/dacite",
     "gravel": "minecraft:block/gravel"
   }
 }

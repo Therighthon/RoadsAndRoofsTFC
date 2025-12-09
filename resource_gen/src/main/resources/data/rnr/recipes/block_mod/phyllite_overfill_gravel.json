@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:block_mod",
-  "input_item": {
-    "item": "rnr:gravel_fill/phyllite"
-  },
-  "input_block": "rnr:rock/gravel_road/phyllite",
-  "output_block": "rnr:rock/over_height_gravel/phyllite"
-}

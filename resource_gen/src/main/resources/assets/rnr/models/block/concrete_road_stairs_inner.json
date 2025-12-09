@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_inner_stairs",
-  "textures": {
-    "bottom": "rnr:block/concrete",
-    "top": "rnr:block/concrete",
-    "side": "rnr:block/concrete"
-  }
-}

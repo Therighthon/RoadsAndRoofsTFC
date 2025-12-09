@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/andesite",
-    "top": "rnr:block/rock/cobbled_road/andesite",
-    "side": "rnr:block/rock/cobbled_road/andesite"
-  }
-}

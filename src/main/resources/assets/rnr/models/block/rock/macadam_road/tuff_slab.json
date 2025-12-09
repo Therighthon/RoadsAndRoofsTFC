@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_slab",
   "textures": {
-    "top": "rnr:block/rock/macadam_road/tuff",
+    "top": "tfc:block/rock/gravel/tuff",
     "gravel": "minecraft:block/gravel"
   }
 }

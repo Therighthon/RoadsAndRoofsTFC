@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/roof_frame",
-    "top": "rnr:block/roof_frame_dense",
-    "side": "rnr:block/roof_frame_dense"
-  }
-}

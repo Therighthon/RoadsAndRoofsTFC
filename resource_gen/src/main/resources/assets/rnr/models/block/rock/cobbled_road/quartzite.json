@@ -1,8 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_block",
-  "textures": {
-    "top": "rnr:block/rock/cobbled_road/quartzite",
-    "gravel": "minecraft:block/gravel"
-  }
-}

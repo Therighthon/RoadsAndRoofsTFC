@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "tfc:chisel",
-  "ingredient": "rnr:roof_frame",
-  "result": "rnr:roof_frame_stairs",
-  "mode": "stair"
-}

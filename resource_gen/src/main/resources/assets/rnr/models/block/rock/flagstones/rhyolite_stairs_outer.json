@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "rnr:block/path_outer_stairs",
-  "textures": {
-    "bottom": "rnr:block/rock/flagstones/rhyolite",
-    "top": "rnr:block/rock/flagstones/rhyolite",
-    "side": "rnr:block/rock/flagstones/rhyolite"
-  }
-}

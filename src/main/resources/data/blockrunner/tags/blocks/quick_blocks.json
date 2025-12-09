@@ -1,16 +1,8 @@
 {
   "values": [
-    "#rnr:cobbled_road_blocks",
-	"#rnr:cobbled_road_slabs",
-	"#rnr:cobbled_road_stairs",
-	"#rnr:macadam_road_blocks",
-	"#rnr:macadam_road_slabs",
-	"#rnr:macadam_road_stairs",
-	"#rnr:flagstones_blocks",
-	"#rnr:flagstones_slabs",
-	"#rnr:flagstones_stairs",
-	"#rnr:sett_road_blocks",
-	"#rnr:sett_road_slabs",
-	"#rnr:sett_road_stairs"
+    "#rnr:all_cobbled_roads",
+	"#rnr:all_macadam_roads",
+	"#rnr:all_flagstone_roads",
+	"#rnr:all_sett_roads"
   ]
 }

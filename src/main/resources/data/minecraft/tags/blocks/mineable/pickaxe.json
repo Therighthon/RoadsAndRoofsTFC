@@ -1,17 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#rnr:sett_road_blocks",
-	"#rnr:flagstones_blocks",
-	"#rnr:cobbled_road_blocks",
-	"#rnr:sett_road_stairs",
-	"#rnr:flagstones_stairs",
-	"#rnr:cobbled_road_stairs",
-	"#rnr:sett_road_slabs",
-	"#rnr:flagstones_slabs",
-	"#rnr:cobbled_road_slabs",
-	"#rnr:dry_concrete_roads",
-	"#rnr:dry_concrete_road_stairs",
-	"#rnr:dry_concrete_road_slabs"
+    "#rnr:all_sett_roads",
+	"#rnr:all_flagstone_roads",
+	"#rnr:all_cobbled_roads",
+	"#rnr:all_dry_concrete_roads",
+	"#rnr:all_wet_concrete_roads"
   ]
 }

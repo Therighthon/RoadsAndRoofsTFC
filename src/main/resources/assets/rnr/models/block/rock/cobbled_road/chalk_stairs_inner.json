@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_inner_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/chalk",
-    "top": "rnr:block/rock/cobbled_road/chalk",
-    "side": "rnr:block/rock/cobbled_road/chalk"
+    "bottom": "tfc:block/rock/cobble/chalk",
+    "top": "tfc:block/rock/cobble/chalk",
+    "side": "tfc:block/rock/cobble/chalk"
   }
 }

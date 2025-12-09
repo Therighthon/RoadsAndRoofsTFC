@@ -311,13 +311,15 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
 
         for block_type in STONE_PATHS:
             # Paths
-            if (block_type=='sett_road' or block_type=='flagstones'):
+            if block_type== 'sett_road' or block_type== 'flagstones':
                 top_texture = 'rnr:block/rock/%s/%s' % (block_type, rock)
             else:
-                if (block_type=='gravel_road' or block_type=='macadam_road'):
+                if block_type== 'gravel_road' or block_type== 'macadam_road':
                     texture_dir = 'gravel'
-                if (block_type=='cobbled_road'):
+                elif block_type== 'cobbled_road':
                     texture_dir = 'cobble'
+                else:
+                    texture_dir = block_type
                 top_texture = 'tfc:block/rock/%s/%s' % (texture_dir, rock)
 
             rm.blockstate('rnr:rock/%s/%s' % (block_type, rock)).with_block_model({
@@ -325,7 +327,7 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
                 'gravel': 'minecraft:block/gravel'
             }, parent='rnr:block/path_block').with_item_model()
             # Stairs
-            make_rock_path_stairs(rm, block_type, rock)
+            make_rock_path_stairs(rm, block_type, rock, bottom_texture=top_texture, side_texture=top_texture, top_texture=top_texture)
             # Slabs
             rm.blockstate('rnr:rock/%s/%s_slab' % (block_type, rock)).with_block_model({
                 'top': top_texture,

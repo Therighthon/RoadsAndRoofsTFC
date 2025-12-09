@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_outer_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/gravel_road/gneiss",
-    "top": "rnr:block/rock/gravel_road/gneiss",
-    "side": "rnr:block/rock/gravel_road/gneiss"
+    "bottom": "tfc:block/rock/gravel/gneiss",
+    "top": "tfc:block/rock/gravel/gneiss",
+    "side": "tfc:block/rock/gravel/gneiss"
   }
 }

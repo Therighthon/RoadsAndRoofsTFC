@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_inner_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/macadam_road/andesite",
-    "top": "rnr:block/rock/macadam_road/andesite",
-    "side": "rnr:block/rock/macadam_road/andesite"
+    "bottom": "tfc:block/rock/gravel/andesite",
+    "top": "tfc:block/rock/gravel/andesite",
+    "side": "tfc:block/rock/gravel/andesite"
   }
 }

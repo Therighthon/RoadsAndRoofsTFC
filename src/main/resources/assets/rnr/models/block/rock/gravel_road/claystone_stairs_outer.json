@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_outer_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/gravel_road/claystone",
-    "top": "rnr:block/rock/gravel_road/claystone",
-    "side": "rnr:block/rock/gravel_road/claystone"
+    "bottom": "tfc:block/rock/gravel/claystone",
+    "top": "tfc:block/rock/gravel/claystone",
+    "side": "tfc:block/rock/gravel/claystone"
   }
 }

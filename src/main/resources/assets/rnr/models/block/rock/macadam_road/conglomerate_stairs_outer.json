@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_outer_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/macadam_road/conglomerate",
-    "top": "rnr:block/rock/macadam_road/conglomerate",
-    "side": "rnr:block/rock/macadam_road/conglomerate"
+    "bottom": "tfc:block/rock/gravel/conglomerate",
+    "top": "tfc:block/rock/gravel/conglomerate",
+    "side": "tfc:block/rock/gravel/conglomerate"
   }
 }

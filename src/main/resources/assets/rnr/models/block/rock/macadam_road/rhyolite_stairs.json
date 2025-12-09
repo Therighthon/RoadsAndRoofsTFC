@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/macadam_road/rhyolite",
-    "top": "rnr:block/rock/macadam_road/rhyolite",
-    "side": "rnr:block/rock/macadam_road/rhyolite"
+    "bottom": "tfc:block/rock/gravel/rhyolite",
+    "top": "tfc:block/rock/gravel/rhyolite",
+    "side": "tfc:block/rock/gravel/rhyolite"
   }
 }

@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/gravel_road/schist",
-    "top": "rnr:block/rock/gravel_road/schist",
-    "side": "rnr:block/rock/gravel_road/schist"
+    "bottom": "tfc:block/rock/gravel/schist",
+    "top": "tfc:block/rock/gravel/schist",
+    "side": "tfc:block/rock/gravel/schist"
   }
 }

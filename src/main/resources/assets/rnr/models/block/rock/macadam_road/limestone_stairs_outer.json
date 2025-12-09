@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_outer_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/macadam_road/limestone",
-    "top": "rnr:block/rock/macadam_road/limestone",
-    "side": "rnr:block/rock/macadam_road/limestone"
+    "bottom": "tfc:block/rock/gravel/limestone",
+    "top": "tfc:block/rock/gravel/limestone",
+    "side": "tfc:block/rock/gravel/limestone"
   }
 }

@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_outer_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/gravel_road/basalt",
-    "top": "rnr:block/rock/gravel_road/basalt",
-    "side": "rnr:block/rock/gravel_road/basalt"
+    "bottom": "tfc:block/rock/gravel/basalt",
+    "top": "tfc:block/rock/gravel/basalt",
+    "side": "tfc:block/rock/gravel/basalt"
   }
 }

@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/shale",
-    "top": "rnr:block/rock/cobbled_road/shale",
-    "side": "rnr:block/rock/cobbled_road/shale"
+    "bottom": "tfc:block/rock/cobble/shale",
+    "top": "tfc:block/rock/cobble/shale",
+    "side": "tfc:block/rock/cobble/shale"
   }
 }

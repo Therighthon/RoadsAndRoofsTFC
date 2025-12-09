@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_inner_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/gabbro",
-    "top": "rnr:block/rock/cobbled_road/gabbro",
-    "side": "rnr:block/rock/cobbled_road/gabbro"
+    "bottom": "tfc:block/rock/cobble/gabbro",
+    "top": "tfc:block/rock/cobble/gabbro",
+    "side": "tfc:block/rock/cobble/gabbro"
   }
 }

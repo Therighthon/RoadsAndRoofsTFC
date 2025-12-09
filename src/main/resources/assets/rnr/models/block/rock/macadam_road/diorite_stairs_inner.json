@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_inner_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/macadam_road/diorite",
-    "top": "rnr:block/rock/macadam_road/diorite",
-    "side": "rnr:block/rock/macadam_road/diorite"
+    "bottom": "tfc:block/rock/gravel/diorite",
+    "top": "tfc:block/rock/gravel/diorite",
+    "side": "tfc:block/rock/gravel/diorite"
   }
 }

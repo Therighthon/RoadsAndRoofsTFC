@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_outer_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/macadam_road/shale",
-    "top": "rnr:block/rock/macadam_road/shale",
-    "side": "rnr:block/rock/macadam_road/shale"
+    "bottom": "tfc:block/rock/gravel/shale",
+    "top": "tfc:block/rock/gravel/shale",
+    "side": "tfc:block/rock/gravel/shale"
   }
 }

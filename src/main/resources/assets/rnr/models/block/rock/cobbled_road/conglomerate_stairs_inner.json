@@ -2,8 +2,8 @@
   "__comment__": "This file was automatically created by mcresources",
   "parent": "rnr:block/path_inner_stairs",
   "textures": {
-    "bottom": "rnr:block/rock/cobbled_road/conglomerate",
-    "top": "rnr:block/rock/cobbled_road/conglomerate",
-    "side": "rnr:block/rock/cobbled_road/conglomerate"
+    "bottom": "tfc:block/rock/cobble/conglomerate",
+    "top": "tfc:block/rock/cobble/conglomerate",
+    "side": "tfc:block/rock/cobble/conglomerate"
   }
 }

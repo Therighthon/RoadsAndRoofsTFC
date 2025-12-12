@@ -6,7 +6,7 @@ from itertools import repeat
 from typing import Union
 
 from mcresources import ResourceManager, RecipeContext, utils, loot_tables
-from mcresources.type_definitions import ResourceIdentifier, Json
+from mcresources.type_definitions import ResourceIdentifier, Json, JsonObject, ResourceLocation, ResourceIdentifier, TypeWithOptionalConfig
 
 from constants import *
 
@@ -46,16 +46,16 @@ class Rules(Enum):
 
 def generate(rm: ResourceManager, afc_rm: ResourceManager):
     def craft_decorations(recipe_name: str, base_block: str, has_wall: bool = True):
-        rm.crafting_shaped(recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
-        rm.crafting_shaped(recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
+        crafting_shaped(rm, recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
+        crafting_shaped(rm, recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
         if has_wall:
-            rm.crafting_shaped(recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
+            crafting_shaped(rm, recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
 
     def afc_craft_decorations(recipe_name: str, base_block: str, has_wall: bool = True):
-        afc_rm.crafting_shaped(recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
-        afc_rm.crafting_shaped(recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
+        crafting_shaped(afc_rm, recipe_name + '_slab', ['XXX'], base_block, (6, base_block + '_slab'))
+        crafting_shaped(afc_rm, recipe_name + '_stairs', ['X  ', 'XX ', 'XXX'], base_block, (8, base_block + '_stairs'))
         if has_wall:
-            afc_rm.crafting_shaped(recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
+           crafting_shaped(afc_rm, recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
 
     # Rock Things
     for rock in ROCKS.keys():
@@ -84,7 +84,7 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     # ============================
     for rock in ROCKS:
         damage_shapeless(rm, 'crafting/flagstone/%s' % rock, ('tfc:rock/smooth/' + rock, '#tfc:chisels'), (4, 'rnr:flagstone/' + rock))
-        rm.crafting_shapeless('crafting/gravel_fill/%s' % rock, ('tfc:rock/gravel/' + rock), (4, 'rnr:gravel_fill/' + rock))
+        crafting_shapeless(rm, 'crafting/gravel_fill/%s' % rock, ('tfc:rock/gravel/' + rock), (4, 'rnr:gravel_fill/' + rock))
     for sand in SAND_BLOCK_TYPES:
         damage_shapeless(rm, 'crafting/flagstone/%s_sandstone' % sand, ('tfc:cut_sandstone/' + sand, '#tfc:chisels'), (4, 'rnr:flagstone/' + sand + '_sandstone'))
 
@@ -94,20 +94,20 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     for wood in WOODS.keys():
         damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
 
-    rm.crafting_shapeless('crafting/hoggin_mix', ('#c:gravels', '#c:sands', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
+    crafting_shapeless(rm, 'crafting/hoggin_mix', ('#c:gravels', '#c:sands', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
     damage_shapeless(rm, 'crafting/base_course', ('#c:gravels', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
 
     clay_knapping(rm, 'roof_tile_a', ['XXXXX', 'X   X', '     ', 'XXXXX', 'X   X'], (2, 'rnr:unfired_roof_tile'))
     clay_knapping(rm, 'roof_tile_b', ['     ', '     ', '     ', 'XXXXX', 'X   X'], (1, 'rnr:unfired_roof_tile'))
     clay_knapping(rm, 'roof_tile_c', ['XXXXX', 'X   X', '     ', '     ', '     '], (1, 'rnr:unfired_roof_tile'))
 
-    rm.crafting_shaped('crafting/roof_framing', ['XYX', 'Y Y', 'XYX'], {'X': '#tfc:lumber', 'Y': '#c:rods/wooden'}, (4, 'rnr:roof_frame'))
+    crafting_shaped(rm, 'crafting/roof_framing', ['XYX', 'Y Y', 'XYX'], {'X': '#tfc:lumber', 'Y': '#c:rods/wooden'}, (4, 'rnr:roof_frame'))
     craft_decorations('crafting/roof_framing', 'rnr:roof_frame', False)
-    rm.crafting_shapeless('crafting/terracotta_tile', ('rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'tfc:powder/hematite', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile'), (8, 'rnr:unfired_terracotta_roof_tile'))
+    crafting_shapeless(rm, 'crafting/terracotta_tile', ('rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'tfc:powder/hematite', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile'), (8, 'rnr:unfired_terracotta_roof_tile'))
     heat_recipe(rm, 'ceramic_roof_tile', 'rnr:unfired_roof_tile', POTTERY_MELT, 'rnr:ceramic_roof_tile')
     heat_recipe(rm, 'terracotta_roof_tile', 'rnr:unfired_terracotta_roof_tile', POTTERY_MELT, 'rnr:terracotta_roof_tile')
 
-    rm.crafting_shapeless('crafting/concrete_powder', ('rnr:crushed_base_course', 'tfc:powder/lime'), (1, 'rnr:concrete_powder'))
+    crafting_shapeless(rm, 'crafting/concrete_powder', ('rnr:crushed_base_course', 'tfc:powder/lime'), (1, 'rnr:concrete_powder'))
 
     # ============================
     # Collapse / Landslide Recipes
@@ -517,11 +517,70 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
 
 # Overrides
 
+# Change recipe->recipes
+def crafting_shapeless(rm: ResourceManager, name_parts: ResourceIdentifier, ingredients: Json, result: Json, group: str = None, conditions: Optional[Json] = None) -> RecipeContext:
+    """
+    Creates a shapeless crafting recipe.
+    :param name_parts: The resource location, including path elements.
+    :param ingredients: The ingredients.
+    :param result: The result of crafting the recipe.
+    :param group: The group.
+    :param conditions: Any conditions for the recipe to be enabled.
+    """
+    res = utils.resource_location(rm.domain, name_parts)
+    rm.write(('data', res.domain, 'recipe', res.path), {
+        'type': 'minecraft:crafting_shapeless',
+        'group': group,
+        'ingredients': utils.ingredient_list(ingredients),
+        'result': utils.item_stack(result),
+        'conditions': utils.recipe_condition(conditions)
+    })
+    return RecipeContext(rm, res)
 
+def crafting_shaped(rm: ResourceManager, name_parts: ResourceIdentifier, pattern: Sequence[str], ingredients: Json, result: Json, group: str = None, conditions: Optional[Json] = None) -> RecipeContext:
+    """
+    Creates a shaped crafting recipe.
+    :param name_parts: The resource location, including path elements.
+    :param pattern: The pattern for the recipe.
+    :param ingredients: The ingredients, indexed by key in pattern.
+    :param result: The result of crafting the recipe.
+    :param group: The group.
+    :param conditions: Any conditions for the recipe to be enabled.
+    """
+    utils.validate_crafting_pattern(pattern)
+    res = utils.resource_location(rm.domain, name_parts)
+    rm.write(('data', res.domain, 'recipe', res.path), {
+        'type': 'minecraft:crafting_shaped',
+        'group': group,
+        'pattern': pattern,
+        'key': utils.item_stack_dict(ingredients, ''.join(pattern)[0]),
+        'result': utils.item_stack(result),
+        'conditions': utils.recipe_condition(conditions)
+    })
+    return RecipeContext(rm, res)
 
+def recipe(rm: ResourceManager, name_parts: ResourceIdentifier, type_in: Optional[str], data_in: JsonObject, group: Optional[str] = None, conditions: Json = None) -> RecipeContext:
+    """
+    Creates a non-crafting recipe file, used for custom mod recipes using vanilla's data pack system
+    :param name_parts: The resource location, including path elements.
+    :param type_in: The type of the recipe.
+    :param data_in: Data required by the recipe, as present in json
+    :param group: The group.
+    :param conditions: Any conditions for the recipe to be enabled.
+    """
+    res = utils.resource_location(rm.domain, name_parts)
+    rm.write(('data', res.domain, 'recipe', res.path), {
+        'type': type_in,
+        'group': group,
+        **data_in,
+        'conditions': utils.recipe_condition(conditions)
+    })
+    return RecipeContext(rm, res)
+
+# TFC Stuff
 
 def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredients: Json, fluid: str, output_fluid: str = None, output_items: Json = None, duration: int = 2000, temp: int = 300):
-    rm.recipe(('pot', name_parts), 'tfc:pot', {
+    recipe(rm, ('pot', name_parts), 'tfc:pot', {
         'ingredients': ingredients,
         'fluid_ingredient': fluid_stack_ingredient(fluid),
         'duration': duration,
@@ -532,12 +591,12 @@ def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier,
 
 def disable_recipe(rm: ResourceManager, name_parts: ResourceIdentifier):
     # noinspection PyTypeChecker
-    rm.recipe(name_parts, None, {}, conditions='neoforge:never')
+    recipe(rm, name_parts, None, {}, conditions='neoforge:never')
 
 
 def collapse_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient, result: Optional[utils.Json] = None, copy_input: Optional[bool] = None):
     assert result is not None or copy_input
-    rm.recipe(('collapse', name_parts), 'tfc:collapse', {
+    recipe(rm, ('collapse', name_parts), 'tfc:collapse', {
         'ingredient': ingredient,
         'result': result,
         'copy_input': copy_input
@@ -545,7 +604,7 @@ def collapse_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, i
 
 
 def landslide_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: utils.Json, result: utils.Json):
-    rm.recipe(('landslide', name_parts), 'tfc:landslide', {
+    recipe(rm, ('landslide', name_parts), 'tfc:landslide', {
         'ingredient': ingredient,
         'result': result
     })
@@ -566,7 +625,7 @@ def simple_concrete_road_landslide_recipe(rm: ResourceManager, block: str, mod_i
 
 
 def chisel_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: utils.Json, result: str, mode: str):
-    rm.recipe(('chisel', mode, name_parts), 'tfc:chisel', {
+    recipe(rm, ('chisel', mode, name_parts), 'tfc:chisel', {
         'ingredient': ingredient,
         'result': result,
         'mode': mode,
@@ -575,7 +634,7 @@ def chisel_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ing
 
 
 def mattock_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: utils.Json, result: str, mode: str):
-    rm.recipe(('mattock', mode, name_parts), 'rnr:mattock', {
+    recipe(rm, ('mattock', mode, name_parts), 'rnr:mattock', {
         'ingredient': ingredient,
         'result': result,
         'mode': mode,
@@ -584,7 +643,7 @@ def mattock_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, in
 
 
 def block_mod_recipe_not_consumed(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: str, input_block: utils.Json, result: str):
-    rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {
+    recipe(rm, ('block_mod', name_parts), 'rnr:block_mod', {
         'input_item': utils.ingredient(input_item),
         'input_block': input_block,
         'output_block': result,
@@ -593,7 +652,7 @@ def block_mod_recipe_not_consumed(rm: ResourceManager, name_parts: utils.Resourc
 
 
 def block_mod_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: str, input_block: utils.Json, result: str):
-    rm.recipe(('block_mod', name_parts), 'rnr:block_mod', {
+    recipe(rm, ('block_mod', name_parts), 'rnr:block_mod', {
         'input_item': utils.ingredient(input_item),
         'input_block': input_block,
         'output_block': result
@@ -601,7 +660,7 @@ def block_mod_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, 
 
 
 def stone_cutting(rm: ResourceManager, name_parts: utils.ResourceIdentifier, item: str, result: str, count: int = 1) -> RecipeContext:
-    return rm.recipe(('stonecutting', name_parts), 'minecraft:stonecutting', {
+    return recipe(rm, ('stonecutting', name_parts), 'minecraft:stonecutting', {
         'ingredient': utils.ingredient(item),
         'result': result,
         'count': count
@@ -609,7 +668,7 @@ def stone_cutting(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ite
 
 
 def no_remainder_shapeless(rm: ResourceManager, name_parts: ResourceIdentifier, ingredients: Json, result: Json, group: str = None, conditions: utils.Json = None) -> RecipeContext:
-    return delegate_recipe(rm, name_parts, 'tfc:no_remainder_shapeless_crafting', {
+    return rm.recipe(name_parts, 'tfc:no_remainder_shapeless_crafting', {
         'type': 'minecraft:crafting_shapeless',
         'group': group,
         'ingredients': utils.item_stack_list(ingredients),
@@ -619,7 +678,7 @@ def no_remainder_shapeless(rm: ResourceManager, name_parts: ResourceIdentifier, 
 
 
 def no_remainder_shaped(rm: ResourceManager, name_parts: utils.ResourceIdentifier, pattern: Sequence[str], ingredients: Json, result: Json, group: str = None, conditions: Optional[Json] = None) -> RecipeContext:
-    return delegate_recipe(rm, name_parts, 'tfc:no_remainder_shaped_crafting', {
+    return rm.recipe(name_parts, 'tfc:no_remainder_shaped_crafting', {
         'type': 'minecraft:crafting_shaped',
         'group': group,
         'pattern': pattern,
@@ -705,14 +764,14 @@ def advanced_shapeless(rm: ResourceManager, name_parts: ResourceIdentifier, ingr
 
 def quern_recipe(rm: ResourceManager, name: ResourceIdentifier, item: str, result: str, count: int = 1) -> RecipeContext:
     result = result if not isinstance(result, str) else utils.item_stack((count, result))
-    return rm.recipe(('quern', name), 'tfc:quern', {
+    return recipe(rm, ('quern', name), 'tfc:quern', {
         'ingredient': utils.ingredient(item),
         'result': result
     })
 
 
 def scraping_recipe(rm: ResourceManager, name: ResourceIdentifier, item: str, result: str, count: int = 1, input_texture=None, output_texture=None, extra_drop: str = None) -> RecipeContext:
-    return rm.recipe(('scraping', name), 'tfc:scraping', {
+    return recipe(rm, ('scraping', name), 'tfc:scraping', {
         'ingredient': utils.ingredient(item),
         'result': utils.item_stack((count, result)),
         'input_texture': input_texture,
@@ -754,7 +813,7 @@ def horn_knapping(rm: ResourceManager, name_parts: ResourceIdentifier, pattern: 
 def knapping_recipe(rm: ResourceManager, name_parts: ResourceIdentifier, knap_type: str, pattern: List[str], result: Json, ingredient: Json, outside_slot_required: bool):
     for part in pattern:
         assert 0 < len(part) < 6, 'Incorrect length: %s' % part
-    rm.recipe((knap_type.split(':')[1] + '_knapping', name_parts), 'tfc:knapping', {
+    recipe(rm, (knap_type.split(':')[1] + '_knapping', name_parts), 'tfc:knapping', {
         'knapping_type': knap_type,
         'outside_slot_required': outside_slot_required,
         'pattern': pattern,
@@ -778,7 +837,7 @@ def knapping_type(rm: ResourceManager, name_parts: ResourceIdentifier, item_inpu
 def heat_recipe(rm: ResourceManager, name_parts: ResourceIdentifier, ingredient: Json, temperature: float, result_item: Optional[Union[str, Json]] = None, result_fluid: Optional[str] = None, use_durability: Optional[bool] = None, chance: Optional[float] = None) -> RecipeContext:
     result_item = item_stack_provider(result_item) if isinstance(result_item, str) else result_item
     result_fluid = None if result_fluid is None else fluid_stack(result_fluid)
-    return rm.recipe(('heating', name_parts), 'tfc:heating', {
+    return recipe(rm, ('heating', name_parts), 'tfc:heating', {
         'ingredient': utils.ingredient(ingredient),
         'result_item': result_item,
         'result_fluid': result_fluid,
@@ -789,7 +848,7 @@ def heat_recipe(rm: ResourceManager, name_parts: ResourceIdentifier, ingredient:
 
 
 def casting_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, mold: str, metal: str, amount: int, break_chance: float, result_item: str = None):
-    rm.recipe(('casting', name_parts), 'tfc:casting', {
+    recipe(rm, ('casting', name_parts), 'tfc:casting', {
         'mold': {'item': 'tfc:ceramic/%s_mold' % mold},
         'fluid': fluid_stack_ingredient('%d tfc:metal/%s' % (amount, metal)),
         'result': utils.item_stack('tfc:metal/%s/%s' % (mold, metal)) if result_item is None else utils.item_stack(result_item),
@@ -798,7 +857,7 @@ def casting_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, mo
 
 
 def alloy_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, metal: str, *parts: Tuple[str, float, float]):
-    rm.recipe(('alloy', name_parts), 'tfc:alloy', {
+    recipe(rm, ('alloy', name_parts), 'tfc:alloy', {
         'result': 'tfc:%s' % metal,
         'contents': [{
             'metal': 'tfc:%s' % p[0],
@@ -809,7 +868,7 @@ def alloy_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, meta
 
 
 def bloomery_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, result: Json, metal: Json, catalyst: Json, time: int):
-    rm.recipe(('bloomery', name_parts), 'tfc:bloomery', {
+    recipe(rm, ('bloomery', name_parts), 'tfc:bloomery', {
         'result': item_stack_provider(result),
         'fluid': fluid_stack_ingredient(metal),
         'catalyst': utils.ingredient(catalyst),
@@ -818,7 +877,7 @@ def bloomery_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, r
 
 
 def blast_furnace_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, metal_in: Json, metal_out: Json, catalyst: Json):
-    rm.recipe(('blast_furnace', name_parts), 'tfc:blast_furnace', {
+    recipe(rm, ('blast_furnace', name_parts), 'tfc:blast_furnace', {
         'fluid': fluid_stack_ingredient(metal_in),
         'result': fluid_stack(metal_out),
         'catalyst': utils.ingredient(catalyst)
@@ -826,7 +885,7 @@ def blast_furnace_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifi
 
 
 def barrel_sealed_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, translation: str, duration: int, input_item: Optional[Json] = None, input_fluid: Optional[Json] = None, output_item: Optional[Json] = None, output_fluid: Optional[Json] = None, on_seal: Optional[Json] = None, on_unseal: Optional[Json] = None, sound: Optional[str] = None):
-    rm.recipe(('barrel', name_parts), 'tfc:barrel_sealed', {
+    recipe(rm, ('barrel', name_parts), 'tfc:barrel_sealed', {
         'input_item': item_stack_ingredient(input_item) if input_item is not None else None,
         'input_fluid': fluid_stack_ingredient(input_fluid) if input_fluid is not None else None,
         'output_item': item_stack_provider(output_item) if isinstance(output_item, str) else output_item,
@@ -841,7 +900,7 @@ def barrel_sealed_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifi
 
 
 def barrel_instant_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, input_item: Optional[Json] = None, input_fluid: Optional[Json] = None, output_item: Optional[Json] = None, output_fluid: Optional[Json] = None, sound: Optional[str] = None):
-    rm.recipe(('barrel', name_parts), 'tfc:barrel_instant', {
+    recipe(rm, ('barrel', name_parts), 'tfc:barrel_instant', {
         'input_item': item_stack_ingredient(input_item) if input_item is not None else None,
         'input_fluid': fluid_stack_ingredient(input_fluid) if input_fluid is not None else None,
         'output_item': item_stack_provider(output_item) if output_item is not None else None,
@@ -851,7 +910,7 @@ def barrel_instant_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentif
 
 
 def barrel_instant_fluid_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, primary_fluid: Optional[Json] = None, added_fluid: Optional[Json] = None, output_fluid: Optional[Json] = None, sound: Optional[str] = None):
-    rm.recipe(('barrel', name_parts), 'tfc:barrel_instant_fluid', {
+    recipe(rm, ('barrel', name_parts), 'tfc:barrel_instant_fluid', {
         'primary_fluid': fluid_stack_ingredient(primary_fluid) if primary_fluid is not None else None,
         'added_fluid': fluid_stack_ingredient(added_fluid) if added_fluid is not None else None,
         'output_fluid': fluid_stack(output_fluid) if output_fluid is not None else None,
@@ -860,7 +919,7 @@ def barrel_instant_fluid_recipe(rm: ResourceManager, name_parts: utils.ResourceI
 
 
 def loom_recipe(rm: ResourceManager, name: utils.ResourceIdentifier, ingredient: Json, result: Json, steps: int, in_progress_texture: str):
-    return rm.recipe(('loom', name), 'tfc:loom', {
+    return recipe(rm, ('loom', name), 'tfc:loom', {
         'ingredient': item_stack_ingredient(ingredient),
         'result': utils.item_stack(result),
         'steps_required': steps,
@@ -869,7 +928,7 @@ def loom_recipe(rm: ResourceManager, name: utils.ResourceIdentifier, ingredient:
 
 
 def anvil_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: Json, result: Json, tier: int, *rules: Rules, bonus: bool = None):
-    rm.recipe(('anvil', name_parts), 'tfc:anvil', {
+    recipe(rm, ('anvil', name_parts), 'tfc:anvil', {
         'input': utils.ingredient(ingredient),
         'result': item_stack_provider(result),
         'tier': tier,
@@ -879,7 +938,7 @@ def anvil_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingr
 
 
 def welding_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, first_input: Json, second_input: Json, result: Json, tier: int, combine_forging: bool = None):
-    rm.recipe(('welding', name_parts), 'tfc:welding', {
+    recipe(rm, ('welding', name_parts), 'tfc:welding', {
         'first_input': utils.ingredient(first_input),
         'second_input': utils.ingredient(second_input),
         'tier': tier,
@@ -889,7 +948,7 @@ def welding_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, fi
 
 
 def glass_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, steps: List[str], batch: str, result: str):
-    rm.recipe(('glassworking', name_parts), 'tfc:glassworking', {
+    recipe(rm, ('glassworking', name_parts), 'tfc:glassworking', {
         'operations': steps,
         'batch': utils.ingredient(batch),
         'result': utils.item_stack(result)

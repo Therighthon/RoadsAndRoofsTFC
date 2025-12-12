@@ -57,76 +57,8 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         if has_wall:
            crafting_shaped(afc_rm, recipe_name + '_wall', ['XXX', 'XXX'], base_block, (6, base_block + '_wall'))
 
-    # Rock Things
-    for rock in ROCKS.keys():
-        loose = 'tfc:rock/loose/%s' % rock
-        mossy_loose = 'tfc:rock/mossy_loose/%s' % rock
-
-        brick = 'tfc:brick/%s' % rock
-        flagstone = 'rnr:flagstone/%s' % rock
-        gravel = 'rnr:gravel_fill/%s' % rock
-
-    for metal, metal_data in METALS.items():
-        if 'tool' in metal_data.types:
-            tool = 'mattock'
-            suffix = '_blade' if tool in ('knife', 'saw', 'scythe', 'sword') else '_head'
-            advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#c:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0))
-
-    for wood in WOODS.keys():
-        def item(thing: str):
-            return 'tfc:wood/%s/%s' % (thing, wood)
-
-        def plank(thing: str):
-            return 'tfc:wood/planks/%s_%s' % (wood, thing)
-
-    # ============================
-    # Crafting Recipes
-    # ============================
-    for rock in ROCKS:
-        damage_shapeless(rm, 'crafting/flagstone/%s' % rock, ('tfc:rock/smooth/' + rock, '#tfc:chisels'), (4, 'rnr:flagstone/' + rock))
-        crafting_shapeless(rm, 'crafting/gravel_fill/%s' % rock, ('tfc:rock/gravel/' + rock), (4, 'rnr:gravel_fill/' + rock))
-    for sand in SAND_BLOCK_TYPES:
-        damage_shapeless(rm, 'crafting/flagstone/%s_sandstone' % sand, ('tfc:cut_sandstone/' + sand, '#tfc:chisels'), (4, 'rnr:flagstone/' + sand + '_sandstone'))
-
-    for wood in AFC_WOODS.keys():
-        damage_shapeless(afc_rm, 'crafting/shingle/%s' % wood, ('afc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
-
-    for wood in WOODS.keys():
-        damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
-
-    crafting_shapeless(rm, 'crafting/hoggin_mix', ('#c:gravels', '#c:sands', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
-    damage_shapeless(rm, 'crafting/base_course', ('#c:gravels', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
-
-    clay_knapping(rm, 'roof_tile_a', ['XXXXX', 'X   X', '     ', 'XXXXX', 'X   X'], (2, 'rnr:unfired_roof_tile'))
-    clay_knapping(rm, 'roof_tile_b', ['     ', '     ', '     ', 'XXXXX', 'X   X'], (1, 'rnr:unfired_roof_tile'))
-    clay_knapping(rm, 'roof_tile_c', ['XXXXX', 'X   X', '     ', '     ', '     '], (1, 'rnr:unfired_roof_tile'))
-
-    crafting_shaped(rm, 'crafting/roof_framing', ['XYX', 'Y Y', 'XYX'], {'X': '#tfc:lumber', 'Y': '#c:rods/wooden'}, (4, 'rnr:roof_frame'))
-    craft_decorations('crafting/roof_framing', 'rnr:roof_frame', False)
-    crafting_shapeless(rm, 'crafting/terracotta_tile', ('rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'tfc:powder/hematite', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile'), (8, 'rnr:unfired_terracotta_roof_tile'))
-    heat_recipe(rm, 'ceramic_roof_tile', 'rnr:unfired_roof_tile', POTTERY_MELT, 'rnr:ceramic_roof_tile')
-    heat_recipe(rm, 'terracotta_roof_tile', 'rnr:unfired_terracotta_roof_tile', POTTERY_MELT, 'rnr:terracotta_roof_tile')
-
-    crafting_shapeless(rm, 'crafting/concrete_powder', ('rnr:crushed_base_course', 'tfc:powder/lime'), (1, 'rnr:concrete_powder'))
-
-    # ============================
-    # Collapse / Landslide Recipes
-    # ============================
-
     for rock in ROCKS:
         for type in STONE_PATHS:
-            def block(block_type: str):
-                return 'rnr:rock/%s/%s' % (block_type, rock)
-
-            def stair(block_type: str):
-                return 'rnr:rock/%s/%s_stairs' % (block_type, rock)
-
-            def slab(block_type: str):
-                return 'rnr:rock/%s/%s_slab' % (block_type, rock)
-
-            landslide_recipe(rm, '%s_%s' % (rock, type), block(type), block(type))
-            landslide_recipe(rm, '%s_%s_slab' % (rock, type), slab(type), slab(type))
-            landslide_recipe(rm, '%s_%s_stair' % (rock, type), stair(type), slab(type))
 
             # Loot
             for suffix in SUFFIXES:
@@ -139,7 +71,6 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         }))
 
     for sand in SAND_BLOCK_TYPES:
-        landslide_recipe(rm, '%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand, 'rnr:%s_sandstone_flagstones' % sand)
         for suffix in SUFFIXES:
             rm.block((sand + '_sandstone_flagstones' + suffix)).with_block_loot(({
                 'name': 'rnr:%s_sandstone_flagstones%s' % (sand, suffix)
@@ -174,96 +105,16 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
             'name': 'tfc:mud/%s' % dirt
         }))
 
-    simple_landslide_recipe(rm, 'base_course')
-    simple_landslide_recipe(rm, 'base_course')
-    simple_landslide_recipe(rm, 'tamped_peat')
-    simple_landslide_recipe(rm, 'tamped_kaolin')
-    simple_landslide_recipe(rm, 'tamped_silt')
-    simple_landslide_recipe(rm, 'tamped_silty_loam')
-    simple_landslide_recipe(rm, 'tamped_sandy_loam')
-    simple_landslide_recipe(rm, 'tamped_loam')
-    simple_landslide_recipe(rm, 'tamped_silt_mud')
-    simple_landslide_recipe(rm, 'tamped_silty_loam_mud')
-    simple_landslide_recipe(rm, 'tamped_sandy_loam_mud')
-    simple_landslide_recipe(rm, 'tamped_loam_mud')
-
-    simple_road_landslide_recipe(rm, 'brick_road')
-    simple_road_landslide_recipe(rm, 'hoggin')
-    simple_concrete_road_landslide_recipe(rm, 'concrete_road')
-    simple_road_landslide_recipe(rm, 'cracked_concrete_road')
-    simple_concrete_road_landslide_recipe(rm, 'trodden_concrete_road')
-    simple_road_landslide_recipe(rm, 'cracked_trodden_concrete_road')
-    simple_concrete_road_landslide_recipe(rm, 'concrete_road_panel')
-    simple_concrete_road_landslide_recipe(rm, 'concrete_road_sett')
-    simple_concrete_road_landslide_recipe(rm, 'concrete_road_flagstones')
-    landslide_recipe(rm, 'wet_concrete_road', 'rnr:wet_concrete_road', 'rnr:base_course')
-    landslide_recipe(rm, 'trodden_wet_concrete_road', 'rnr:trodden_wet_concrete_road', 'rnr:base_course')
-    landslide_recipe(rm, 'wet_concrete_road_control_joint', 'rnr:wet_concrete_road_control_joint', 'rnr:base_course')
-    landslide_recipe(rm, 'wet_concrete_road_panel', 'rnr:wet_concrete_road_panel', 'rnr:base_course')
-    landslide_recipe(rm, 'wet_concrete_road_sett', 'rnr:wet_concrete_road_sett', 'rnr:base_course')
-    landslide_recipe(rm, 'wet_concrete_road_flagstones', 'rnr:wet_concrete_road_flagstones', 'rnr:base_course')
-
     # TRIGGERS include raw, hardened, and ores
     # STARTS include raw, ores
     # COLLAPSIBLE includes raw, hardened, ores (lossy), bricks, smooth, spikes (special)
     # NOT SOLID SUPPORTING includes blocks that don't count as a solid block below for support purposes, which is just smooth + all slabs, stairs, etc.
-    for rock in ROCKS:
-        def block(block_type: str):
-            return 'rnr:rock/%s/%s' % (block_type, rock)
-
-        cobble = block('cobbled_road')
-        flagstones = block('flagstones')
-        gravel = block('gravel_road')
-        sett = block('sett_road')
-        macadam = block('macadam_road')
-
-        # Gravel and cobblestone have landslide recipes
-        rm.block_tag('can_landslide', cobble, gravel, flagstones, sett, macadam)
-
-        landslide_recipe(rm, '%s_cobble' % rock, cobble, cobble)
-        landslide_recipe(rm, '%s_gravel' % rock, gravel, gravel)
-        landslide_recipe(rm, '%s_macadam' % rock, macadam, gravel)
-        landslide_recipe(rm, '%s_flagstones' % rock, flagstones, flagstones)
-        landslide_recipe(rm, '%s_sett' % rock, sett, sett)
-
-    # Sand
-    # for variant in SAND_BLOCK_TYPES:
-    #     rm.block_tag('can_landslide', 'tfc:sand/%s' % variant)
-    #     landslide_recipe(rm, '%s_sand' % variant, 'tfc:sand/%s' % variant, 'tfc:sand/%s' % variant)
-
-    # Barrel
-    barrel_instant_recipe(rm, 'concrete_from_powder', 'rnr:concrete_powder', '100 minecraft:water', output_fluid='100 rnr:concrete')
-
-    # ============
-    # Block Mod Recipes
-    # ============
-
-    block_mod_recipe(rm, 'thatch_roof', 'tfc:straw', 'rnr:roof_frame', 'rnr:thatch_roof')
-    block_mod_recipe(rm, 'thatch_roof_slab', 'tfc:straw', 'rnr:roof_frame_slab', 'rnr:thatch_roof_slab')
-    block_mod_recipe(rm, 'thatch_roof_stairs', 'tfc:straw', 'rnr:roof_frame_stairs', 'rnr:thatch_roof_stairs')
-
-    block_mod_recipe(rm, 'terracotta_roof', 'rnr:terracotta_roof_tile', 'rnr:roof_frame', 'rnr:terracotta_roof')
-    block_mod_recipe(rm, 'terracotta_roof_slab', 'rnr:terracotta_roof_tile', 'rnr:roof_frame_slab', 'rnr:terracotta_roof_slab')
-    block_mod_recipe(rm, 'terracotta_roof_stairs', 'rnr:terracotta_roof_tile', 'rnr:roof_frame_stairs', 'rnr:terracotta_roof_stairs')
-
-    block_mod_recipe(rm, 'ceramic_roof', 'rnr:ceramic_roof_tile', 'rnr:roof_frame', 'rnr:ceramic_roof')
-    block_mod_recipe(rm, 'ceramic_roof_slab', 'rnr:ceramic_roof_tile', 'rnr:roof_frame_slab', 'rnr:ceramic_roof_slab')
-    block_mod_recipe(rm, 'ceramic_roof_stairs', 'rnr:ceramic_roof_tile', 'rnr:roof_frame_stairs', 'rnr:ceramic_roof_stairs')
-
     for wood in WOODS.keys():
-        block_mod_recipe(rm, '%s_shingle_roof' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame', 'rnr:wood/shingles/%s' % wood)
-        block_mod_recipe(rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
-        block_mod_recipe(rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
-
         rm.block_loot('rnr:wood/shingles/%s' % wood, 'rnr:wood/shingles/%s' % wood)
         slab_loot(rm, 'rnr:wood/shingles/%s_slab' % wood)
         rm.block_loot('rnr:wood/shingles/%s_stairs' % wood, 'rnr:wood/shingles/%s_stairs' % wood)
 
     for wood in AFC_WOODS.keys():
-        block_mod_recipe(afc_rm, '%s_shingle_roof' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame', 'rnr:wood/shingles/%s' % wood)
-        block_mod_recipe(afc_rm, '%s_shingle_roof_slab' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_slab', 'rnr:wood/shingles/%s_slab' % wood)
-        block_mod_recipe(afc_rm, '%s_shingle_roof_stairs' % wood, 'rnr:wood/shingle/%s' % wood, 'rnr:roof_frame_stairs', 'rnr:wood/shingles/%s_stairs' % wood)
-
         afc_rm.block_loot('rnr:wood/shingles/%s' % wood, 'rnr:wood/shingles/%s' % wood)
         slab_loot(afc_rm, 'rnr:wood/shingles/%s_slab' % wood)
         afc_rm.block_loot('rnr:wood/shingles/%s_stairs' % wood, 'rnr:wood/shingles/%s_stairs' % wood)
@@ -317,203 +168,6 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     rm.block_loot('rnr:wet_concrete_road_control_joint', 'rnr:base_course')
     rm.block_loot('rnr:trodden_wet_concrete_road', 'rnr:base_course')
     rm.block_loot('rnr:pouring_concrete_road', 'rnr:base_course')
-
-    for rock in ROCKS.keys():
-        block_mod_recipe(rm, rock + '_flagstones', 'rnr:flagstone/' + rock, 'rnr:base_course', 'rnr:rock/flagstones/' + rock)
-        block_mod_recipe(rm, rock + '_cobbled_road', 'tfc:rock/loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)
-        block_mod_recipe(rm, rock + '_cobbled_road_mossy', 'tfc:rock/mossy_loose/' + rock, 'rnr:base_course', 'rnr:rock/cobbled_road/' + rock)
-        block_mod_recipe(rm, rock + '_sett_road', 'tfc:brick/' + rock, 'rnr:base_course', 'rnr:rock/sett_road/' + rock)
-        block_mod_recipe(rm, rock + '_gravel_road', 'rnr:gravel_fill/' + rock, 'rnr:base_course', 'rnr:rock/gravel_road/' + rock)
-        block_mod_recipe(rm, rock + '_overfill_gravel', 'rnr:gravel_fill/' + rock, 'rnr:rock/gravel_road/' + rock, 'rnr:rock/over_height_gravel/' + rock)
-        mattock_recipe(rm, rock + '_macadam_tamping', 'rnr:rock/over_height_gravel/' + rock, 'rnr:rock/macadam_road/' + rock, 'smooth')
-    for sand in SAND_BLOCK_TYPES:
-        block_mod_recipe(rm, sand + '_flagstones', 'rnr:flagstone/' + sand + '_sandstone', 'rnr:base_course', 'rnr:%s_sandstone_flagstones' % sand)
-    block_mod_recipe(rm, 'hoggin', 'rnr:hoggin_mix', 'rnr:base_course', 'rnr:hoggin')
-    block_mod_recipe(rm, 'brick_road', 'minecraft:brick', 'rnr:base_course', 'rnr:brick_road')
-
-    # TODO: doesn't work with item tags
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_brick', 'minecraft:brick', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_granite', 'tfc:brick/granite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_granite', 'rnr:flagstone/granite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_granite', 'tfc:rock/smooth/granite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_diorite', 'tfc:brick/diorite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_diorite', 'rnr:flagstone/diorite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_diorite', 'tfc:rock/smooth/diorite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_gabbro', 'tfc:brick/gabbro', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_gabbro', 'rnr:flagstone/gabbro', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_gabbro', 'tfc:rock/smooth/gabbro', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_shale', 'tfc:brick/shale', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_shale', 'rnr:flagstone/shale', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_shale', 'tfc:rock/smooth/shale', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_claystone', 'tfc:brick/claystone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_claystone', 'rnr:flagstone/claystone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_claystone', 'tfc:rock/smooth/claystone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_limestone', 'tfc:brick/limestone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_limestone', 'rnr:flagstone/limestone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_limestone', 'tfc:rock/smooth/limestone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_conglomerate', 'tfc:brick/conglomerate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_conglomerate', 'rnr:flagstone/conglomerate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_conglomerate', 'tfc:rock/smooth/conglomerate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_dolomite', 'tfc:brick/dolomite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_dolomite', 'rnr:flagstone/dolomite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_dolomite', 'tfc:rock/smooth/dolomite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_chert', 'tfc:brick/chert', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_chert', 'rnr:flagstone/chert', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_chert', 'tfc:rock/smooth/chert', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_chalk', 'tfc:brick/chalk', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_chalk', 'rnr:flagstone/chalk', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_chalk', 'tfc:rock/smooth/chalk', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_rhyolite', 'tfc:brick/rhyolite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_rhyolite', 'rnr:flagstone/rhyolite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_rhyolite', 'tfc:rock/smooth/rhyolite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_basalt', 'tfc:brick/basalt', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_basalt', 'rnr:flagstone/basalt', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_basalt', 'tfc:rock/smooth/basalt', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_andesite', 'tfc:brick/andesite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_andesite', 'rnr:flagstone/andesite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_andesite', 'tfc:rock/smooth/andesite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_dacite', 'tfc:brick/dacite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_dacite', 'rnr:flagstone/dacite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_dacite', 'tfc:rock/smooth/dacite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_quartzite', 'tfc:brick/quartzite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_quartzite', 'rnr:flagstone/quartzite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_quartzite', 'tfc:rock/smooth/quartzite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_slate', 'tfc:brick/slate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_slate', 'rnr:flagstone/slate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_slate', 'tfc:rock/smooth/slate', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_phyllite', 'tfc:brick/phyllite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_phyllite', 'rnr:flagstone/phyllite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_phyllite', 'tfc:rock/smooth/phyllite', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_schist', 'tfc:brick/schist', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_schist', 'rnr:flagstone/schist', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_schist', 'tfc:rock/smooth/schist', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_gneiss', 'tfc:brick/gneiss', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_gneiss', 'rnr:flagstone/gneiss', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_gneiss', 'tfc:rock/smooth/gneiss', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-    block_mod_recipe_not_consumed(rm, 'concrete_sett_marble', 'tfc:brick/marble', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_sett')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_marble', 'rnr:flagstone/marble', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_panel_marble', 'tfc:rock/smooth/marble', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_panel')
-
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_black', 'rnr:flagstone/black_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_brown', 'rnr:flagstone/brown_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_green', 'rnr:flagstone/green_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_red', 'rnr:flagstone/red_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_pink', 'rnr:flagstone/pink_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_white', 'rnr:flagstone/white_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-    block_mod_recipe_not_consumed(rm, 'concrete_flagstones_sandstone_yellow', 'rnr:flagstone/yellow_sandstone', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_flagstones')
-
-    block_mod_recipe(rm, 'kaolin_base_course', 'rnr:crushed_base_course', 'rnr:tamped_kaolin', 'rnr:base_course')
-    block_mod_recipe(rm, 'peat_base_course', 'rnr:crushed_base_course', 'rnr:tamped_peat', 'rnr:base_course')
-    for dirt in SOIL_BLOCK_VARIANTS:
-        block_mod_recipe(rm, '%s_to_base_course' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s' % dirt, 'rnr:base_course')
-        block_mod_recipe(rm, '%s_mud_to_soil' % dirt, 'rnr:crushed_base_course', 'rnr:tamped_%s_mud' % dirt, 'rnr:tamped_%s' % dirt)
-
-    block_mod_recipe(rm, 'pouring_concrete', fluid_item_ingredient('1000 rnr:concrete'), 'rnr:base_course', 'rnr:pouring_concrete_road')
-
-
-
-    # ============
-    # Chisel Recipes
-    # ============
-
-    def chisel_stair_slab(name: str, ingredient: str):
-        chisel_recipe(rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
-        chisel_recipe(rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
-
-    def afc_chisel_stair_slab(name: str, ingredient: str):
-        chisel_recipe(afc_rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
-        chisel_recipe(afc_rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
-
-    for wood in AFC_WOODS.keys():
-        afc_chisel_stair_slab(wood + '_shingles', 'rnr:wood/shingles/' + wood)
-        afc_craft_decorations('crafting/' + wood + '_shingles', 'rnr:wood/shingles/' + wood, False)
-
-    for wood in WOODS.keys():
-        chisel_stair_slab(wood + '_shingles', 'rnr:wood/shingles/' + wood)
-        craft_decorations('crafting/' + wood + '_shingles', 'rnr:wood/shingles/' + wood, False)
-    chisel_stair_slab('roof_frame', 'rnr:roof_frame')
-    chisel_stair_slab('thatch_roof', 'rnr:thatch_roof')
-    chisel_stair_slab('ceramic_roof', 'rnr:ceramic_roof')
-    chisel_stair_slab('terracotta_roof', 'rnr:terracotta_roof')
-
-    # ============
-    # Mattock Recipes
-    # ============
-
-    def mattock_stair_slab(name: str, ingredient: str):
-        mattock_recipe(rm, name + '_stairs', ingredient, ingredient + '_stairs', 'stair')
-        mattock_recipe(rm, name + '_slab', ingredient, ingredient + '_slab', 'slab')
-
-    for rock in ROCKS.keys():
-        for block_type in STONE_PATHS:
-            mattock_stair_slab(block_type + '_' + rock, 'rnr:rock/%s/%s' % (block_type, rock))
-
-    mattock_stair_slab('hoggin', 'rnr:hoggin')
-    mattock_stair_slab('brick_road', 'rnr:brick_road')
-    for sand in SAND_BLOCK_TYPES:
-        mattock_stair_slab(sand + '_sandstone_flagstones', 'rnr:%s_sandstone_flagstones' % sand)
-
-    mattock_stair_slab('concrete_road', 'rnr:concrete_road')
-    mattock_stair_slab('concrete_road_panel', 'rnr:concrete_road_panel')
-    mattock_stair_slab('concrete_road_sett', 'rnr:concrete_road_sett')
-    mattock_stair_slab('concrete_road_flagstones', 'rnr:concrete_road_flagstones')
-    mattock_stair_slab('trodden_concrete_road', 'rnr:trodden_concrete_road')
-    mattock_stair_slab('cracked_trodden_concrete_road', 'rnr:cracked_trodden_concrete_road')
-
-    mattock_recipe(rm, 'concrete_road_control_joint_stairs', 'rnr:concrete_road_control_joint', 'rnr:concrete_road_stairs', 'stair')
-    mattock_recipe(rm, 'concrete_road_control_joint_slab', 'rnr:concrete_road_control_joint', 'rnr:concrete_road_slab', 'slab')
-
-
-    for soil in SOIL_BLOCK_VARIANTS:
-        for block_type in SOIL_DRY_BLOCK_TYPES:
-            mattock_recipe(rm, soil + '_' + block_type + '_tamping', 'tfc:' + block_type + '/' + soil, 'rnr:tamped_' + soil, 'smooth')
-        for block_type in SOIL_MUDDY_BLOCK_TYPES:
-            mattock_recipe(rm, soil + '_' + block_type + '_tamping', 'tfc:' + block_type + '/' + soil, 'rnr:tamped_' + soil + '_mud', 'smooth')
-
-    mattock_recipe(rm, 'kaolin_tamping_g', 'tfc:kaolin_clay_grass', 'rnr:tamped_kaolin', 'smooth')
-    mattock_recipe(rm, 'kaolin_tamping_w', 'tfc:white_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
-    mattock_recipe(rm, 'kaolin_tamping_p', 'tfc:pink_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
-    mattock_recipe(rm, 'kaolin_tamping_r', 'tfc:red_kaolin_clay', 'rnr:tamped_kaolin', 'smooth')
-    mattock_recipe(rm, 'peat_tamping', 'tfc:peat', 'rnr:tamped_peat', 'smooth')
-    mattock_recipe(rm, 'peat_grass_tamping', 'tfc:peat_grass', 'rnr:tamped_peat', 'smooth')
-
-    mattock_recipe(rm, 'control_joint', 'rnr:wet_concrete_road', 'rnr:wet_concrete_road_control_joint', 'smooth')
-    mattock_recipe(rm, 'smooth_concrete', 'rnr:trodden_wet_concrete_road', 'rnr:wet_concrete_road', 'smooth')
-
-    # ============
-    # Heat Recipes
-    # ============
-
-    # Quern
-    # quern_recipe(rm, 'olive', 'tfc:food/olive', 'tfc:olive_paste', count=2)
-
-    # Barrel Recipes
-
-    # barrel_sealed_recipe(rm, 'tannin', 'Tannin', 8000, '#tfc:makes_tannin', '1000 minecraft:water', output_fluid='1000 tfc:tannin')
-
-    # Instant Barrel Recipes
-    # barrel_instant_recipe(rm, 'fresh_to_salt_water', 'tfc:powder/salt', '125 minecraft:water', output_fluid='125 tfc:salt_water')
-
-    # Anvil Working Recipes
-    metal = '?'
-
-    def item(_variant: str) -> str:
-        return 'rnr:metal/%s/%s' % (_variant, metal)
-
-    def item_tag(namespace: str, _variant: str) -> str:
-        return '#%s:%ss/%s' % (namespace, _variant, metal)
-
-    for metal, metal_data in METALS.items():
-
-        # Tools
-        if 'tool' in metal_data.types:
-            anvil_recipe(rm, '%s_mattock_head' % metal, item_tag('forge', 'ingot'), item('mattock_head'), metal_data.tier, Rules.punch_last, Rules.punch_not_last, Rules.bend_not_last, bonus=True)
-
-    for metal, metal_data in METALS.items():
-        melt_metal = metal if metal_data.melt_metal is None else metal_data.melt_metal
-        for item, item_data in METAL_ITEMS.items():
-            if item_data.type == 'all' or item_data.type in metal_data.types:
-                heat_recipe(rm, ('metal', '%s_%s' % (metal, item)), 'rnr:metal/%s/%s' % (item, metal), metal_data.melt_temperature, None, '%d tfc:metal/%s' % (item_data.smelt_amount, melt_metal), use_durability=item_data.durability)
 
 # Overrides
 

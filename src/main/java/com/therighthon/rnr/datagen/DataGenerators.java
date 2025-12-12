@@ -28,6 +28,10 @@ public class DataGenerators
         generator.addProvider(event.includeServer(), new RNRItemTagProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), RoadsAndRoofs.MOD_ID, existingFileHelper));
 //        generator.addProvider(event.includeServer(), new RNRFluidTagProvider(packOutput, lookupProvider, RoadsAndRoofs.MOD_ID, existingFileHelper));
 
+        // Recipes
+        generator.addProvider(event.includeServer(), new RNRRecipeProvider(packOutput, lookupProvider));
+
+
     }
 }
 

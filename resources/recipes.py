@@ -70,7 +70,7 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
         if 'tool' in metal_data.types:
             tool = 'mattock'
             suffix = '_blade' if tool in ('knife', 'saw', 'scythe', 'sword') else '_head'
-            advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#forge:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0))
+            advanced_shaped(rm, 'crafting/metal/%s/%s' % (tool, metal), ['X', 'Y'], {'X': 'rnr:metal/%s%s/%s' % (tool, suffix, metal), 'Y': '#c:rods/wooden'}, item_stack_provider('rnr:metal/%s/%s' % (tool, metal), copy_forging=True), (0, 0))
 
     for wood in WOODS.keys():
         def item(thing: str):
@@ -94,14 +94,14 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
     for wood in WOODS.keys():
         damage_shapeless(rm, 'crafting/shingle/%s' % wood, ('tfc:wood/log/' + wood, '#tfc:chisels'), (4, 'rnr:wood/shingle/' + wood))
 
-    rm.crafting_shapeless('crafting/hoggin_mix', ('#forge:gravel', '#forge:sand', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
-    damage_shapeless(rm, 'crafting/base_course', ('#forge:gravel', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
+    rm.crafting_shapeless('crafting/hoggin_mix', ('#c:gravels', '#c:sands', 'minecraft:clay_ball'), (6, 'rnr:hoggin_mix'))
+    damage_shapeless(rm, 'crafting/base_course', ('#c:gravels', '#rnr:loose_rock_items', '#tfc:hammers'), (6, 'rnr:crushed_base_course'))
 
     clay_knapping(rm, 'roof_tile_a', ['XXXXX', 'X   X', '     ', 'XXXXX', 'X   X'], (2, 'rnr:unfired_roof_tile'))
     clay_knapping(rm, 'roof_tile_b', ['     ', '     ', '     ', 'XXXXX', 'X   X'], (1, 'rnr:unfired_roof_tile'))
     clay_knapping(rm, 'roof_tile_c', ['XXXXX', 'X   X', '     ', '     ', '     '], (1, 'rnr:unfired_roof_tile'))
 
-    rm.crafting_shaped('crafting/roof_framing', ['XYX', 'Y Y', 'XYX'], {'X': '#tfc:lumber', 'Y': '#forge:rods/wooden'}, (4, 'rnr:roof_frame'))
+    rm.crafting_shaped('crafting/roof_framing', ['XYX', 'Y Y', 'XYX'], {'X': '#tfc:lumber', 'Y': '#c:rods/wooden'}, (4, 'rnr:roof_frame'))
     craft_decorations('crafting/roof_framing', 'rnr:roof_frame', False)
     rm.crafting_shapeless('crafting/terracotta_tile', ('rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'tfc:powder/hematite', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile', 'rnr:unfired_roof_tile'), (8, 'rnr:unfired_terracotta_roof_tile'))
     heat_recipe(rm, 'ceramic_roof_tile', 'rnr:unfired_roof_tile', POTTERY_MELT, 'rnr:ceramic_roof_tile')
@@ -529,7 +529,7 @@ def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier,
 
 def disable_recipe(rm: ResourceManager, name_parts: ResourceIdentifier):
     # noinspection PyTypeChecker
-    rm.recipe(name_parts, None, {}, conditions='forge:false')
+    rm.recipe(name_parts, None, {}, conditions='neoforge:never')
 
 
 def collapse_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient, result: Optional[utils.Json] = None, copy_input: Optional[bool] = None):

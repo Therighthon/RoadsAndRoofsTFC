@@ -3,10 +3,10 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "forge:gravel"
+      "tag": "c:gravels"
     },
     {
-      "tag": "forge:sand"
+      "tag": "c:sands"
     },
     {
       "item": "minecraft:clay_ball"

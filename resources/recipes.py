@@ -515,6 +515,10 @@ def generate(rm: ResourceManager, afc_rm: ResourceManager):
             if item_data.type == 'all' or item_data.type in metal_data.types:
                 heat_recipe(rm, ('metal', '%s_%s' % (metal, item)), 'rnr:metal/%s/%s' % (item, metal), metal_data.melt_temperature, None, '%d tfc:metal/%s' % (item_data.smelt_amount, melt_metal), use_durability=item_data.durability)
 
+# Overrides
+
+
+
 
 def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredients: Json, fluid: str, output_fluid: str = None, output_items: Json = None, duration: int = 2000, temp: int = 300):
     rm.recipe(('pot', name_parts), 'tfc:pot', {
@@ -525,7 +529,6 @@ def simple_pot_recipe(rm: ResourceManager, name_parts: utils.ResourceIdentifier,
         'fluid_output': fluid_stack(output_fluid) if output_fluid is not None else None,
         'item_output': [utils.item_stack(item) for item in output_items] if output_items is not None else None
     })
-
 
 def disable_recipe(rm: ResourceManager, name_parts: ResourceIdentifier):
     # noinspection PyTypeChecker
@@ -660,7 +663,7 @@ def extra_products_shapeless(rm: ResourceManager, name_parts: ResourceIdentifier
 
 def write_crafting_recipe(rm: ResourceManager, name_parts: ResourceIdentifier, data: Json) -> RecipeContext:
     res = utils.resource_location(rm.domain, name_parts)
-    rm.write((*rm.resource_dir, 'data', res.domain, 'recipes', res.path), data)
+    rm.write((*rm.resource_dir, 'data', res.domain, 'recipe', res.path), data)
     return RecipeContext(rm, res)
 
 
@@ -674,7 +677,7 @@ def delegate_recipe(rm: ResourceManager, name_parts: ResourceIdentifier, recipe_
 
 def advanced_shaped(rm: ResourceManager, name_parts: ResourceIdentifier, pattern: Sequence[str], ingredients: Json, result: Json, input_xy: Tuple[int, int], group: str = None, conditions: Optional[Json] = None) -> RecipeContext:
     res = utils.resource_location(rm.domain, name_parts)
-    rm.write((*rm.resource_dir, 'data', res.domain, 'recipes', res.path), {
+    rm.write((*rm.resource_dir, 'data', res.domain, 'recipe', res.path), {
         'type': 'tfc:advanced_shaped_crafting',
         'group': group,
         'pattern': pattern,
@@ -689,7 +692,7 @@ def advanced_shaped(rm: ResourceManager, name_parts: ResourceIdentifier, pattern
 
 def advanced_shapeless(rm: ResourceManager, name_parts: ResourceIdentifier, ingredients: Json, result: Json, primary_ingredient: Json = None, group: str = None, conditions: Optional[Json] = None) -> RecipeContext:
     res = utils.resource_location(rm.domain, name_parts)
-    rm.write((*rm.resource_dir, 'data', res.domain, 'recipes', res.path), {
+    rm.write((*rm.resource_dir, 'data', res.domain, 'recipe', res.path), {
         'type': 'tfc:advanced_shapeless_crafting',
         'group': group,
         'ingredients': utils.item_stack_list(ingredients),

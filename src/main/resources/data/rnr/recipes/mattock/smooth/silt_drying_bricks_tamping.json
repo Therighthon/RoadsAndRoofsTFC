@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:mattock",
-  "ingredient": "tfc:drying_bricks/silt",
-  "result": "rnr:tamped_silt",
-  "mode": "smooth"
-}

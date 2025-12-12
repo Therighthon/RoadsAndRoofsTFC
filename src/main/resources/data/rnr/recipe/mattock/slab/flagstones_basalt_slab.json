@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:mattock",
-  "ingredient": "rnr:rock/flagstones/basalt",
-  "result": "rnr:rock/flagstones/basalt_slab",
-  "mode": "slab"
-}

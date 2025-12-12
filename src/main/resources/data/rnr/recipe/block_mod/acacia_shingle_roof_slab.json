@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:block_mod",
-  "input_item": {
-    "item": "rnr:wood/shingle/acacia"
-  },
-  "input_block": "rnr:roof_frame_slab",
-  "output_block": "rnr:wood/shingles/acacia_slab"
-}

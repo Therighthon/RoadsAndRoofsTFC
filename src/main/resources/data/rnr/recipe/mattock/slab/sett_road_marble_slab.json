@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:mattock",
-  "ingredient": "rnr:rock/sett_road/marble",
-  "result": "rnr:rock/sett_road/marble_slab",
-  "mode": "slab"
-}

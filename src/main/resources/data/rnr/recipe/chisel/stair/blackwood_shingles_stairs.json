@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "tfc:chisel",
-  "ingredient": "rnr:wood/shingles/blackwood",
-  "result": "rnr:wood/shingles/blackwood_stairs",
-  "mode": "stair"
-}

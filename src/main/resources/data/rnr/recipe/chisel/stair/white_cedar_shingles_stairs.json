@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "tfc:chisel",
-  "ingredient": "rnr:wood/shingles/white_cedar",
-  "result": "rnr:wood/shingles/white_cedar_stairs",
-  "mode": "stair"
-}

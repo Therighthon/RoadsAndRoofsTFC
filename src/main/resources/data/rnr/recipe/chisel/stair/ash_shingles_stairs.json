@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "tfc:chisel",
-  "ingredient": "rnr:wood/shingles/ash",
-  "result": "rnr:wood/shingles/ash_stairs",
-  "mode": "stair"
-}

@@ -1,9 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "type": "rnr:block_mod",
-  "input_item": {
-    "item": "tfc:rock/mossy_loose/chalk"
-  },
-  "input_block": "rnr:base_course",
-  "output_block": "rnr:rock/cobbled_road/chalk"
-}

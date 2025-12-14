@@ -1,9 +1,8 @@
 package com.therighthon.rnr.datagen;
 
-import com.therighthon.afc.AFCHelpers;
 import com.therighthon.afc.common.blocks.AFCBlocks;
 import com.therighthon.afc.common.blocks.AFCWood;
-import com.therighthon.afc.common.blocks.UniqueLogs;
+import com.therighthon.rnr.RNRHelpers;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
@@ -17,6 +16,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -104,12 +104,12 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     private void soils()
     {
         // Tamping soils
-        mattockAnyMode(BlockIngredient.of(TFCBlocks.PEAT_GRASS.get()), RNRBlocks.TAMPED_PEAT.get().defaultBlockState());
-        mattockAnyMode(BlockIngredient.of(TFCBlocks.PEAT.get()), RNRBlocks.TAMPED_PEAT.get().defaultBlockState());
-        mattockAnyMode(BlockIngredient.of(TFCBlocks.KAOLIN_CLAY_GRASS.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState());
-        mattockAnyMode(BlockIngredient.of(TFCBlocks.WHITE_KAOLIN_CLAY.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState());
-        mattockAnyMode(BlockIngredient.of(TFCBlocks.PINK_KAOLIN_CLAY.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState());
-        mattockAnyMode(BlockIngredient.of(TFCBlocks.RED_KAOLIN_CLAY.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState());
+        mattockAnyMode(BlockIngredient.of(TFCBlocks.PEAT_GRASS.get()), RNRBlocks.TAMPED_PEAT.get().defaultBlockState(), "grass");
+        mattockAnyMode(BlockIngredient.of(TFCBlocks.PEAT.get()), RNRBlocks.TAMPED_PEAT.get().defaultBlockState(), "dirt");
+        mattockAnyMode(BlockIngredient.of(TFCBlocks.KAOLIN_CLAY_GRASS.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState(), "grass");
+        mattockAnyMode(BlockIngredient.of(TFCBlocks.WHITE_KAOLIN_CLAY.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState(), "white");
+        mattockAnyMode(BlockIngredient.of(TFCBlocks.PINK_KAOLIN_CLAY.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState(), "pink");
+        mattockAnyMode(BlockIngredient.of(TFCBlocks.RED_KAOLIN_CLAY.get()), RNRBlocks.TAMPED_KAOLIN.get().defaultBlockState(), "red");
 
         mattockAnyMode(BlockIngredient.of(RNRTags.Blocks.TAMPABLE_OXISOL), RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED).get(SoilBlockType.Variant.OXISOL).get().defaultBlockState());
         mattockAnyMode(BlockIngredient.of(RNRTags.Blocks.TAMPABLE_OXISOL_MUD), RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED_MUD).get(SoilBlockType.Variant.OXISOL).get().defaultBlockState());
@@ -145,11 +145,11 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         blockMod(RNRBlocks.BASE_COURSE.get(), Items.BRICK, RNRBlocks.BRICK_ROAD.get().defaultBlockState());
 
         // Mattock and chisel shaping
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.HOGGIN.get()), RNRBlocks.HOGGIN_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.HOGGIN.get()), RNRBlocks.HOGGIN_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.HOGGIN.get()), RNRBlocks.HOGGIN_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.HOGGIN.get()), RNRBlocks.HOGGIN_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.BRICK_ROAD.get()), RNRBlocks.BRICK_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.BRICK_ROAD.get()), RNRBlocks.BRICK_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.BRICK_ROAD.get()), RNRBlocks.BRICK_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.BRICK_ROAD.get()), RNRBlocks.BRICK_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
     }
 
     private void stoneRoads()
@@ -169,14 +169,19 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             rockRoadMod(RNRItems.FLAGSTONE.get(rock).asItem(), rock, StoneBlockType.FLAGSTONES);
             rockRoadMod(TFCItems.BRICKS.get(rock).asItem(), rock, StoneBlockType.SETT_ROAD);
             rockRoadMod(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.LOOSE).asItem(), rock, StoneBlockType.COBBLED_ROAD);
-            rockRoadMod(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.MOSSY_LOOSE).asItem(), rock, StoneBlockType.COBBLED_ROAD);
+            rockRoadMod(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.MOSSY_LOOSE).asItem(), rock, StoneBlockType.COBBLED_ROAD, "mossy");
 
-            // TODO: This should be grav->OG->mcad
+            // Make over-height gravel
             blockMod(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.GRAVEL_ROAD).get(),
                 RNRItems.GRAVEL_FILL.get(rock).asItem(),
-                RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState());
-            mattockAndChisel(BlockIngredient.of(RNRBlocks.ROCK_STAIRS.get(rock).get(StoneBlockType.MACADAM_ROAD).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.STAIR.get());
-            mattockAndChisel(BlockIngredient.of(RNRBlocks.ROCK_SLABS.get(rock).get(StoneBlockType.MACADAM_ROAD).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.SLAB.get());
+                RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get().defaultBlockState());
+            // Tamp to macadam
+            mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.SMOOTH, "smooth");
+            mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.STAIR, "stair");
+            mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.SLAB, "slab");
+            // Cut stairs/slabs
+            mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get()), RNRBlocks.ROCK_STAIRS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.STAIR, "stair");
+            mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get()), RNRBlocks.ROCK_SLABS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.SLAB, "slab");
         }
     }
 
@@ -187,38 +192,38 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         {
             recipe().damageInputs()
                 .inputIsPrimary(TFCTags.Items.TOOLS_CHISEL)
-                .input(TFCBlocks.SANDSTONE.get(SandstoneBlockType.SMOOTH).get(color).asItem())
+                .input(TFCBlocks.SANDSTONE.get(color).get(SandstoneBlockType.SMOOTH).asItem())
                 .shapeless(RNRItems.SANDSTONE_FLAGSTONE.get(color).asItem(), 8);
         }
 
         // Blockmod Placements and Mattock chiseling
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.BLACK).asItem(), RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.YELLOW).asItem(), RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get()), RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get()), RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get()), RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get()), RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.RED).asItem(), RNRBlocks.RED_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get()), RNRBlocks.RED_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get()), RNRBlocks.RED_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get()), RNRBlocks.RED_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get()), RNRBlocks.RED_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.BROWN).asItem(), RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.WHITE).asItem(), RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get()), RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get()), RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get()), RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get()), RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.GREEN).asItem(), RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get()), RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
         blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), RNRItems.SANDSTONE_FLAGSTONE.get(SandBlockType.PINK).asItem(), RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.PINK_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.PINK_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.PINK_SANDSTONE_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get()), RNRBlocks.PINK_SANDSTONE_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
     }
 
@@ -257,22 +262,22 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         concreteBlockMod(RNRBlocks.WET_CONCRETE_ROAD.get(), TFCTags.Items.STONES_SMOOTH, RNRBlocks.WET_CONCRETE_ROAD_PANEL.get().defaultBlockState());
 
         // Mattock shaping Stairs and slabs
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD.get()), RNRBlocks.CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD.get()), RNRBlocks.CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get()), RNRBlocks.CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get()), RNRBlocks.CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_PANEL.get()), RNRBlocks.CONCRETE_ROAD_PANEL_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_PANEL.get()), RNRBlocks.CONCRETE_ROAD_PANEL_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_SETT.get()), RNRBlocks.CONCRETE_ROAD_SETT_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_SETT.get()), RNRBlocks.CONCRETE_ROAD_SETT_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get()), RNRBlocks.CONCRETE_ROAD_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get()), RNRBlocks.CONCRETE_ROAD_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CRACKED_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CRACKED_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.TRODDEN_CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.TRODDEN_CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB.get());
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD.get()), RNRBlocks.CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD.get()), RNRBlocks.CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get()), RNRBlocks.CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR, "cj");
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_CONTROL_JOINT.get()), RNRBlocks.CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB, "cj");
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_PANEL.get()), RNRBlocks.CONCRETE_ROAD_PANEL_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_PANEL.get()), RNRBlocks.CONCRETE_ROAD_PANEL_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_SETT.get()), RNRBlocks.CONCRETE_ROAD_SETT_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_SETT.get()), RNRBlocks.CONCRETE_ROAD_SETT_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get()), RNRBlocks.CONCRETE_ROAD_FLAGSTONES_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.CONCRETE_ROAD_FLAGSTONES.get()), RNRBlocks.CONCRETE_ROAD_FLAGSTONES_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+        mattock(BlockIngredient.of(RNRBlocks.CRACKED_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.CRACKED_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+        mattock(BlockIngredient.of(RNRBlocks.TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.TRODDEN_CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.TRODDEN_CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+        mattock(BlockIngredient.of(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        mattock(BlockIngredient.of(RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD.get()), RNRBlocks.CRACKED_TRODDEN_CONCRETE_ROAD_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
     }
 
@@ -293,7 +298,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         {
             recipe().damageInputs()
                 .inputIsPrimary(TFCTags.Items.TOOLS_CHISEL)
-                .input(TFCBlocks.WOODS.get(Wood.BlockType.LOG).get(wood).asItem())
+                .input(TFCBlocks.WOODS.get(wood).get(Wood.BlockType.LOG).asItem())
                 .shapeless(RNRItems.WOOD_SHINGLE.get(wood).asItem(), 12);
         }
 
@@ -303,7 +308,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         {
             recipe().damageInputs()
                 .inputIsPrimary(TFCTags.Items.TOOLS_CHISEL)
-                .input(AFCBlocks.WOODS.get(Wood.BlockType.LOG).get(wood).asItem())
+                .input(AFCBlocks.WOODS.get(wood).get(Wood.BlockType.LOG).asItem())
                 .shapeless(AFCCompatItems.WOOD_SHINGLE.get(wood).asItem(), 12);
         }
     }
@@ -320,10 +325,11 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         recipe().damageInputs()
             .input(Tags.Items.GRAVELS)
             .input(TFCTags.Items.STONES_LOOSE)
-            .inputIsPrimary(TFCTags.Items.TOOLS_HAMMER).shapeless(RNRItems.HOGGIN_MIX.asItem(), 8);
+            .inputIsPrimary(TFCTags.Items.TOOLS_HAMMER).shapeless(RNRItems.CRUSHED_BASE_COURSE, 8);
 
-        clayKnapping("0", RNRItems.UNFIRED_ROOF_TILE, 2, false, "XXXXX", "X   X", "     ", "XXXXX", "X   X");
-        clayKnapping("1", RNRItems.UNFIRED_ROOF_TILE, 1, false, "XXXXX", "X   X");
+        // TODO: Clay knapping makes a crash
+//        clayKnapping("0", RNRItems.UNFIRED_ROOF_TILE, 2, false, "XXXXX", "X   X", "     ", "XXXXX", "X   X");
+//        clayKnapping("1", RNRItems.UNFIRED_ROOF_TILE, 1, false, "XXXXX", "X   X");
         recipe().input(RNRItems.UNFIRED_ROOF_TILE, 8).input(TFCItems.ORE_POWDERS.get(Ore.HEMATITE).asItem()).shapeless(RNRItems.UNFIRED_TERRACOTTA_ROOF_TILE, 8);
 
         float POTTERY = 1399f;
@@ -384,16 +390,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         return TagKey.create(key, ResourceLocation.fromNamespaceAndPath("c", name.toLowerCase(Locale.ROOT)));
     }
 
-    private <T> TagKey<T> woodLogsTagOf(ResourceKey<Registry<T>> registry, AFCWood wood)
-    {
-        return TagKey.create(registry, AFCHelpers.modIdentifier(wood.getSerializedName() + "_logs"));
-    }
-
-    private <T> TagKey<T> uniqueLogsTagOf(ResourceKey<Registry<T>> registry, UniqueLogs wood)
-    {
-        return TagKey.create(registry, AFCHelpers.modIdentifier(wood.getSerializedName() + "_logs"));
-    }
-
     /**
      * @return A builder for a new recipe with a name inferred from the output.
      */
@@ -429,21 +425,12 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void add(String prefix, String name, Recipe<?> recipe)
     {
-        output.accept(AFCHelpers.modIdentifier((prefix + "/" + name).toLowerCase(Locale.ROOT)), recipe, null);
+        output.accept(RNRHelpers.modIdentifier((prefix + "/" + name).toLowerCase(Locale.ROOT)), recipe, null);
     }
 
     private String nameOf(Recipe<?> recipe)
     {
         return nameOf(recipe.getResultItem(lookup).getItem());
-    }
-
-    private String nameOf(Ingredient ingredient)
-    {
-        if (ingredient.getCustomIngredient() instanceof CompoundIngredient ing) return nameOf(ing.children().get(0));
-        final Ingredient.Value value = ingredient.getValues()[0];
-        if (value instanceof Ingredient.TagValue(TagKey<Item> tag)) return tag.location().getPath();
-        if (value instanceof Ingredient.ItemValue(ItemStack item)) return nameOf(item.getItem());
-        throw new AssertionError("Unknown ingredient value");
     }
 
     private String nameOf(Fluid fluid)
@@ -493,9 +480,14 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void rockRoadMod(Item itemIn, Rock rock, StoneBlockType roadType)
     {
-        blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), itemIn, RNRBlocks.ROCK_BLOCKS.get(roadType).get(rock).get().defaultBlockState(), true);
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(roadType).get(rock).get()), RNRBlocks.ROCK_STAIRS.get(roadType).get(rock).get().defaultBlockState(), ChiselMode.STAIR.get());
-        mattockAndChisel(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(roadType).get(rock).get()), RNRBlocks.ROCK_SLABS.get(roadType).get(rock).get().defaultBlockState(), ChiselMode.SLAB.get());
+        rockRoadMod(itemIn, rock, roadType, "");
+    }
+
+    private void rockRoadMod(Item itemIn, Rock rock, StoneBlockType roadType, String prefix)
+    {
+        blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), itemIn, RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get().defaultBlockState(), true, prefix);
+        mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get()), RNRBlocks.ROCK_STAIRS.get(rock).get(roadType).get().defaultBlockState(), ChiselMode.STAIR, prefix);
+        mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get()), RNRBlocks.ROCK_SLABS.get(rock).get(roadType).get().defaultBlockState(), ChiselMode.SLAB, prefix);
     }
     private void concreteBlockMod(Block blockIn, TagKey<Item> itemIn, BlockState output)
     {
@@ -504,40 +496,49 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void blockMod(Block blockIn, Item itemIn, BlockState blockOut)
     {
-        blockMod(BlockIngredient.of(blockIn), itemIn, blockOut, true);
+        blockMod(BlockIngredient.of(blockIn), itemIn, blockOut, true, nameOf(blockIn.asItem()));
     }
 
     private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume)
     {
-        add(new BlockModRecipe(Ingredient.of(itemIn), blockIn, blockOut, consume));
+        blockMod(blockIn, itemIn, blockOut, consume, "");
+    }
+
+    private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume, String prefix)
+    {
+        Recipe recipe = new BlockModRecipe(Ingredient.of(itemIn), blockIn, blockOut, consume);
+        add("block_mod", prefix + nameOf(recipe), recipe);
     }
 
     private void blockMod(BlockIngredient blockIn, Ingredient itemIn, BlockState blockOut, boolean consume)
     {
-        add(new BlockModRecipe(itemIn, blockIn, blockOut, consume));
+        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(itemIn, blockIn, blockOut, consume));
     }
 
     private void mattockAnyMode(BlockIngredient in, BlockState out)
     {
-        mattock(in, out, ChiselMode.SMOOTH.get());
-        mattock(in, out, ChiselMode.STAIR.get());
-        mattock(in, out, ChiselMode.SLAB.get());
+        mattockAnyMode(in, out, "");
+    }
+    private void mattockAnyMode(BlockIngredient in, BlockState out, String prefix)
+    {
+        mattock(in, out, ChiselMode.SMOOTH, prefix);
+        mattock(in, out, ChiselMode.STAIR, "stairs_" + prefix);
+        mattock(in, out, ChiselMode.SLAB, "slab_" + prefix);
     }
 
-    private void mattock(BlockIngredient in, BlockState out, ChiselMode mode)
+    private void mattock(BlockIngredient in, BlockState out, Holder<ChiselMode> mode)
     {
-        add(new MattockRecipe(in, out, mode, null));
+        mattock(in, out, mode, "");
     }
 
-    private void mattockAndChisel(BlockIngredient in, BlockState out, ChiselMode mode)
+    private void mattock(BlockIngredient in, BlockState out, Holder<ChiselMode> mode, String prefix)
     {
-        add(new MattockRecipe(in, out, mode, null));
-        add(new ChiselRecipe(in, out, mode, ItemStackProvider.empty()));
+        add("mattock", prefix + nameOf(out.getBlock().asItem()), new MattockRecipe(in, out, mode.value(), ItemStackProvider.empty()));
     }
 
-    private void chisel(BlockIngredient in, BlockState out, ChiselMode mode)
+    private void chisel(BlockIngredient in, BlockState out, Holder<ChiselMode> mode)
     {
-        add(new ChiselRecipe(in, out, mode, ItemStackProvider.empty()));
+        add("chisel", nameOf(out.getBlock().asItem()), new ChiselRecipe(in, out, mode.value(), ItemStackProvider.empty()));
     }
 
 }

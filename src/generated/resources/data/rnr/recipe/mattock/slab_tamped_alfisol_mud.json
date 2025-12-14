@@ -1,0 +1,6 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": "#rnr:tampable_entisol_mud",
+  "mode": "tfc:slab",
+  "result": "rnr:tamped_alfisol_mud"
+}

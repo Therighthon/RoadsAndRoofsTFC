@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "rnr:unfired_roof_tile"
+  },
+  "result_item": {
+    "count": 1,
+    "id": "rnr:ceramic_roof_tile"
+  },
+  "temperature": 1399.0
+}

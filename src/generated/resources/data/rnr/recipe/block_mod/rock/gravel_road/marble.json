@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:base_course"
+  ],
+  "input_item": {
+    "item": "rnr:gravel_fill/marble"
+  },
+  "output_block": "rnr:rock/gravel_road/marble"
+}

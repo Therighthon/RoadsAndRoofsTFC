@@ -504,10 +504,10 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         blockMod(blockIn, itemIn, blockOut, consume, "");
     }
 
-    private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume, String prefix)
+    private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume, String suffix)
     {
         Recipe recipe = new BlockModRecipe(Ingredient.of(itemIn), blockIn, blockOut, consume);
-        add("block_mod", prefix + nameOf(recipe), recipe);
+        add("block_mod",  nameOf(recipe) + suffix, recipe);
     }
 
     private void blockMod(BlockIngredient blockIn, Ingredient itemIn, BlockState blockOut, boolean consume)

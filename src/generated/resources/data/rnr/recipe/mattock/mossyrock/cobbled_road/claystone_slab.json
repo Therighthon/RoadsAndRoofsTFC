@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/cobbled_road/claystone"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/cobbled_road/claystone_slab"
+}

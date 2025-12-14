@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/over_height_gravel/limestone"
+  ],
+  "mode": "tfc:smooth",
+  "result": "rnr:rock/macadam_road/limestone"
+}

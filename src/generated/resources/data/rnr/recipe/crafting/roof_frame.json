@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "tag": "tfc:lumber"
+    },
+    "Y": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "XYX",
+    "Y Y",
+    "XYX"
+  ],
+  "result": {
+    "count": 6,
+    "id": "rnr:roof_frame"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/sett_road/gabbro"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/sett_road/gabbro_slab"
+}

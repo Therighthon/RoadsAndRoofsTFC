@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:roof_frame_slab"
+  ],
+  "input_item": {
+    "item": "tfc:straw"
+  },
+  "output_block": "rnr:thatch_roof_slab"
+}

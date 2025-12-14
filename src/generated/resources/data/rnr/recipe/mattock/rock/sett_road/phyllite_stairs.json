@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/sett_road/phyllite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/sett_road/phyllite_stairs"
+}

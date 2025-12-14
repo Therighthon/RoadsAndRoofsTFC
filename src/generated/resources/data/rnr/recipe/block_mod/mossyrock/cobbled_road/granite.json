@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:base_course"
+  ],
+  "input_item": {
+    "item": "tfc:rock/mossy_loose/granite"
+  },
+  "output_block": "rnr:rock/cobbled_road/granite"
+}

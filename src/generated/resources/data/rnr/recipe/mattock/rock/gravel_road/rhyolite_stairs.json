@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/gravel_road/rhyolite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/gravel_road/rhyolite_stairs"
+}

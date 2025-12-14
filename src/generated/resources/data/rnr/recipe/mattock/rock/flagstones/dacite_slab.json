@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/dacite"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/flagstones/dacite_slab"
+}

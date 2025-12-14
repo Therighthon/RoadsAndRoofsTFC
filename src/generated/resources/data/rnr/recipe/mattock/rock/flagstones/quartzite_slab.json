@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/quartzite"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/flagstones/quartzite_slab"
+}

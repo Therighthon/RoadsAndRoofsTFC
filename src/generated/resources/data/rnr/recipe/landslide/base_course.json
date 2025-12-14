@@ -1,0 +1,12 @@
+{
+  "type": "tfc:landslide",
+  "ingredient": [
+    "rnr:wet_concrete_road",
+    "rnr:wet_concrete_road_panel",
+    "rnr:wet_concrete_road_sett",
+    "rnr:wet_concrete_road_flagstones",
+    "rnr:wet_concrete_road_control_joint",
+    "rnr:trodden_wet_concrete_road"
+  ],
+  "result": "rnr:base_course"
+}

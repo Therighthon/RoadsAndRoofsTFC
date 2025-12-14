@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/conglomerate"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/flagstones/conglomerate_stairs"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:black_sandstone_flagstones"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:black_sandstone_flagstones_slab"
+}

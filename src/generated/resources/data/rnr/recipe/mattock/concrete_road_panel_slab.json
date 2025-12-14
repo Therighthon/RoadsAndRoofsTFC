@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:concrete_road_panel"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:concrete_road_panel_slab"
+}

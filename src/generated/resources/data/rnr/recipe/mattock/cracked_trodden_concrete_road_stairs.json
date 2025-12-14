@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:cracked_trodden_concrete_road"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:cracked_trodden_concrete_road_stairs"
+}

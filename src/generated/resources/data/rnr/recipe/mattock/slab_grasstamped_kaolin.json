@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "tfc:kaolin_clay_grass"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:tamped_kaolin"
+}

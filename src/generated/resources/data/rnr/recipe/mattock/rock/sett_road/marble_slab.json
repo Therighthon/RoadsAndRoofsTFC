@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/sett_road/marble"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/sett_road/marble_slab"
+}

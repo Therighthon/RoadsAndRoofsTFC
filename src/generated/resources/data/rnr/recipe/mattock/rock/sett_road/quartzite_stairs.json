@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/sett_road/quartzite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/sett_road/quartzite_stairs"
+}

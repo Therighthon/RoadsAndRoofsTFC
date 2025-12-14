@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:tamped_alfisol_mud"
+  ],
+  "input_item": {
+    "item": "rnr:crushed_base_course"
+  },
+  "output_block": "rnr:tamped_alfisol"
+}

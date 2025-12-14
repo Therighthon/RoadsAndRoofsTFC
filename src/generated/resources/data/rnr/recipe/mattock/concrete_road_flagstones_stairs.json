@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:concrete_road_flagstones"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:concrete_road_flagstones_stairs"
+}

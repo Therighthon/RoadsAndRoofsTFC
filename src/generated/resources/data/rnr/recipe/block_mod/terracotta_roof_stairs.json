@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:roof_frame_stairs"
+  ],
+  "input_item": {
+    "item": "rnr:terracotta_roof_tile"
+  },
+  "output_block": "rnr:terracotta_roof_stairs"
+}

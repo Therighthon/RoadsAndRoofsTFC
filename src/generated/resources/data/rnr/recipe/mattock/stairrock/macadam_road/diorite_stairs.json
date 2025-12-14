@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/macadam_road/diorite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/macadam_road/diorite_stairs"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/sett_road/schist"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/sett_road/schist_stairs"
+}

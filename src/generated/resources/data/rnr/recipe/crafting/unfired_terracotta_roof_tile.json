@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "rnr:unfired_roof_tile"
+    },
+    {
+      "item": "tfc:powder/hematite"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "rnr:unfired_terracotta_roof_tile"
+  }
+}

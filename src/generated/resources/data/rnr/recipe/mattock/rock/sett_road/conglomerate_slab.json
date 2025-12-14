@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/sett_road/conglomerate"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/sett_road/conglomerate_slab"
+}

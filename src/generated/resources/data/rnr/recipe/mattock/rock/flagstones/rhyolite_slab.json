@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/rhyolite"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/flagstones/rhyolite_slab"
+}

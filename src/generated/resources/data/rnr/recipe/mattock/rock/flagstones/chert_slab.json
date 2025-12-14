@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/chert"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/flagstones/chert_slab"
+}

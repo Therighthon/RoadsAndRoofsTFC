@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/gneiss"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/flagstones/gneiss_stairs"
+}

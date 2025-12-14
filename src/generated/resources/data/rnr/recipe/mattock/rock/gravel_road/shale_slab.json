@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/gravel_road/shale"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/gravel_road/shale_slab"
+}

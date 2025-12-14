@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tfc:rock/gravel/phyllite"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "rnr:gravel_fill/phyllite"
+  }
+}

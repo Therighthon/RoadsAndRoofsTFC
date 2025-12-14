@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:trodden_wet_concrete_road"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:wet_concrete_road"
+}

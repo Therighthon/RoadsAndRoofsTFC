@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/over_height_gravel/chalk"
+  ],
+  "mode": "tfc:smooth",
+  "result": "rnr:rock/macadam_road/chalk"
+}

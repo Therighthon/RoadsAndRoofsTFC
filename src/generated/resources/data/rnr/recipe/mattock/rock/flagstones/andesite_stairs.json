@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/andesite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/flagstones/andesite_stairs"
+}

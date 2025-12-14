@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:rock/gravel_road/granite"
+  ],
+  "input_item": {
+    "item": "rnr:gravel_fill/granite"
+  },
+  "output_block": "rnr:rock/over_height_gravel/granite"
+}

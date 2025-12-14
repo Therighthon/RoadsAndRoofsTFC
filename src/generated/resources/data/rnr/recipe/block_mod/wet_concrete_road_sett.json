@@ -1,0 +1,11 @@
+{
+  "type": "rnr:block_mod",
+  "consume_ingredient": false,
+  "input_block": [
+    "rnr:wet_concrete_road"
+  ],
+  "input_item": {
+    "tag": "c:bricks"
+  },
+  "output_block": "rnr:wet_concrete_road_sett"
+}

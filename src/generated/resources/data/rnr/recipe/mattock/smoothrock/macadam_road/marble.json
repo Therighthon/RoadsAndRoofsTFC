@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/over_height_gravel/marble"
+  ],
+  "mode": "tfc:smooth",
+  "result": "rnr:rock/macadam_road/marble"
+}

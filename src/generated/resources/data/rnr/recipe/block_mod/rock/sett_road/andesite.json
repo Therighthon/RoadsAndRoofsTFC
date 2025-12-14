@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:base_course"
+  ],
+  "input_item": {
+    "item": "tfc:brick/andesite"
+  },
+  "output_block": "rnr:rock/sett_road/andesite"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "tfc:peat"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:tamped_peat"
+}

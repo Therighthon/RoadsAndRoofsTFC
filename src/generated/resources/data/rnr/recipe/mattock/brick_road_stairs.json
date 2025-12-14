@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:brick_road"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:brick_road_stairs"
+}

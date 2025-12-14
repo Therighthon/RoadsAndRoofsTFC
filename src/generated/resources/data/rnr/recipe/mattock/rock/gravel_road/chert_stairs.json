@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/gravel_road/chert"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/gravel_road/chert_stairs"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/rhyolite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/flagstones/rhyolite_stairs"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "rnr:block_mod",
+  "consume_ingredient": false,
+  "input_block": [
+    "rnr:wet_concrete_road"
+  ],
+  "input_item": {
+    "tag": "rnr:flagstone_road_items"
+  },
+  "output_block": "rnr:wet_concrete_road_flagstones"
+}

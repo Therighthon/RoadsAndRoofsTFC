@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/macadam_road/basalt"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/macadam_road/basalt_stairs"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/macadam_road/limestone"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:rock/macadam_road/limestone_slab"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:hoggin"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:hoggin_slab"
+}

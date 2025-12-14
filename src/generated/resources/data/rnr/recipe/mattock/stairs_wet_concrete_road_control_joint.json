@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:wet_concrete_road"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wet_concrete_road_control_joint"
+}

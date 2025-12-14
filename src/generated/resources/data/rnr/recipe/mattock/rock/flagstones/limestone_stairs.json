@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/limestone"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/flagstones/limestone_stairs"
+}

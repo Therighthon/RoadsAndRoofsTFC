@@ -1,0 +1,25 @@
+{
+  "type": "tfc:advanced_shapeless_crafting",
+  "ingredients": [
+    {
+      "tag": "c:tools/chisel"
+    },
+    {
+      "item": "afc:wood/log/mahogany"
+    }
+  ],
+  "primary_ingredient": {
+    "tag": "c:tools/chisel"
+  },
+  "remainder": {
+    "modifiers": [
+      {
+        "type": "tfc:damage_crafting_remainder"
+      }
+    ]
+  },
+  "result": {
+    "count": 12,
+    "id": "rnr:wood/shingle/mahogany"
+  }
+}

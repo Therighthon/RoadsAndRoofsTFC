@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "rnr:crushed_base_course"
+    },
+    {
+      "item": "tfc:powder/lime"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "rnr:concrete_powder"
+  }
+}

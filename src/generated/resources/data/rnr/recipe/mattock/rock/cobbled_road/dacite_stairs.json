@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/cobbled_road/dacite"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/cobbled_road/dacite_stairs"
+}

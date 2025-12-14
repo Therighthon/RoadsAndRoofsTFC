@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:rock/flagstones/basalt"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:rock/flagstones/basalt_stairs"
+}

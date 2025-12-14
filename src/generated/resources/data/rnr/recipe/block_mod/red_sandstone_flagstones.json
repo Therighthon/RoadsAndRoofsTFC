@@ -1,0 +1,10 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:base_course"
+  ],
+  "input_item": {
+    "item": "rnr:flagstone/red_sandstone"
+  },
+  "output_block": "rnr:red_sandstone_flagstones"
+}

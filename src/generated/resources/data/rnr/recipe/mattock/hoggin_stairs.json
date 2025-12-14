@@ -1,0 +1,8 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": [
+    "rnr:hoggin"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:hoggin_stairs"
+}

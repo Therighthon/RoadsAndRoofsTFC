@@ -26,19 +26,19 @@ authors="Therighthon" #optional
 description='''
 A decoration addon for TerraFirmaCraft centered around roads and roofs.
 '''
-[[dependencies.afc]]
+[[dependencies.rnr]]
     modId="tfc"
     mandatory=true
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.afc]]
+[[dependencies.rnr]]
     modId="forge"
     mandatory=true
     versionRange="[40,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.afc]]
+[[dependencies.rnr]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20.1,1.21)"

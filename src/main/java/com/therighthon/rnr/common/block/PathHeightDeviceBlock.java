@@ -17,7 +17,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.devices.DeviceBlock;
 
-public class PathHeightDeviceBlock extends DeviceBlock
+public abstract class PathHeightDeviceBlock extends DeviceBlock
 {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
@@ -34,5 +34,4 @@ public class PathHeightDeviceBlock extends DeviceBlock
     {
         return RNRHelpers.blockModRecipeCompatible(blockState, level, pos, player, hand, hit);
     }
-
 }

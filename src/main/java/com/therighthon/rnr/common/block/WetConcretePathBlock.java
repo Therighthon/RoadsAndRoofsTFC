@@ -59,21 +59,23 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
             if (counter.getTicksSinceUpdate() > ticksToDry)
             {
                 level.setBlockAndUpdate(pos, getOutputState(state));
-            }
 
-            final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            for (Direction d : Direction.Plane.HORIZONTAL)
-            {
-                cursor.setWithOffset(pos, d);
-                final BlockState stateAt = level.getBlockState(cursor);
-                //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
-                if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+                for (Direction d : Direction.Plane.HORIZONTAL)
                 {
-                    level.scheduleTick(cursor, stateAt.getBlock(), 1);
+                    cursor.setWithOffset(pos, d);
+                    final BlockState stateAt = level.getBlockState(cursor);
+                    //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
+                    if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                    {
+                        level.scheduleTick(cursor, stateAt.getBlock(), 20);
+                    }
                 }
             }
         });
     }
+
+
 
     //TODO: Make this use actual recipes rather than hard-code?
     public BlockState getOutputState(BlockState input)

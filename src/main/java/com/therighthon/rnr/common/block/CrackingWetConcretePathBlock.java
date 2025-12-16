@@ -1,5 +1,6 @@
 package com.therighthon.rnr.common.block;
 
+import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -40,54 +41,50 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
     }
 
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-       //Cracking X - Distance Update
-        final int oldDistanceX = state.getValue(DISTANCE_X);
-        int distanceX = updateDistanceX(level, pos);
-        if (distanceX != oldDistanceX)
-        {
-            level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
-                long oldUpdateTick = counter.getLastUpdateTick();
-                //Only update crack info within first 75% of drying process
-                if (counter.getTicksSinceUpdate() < 0.75 * getTicksToDry())
+        level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
+            long oldUpdateTick = counter.getLastUpdateTick();
+            long ticksSinceUpdate = counter.getTicksSinceUpdate();
+            BlockState oldState = state;
+            //Only update crack info within first 75% of drying process
+            if (ticksSinceUpdate < 0.75 * getTicksToDry())
+            {
+                RoadsAndRoofs.LOGGER.error("Ticking with {} ticks to go ", getTicksToDry() - ticksSinceUpdate);
+                //Cracking X - Distance Update
+                final int oldDistanceX = state.getValue(DISTANCE_X);
+                int distanceX = updateDistanceX(level, pos);
+                if (distanceX != oldDistanceX)
                 {
                     level.setBlockAndUpdate(pos, state.setValue(DISTANCE_X, Math.min(distanceX, maxJointDistance)));
                     counter.setLastUpdateTick(oldUpdateTick);
                 }
-            });
-        }
 
-        //Cracking Z - Distance Update
-        final int oldDistanceZ = state.getValue(DISTANCE_Z);
-        int distanceZ = updateDistanceZ(level, pos);
-        if (distanceZ != oldDistanceZ)
-        {
-            level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
-                long oldUpdateTick = counter.getLastUpdateTick();
-                //Only update crack info within first 75% of drying process
-                if (counter.getTicksSinceUpdate() < 0.75 * getTicksToDry())
+                //Cracking Z - Distance Update
+                final int oldDistanceZ = state.getValue(DISTANCE_Z);
+                int distanceZ = updateDistanceZ(level, pos);
+                if (distanceZ != oldDistanceZ)
                 {
                     level.setBlockAndUpdate(pos, state.setValue(DISTANCE_Z, Math.min(distanceZ, maxJointDistance)));
                     counter.setLastUpdateTick(oldUpdateTick);
                 }
-            });
-        }
-
-        //Drying
-        level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
-            if (counter.getTicksSinceUpdate() > getTicksToDry())
+            }
+            // Drying
+            else if (ticksSinceUpdate > getTicksToDry())
             {
                 level.setBlockAndUpdate(pos, Math.max(state.getValue(DISTANCE_X), state.getValue(DISTANCE_Z)) >= maxJointDistance ? getOutputStateCracked(state) : getOutputState(state));
             }
 
-            final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            for (Direction d : Direction.Plane.HORIZONTAL)
+            if (level.getBlockState(pos) != oldState)
             {
-                cursor.setWithOffset(pos, d);
-                final BlockState stateAt = level.getBlockState(cursor);
-                //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
-                if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+                for (Direction d : Direction.Plane.HORIZONTAL)
                 {
-                    level.scheduleTick(cursor, stateAt.getBlock(), 1);
+                    cursor.setWithOffset(pos, d);
+                    final BlockState stateAt = level.getBlockState(cursor);
+                    //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
+                    if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                    {
+                        level.scheduleTick(cursor, stateAt.getBlock(), 1);
+                    }
                 }
             }
         });

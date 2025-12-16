@@ -1,0 +1,71 @@
+{
+  "name": "混凝土道路",
+  "category": "tfc:roadsandroofs",
+  "icon": "rnr:concrete_road_panel",
+  "pages": [
+    {
+		"type": "patchouli:text",
+		"text": "混凝土路是可建造的速度最快的道路类型，正确建造时可提供30%移动速度加成。但施工时需确保混凝土在凝固前不被踩踏或开裂，否则将失去速度增益。"
+	},
+    {
+      "type": "patchouli:image",
+      "title": "混凝土路",
+      "images": [
+        "rnr:textures/gui/book/concrete_road.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "anchor": "concrete_powder",
+      "recipe": "rnr:crafting/concrete_powder",
+      "title": "制备混凝土",
+      "text": "建造混凝土路的第一步是配制湿混凝土:先用基层和石灰合成干混凝土混合物。"
+    },
+    {
+      "type": "tfc:instant_barrel_recipe",
+      "anchor": "limewater",
+      "recipe": "rnr:barrel/concrete_from_powder",
+      "title": "制备混凝土",
+      "text": "将混凝土粉末加入盛有淡水的桶中。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "湿混凝土在桶中混合后，可用桶舀取并倾倒在基层方块上，它会自动向相邻方块蔓延。混凝土需一天时间硬化，在此期间需防止生物踩踏未凝固的混凝土，否则会形成不平整表面导致速度加成失效。可用鹤嘴锄抹平脚印痕迹。"
+    },
+    {
+      "type": "patchouli:image",
+      "title": "浇筑混凝土道路",
+      "images": [
+        "rnr:textures/gui/book/wet_concrete.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "patchouli:text",
+      "text": "收缩开裂是混凝土凝固过程中的常见问题。当浇筑区域任意方向宽度超过4格时，距离混凝土边缘或控制缝超过两格的方块会产生裂缝。可通过分区域浇筑、每隔5格用鹤嘴锄添加控制接缝或采用纹理饰面来预防开裂。"
+    },
+	{
+		"type": "patchouli:image",
+		"title": "控制缝",
+		"images": [
+        "rnr:textures/gui/book/control_joints.png"
+      ],
+		"border": true
+	},
+    {
+      "type": "patchouli:text",
+      "text": "纹理饰面通过将砖块、铺路砖或平滑方块压入半干混凝土形成建筑饰面，这些方块同时兼具防止开裂的控制接缝功能。混凝土完全干燥后可用凿子制作台阶和楼梯变体。"
+    },
+    {
+      "type": "patchouli:image",
+      "title": "仿石板路",
+      "images": [
+        "rnr:textures/gui/book/faux_sett.png"
+      ],
+      "border": true
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 20
+}

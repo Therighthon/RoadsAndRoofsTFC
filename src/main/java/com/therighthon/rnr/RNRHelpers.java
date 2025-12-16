@@ -36,31 +36,16 @@ public final class RNRHelpers
             final BlockState output = recipe.getOutputBlock().getBlock().withPropertiesOf(blockState);
             if (!player.isCreative() && recipe.consumesItem())
             {
-                if (stack.isDamageableItem())
+
+                // Concrete pouring
+                final IFluidHandlerItem fluidHandler = stack.getCapability(Capabilities.FLUID_ITEM).resolve().orElse(null);
+                if (fluidHandler != null) {
+                    fluidHandler.drain(1000, IFluidHandler.FluidAction.EXECUTE);
+                    player.setItemInHand(hand, fluidHandler.getContainer());
+                }
+                else if (stack.isDamageableItem())
                 {
                     stack.setDamageValue(stack.getDamageValue() - 1);
-                }
-                //TODO: This bucket handling stuff is hacky as all getup, should probably fix or trick Russian into going through
-                // my code so he fixes it for me with some method I've never heard of
-                else if (stack.is(TFCItems.WOODEN_BUCKET.get()))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.WOODEN_BUCKET.get()));
-                }
-                else if (stack.is(TFCItems.RED_STEEL_BUCKET.get()))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.RED_STEEL_BUCKET.get()));
-                }
-                else if (stack.is(TFCItems.BLUE_STEEL_BUCKET.get()))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.BLUE_STEEL_BUCKET.get()));
-                }
-                else if (stack.is(RNRTags.Items.CONCRETE_BUCKETS))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(Items.BUCKET));
                 }
                 else
                 {

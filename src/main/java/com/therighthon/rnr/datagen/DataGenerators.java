@@ -26,11 +26,13 @@ public class DataGenerators
         BlockTagsProvider blockTagsProvider = new RNRBlockTagProvider(packOutput, lookupProvider, RoadsAndRoofs.MOD_ID, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTagsProvider);
         generator.addProvider(event.includeServer(), new RNRItemTagProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), RoadsAndRoofs.MOD_ID, existingFileHelper));
-//        generator.addProvider(event.includeServer(), new RNRFluidTagProvider(packOutput, lookupProvider, RoadsAndRoofs.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new RNRFluidTagProvider(packOutput, lookupProvider, RoadsAndRoofs.MOD_ID, existingFileHelper));
 
         // Recipes
         generator.addProvider(event.includeServer(), new RNRRecipeProvider(packOutput, lookupProvider));
 
+        // Heats
+        generator.addProvider(event.includeServer(), new RNRHeatDefinitionProvider(packOutput, lookupProvider));
 
     }
 }

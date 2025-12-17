@@ -8,6 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,8 @@ public class RNRBlockTagProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
+
+
         // Roads
         tag(RNRTags.Blocks.ALL_HOGGIN_ROADS).addTags(RNRTags.Blocks.HOGGIN_ROAD_BLOCKS, RNRTags.Blocks.HOGGIN_ROAD_SLABS, RNRTags.Blocks.HOGGIN_ROAD_STAIRS);
         tag(RNRTags.Blocks.HOGGIN_ROAD_BLOCKS).add(RNRBlocks.HOGGIN.get());

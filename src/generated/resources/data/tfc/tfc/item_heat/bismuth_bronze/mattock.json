@@ -1,0 +1,8 @@
+{
+  "forging_temperature": 591.0,
+  "heat_capacity": 116.666664,
+  "ingredient": {
+    "item": "rnr:metal/mattock/bismuth_bronze"
+  },
+  "welding_temperature": 788.0
+}

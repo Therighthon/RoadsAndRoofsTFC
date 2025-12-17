@@ -52,6 +52,7 @@ import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.common.blocks.soil.SoilBlockType;
 import net.dries007.tfc.common.blocks.wood.Wood;
+import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.Powder;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.player.ChiselMode;
@@ -129,20 +130,20 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         mattockAnyMode(BlockIngredient.of(RNRTags.Blocks.TAMPABLE_MOLLISOL_MUD), RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED_MUD).get(SoilBlockType.Variant.MOLLISOL).get().defaultBlockState());
 
         // Amending soils
-        blockMod(RNRBlocks.TAMPED_KAOLIN.get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.BASE_COURSE.get().defaultBlockState());
-        blockMod(RNRBlocks.TAMPED_PEAT.get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.BASE_COURSE.get().defaultBlockState());
+        blockMod(RNRBlocks.TAMPED_KAOLIN.get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.BASE_COURSE.get().defaultBlockState(), "_from_kaolin");
+        blockMod(RNRBlocks.TAMPED_PEAT.get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.BASE_COURSE.get().defaultBlockState(), "_from_peat");
         for (SoilBlockType.Variant var : SoilBlockType.Variant.values())
         {
-            blockMod(RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED).get(var).get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.BASE_COURSE.get().defaultBlockState());
-            blockMod(RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED_MUD).get(var).get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED).get(var).get().defaultBlockState());
+            blockMod(RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED).get(var).get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.BASE_COURSE.get().defaultBlockState(), "_from_" + var.name().toLowerCase());
+            blockMod(RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED_MUD).get(var).get(), RNRItems.CRUSHED_BASE_COURSE.asItem(), RNRBlocks.TAMPED_SOILS.get(RNRBlocks.RNRSoilBlockType.TAMPED).get(var).get().defaultBlockState(), "_from_" + var.name().toLowerCase() + "_mud");
         }
     }
 
     private void miscRoads()
     {
         // Block mod placements
-        blockMod(RNRBlocks.BASE_COURSE.get(), RNRItems.HOGGIN_MIX.asItem(), RNRBlocks.HOGGIN.get().defaultBlockState());
-        blockMod(RNRBlocks.BASE_COURSE.get(), Items.BRICK, RNRBlocks.BRICK_ROAD.get().defaultBlockState());
+        blockMod(RNRBlocks.BASE_COURSE.get(), RNRItems.HOGGIN_MIX.asItem(), RNRBlocks.HOGGIN.get().defaultBlockState(), "");
+        blockMod(RNRBlocks.BASE_COURSE.get(), Items.BRICK, RNRBlocks.BRICK_ROAD.get().defaultBlockState(), "");
 
         // Mattock and chisel shaping
         mattock(BlockIngredient.of(RNRBlocks.HOGGIN.get()), RNRBlocks.HOGGIN_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
@@ -169,12 +170,13 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             rockRoadMod(RNRItems.FLAGSTONE.get(rock).asItem(), rock, StoneBlockType.FLAGSTONES);
             rockRoadMod(TFCItems.BRICKS.get(rock).asItem(), rock, StoneBlockType.SETT_ROAD);
             rockRoadMod(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.LOOSE).asItem(), rock, StoneBlockType.COBBLED_ROAD);
-            rockRoadMod(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.MOSSY_LOOSE).asItem(), rock, StoneBlockType.COBBLED_ROAD, "mossy");
+            rockRoadMod(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.MOSSY_LOOSE).asItem(), rock, StoneBlockType.COBBLED_ROAD, "_mossy");
 
             // Make over-height gravel
             blockMod(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.GRAVEL_ROAD).get(),
                 RNRItems.GRAVEL_FILL.get(rock).asItem(),
-                RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get().defaultBlockState());
+                RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get().defaultBlockState(),
+                "");
             // Tamp to macadam
             mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.SMOOTH, "smooth");
             mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.OVER_HEIGHT_GRAVEL).get()), RNRBlocks.ROCK_BLOCKS.get(rock).get(StoneBlockType.MACADAM_ROAD).get().defaultBlockState(), ChiselMode.STAIR, "stair");
@@ -231,7 +233,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     {
         // Making concrete
         recipe().input(RNRItems.CRUSHED_BASE_COURSE).input(TFCItems.POWDERS.get(Powder.LIME).asItem()).shapeless(RNRItems.CONCRETE_POWDER);
-        barrel()
+        barrel("concrete_from_powder")
             .input(RNRItems.CONCRETE_POWDER)
             .input(Fluids.WATER, 100)
             .output(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource(), 100)
@@ -316,6 +318,28 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     private void misc()
     {
         // TODO: Mattock forging and crafting
+
+        // Mattock melting
+        for (Metal metal : Metal.values())
+        {
+            if (metal.allParts())
+            {
+                add(nameOf(RNRItems.MATTOCKS.get(metal).asItem()), new HeatingRecipe(
+                    Ingredient.of(RNRItems.MATTOCKS.get(metal).asItem()),
+                    ItemStackProvider.empty(),
+                    new FluidStack(meltFluidFor(metal), 100),
+                    RNRHeatDefinitionProvider.getMeltTemp(metal),
+                    true
+                ));
+                add(nameOf(RNRItems.MATTOCK_HEADS.get(metal).asItem()), new HeatingRecipe(
+                    Ingredient.of(RNRItems.MATTOCK_HEADS.get(metal).asItem()),
+                    ItemStackProvider.empty(),
+                    new FluidStack(meltFluidFor(metal), 100),
+                    RNRHeatDefinitionProvider.getMeltTemp(metal),
+                    false
+                ));
+            }
+        }
 
         recipe()
             .input(Tags.Items.GRAVELS)
@@ -462,12 +486,10 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         add(new HeatingRecipe(input, output, FluidStack.EMPTY, temperature, false));
     }
 
-    private BarrelRecipe.Builder barrel()
+    private BarrelRecipe.Builder barrel(String name)
     {
         return new BarrelRecipe.Builder(r -> {
-            if (!r.getResultItem().isEmpty()) add("barrel", nameOf(r.getResultItem().getItem()), r);
-            else if (!r.getOutputFluid().isEmpty()) add("barrel", nameOf(r.getOutputFluid().getFluid()), r);
-            else throw new IllegalStateException("Barrel recipe requires a custom name!");
+            if (!r.getResultItem().isEmpty()) add("barrel", name, r);
         });
     }
 
@@ -483,20 +505,20 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         rockRoadMod(itemIn, rock, roadType, "");
     }
 
-    private void rockRoadMod(Item itemIn, Rock rock, StoneBlockType roadType, String prefix)
+    private void rockRoadMod(Item itemIn, Rock rock, StoneBlockType roadType, String suffix)
     {
-        blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), itemIn, RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get().defaultBlockState(), true, prefix);
-        mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get()), RNRBlocks.ROCK_STAIRS.get(rock).get(roadType).get().defaultBlockState(), ChiselMode.STAIR, prefix);
-        mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get()), RNRBlocks.ROCK_SLABS.get(rock).get(roadType).get().defaultBlockState(), ChiselMode.SLAB, prefix);
+        blockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), itemIn, RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get().defaultBlockState(), true, suffix);
+        mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get()), RNRBlocks.ROCK_STAIRS.get(rock).get(roadType).get().defaultBlockState(), ChiselMode.STAIR, suffix);
+        mattock(BlockIngredient.of(RNRBlocks.ROCK_BLOCKS.get(rock).get(roadType).get()), RNRBlocks.ROCK_SLABS.get(rock).get(roadType).get().defaultBlockState(), ChiselMode.SLAB, suffix);
     }
     private void concreteBlockMod(Block blockIn, TagKey<Item> itemIn, BlockState output)
     {
         blockMod(BlockIngredient.of(blockIn), Ingredient.of(itemIn), output, false);
     }
 
-    private void blockMod(Block blockIn, Item itemIn, BlockState blockOut)
+    private void blockMod(Block blockIn, Item itemIn, BlockState blockOut, String suffix)
     {
-        blockMod(BlockIngredient.of(blockIn), itemIn, blockOut, true, nameOf(blockIn.asItem()));
+        blockMod(BlockIngredient.of(blockIn), itemIn, blockOut, true, suffix);
     }
 
     private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume)
@@ -539,6 +561,15 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     private void chisel(BlockIngredient in, BlockState out, Holder<ChiselMode> mode)
     {
         add("chisel", nameOf(out.getBlock().asItem()), new ChiselRecipe(in, out, mode.value(), ItemStackProvider.empty()));
+    }
+
+    private Fluid meltFluidFor(Metal metal)
+    {
+        return switch (metal)
+        {
+            case WROUGHT_IRON -> TFCFluids.METALS.get(Metal.CAST_IRON).getSource();
+            default -> TFCFluids.METALS.get(metal).getSource();
+        };
     }
 
 }

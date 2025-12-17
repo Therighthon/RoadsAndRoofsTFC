@@ -1,0 +1,8 @@
+{
+  "forging_temperature": 642.0,
+  "heat_capacity": 116.666664,
+  "ingredient": {
+    "item": "rnr:metal/mattock/black_bronze"
+  },
+  "welding_temperature": 856.0
+}

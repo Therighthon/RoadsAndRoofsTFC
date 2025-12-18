@@ -3,9 +3,12 @@ package com.therighthon.rnr.datagen;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
+import fuzs.blockrunner.data.ModBlockTagsProvider;
+import fuzs.blockrunner.init.ModRegistry;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -27,7 +30,12 @@ public class RNRBlockTagProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-
+//        tag(ModRegistry.VERY_SLOW_BLOCKS_BLOCK_TAG);
+        tag(ModRegistry.SLOW_BLOCKS_BLOCK_TAG).addTags(RNRTags.Blocks.WET_CONCRETE_ROADS);
+//        tag(ModRegistry.SLIGHTLY_SLOW_BLOCKS_BLOCK_TAG);
+        tag(ModRegistry.SLIGHTLY_QUICK_BLOCKS_BLOCK_TAG).addTags(RNRTags.Blocks.ALL_GRAVEL_ROADS, RNRTags.Blocks.ALL_HOGGIN_ROADS);
+        tag(ModRegistry.QUICK_BLOCKS_BLOCK_TAG).addTags(RNRTags.Blocks.ALL_COBBLED_ROADS, RNRTags.Blocks.ALL_FLAGSTONE_ROADS, RNRTags.Blocks.ALL_SETT_ROADS, RNRTags.Blocks.ALL_MACADAM_ROADS);
+        tag(ModRegistry.VERY_QUICK_BLOCKS_BLOCK_TAG).addTags(RNRTags.Blocks.ALL_WORKING_CONCRETE_ROADS);
 
         // Roads
         tag(RNRTags.Blocks.ALL_HOGGIN_ROADS).addTags(RNRTags.Blocks.HOGGIN_ROAD_BLOCKS, RNRTags.Blocks.HOGGIN_ROAD_SLABS, RNRTags.Blocks.HOGGIN_ROAD_STAIRS);

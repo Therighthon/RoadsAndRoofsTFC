@@ -232,11 +232,11 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     private void concreteRoads()
     {
         // Making concrete
-        recipe().input(RNRItems.CRUSHED_BASE_COURSE).input(TFCItems.POWDERS.get(Powder.LIME).asItem()).shapeless(RNRItems.CONCRETE_POWDER);
+        recipe().input(RNRItems.CRUSHED_BASE_COURSE, 2).input(TFCItems.POWDERS.get(Powder.LIME).asItem(), 2).shapeless(RNRItems.CONCRETE_POWDER);
         barrel("concrete_from_powder")
             .input(RNRItems.CONCRETE_POWDER)
-            .input(Fluids.WATER, 100)
-            .output(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource(), 100)
+            .input(Fluids.WATER, 200)
+            .output(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource(), 200)
             .instant();
 
         // Have to have custom landslide recipes for wet concrete
@@ -489,7 +489,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     private BarrelRecipe.Builder barrel(String name)
     {
         return new BarrelRecipe.Builder(r -> {
-            if (!r.getResultItem().isEmpty()) add("barrel", name, r);
+            add("barrel", name, r);
         });
     }
 

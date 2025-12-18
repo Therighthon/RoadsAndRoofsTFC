@@ -1,4 +1,5 @@
-// 1.21.1	2025-12-16T17:30:31.5846338	Recipes
+// 1.21.1	2025-12-16T18:55:03.9615783	Recipes
+ceffeca4e9ad458588aa919d3b92d85157e924d5 data/rnr/recipe/barrel/concrete_from_powder.json
 f19a27785552285dd2c03b9d3bdccf4079015df4 data/rnr/recipe/block_mod/base_course_from_alfisol.json
 983117b7065b58595bbe9cb7cd9bc7774f10a03c data/rnr/recipe/block_mod/base_course_from_andisol.json
 4f3889d1264ccec97155966007f6621738b3d40b data/rnr/recipe/block_mod/base_course_from_aridisol.json
@@ -164,7 +165,7 @@ ab75e6953121399e329b75c7929dbd644bada9a3 data/rnr/recipe/block_mod/tamped_oxisol
 6e03d4bac37fe3fc4e8e285b6d9e8144b356b80e data/rnr/recipe/block_mod/wet_concrete_road_sett.json
 437236a69768a402204570765d1fdbfb14d319d9 data/rnr/recipe/block_mod/white_sandstone_flagstones.json
 57320e0c17b9fe6ae694ce63889bf86b193e263a data/rnr/recipe/block_mod/yellow_sandstone_flagstones.json
-a9ce5c448a5fbbd5d2175bee08fcbf828e3df1cb data/rnr/recipe/crafting/concrete_powder.json
+5359b23a7068c2a282685c72480f4db218449114 data/rnr/recipe/crafting/concrete_powder.json
 a4b06805678dd0c6e61b58f08b95f1337bf1637d data/rnr/recipe/crafting/crushed_base_course.json
 99766020baa0917d09a3a4e0b1893c349dad4dbe data/rnr/recipe/crafting/flagstone/andesite.json
 66f4cdd91ede13d04e71dab2ceaedba1a8851ef2 data/rnr/recipe/crafting/flagstone/basalt.json

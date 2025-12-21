@@ -14,6 +14,7 @@ import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.util.Metal;
 
 public class RNRItemTagProvider extends ItemTagsProvider
 {
@@ -34,5 +35,13 @@ public class RNRItemTagProvider extends ItemTagsProvider
         }
         tag(RNRTags.Items.ROAD_MATERIALS).addTags(RNRTags.Items.COBBLE_ROAD_ITEMS).addTags(RNRTags.Items.SETT_ROAD_ITEMS).addTags(RNRTags.Items.GRAVEL_ROAD_ITEMS);
         tag(RNRTags.Items.BASE_COURSE).add(RNRItems.CRUSHED_BASE_COURSE.get());
+
+        for (Metal metal : Metal.values())
+        {
+            if (metal.allParts())
+            {
+                tag(RNRTags.Items.MATTOCKS).add(RNRItems.MATTOCKS.get(metal).get().asItem());
+            }
+        }
     }
 }

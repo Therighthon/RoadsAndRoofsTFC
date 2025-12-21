@@ -1,0 +1,6 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": "#rnr:tampable_aridisol_mud",
+  "mode": "tfc:stair",
+  "result": "rnr:tamped_aridisol_mud"
+}

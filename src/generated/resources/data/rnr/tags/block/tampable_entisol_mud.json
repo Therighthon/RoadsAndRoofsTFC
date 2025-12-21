@@ -1,20 +1,6 @@
 {
   "values": [
     "tfc:mud/entisol",
-    "tfc:muddy_roots/entisol",
-    "tfc:mud/oxisol",
-    "tfc:muddy_roots/oxisol",
-    "tfc:mud/aridisol",
-    "tfc:muddy_roots/aridisol",
-    "tfc:mud/podzol",
-    "tfc:muddy_roots/podzol",
-    "tfc:mud/alfisol",
-    "tfc:muddy_roots/alfisol",
-    "tfc:mud/fluvisol",
-    "tfc:muddy_roots/fluvisol",
-    "tfc:mud/andisol",
-    "tfc:muddy_roots/andisol",
-    "tfc:mud/mollisol",
-    "tfc:muddy_roots/mollisol"
+    "tfc:muddy_roots/entisol"
   ]
 }

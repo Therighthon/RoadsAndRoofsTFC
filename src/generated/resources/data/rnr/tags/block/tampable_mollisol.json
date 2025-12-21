@@ -1,0 +1,14 @@
+{
+  "values": [
+    "tfc:clay_duff/mollisol",
+    "tfc:duff/mollisol",
+    "tfc:clay/mollisol",
+    "tfc:farmland/mollisol",
+    "tfc:clay_grass/mollisol",
+    "tfc:coarse_dirt/mollisol",
+    "tfc:dirt/mollisol",
+    "tfc:grass/mollisol",
+    "tfc:grass_path/mollisol",
+    "tfc:rooted_dirt/mollisol"
+  ]
+}

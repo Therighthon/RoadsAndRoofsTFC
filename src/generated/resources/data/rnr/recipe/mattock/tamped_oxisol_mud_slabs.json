@@ -1,0 +1,6 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": "#rnr:tampable_oxisol_mud",
+  "mode": "tfc:slab",
+  "result": "rnr:tamped_oxisol_mud"
+}

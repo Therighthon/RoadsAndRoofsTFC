@@ -1,0 +1,22 @@
+{
+  "values": [
+    "rnr:tamped_peat",
+    "rnr:tamped_kaolin",
+    "rnr:tamped_entisol",
+    "rnr:tamped_aridisol",
+    "rnr:tamped_oxisol",
+    "rnr:tamped_fluvisol",
+    "rnr:tamped_andisol",
+    "rnr:tamped_podzol",
+    "rnr:tamped_alfisol",
+    "rnr:tamped_mollisol",
+    "rnr:tamped_entisol_mud",
+    "rnr:tamped_aridisol_mud",
+    "rnr:tamped_oxisol_mud",
+    "rnr:tamped_fluvisol_mud",
+    "rnr:tamped_andisol_mud",
+    "rnr:tamped_podzol_mud",
+    "rnr:tamped_alfisol_mud",
+    "rnr:tamped_mollisol_mud"
+  ]
+}

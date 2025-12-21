@@ -1,6 +1,6 @@
 {
   "type": "rnr:mattock",
-  "ingredient": "#rnr:tampable_entisol",
+  "ingredient": "#rnr:tampable_andisol",
   "mode": "tfc:smooth",
   "result": "rnr:tamped_andisol"
 }

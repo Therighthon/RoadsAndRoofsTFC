@@ -69,39 +69,39 @@ public class RNRBlocks
 
     public static final Id<Block> BASE_COURSE = register("base_course", () -> new BaseCourseBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F).sound(SoundType.GRAVEL)));
     public static final Id<Block> HOGGIN = register("hoggin", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
-    public static final Id<Block> HOGGIN_SLAB = register("hoggin_slab", () -> new HogginSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
+    public static final Id<Block> HOGGIN_SLAB = register("hoggin_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
     public static final Id<Block> HOGGIN_STAIRS = register("hoggin_stairs", () -> new PathStairBlock(() -> HOGGIN.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F).sound(SoundType.GRAVEL)));
 
     public static final Id<Block> BRICK_ROAD = register("brick_road", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> BRICK_ROAD_SLAB = register("brick_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> BRICK_ROAD_SLAB = register("brick_road_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> BRICK_ROAD_STAIRS = register("brick_road_stairs", () -> new PathStairBlock(() -> BRICK_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CONCRETE_ROAD = register("concrete_road", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> CONCRETE_ROAD_SLAB = register("concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> CONCRETE_ROAD_SLAB = register("concrete_road_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> CONCRETE_ROAD_STAIRS = register("concrete_road_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CONCRETE_ROAD_PANEL = register("concrete_road_panel", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> CONCRETE_ROAD_PANEL_SLAB = register("concrete_road_panel_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> CONCRETE_ROAD_PANEL_SLAB = register("concrete_road_panel_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> CONCRETE_ROAD_PANEL_STAIRS = register("concrete_road_panel_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD_PANEL.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CONCRETE_ROAD_SETT = register("concrete_road_sett", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> CONCRETE_ROAD_SETT_SLAB = register("concrete_road_sett_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> CONCRETE_ROAD_SETT_SLAB = register("concrete_road_sett_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> CONCRETE_ROAD_SETT_STAIRS = register("concrete_road_sett_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD_SETT.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CONCRETE_ROAD_FLAGSTONES = register("concrete_road_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> CONCRETE_ROAD_FLAGSTONES_SLAB = register("concrete_road_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> CONCRETE_ROAD_FLAGSTONES_SLAB = register("concrete_road_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> CONCRETE_ROAD_FLAGSTONES_STAIRS = register("concrete_road_flagstones_stairs", () -> new PathStairBlock(() -> CONCRETE_ROAD_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> TRODDEN_CONCRETE_ROAD = register("trodden_concrete_road", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> TRODDEN_CONCRETE_ROAD_SLAB = register("trodden_concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> TRODDEN_CONCRETE_ROAD_SLAB = register("trodden_concrete_road_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> TRODDEN_CONCRETE_ROAD_STAIRS = register("trodden_concrete_road_stairs", () -> new PathStairBlock(() -> TRODDEN_CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CRACKED_CONCRETE_ROAD = register("cracked_concrete_road", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> CRACKED_CONCRETE_ROAD_SLAB = register("cracked_concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> CRACKED_CONCRETE_ROAD_SLAB = register("cracked_concrete_road_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> CRACKED_CONCRETE_ROAD_STAIRS = register("cracked_concrete_road_stairs", () -> new PathStairBlock(() -> CRACKED_CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CRACKED_TRODDEN_CONCRETE_ROAD = register("cracked_trodden_concrete_road", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> CRACKED_TRODDEN_CONCRETE_ROAD_SLAB = register("cracked_trodden_concrete_road_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> CRACKED_TRODDEN_CONCRETE_ROAD_SLAB = register("cracked_trodden_concrete_road_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> CRACKED_TRODDEN_CONCRETE_ROAD_STAIRS = register("cracked_trodden_concrete_road_stairs", () -> new PathStairBlock(() -> CRACKED_TRODDEN_CONCRETE_ROAD.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
 
     public static final Id<Block> CONCRETE_ROAD_CONTROL_JOINT = register("concrete_road_control_joint", () -> new ConcretePathControlJointBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(5.0F).sound(SoundType.STONE)));
@@ -160,25 +160,25 @@ public class RNRBlocks
     );
 
     public static final Id<Block> BROWN_SANDSTONE_FLAGSTONES = register("brown_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> BROWN_SANDSTONE_FLAGSTONES_SLAB = register("brown_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> BROWN_SANDSTONE_FLAGSTONES_SLAB = register("brown_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> BROWN_SANDSTONE_FLAGSTONES_STAIRS = register("brown_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> BROWN_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> BLACK_SANDSTONE_FLAGSTONES = register("black_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> BLACK_SANDSTONE_FLAGSTONES_SLAB = register("black_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> BLACK_SANDSTONE_FLAGSTONES_SLAB = register("black_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> BLACK_SANDSTONE_FLAGSTONES_STAIRS = register("black_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> BLACK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> RED_SANDSTONE_FLAGSTONES = register("red_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> RED_SANDSTONE_FLAGSTONES_SLAB = register("red_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> RED_SANDSTONE_FLAGSTONES_SLAB = register("red_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> RED_SANDSTONE_FLAGSTONES_STAIRS = register("red_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> RED_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> YELLOW_SANDSTONE_FLAGSTONES = register("yellow_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> YELLOW_SANDSTONE_FLAGSTONES_SLAB = register("yellow_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> YELLOW_SANDSTONE_FLAGSTONES_SLAB = register("yellow_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> YELLOW_SANDSTONE_FLAGSTONES_STAIRS = register("yellow_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> YELLOW_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> GREEN_SANDSTONE_FLAGSTONES = register("green_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> GREEN_SANDSTONE_FLAGSTONES_SLAB = register("green_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> GREEN_SANDSTONE_FLAGSTONES_SLAB = register("green_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> GREEN_SANDSTONE_FLAGSTONES_STAIRS = register("green_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> GREEN_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> WHITE_SANDSTONE_FLAGSTONES = register("white_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> WHITE_SANDSTONE_FLAGSTONES_SLAB = register("white_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> WHITE_SANDSTONE_FLAGSTONES_SLAB = register("white_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> WHITE_SANDSTONE_FLAGSTONES_STAIRS = register("white_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> WHITE_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> PINK_SANDSTONE_FLAGSTONES = register("pink_sandstone_flagstones", () -> new PathHeightBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
-    public static final Id<Block> PINK_SANDSTONE_FLAGSTONES_SLAB = register("pink_sandstone_flagstones_slab", () -> new StonePathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
+    public static final Id<Block> PINK_SANDSTONE_FLAGSTONES_SLAB = register("pink_sandstone_flagstones_slab", () -> new PathSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
     public static final Id<Block> PINK_SANDSTONE_FLAGSTONES_STAIRS = register("pink_sandstone_flagstones_stairs", () -> new PathStairBlock(() -> PINK_SANDSTONE_FLAGSTONES.get().defaultBlockState(), BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(5.0F).sound(SoundType.STONE)));
 
     public static void register(IEventBus eventBus)

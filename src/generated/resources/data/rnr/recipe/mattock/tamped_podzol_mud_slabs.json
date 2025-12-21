@@ -1,0 +1,6 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": "#rnr:tampable_podzol_mud",
+  "mode": "tfc:slab",
+  "result": "rnr:tamped_podzol_mud"
+}

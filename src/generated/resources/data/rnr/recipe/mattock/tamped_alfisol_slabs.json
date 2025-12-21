@@ -1,0 +1,6 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": "#rnr:tampable_alfisol",
+  "mode": "tfc:slab",
+  "result": "rnr:tamped_alfisol"
+}

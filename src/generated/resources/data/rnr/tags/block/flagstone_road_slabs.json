@@ -20,6 +20,13 @@
     "rnr:rock/flagstones/phyllite_slab",
     "rnr:rock/flagstones/schist_slab",
     "rnr:rock/flagstones/gneiss_slab",
-    "rnr:rock/flagstones/marble_slab"
+    "rnr:rock/flagstones/marble_slab",
+    "rnr:black_sandstone_flagstones_slab",
+    "rnr:green_sandstone_flagstones_slab",
+    "rnr:pink_sandstone_flagstones_slab",
+    "rnr:white_sandstone_flagstones_slab",
+    "rnr:yellow_sandstone_flagstones_slab",
+    "rnr:brown_sandstone_flagstones_slab",
+    "rnr:red_sandstone_flagstones_slab"
   ]
 }

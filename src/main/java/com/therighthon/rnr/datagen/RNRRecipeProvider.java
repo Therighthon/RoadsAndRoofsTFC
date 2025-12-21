@@ -541,11 +541,11 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     {
         mattockAnyMode(in, out, "");
     }
-    private void mattockAnyMode(BlockIngredient in, BlockState out, String prefix)
+    private void mattockAnyMode(BlockIngredient in, BlockState out, String suffix)
     {
-        mattock(in, out, ChiselMode.SMOOTH, prefix);
-        mattock(in, out, ChiselMode.STAIR, "stairs_" + prefix);
-        mattock(in, out, ChiselMode.SLAB, "slab_" + prefix);
+        mattock(in, out, ChiselMode.SMOOTH, suffix);
+        mattock(in, out, ChiselMode.STAIR, (Objects.equals(suffix, "") ? "stairs" : "stairs_") + suffix);
+        mattock(in, out, ChiselMode.SLAB, (Objects.equals(suffix, "") ? "slabs" : "slab_") + suffix);
     }
 
     private void mattock(BlockIngredient in, BlockState out, Holder<ChiselMode> mode)
@@ -553,9 +553,9 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         mattock(in, out, mode, "");
     }
 
-    private void mattock(BlockIngredient in, BlockState out, Holder<ChiselMode> mode, String prefix)
+    private void mattock(BlockIngredient in, BlockState out, Holder<ChiselMode> mode, String suffix)
     {
-        add("mattock", prefix + nameOf(out.getBlock().asItem()), new MattockRecipe(in, out, mode.value(), ItemStackProvider.empty()));
+        add("mattock", nameOf(out.getBlock().asItem()) + (Objects.equals(suffix, "") ? "" : "_") + suffix, new MattockRecipe(in, out, mode.value(), ItemStackProvider.empty()));
     }
 
     private void chisel(BlockIngredient in, BlockState out, Holder<ChiselMode> mode)

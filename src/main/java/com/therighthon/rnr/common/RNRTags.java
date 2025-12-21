@@ -14,6 +14,7 @@ public class RNRTags
     {
         public static final TagKey<Block> ALL_ROADS = create("all_roads");
         public static final TagKey<Block> ALL_WORKING_ROADS = create("all_working_roads");
+        public static final TagKey<Block> TAMPED_BLOCKS = create("tamped_blocks");
 
         // Stone Tags
         public static final TagKey<Block> ALL_COBBLED_ROADS = create("all_cobbled_roads");
@@ -30,6 +31,8 @@ public class RNRTags
         public static final TagKey<Block> GRAVEL_ROAD_BLOCKS = create("gravel_road_blocks");
         public static final TagKey<Block> GRAVEL_ROAD_SLABS = create("gravel_road_slabs");
         public static final TagKey<Block> GRAVEL_ROAD_STAIRS = create("gravel_road_stairs");
+
+        public static final TagKey<Block> OVER_HEIGHT_GRAVELS = create("all_gravel_roads");
 
         public static final TagKey<Block> ALL_MACADAM_ROADS = create("all_macadam_roads");
         public static final TagKey<Block> MACADAM_ROAD_BLOCKS = create("macadam_road_blocks");
@@ -62,20 +65,20 @@ public class RNRTags
         // Soil blocks that can be tamped
         public static final TagKey<Block> TAMPABLE_ENTISOL = create("tampable_entisol");
         public static final TagKey<Block> TAMPABLE_ENTISOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_OXISOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_OXISOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_PODZOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_PODZOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_ARIDISOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_ARIDISOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_ALFISOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_ALFISOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_FLUVISOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_FLUVISOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_ANDISOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_ANDISOL_MUD = create("tampable_entisol_mud");
-        public static final TagKey<Block> TAMPABLE_MOLLISOL = create("tampable_entisol");
-        public static final TagKey<Block> TAMPABLE_MOLLISOL_MUD = create("tampable_entisol_mud");
+        public static final TagKey<Block> TAMPABLE_OXISOL = create("tampable_oxisol");
+        public static final TagKey<Block> TAMPABLE_OXISOL_MUD = create("tampable_oxisol_mud");
+        public static final TagKey<Block> TAMPABLE_PODZOL = create("tampable_podzol");
+        public static final TagKey<Block> TAMPABLE_PODZOL_MUD = create("tampable_podzol_mud");
+        public static final TagKey<Block> TAMPABLE_ARIDISOL = create("tampable_aridisol");
+        public static final TagKey<Block> TAMPABLE_ARIDISOL_MUD = create("tampable_aridisol_mud");
+        public static final TagKey<Block> TAMPABLE_ALFISOL = create("tampable_alfisol");
+        public static final TagKey<Block> TAMPABLE_ALFISOL_MUD = create("tampable_alfisol_mud");
+        public static final TagKey<Block> TAMPABLE_FLUVISOL = create("tampable_fluvisol");
+        public static final TagKey<Block> TAMPABLE_FLUVISOL_MUD = create("tampable_fluvisol_mud");
+        public static final TagKey<Block> TAMPABLE_ANDISOL = create("tampable_andisol");
+        public static final TagKey<Block> TAMPABLE_ANDISOL_MUD = create("tampable_andisol_mud");
+        public static final TagKey<Block> TAMPABLE_MOLLISOL = create("tampable_mollisol");
+        public static final TagKey<Block> TAMPABLE_MOLLISOL_MUD = create("tampable_mollisol_mud");
 //        public static final TagKey<Block> = create("");
 //        public static final TagKey<Block> = create("");
 

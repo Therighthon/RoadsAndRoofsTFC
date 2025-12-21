@@ -1,0 +1,6 @@
+{
+  "type": "rnr:mattock",
+  "ingredient": "#rnr:tampable_mollisol",
+  "mode": "tfc:slab",
+  "result": "rnr:tamped_mollisol"
+}

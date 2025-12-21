@@ -3,9 +3,12 @@ package com.therighthon.rnr.datagen;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
+import com.therighthon.rnr.common.block.TampedSoilBlock;
 import fuzs.blockrunner.data.ModBlockTagsProvider;
 import fuzs.blockrunner.init.ModRegistry;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
@@ -16,6 +19,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
+import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.soil.SoilBlockType;
 
@@ -62,6 +66,10 @@ public class RNRBlockTagProvider extends BlockTagsProvider
         tag(RNRTags.Blocks.ALL_GRAVEL_ROADS).addTags(RNRTags.Blocks.GRAVEL_ROAD_BLOCKS, RNRTags.Blocks.GRAVEL_ROAD_SLABS, RNRTags.Blocks.GRAVEL_ROAD_STAIRS);
         addAllRocks(RNRTags.Blocks.GRAVEL_ROAD_BLOCKS, RNRTags.Blocks.GRAVEL_ROAD_SLABS, RNRTags.Blocks.GRAVEL_ROAD_STAIRS, StoneBlockType.GRAVEL_ROAD);
 
+        RNRBlocks.ROCK_BLOCKS.forEach(
+            (r, m) -> tag(RNRTags.Blocks.OVER_HEIGHT_GRAVELS).add(m.get(StoneBlockType.OVER_HEIGHT_GRAVEL).key())
+        );
+
         tag(RNRTags.Blocks.ALL_MACADAM_ROADS).addTags(RNRTags.Blocks.MACADAM_ROAD_BLOCKS, RNRTags.Blocks.MACADAM_ROAD_SLABS, RNRTags.Blocks.MACADAM_ROAD_STAIRS);
         addAllRocks(RNRTags.Blocks.MACADAM_ROAD_BLOCKS, RNRTags.Blocks.MACADAM_ROAD_SLABS, RNRTags.Blocks.MACADAM_ROAD_STAIRS, StoneBlockType.MACADAM_ROAD);
 
@@ -69,7 +77,7 @@ public class RNRBlockTagProvider extends BlockTagsProvider
         addAllRocks(RNRTags.Blocks.SETT_ROAD_BLOCKS, RNRTags.Blocks.SETT_ROAD_SLABS, RNRTags.Blocks.SETT_ROAD_STAIRS, StoneBlockType.SETT_ROAD);
 
         tag(RNRTags.Blocks.ALL_FLAGSTONE_ROADS).addTags(RNRTags.Blocks.FLAGSTONE_ROAD_BLOCKS, RNRTags.Blocks.FLAGSTONE_ROAD_SLABS, RNRTags.Blocks.FLAGSTONE_ROAD_STAIRS);
-        addAllRocks(RNRTags.Blocks.FLAGSTONE_ROAD_BLOCKS, RNRTags.Blocks.FLAGSTONE_ROAD_SLABS, RNRTags.Blocks.FLAGSTONE_ROAD_STAIRS, StoneBlockType.FLAGSTONES);
+        addAllRocksAndSand(RNRTags.Blocks.FLAGSTONE_ROAD_BLOCKS, RNRTags.Blocks.FLAGSTONE_ROAD_SLABS, RNRTags.Blocks.FLAGSTONE_ROAD_STAIRS, StoneBlockType.FLAGSTONES);
 
         addSoilTags(RNRTags.Blocks.TAMPABLE_ENTISOL, RNRTags.Blocks.TAMPABLE_ENTISOL_MUD, SoilBlockType.Variant.ENTISOL);
         addSoilTags(RNRTags.Blocks.TAMPABLE_OXISOL, RNRTags.Blocks.TAMPABLE_OXISOL_MUD, SoilBlockType.Variant.OXISOL);
@@ -79,6 +87,27 @@ public class RNRBlockTagProvider extends BlockTagsProvider
         addSoilTags(RNRTags.Blocks.TAMPABLE_FLUVISOL, RNRTags.Blocks.TAMPABLE_FLUVISOL_MUD, SoilBlockType.Variant.FLUVISOL);
         addSoilTags(RNRTags.Blocks.TAMPABLE_ANDISOL, RNRTags.Blocks.TAMPABLE_ANDISOL_MUD, SoilBlockType.Variant.ANDISOL);
         addSoilTags(RNRTags.Blocks.TAMPABLE_MOLLISOL, RNRTags.Blocks.TAMPABLE_MOLLISOL_MUD, SoilBlockType.Variant.MOLLISOL);
+
+        tag(RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.TAMPED_PEAT.get()).add(RNRBlocks.TAMPED_KAOLIN.get());
+        RNRBlocks.TAMPED_SOILS.forEach(
+            (r, m) -> {
+                for (SoilBlockType.Variant var : SoilBlockType.Variant.values())
+                {
+                    tag(RNRTags.Blocks.TAMPED_BLOCKS).add(m.get(var).key());
+                }
+            }
+        );
+
+        tag(RNRTags.Blocks.ALL_ROADS).addTags(RNRTags.Blocks.ALL_HOGGIN_ROADS, RNRTags.Blocks.ALL_GRAVEL_ROADS, RNRTags.Blocks.ALL_MACADAM_ROADS,
+            RNRTags.Blocks.ALL_SETT_ROADS, RNRTags.Blocks.ALL_COBBLED_ROADS, RNRTags.Blocks.ALL_FLAGSTONE_ROADS, RNRTags.Blocks.ALL_DRY_CONCRETE_ROADS);
+
+        tag(RNRTags.Blocks.ALL_WORKING_ROADS).addTags(RNRTags.Blocks.ALL_HOGGIN_ROADS, RNRTags.Blocks.ALL_GRAVEL_ROADS, RNRTags.Blocks.ALL_MACADAM_ROADS,
+            RNRTags.Blocks.ALL_SETT_ROADS, RNRTags.Blocks.ALL_COBBLED_ROADS, RNRTags.Blocks.ALL_FLAGSTONE_ROADS, RNRTags.Blocks.ALL_WORKING_CONCRETE_ROADS);
+
+        // Collapse and collapse-support
+        tag(TFCTags.Blocks.SUPPORTS_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.BASE_COURSE.get());
+
+        tag(TFCTags.Blocks.CAN_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.BASE_COURSE.get());
     }
 
     private void addSoilTags(TagKey<Block> dryTag, TagKey<Block> wetTag, SoilBlockType.Variant variant)
@@ -104,6 +133,39 @@ public class RNRBlockTagProvider extends BlockTagsProvider
         );
     }
 
-
-
+    private void addAllRocksAndSand(TagKey<Block> blockTag, TagKey<Block> slabTag, TagKey<Block> stairTag, StoneBlockType type)
+    {
+        RNRBlocks.ROCK_BLOCKS.forEach(
+            (r, m) -> tag(blockTag).add(m.get(type).key())
+        );
+        tag(blockTag).add(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES.get());
+        tag(blockTag).add(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES.get());
+        tag(blockTag).add(RNRBlocks.PINK_SANDSTONE_FLAGSTONES.get());
+        tag(blockTag).add(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES.get());
+        tag(blockTag).add(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES.get());
+        tag(blockTag).add(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES.get());
+        tag(blockTag).add(RNRBlocks.RED_SANDSTONE_FLAGSTONES.get());
+        
+        RNRBlocks.ROCK_SLABS.forEach(
+            (r, m) -> tag(slabTag).add(m.get(type).key())
+        );
+        tag(slabTag).add(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_SLAB.get());
+        tag(slabTag).add(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_SLAB.get());
+        tag(slabTag).add(RNRBlocks.PINK_SANDSTONE_FLAGSTONES_SLAB.get());
+        tag(slabTag).add(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_SLAB.get());
+        tag(slabTag).add(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_SLAB.get());
+        tag(slabTag).add(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_SLAB.get());
+        tag(slabTag).add(RNRBlocks.RED_SANDSTONE_FLAGSTONES_SLAB.get());
+        
+        RNRBlocks.ROCK_STAIRS.forEach(
+            (r, m) -> tag(stairTag).add(m.get(type).key())
+        );
+        tag(stairTag).add(RNRBlocks.BLACK_SANDSTONE_FLAGSTONES_STAIRS.get());
+        tag(stairTag).add(RNRBlocks.GREEN_SANDSTONE_FLAGSTONES_STAIRS.get());
+        tag(stairTag).add(RNRBlocks.PINK_SANDSTONE_FLAGSTONES_STAIRS.get());
+        tag(stairTag).add(RNRBlocks.WHITE_SANDSTONE_FLAGSTONES_STAIRS.get());
+        tag(stairTag).add(RNRBlocks.YELLOW_SANDSTONE_FLAGSTONES_STAIRS.get());
+        tag(stairTag).add(RNRBlocks.BROWN_SANDSTONE_FLAGSTONES_STAIRS.get());
+        tag(stairTag).add(RNRBlocks.RED_SANDSTONE_FLAGSTONES_STAIRS.get());
+    }
 }

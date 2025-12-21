@@ -4,17 +4,23 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.datafixers.util.Either;
 import com.therighthon.rnr.common.RNRTags;
+import com.therighthon.rnr.common.block.PathStairBlock;
+import com.therighthon.rnr.common.block.PathSlabBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
@@ -84,7 +90,7 @@ public class MattockRecipe implements INoopInputRecipe
             }
             else
             {
-                @Nullable BlockState chiseled = mode.modifyStateForPlacement(state, recipe.output, player, hit);
+                @Nullable BlockState chiseled = ModifyStateForPlacement(mode, state, recipe.output, player, hit);
                 // covers case where a waterlogged block is chiseled and the new block can't take the fluid contained
                 chiseled = FluidHelpers.fillWithFluid(chiseled, player.level().getFluidState(pos).getType());
                 if (chiseled == null)
@@ -97,6 +103,40 @@ public class MattockRecipe implements INoopInputRecipe
 
         }
         return Either.right(InteractionResult.PASS);
+    }
+
+    /**
+     * Homemade alternative to the return types per-mode, which doesn't assume that the output for a stairs/slab recipe will be a stair or slab block
+     * This is needed because RNR path stairs/slabs are not real slab/stair blocks, and it also lets us do the any-mode tamping recipes
+     */
+    private static BlockState ModifyStateForPlacement(ChiselMode mode, BlockState input, BlockState output, Player player, BlockHitResult hit)
+    {
+        if (mode==ChiselMode.STAIR.get())
+        {
+            if (output.getBlock() instanceof StairBlock)
+            {
+                return mode.modifyStateForPlacement(input, output, player, hit);
+            }
+            else if (output.getBlock() instanceof PathStairBlock stairBlock)
+            {
+                // Mimic the behavior of the stair chisel mode
+                output = stairBlock.getStateForPlacement(new BlockPlaceContext(player, InteractionHand.MAIN_HAND, new ItemStack(stairBlock), hit));
+                return FluidHelpers.fillWithFluid(output, input.getFluidState().getType());
+            }
+        }
+        else if (mode==ChiselMode.SLAB.get())
+        {
+            if (output.getBlock() instanceof SlabBlock)
+            {
+                return mode.modifyStateForPlacement(input, output, player, hit);
+            }
+            else if (output.getBlock() instanceof PathSlabBlock)
+            {
+                return FluidHelpers.fillWithFluid(output, input.getFluidState().getType());
+            }
+        }
+        // Default
+        return output;
     }
 
     private static void complain(Player player, String message)

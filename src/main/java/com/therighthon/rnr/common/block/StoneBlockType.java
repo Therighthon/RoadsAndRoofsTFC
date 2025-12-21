@@ -5,9 +5,7 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -66,7 +64,7 @@ public enum StoneBlockType implements StringRepresentable
         final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
         if (type == StoneBlockType.GRAVEL_ROAD)
         {
-            return new GravelPathSlabBlock(properties);
+            return new PathSlabBlock(properties);
         }
         else if (type == StoneBlockType.MACADAM_ROAD)
         {
@@ -74,7 +72,7 @@ public enum StoneBlockType implements StringRepresentable
         }
         else
         {
-            return new StonePathSlabBlock(properties);
+            return new PathSlabBlock(properties);
         }
     }
 

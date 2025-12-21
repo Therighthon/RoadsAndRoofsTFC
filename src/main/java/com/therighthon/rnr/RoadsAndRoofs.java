@@ -33,6 +33,7 @@ public class RoadsAndRoofs
 
         RNRBlocks.BLOCKS.register(modEventBus);
         RNRItems.ITEMS.register(modEventBus);
+        RNRFluids.FLUID_TYPES.register(modEventBus);
         RNRFluids.FLUIDS.register(modEventBus);
         RNRRecipeTypes.RECIPE_TYPES.register(modEventBus);
         RNRRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);

@@ -3,7 +3,7 @@ package com.therighthon.rnr.common.fluid;
 import java.util.Locale;
 import net.minecraft.util.StringRepresentable;
 
-public enum SimpleRNRFluid implements StringRepresentable
+public enum SimpleRNRFluid
 {
 
     CONCRETE(0xFFDCDCDC);
@@ -25,12 +25,6 @@ public enum SimpleRNRFluid implements StringRepresentable
     public int getColor()
     {
         return color;
-    }
-
-    @Override
-    public String getSerializedName()
-    {
-        return id;
     }
 
     public boolean isTransparent()

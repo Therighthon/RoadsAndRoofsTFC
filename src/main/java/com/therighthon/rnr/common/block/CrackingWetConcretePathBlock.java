@@ -48,7 +48,6 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
             //Only update crack info within first 75% of drying process
             if (ticksSinceUpdate < 0.75 * getTicksToDry())
             {
-                RoadsAndRoofs.LOGGER.error("Ticking with {} ticks to go ", getTicksToDry() - ticksSinceUpdate);
                 //Cracking X - Distance Update
                 final int oldDistanceX = state.getValue(DISTANCE_X);
                 int distanceX = updateDistanceX(level, pos);

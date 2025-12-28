@@ -1,5 +1,6 @@
 package com.therighthon.rnr.common;
 
+import com.therighthon.rnr.common.fluid.RNRFluids;
 import java.util.Map;
 import java.util.function.Supplier;
 import com.therighthon.afc.common.blocks.AFCWood;
@@ -20,7 +21,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import net.dries007.tfc.TerraFirmaCraft;
-import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.common.blocks.soil.SoilBlockType;
@@ -61,6 +61,7 @@ public class RNRCreativeModeTabs
         out.accept(RNRItems.MATTOCK_HEADS.get(Metal.RED_STEEL).get());
         out.accept(RNRItems.MATTOCK_HEADS.get(Metal.BLUE_STEEL).get());
 
+        RNRFluids.FLUIDS.getEntries().forEach(fluid -> out.accept(fluid.value().getBucket()));
 
         out.accept(RNRBlocks.HOGGIN.get());
         out.accept(RNRBlocks.HOGGIN_SLAB.get());

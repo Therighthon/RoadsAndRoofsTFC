@@ -32,6 +32,7 @@ public class RoadsAndRoofs
         modEventBus.addListener(this::setup);
 
         RNRBlocks.BLOCKS.register(modEventBus);
+        RNRBlocks.FLUID_BLOCKS.register(modEventBus);
         RNRItems.ITEMS.register(modEventBus);
         RNRFluids.FLUID_TYPES.register(modEventBus);
         RNRFluids.FLUIDS.register(modEventBus);
@@ -43,6 +44,7 @@ public class RoadsAndRoofs
         if (FMLEnvironment.dist == Dist.CLIENT)
         {
             ClientEventHandler.init(modEventBus);
+            modEventBus.addListener(ClientEventHandler::registerExtensions);
         }
 
         if (ModList.get().isLoaded("afc"))

@@ -37,8 +37,6 @@ import net.dries007.tfc.util.registry.RegistryHolder;
 
 public class RNRBlocks
 {
-    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, RoadsAndRoofs.MOD_ID);
-
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, RoadsAndRoofs.MOD_ID);
 
     // These are separate because they make the BlockLootProvider very angry when I try to pass them in

@@ -3,7 +3,6 @@
   "input_block": [
     "rnr:roof_frame"
   ],
-  "input_fluid": [],
   "input_item": {
     "item": "rnr:wood/shingle/ironwood"
   },

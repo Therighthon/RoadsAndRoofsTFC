@@ -3,7 +3,6 @@
   "input_block": [
     "rnr:rock/gravel_road/dolomite"
   ],
-  "input_fluid": [],
   "input_item": {
     "item": "rnr:gravel_fill/dolomite"
   },

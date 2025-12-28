@@ -16,6 +16,8 @@ public class RNRRecipeTypes
 
     public static final Id<MattockRecipe> MATTOCK_RECIPE = register("mattock");
     public static final Id<BlockModRecipe> BLOCK_MOD_RECIPE = register("block_mod");
+    // TODO: JEI integration for fluid block mod recipes
+    public static final Id<FluidBlockModRecipe> FLUID_BLOCK_MOD_RECIPE = register("fluid_block_mod");
 
     private static <R extends Recipe<?>> Id<R> register(String name)
     {

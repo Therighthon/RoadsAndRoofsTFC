@@ -19,6 +19,7 @@ public class RNRRecipeSerializers
 
     public static final Id<MattockRecipe> MATTOCK_RECIPE = register("mattock", MattockRecipe.CODEC, MattockRecipe.STREAM_CODEC);
     public static final Id<BlockModRecipe> BLOCK_MOD_RECIPE = register("block_mod", BlockModRecipe.CODEC, BlockModRecipe.STREAM_CODEC);
+    public static final Id<FluidBlockModRecipe> FLUID_BLOCK_MOD_RECIPE = register("fluid_block_mod", FluidBlockModRecipe.CODEC, FluidBlockModRecipe.STREAM_CODEC);
 
     private static <R extends Recipe<?>> Id<R> register(String name, MapCodec<R> codec, StreamCodec<RegistryFriendlyByteBuf, R> stream)
     {

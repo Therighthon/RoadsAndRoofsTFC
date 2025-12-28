@@ -4,7 +4,6 @@
   "input_block": [
     "rnr:wet_concrete_road"
   ],
-  "input_fluid": [],
   "input_item": {
     "tag": "c:stones/smooth"
   },

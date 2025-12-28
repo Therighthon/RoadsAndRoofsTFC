@@ -12,6 +12,7 @@ import com.therighthon.rnr.common.fluid.SimpleRNRFluid;
 import com.therighthon.rnr.common.item.AFCCompatItems;
 import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
+import com.therighthon.rnr.common.recipe.FluidBlockModRecipe;
 import com.therighthon.rnr.common.recipe.MattockRecipe;
 import java.util.Locale;
 import java.util.Objects;
@@ -42,9 +43,8 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import net.neoforged.neoforge.common.crafting.CompoundIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import org.jetbrains.annotations.NotNull;
 
 import net.dries007.tfc.common.TFCTags;
@@ -255,6 +255,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // TODO: Make a concrete pouring recipe that uses liquids properly
         //  ORIGINAL: block_mod_recipe(rm, 'pouring_concrete', fluid_item_ingredient('1000 rnr:concrete'), 'rnr:base_course', 'rnr:pouring_concrete_road')
+        fluidBlockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), SizedFluidIngredient.of(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource(), 1000), RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState(), true);
 
         // Control joints and smoothing footsteps
         mattockAnyMode(BlockIngredient.of(RNRBlocks.WET_CONCRETE_ROAD.get()), RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get().defaultBlockState());
@@ -553,18 +554,18 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume, String suffix)
     {
-        Recipe recipe = new BlockModRecipe(Ingredient.of(itemIn), FluidIngredient.empty(), blockIn, blockOut, consume);
+        Recipe recipe = new BlockModRecipe(Ingredient.of(itemIn), blockIn, blockOut, consume);
         add("block_mod",  nameOf(recipe) + suffix, recipe);
     }
 
     private void blockMod(BlockIngredient blockIn, Ingredient itemIn, BlockState blockOut, boolean consume)
     {
-        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(itemIn, FluidIngredient.empty(), blockIn, blockOut, consume));
+        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(itemIn, blockIn, blockOut, consume));
     }
 
-    private void blockModLiquid(BlockIngredient blockIn, FluidIngredient fluidIn, BlockState blockOut, boolean consume)
+    private void fluidBlockMod(BlockIngredient blockIn, SizedFluidIngredient fluidIn, BlockState blockOut, boolean consume)
     {
-        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(Ingredient.EMPTY, fluidIn, blockIn, blockOut, consume));
+        add("block_mod", nameOf(blockOut.getBlock().asItem()), new FluidBlockModRecipe(fluidIn, blockIn, blockOut, consume));
     }
 
     private void mattockAnyMode(BlockIngredient in, BlockState out)

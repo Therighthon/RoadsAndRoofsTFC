@@ -1,0 +1,11 @@
+{
+  "type": "rnr:fluid_block_mod",
+  "input_block": [
+    "rnr:base_course"
+  ],
+  "input_fluid": {
+    "amount": 1000,
+    "fluid": "rnr:concrete"
+  },
+  "output_block": "rnr:wet_concrete_road"
+}

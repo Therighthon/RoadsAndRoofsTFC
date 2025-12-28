@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -29,8 +30,7 @@ public final class RNRHelpers
         return resourceLocation("rnr", name);
     }
 
-    // TODO: Use interaction result
-    public static InteractionResult blockModRecipeCompatible(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand)
+    public static ItemInteractionResult blockModRecipeCompatible(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand)
     {
         // TODO: Would be nice to change this behavior to be recipe-dependent or something
         // First check we aren't inside the clicked block
@@ -56,7 +56,7 @@ public final class RNRHelpers
                 level.playLocalSound(pos, output.getSoundType().getHitSound(), SoundSource.BLOCKS, 1f, 1f, false);
                 level.setBlock(pos, output, 3);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
 
             final IFluidHandlerItem fluidHandler = stack.getCapability(Capabilities.FluidHandler.ITEM);
@@ -100,12 +100,12 @@ public final class RNRHelpers
                             }
                         }
 
-                        return InteractionResult.sidedSuccess(level.isClientSide);
+                        return ItemInteractionResult.sidedSuccess(level.isClientSide);
                     }
                 }
             }
 
         }
-        return InteractionResult.FAIL;
+        return ItemInteractionResult.FAIL;
     }
 }

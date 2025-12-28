@@ -56,25 +56,24 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
     }
 
     //TODO: Pretty janky setup, but it does work for now
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random)
-    {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
             if (counter.getTicksSinceUpdate() > ticksToDry)
             {
                 level.setBlockAndUpdate(pos, getOutputState(state));
-            }
 
-            final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            for (Direction d : Direction.Plane.HORIZONTAL)
-            {
-                cursor.setWithOffset(pos, d);
-                final BlockState stateAt = level.getBlockState(cursor);
-                //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
-                if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+                for (Direction d : Direction.Plane.HORIZONTAL)
                 {
-                    level.scheduleTick(cursor, stateAt.getBlock(), 1);
+                    cursor.setWithOffset(pos, d);
+                    final BlockState stateAt = level.getBlockState(cursor);
+                    //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
+                    if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                    {
+                        level.scheduleTick(cursor, stateAt.getBlock(), 20);
+                    }
                 }
             }
         });

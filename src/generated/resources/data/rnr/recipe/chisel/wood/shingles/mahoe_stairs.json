@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/mahoe"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wood/shingles/mahoe_stairs"
+}

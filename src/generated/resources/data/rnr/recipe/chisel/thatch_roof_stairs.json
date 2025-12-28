@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:thatch_roof"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:thatch_roof_stairs"
+}

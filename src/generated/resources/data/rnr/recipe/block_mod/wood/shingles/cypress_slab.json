@@ -1,0 +1,11 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:roof_frame_slab"
+  ],
+  "input_fluid": [],
+  "input_item": {
+    "item": "rnr:wood/shingle/cypress"
+  },
+  "output_block": "rnr:wood/shingles/cypress_slab"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/teak"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wood/shingles/teak_stairs"
+}

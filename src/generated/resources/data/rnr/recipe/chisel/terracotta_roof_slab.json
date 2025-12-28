@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:terracotta_roof"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:terracotta_roof_slab"
+}

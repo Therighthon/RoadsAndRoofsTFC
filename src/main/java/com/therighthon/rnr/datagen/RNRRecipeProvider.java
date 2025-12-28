@@ -4,6 +4,7 @@ import com.therighthon.afc.common.blocks.AFCBlocks;
 import com.therighthon.afc.common.blocks.AFCWood;
 import com.therighthon.rnr.RNRHelpers;
 import com.therighthon.rnr.common.RNRTags;
+import com.therighthon.rnr.common.block.AFCCompatBlocks;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
 import com.therighthon.rnr.common.fluid.RNRFluids;
@@ -23,6 +24,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceKey;
@@ -42,6 +44,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.crafting.CompoundIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 import org.jetbrains.annotations.NotNull;
 
 import net.dries007.tfc.common.TFCTags;
@@ -240,7 +243,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             .instant();
 
         // Have to have custom landslide recipes for wet concrete
-        // TODO: other landslide blocks should just need the tag
         add(new LandslideRecipe(BlockIngredient.of(
             RNRBlocks.WET_CONCRETE_ROAD.get(),
             RNRBlocks.WET_CONCRETE_ROAD_PANEL.get(),
@@ -287,31 +289,54 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     {
         // Shingling recipes
         roofMod(TFCItems.STRAW.asItem(), RNRBlocks.THATCH_ROOF.get(), RNRBlocks.THATCH_ROOF_STAIRS.get(), RNRBlocks.THATCH_ROOF_SLAB.get());
+        stairBuilder(RNRBlocks.THATCH_ROOF_STAIRS, Ingredient.of(RNRBlocks.THATCH_ROOF.get().asItem()));
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, RNRBlocks.THATCH_ROOF_SLAB, Ingredient.of(RNRBlocks.THATCH_ROOF.get().asItem()));
+        chisel(BlockIngredient.of(RNRBlocks.THATCH_ROOF.get()), RNRBlocks.THATCH_ROOF_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        chisel(BlockIngredient.of(RNRBlocks.THATCH_ROOF.get()), RNRBlocks.THATCH_ROOF_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+
         roofMod(RNRItems.CERAMIC_ROOF_TILE.asItem(), RNRBlocks.CERAMIC_ROOF.get(), RNRBlocks.CERAMIC_ROOF_STAIRS.get(), RNRBlocks.CERAMIC_ROOF_SLAB.get());
+        stairBuilder(RNRBlocks.CERAMIC_ROOF_STAIRS, Ingredient.of(RNRBlocks.CERAMIC_ROOF.get().asItem()));
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, RNRBlocks.CERAMIC_ROOF_SLAB, Ingredient.of(RNRBlocks.CERAMIC_ROOF.get().asItem()));
+        chisel(BlockIngredient.of(RNRBlocks.CERAMIC_ROOF.get()), RNRBlocks.CERAMIC_ROOF_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        chisel(BlockIngredient.of(RNRBlocks.CERAMIC_ROOF.get()), RNRBlocks.CERAMIC_ROOF_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
+
         roofMod(RNRItems.TERRACOTTA_ROOF_TILE.asItem(), RNRBlocks.TERRACOTTA_ROOF.get(), RNRBlocks.TERRACOTTA_ROOF_STAIRS.get(), RNRBlocks.TERRACOTTA_ROOF_SLAB.get());
+        stairBuilder(RNRBlocks.TERRACOTTA_ROOF_STAIRS, Ingredient.of(RNRBlocks.TERRACOTTA_ROOF.get().asItem()));
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, RNRBlocks.TERRACOTTA_ROOF_SLAB, Ingredient.of(RNRBlocks.TERRACOTTA_ROOF.get().asItem()));
+        chisel(BlockIngredient.of(RNRBlocks.TERRACOTTA_ROOF.get()), RNRBlocks.TERRACOTTA_ROOF_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        chisel(BlockIngredient.of(RNRBlocks.TERRACOTTA_ROOF.get()), RNRBlocks.TERRACOTTA_ROOF_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
 
-        //todo Crafting recipes (stairs and slabs)
-
-        //todo Chiseling recipes (stairs and slabs)
-
-        // TODO: Note that shingling needs to be for slabs and stairs too
-        // Wood recipes (Crafting and placing shingles, todo: all crafting, chiseling)
         for (Wood wood : Wood.values())
         {
             recipe().damageInputs()
                 .inputIsPrimary(TFCTags.Items.TOOLS_CHISEL)
                 .input(TFCBlocks.WOODS.get(wood).get(Wood.BlockType.LOG).asItem())
                 .shapeless(RNRItems.WOOD_SHINGLE.get(wood).asItem(), 12);
+
+            roofMod(RNRItems.WOOD_SHINGLE.get(wood).asItem(), RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get(), RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get(), RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
+
+            stairBuilder(RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood), Ingredient.of(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).asItem()));
+            slabBuilder(RecipeCategory.BUILDING_BLOCKS, RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood), Ingredient.of(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).asItem()));
+
+            chisel(BlockIngredient.of(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get()), RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get().defaultBlockState(), ChiselMode.STAIR);
+            chisel(BlockIngredient.of(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get()), RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get().defaultBlockState(), ChiselMode.SLAB);
         }
 
         // TODO: Make this go to the right folder
-        // Wood recipes (Crafting and placing shingles, todo: all crafting, chiseling stairs/slabs)
         for (AFCWood wood : AFCWood.values())
         {
             recipe().damageInputs()
                 .inputIsPrimary(TFCTags.Items.TOOLS_CHISEL)
                 .input(AFCBlocks.WOODS.get(wood).get(Wood.BlockType.LOG).asItem())
                 .shapeless(AFCCompatItems.WOOD_SHINGLE.get(wood).asItem(), 12);
+
+            roofMod(AFCCompatItems.WOOD_SHINGLE.get(wood).asItem(), AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get(), AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get(), AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
+
+            stairBuilder(AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood), Ingredient.of(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).asItem()));
+            slabBuilder(RecipeCategory.BUILDING_BLOCKS, AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood), Ingredient.of(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).asItem()));
+
+            chisel(BlockIngredient.of(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get()), AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get().defaultBlockState(), ChiselMode.STAIR);
+            chisel(BlockIngredient.of(AFCCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get()), AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get().defaultBlockState(), ChiselMode.SLAB);
         }
     }
 
@@ -357,7 +382,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         recipe().input(RNRItems.UNFIRED_ROOF_TILE, 8).input(TFCItems.ORE_POWDERS.get(Ore.HEMATITE).asItem()).shapeless(RNRItems.UNFIRED_TERRACOTTA_ROOF_TILE, 8);
 
         float POTTERY = 1399f;
-        // TODO: Heat defs
         addHeatingRecipe(RNRItems.UNFIRED_ROOF_TILE, RNRItems.CERAMIC_ROOF_TILE, POTTERY);
         addHeatingRecipe(RNRItems.UNFIRED_TERRACOTTA_ROOF_TILE, RNRItems.TERRACOTTA_ROOF_TILE, POTTERY);
 
@@ -371,7 +395,8 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             .pattern("B  ", "BB ", "BBB")
             .shaped(RNRBlocks.ROOF_FRAME_STAIRS.asItem(), 8);
 
-        // TODO: chisel equivs of above stair./slab
+        chisel(BlockIngredient.of(RNRBlocks.ROOF_FRAME.get()), RNRBlocks.ROOF_FRAME_STAIRS.get().defaultBlockState(), ChiselMode.STAIR);
+        chisel(BlockIngredient.of(RNRBlocks.ROOF_FRAME.get()), RNRBlocks.ROOF_FRAME_SLAB.get().defaultBlockState(), ChiselMode.SLAB);
     }
 
     private void clayKnapping(String suffix, ItemLike output, int count, boolean defaultOn, String... pattern)
@@ -528,13 +553,18 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void blockMod(BlockIngredient blockIn, Item itemIn, BlockState blockOut, boolean consume, String suffix)
     {
-        Recipe recipe = new BlockModRecipe(Ingredient.of(itemIn), blockIn, blockOut, consume);
+        Recipe recipe = new BlockModRecipe(Ingredient.of(itemIn), FluidIngredient.empty(), blockIn, blockOut, consume);
         add("block_mod",  nameOf(recipe) + suffix, recipe);
     }
 
     private void blockMod(BlockIngredient blockIn, Ingredient itemIn, BlockState blockOut, boolean consume)
     {
-        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(itemIn, blockIn, blockOut, consume));
+        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(itemIn, FluidIngredient.empty(), blockIn, blockOut, consume));
+    }
+
+    private void blockModLiquid(BlockIngredient blockIn, FluidIngredient fluidIn, BlockState blockOut, boolean consume)
+    {
+        add("block_mod", nameOf(blockOut.getBlock().asItem()), new BlockModRecipe(Ingredient.EMPTY, fluidIn, blockIn, blockOut, consume));
     }
 
     private void mattockAnyMode(BlockIngredient in, BlockState out)

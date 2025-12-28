@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/willow"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wood/shingles/willow_stairs"
+}

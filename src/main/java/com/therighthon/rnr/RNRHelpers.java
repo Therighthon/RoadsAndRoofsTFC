@@ -1,6 +1,5 @@
 package com.therighthon.rnr;
 
-import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
@@ -9,13 +8,12 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-
-import net.dries007.tfc.common.items.TFCItems;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 
 import static net.dries007.tfc.util.Helpers.*;
 
@@ -25,40 +23,25 @@ public final class RNRHelpers
         return resourceLocation("rnr", name);
     }
 
+    // TODO: Use interaction result
     public static InteractionResult blockModRecipeCompatible(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand)
     {
         ItemStack stack = player.getItemInHand(hand);
-        final BlockModRecipe recipe = BlockModRecipe.getRecipe(blockState, stack);
+        final BlockModRecipe recipe = BlockModRecipe.getRecipe(level.getBlockState(pos), stack);
         if (recipe != null && !(player.blockPosition().equals(pos)))
         {
             final BlockState output = recipe.getOutputBlock().getBlock().withPropertiesOf(blockState);
             if (!player.isCreative() && recipe.consumesItem())
             {
-                if (stack.isDamageableItem())
+                // Concrete pouring
+                final IFluidHandlerItem fluidHandler = stack.getCapability(Capabilities.FluidHandler.ITEM);
+                if (fluidHandler != null) {
+                    fluidHandler.drain(1000, IFluidHandler.FluidAction.EXECUTE);
+                    player.setItemInHand(hand, fluidHandler.getContainer());
+                }
+                else if (stack.isDamageableItem())
                 {
                     stack.setDamageValue(stack.getDamageValue() - 1);
-                }
-                //TODO: This bucket handling stuff is hacky as all getup, should probably fix or trick Russian into going through
-                // my code so he fixes it for me with some method I've never heard of
-                else if (stack.is(TFCItems.WOODEN_BUCKET.get()))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.WOODEN_BUCKET.get()));
-                }
-                else if (stack.is(TFCItems.RED_STEEL_BUCKET.get()))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.RED_STEEL_BUCKET.get()));
-                }
-                else if (stack.is(TFCItems.BLUE_STEEL_BUCKET.get()))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(TFCItems.BLUE_STEEL_BUCKET.get()));
-                }
-                else if (stack.is(RNRTags.Items.CONCRETE_BUCKETS))
-                {
-                    stack.shrink(1);
-                    player.setItemInHand(hand, new ItemStack(Items.BUCKET));
                 }
                 else
                 {

@@ -3,6 +3,7 @@
   "input_block": [
     "rnr:tamped_entisol"
   ],
+  "input_fluid": [],
   "input_item": {
     "item": "rnr:crushed_base_course"
   },

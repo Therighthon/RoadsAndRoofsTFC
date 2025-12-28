@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/maple"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:wood/shingles/maple_slab"
+}

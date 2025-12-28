@@ -4,6 +4,7 @@
   "input_block": [
     "rnr:wet_concrete_road"
   ],
+  "input_fluid": [],
   "input_item": {
     "tag": "rnr:flagstone_road_items"
   },

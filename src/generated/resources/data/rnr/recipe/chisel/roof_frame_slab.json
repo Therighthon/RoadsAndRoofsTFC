@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:roof_frame"
+  ],
+  "mode": "tfc:slab",
+  "result": "rnr:roof_frame_slab"
+}

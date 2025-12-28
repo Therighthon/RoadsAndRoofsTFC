@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/araucaria"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wood/shingles/araucaria_stairs"
+}

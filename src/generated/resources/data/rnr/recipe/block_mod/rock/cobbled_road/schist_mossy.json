@@ -3,6 +3,7 @@
   "input_block": [
     "rnr:base_course"
   ],
+  "input_fluid": [],
   "input_item": {
     "item": "tfc:rock/mossy_loose/schist"
   },

@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/acacia"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wood/shingles/acacia_stairs"
+}

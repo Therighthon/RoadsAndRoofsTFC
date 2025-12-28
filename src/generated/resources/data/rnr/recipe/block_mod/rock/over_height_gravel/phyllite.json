@@ -3,6 +3,7 @@
   "input_block": [
     "rnr:rock/gravel_road/phyllite"
   ],
+  "input_fluid": [],
   "input_item": {
     "item": "rnr:gravel_fill/phyllite"
   },

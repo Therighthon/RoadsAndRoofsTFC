@@ -1,0 +1,8 @@
+{
+  "type": "tfc:chisel",
+  "ingredient": [
+    "rnr:wood/shingles/white_cedar"
+  ],
+  "mode": "tfc:stair",
+  "result": "rnr:wood/shingles/white_cedar_stairs"
+}

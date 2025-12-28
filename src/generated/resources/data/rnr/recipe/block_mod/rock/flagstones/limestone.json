@@ -3,6 +3,7 @@
   "input_block": [
     "rnr:base_course"
   ],
+  "input_fluid": [],
   "input_item": {
     "item": "rnr:flagstone/limestone"
   },

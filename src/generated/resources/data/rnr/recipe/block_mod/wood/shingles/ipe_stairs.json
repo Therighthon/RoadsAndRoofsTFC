@@ -1,0 +1,11 @@
+{
+  "type": "rnr:block_mod",
+  "input_block": [
+    "rnr:roof_frame_stairs"
+  ],
+  "input_fluid": [],
+  "input_item": {
+    "item": "rnr:wood/shingle/ipe"
+  },
+  "output_block": "rnr:wood/shingles/ipe_stairs"
+}

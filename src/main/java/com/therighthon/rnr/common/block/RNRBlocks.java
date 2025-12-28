@@ -118,9 +118,9 @@ public class RNRBlocks
 
     public static final BlockBehaviour.Properties ROOF_PROPERTIES = ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties();
 
-    public static final Id<Block> ROOF_FRAME = register("roof_frame", () -> new BlockModEnabledBlock(ROOF_PROPERTIES, true));
-    public static final Id<Block> ROOF_FRAME_SLAB = register("roof_frame_slab", () -> new BlockModEnabledSlabBlock(ROOF_PROPERTIES, true));
-    public static final Id<Block> ROOF_FRAME_STAIRS = register("roof_frame_stairs", () -> new BlockModEnabledStairBlock(() -> ROOF_FRAME.get().defaultBlockState(), ROOF_PROPERTIES, true));
+    public static final Id<Block> ROOF_FRAME = register("roof_frame", () -> new Block(ROOF_PROPERTIES));
+    public static final Id<Block> ROOF_FRAME_SLAB = register("roof_frame_slab", () -> new SlabBlock(ROOF_PROPERTIES));
+    public static final Id<Block> ROOF_FRAME_STAIRS = register("roof_frame_stairs", () -> new StairBlock(ROOF_FRAME.get().defaultBlockState(), ROOF_PROPERTIES));
 
     public static final BlockBehaviour.Properties THATCH_PROPERTIES = ExtendedProperties.of(MapColor.SAND).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(TFCSounds.THATCH).flammable(40, 75).properties();
 

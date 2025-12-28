@@ -1,7 +1,5 @@
 package com.therighthon.rnr.datagen;
 
-import com.therighthon.afc.common.fluids.AFCFluids;
-import com.therighthon.afc.common.fluids.SimpleAFCFluid;
 import com.therighthon.rnr.common.fluid.RNRFluids;
 import com.therighthon.rnr.common.fluid.SimpleRNRFluid;
 import java.util.concurrent.CompletableFuture;

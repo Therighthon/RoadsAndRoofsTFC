@@ -29,10 +29,4 @@ public class PathHeightDeviceBlock extends DeviceBlock
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-
-    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
-    {
-        return RNRHelpers.blockModRecipeCompatible(blockState, level, pos, player, hand, hit);
-    }
-
 }

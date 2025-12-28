@@ -39,6 +39,7 @@ public class RoadsAndRoofs
         RNRRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         RNRCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
 
+        RNREvents.init();
         if (FMLEnvironment.dist == Dist.CLIENT)
         {
             ClientEventHandler.init(modEventBus);
@@ -48,7 +49,7 @@ public class RoadsAndRoofs
         {
             AFCCompatBlocks.BLOCKS.register(modEventBus);
             AFCCompatItems.AFC_COMPAT_ITEMS.register(modEventBus);
-            ModEvents.initAFCCompat(modEventBus);
+            RNREvents.initAFCCompat(modEventBus);
         }
     }
 

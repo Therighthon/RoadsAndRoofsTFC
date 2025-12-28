@@ -25,10 +25,10 @@ public final class RNRHelpers
         return resourceLocation("rnr", name);
     }
 
-    public static InteractionResult blockModRecipeCompatible(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
+    public static InteractionResult blockModRecipeCompatible(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand)
     {
         ItemStack stack = player.getItemInHand(hand);
-        final BlockModRecipe recipe = BlockModRecipe.getRecipe(level.getBlockState(pos), stack);
+        final BlockModRecipe recipe = BlockModRecipe.getRecipe(blockState, stack);
         if (recipe != null && !(player.blockPosition().equals(pos)))
         {
             final BlockState output = recipe.getOutputBlock().getBlock().withPropertiesOf(blockState);

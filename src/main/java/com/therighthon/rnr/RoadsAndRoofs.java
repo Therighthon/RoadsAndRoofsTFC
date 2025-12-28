@@ -40,6 +40,7 @@ public class RoadsAndRoofs
         RNRRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         RNRCreativeModeTabs.CREATIVE_TABS.register(modEventBus);
 
+        modEventBus.addListener(RNREvents::addToBlockEntities);
         RNREvents.init();
         if (FMLEnvironment.dist == Dist.CLIENT)
         {

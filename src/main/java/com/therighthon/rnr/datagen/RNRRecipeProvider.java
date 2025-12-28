@@ -258,7 +258,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         fluidBlockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), SizedFluidIngredient.of(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource(), 1000), RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState(), true);
 
         // Control joints and smoothing footsteps
-        mattockAnyMode(BlockIngredient.of(RNRBlocks.WET_CONCRETE_ROAD.get()), RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get().defaultBlockState());
+        mattockAnyMode(BlockIngredient.of(RNRBlocks.POURING_CONCRETE_ROAD.get()), RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get().defaultBlockState());
         mattockAnyMode(BlockIngredient.of(RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get()), RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState());
 
         // Stamping wet concrete

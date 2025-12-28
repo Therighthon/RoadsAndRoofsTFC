@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-28T15:09:44.0628806	Recipes
+// 1.21.1	2025-12-28T15:17:50.8210912	Recipes
 ceffeca4e9ad458588aa919d3b92d85157e924d5 data/rnr/recipe/barrel/concrete_from_powder.json
 f19a27785552285dd2c03b9d3bdccf4079015df4 data/rnr/recipe/block_mod/base_course_from_alfisol.json
 983117b7065b58595bbe9cb7cd9bc7774f10a03c data/rnr/recipe/block_mod/base_course_from_andisol.json
@@ -867,9 +867,9 @@ fe3bbf7e303c9287c221ccb5d12e123c725a1f18 data/rnr/recipe/mattock/tamped_podzol_s
 723b63c598c1535aaf145da54ff239e1f560a360 data/rnr/recipe/mattock/trodden_concrete_road_slab.json
 01f7e624848d18fee0defe674eafb7099b851771 data/rnr/recipe/mattock/trodden_concrete_road_stairs.json
 ed58591c093b7016d00bb2727e40faf30f700cc5 data/rnr/recipe/mattock/wet_concrete_road.json
-aa4c97f75d21b22e53caff26b42082b442917e92 data/rnr/recipe/mattock/wet_concrete_road_control_joint.json
-31f66ff6a93e5fe6f5cebc2950a6172d403a0d98 data/rnr/recipe/mattock/wet_concrete_road_control_joint_slabs.json
-5858f86e737b62880d80a53ad4f7d47968b3c068 data/rnr/recipe/mattock/wet_concrete_road_control_joint_stairs.json
+b71929f4dd6aee0f4a05326eeb1fb898fed2ca66 data/rnr/recipe/mattock/wet_concrete_road_control_joint.json
+183c98144d090bb4ceb92aab23492947dc83c1a2 data/rnr/recipe/mattock/wet_concrete_road_control_joint_slabs.json
+c9afc8797aea15d728fef0c773084037c34770b7 data/rnr/recipe/mattock/wet_concrete_road_control_joint_stairs.json
 89d0d0ea8426e080f051a5431d8f6a6de3a75008 data/rnr/recipe/mattock/wet_concrete_road_slabs.json
 b55e2ef408fe3a351b426a8e1d66b011f0422be5 data/rnr/recipe/mattock/wet_concrete_road_stairs.json
 19d137b7dd3c8433a5d8eff6f3732a7d24decc63 data/rnr/recipe/mattock/white_sandstone_flagstones_slab.json

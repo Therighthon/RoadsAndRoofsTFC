@@ -1,5 +1,7 @@
 package com.therighthon.rnr;
 
+import com.therighthon.rnr.common.block.RNRBlocks;
+import java.util.stream.Stream;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -9,13 +11,18 @@ import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 
+import net.dries007.tfc.common.blockentities.TFCBlockEntities;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.util.Helpers;
-import net.dries007.tfc.util.InteractionManager;
 
 public class RNREvents
 {
@@ -51,4 +58,27 @@ public class RNREvents
         final BlockPos pos = event.getPos();
         RNRHelpers.blockModRecipeCompatible(level.getBlockState(pos), level, pos, event.getPlayer(), event.getHand());
     }
+
+    @SubscribeEvent
+    public static void addToBlockEntities(BlockEntityTypeAddBlocksEvent event)
+    {
+        Stream<Block> blocks = Stream.of(
+            RNRBlocks.WET_CONCRETE_ROAD.get(),
+            RNRBlocks.WET_CONCRETE_ROAD_PANEL.get(),
+            RNRBlocks.WET_CONCRETE_ROAD_FLAGSTONES.get(),
+            RNRBlocks.WET_CONCRETE_ROAD_SETT.get(),
+            RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get(),
+            RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get(),
+            RNRBlocks.POURING_CONCRETE_ROAD.get()
+        );
+        modifyBlockEntityType(TFCBlockEntities.TICK_COUNTER.get(), blocks, event);
+    }
+
+    private static void modifyBlockEntityType(BlockEntityType<?> type, Stream<Block> extraBlocks, BlockEntityTypeAddBlocksEvent event)
+    {
+        extraBlocks.forEach(
+            (block -> event.modify(type, block))
+        );
+    }
+
 }

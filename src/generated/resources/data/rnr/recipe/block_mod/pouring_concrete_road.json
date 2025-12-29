@@ -7,5 +7,5 @@
     "amount": 1000,
     "fluid": "rnr:concrete"
   },
-  "output_block": "rnr:wet_concrete_road"
+  "output_block": "rnr:pouring_concrete_road"
 }

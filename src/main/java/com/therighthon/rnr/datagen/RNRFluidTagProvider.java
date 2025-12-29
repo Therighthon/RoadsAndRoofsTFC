@@ -22,5 +22,6 @@ public class RNRFluidTagProvider extends FluidTagsProvider
     protected void addTags(HolderLookup.Provider provider)
     {
         tag(USABLE_IN_BARREL).add(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource());
+        tag(USABLE_IN_WOODEN_BUCKET).add(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource());
     }
 }

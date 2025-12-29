@@ -1,7 +1,7 @@
 {
   "type": "rnr:mattock",
   "ingredient": [
-    "rnr:pouring_concrete_road"
+    "rnr:wet_concrete_road"
   ],
   "mode": "tfc:smooth",
   "result": "rnr:wet_concrete_road_control_joint"

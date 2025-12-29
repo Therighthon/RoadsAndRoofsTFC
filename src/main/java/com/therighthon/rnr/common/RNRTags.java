@@ -103,9 +103,6 @@ public class RNRTags
         public static final TagKey<Item> FLAGSTONE_ROAD_ITEMS = create("flagstone_road_items");
         public static final TagKey<Item> SETT_ROAD_ITEMS = create("sett_road_items");
         public static final TagKey<Item> GRAVEL_ROAD_ITEMS = create("gravel_road_items");
-        //The vanilla bucket item with concrete in it
-        public static final TagKey<Item> CONCRETE_BUCKETS = create("concrete_buckets");
-
         private static TagKey<Item> create(String id)
         {
             return TagKey.create(Registries.ITEM, RNRHelpers.modIdentifier(id));

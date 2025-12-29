@@ -10,16 +10,16 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import net.dries007.tfc.compat.jei.category.BaseRecipeCategory;
 
 public class BlockModCategory extends BaseRecipeCategory<BlockModRecipe>
 {
 
-    public BlockModCategory(RecipeType<BlockModRecipe> type, IGuiHelper helper)
+    public BlockModCategory(RecipeType<RecipeHolder<BlockModRecipe>> type, IGuiHelper helper)
     {
         super(type, helper,118, 26, new ItemStack(RNRItems.CRUSHED_BASE_COURSE.get()));
-
     }
 
     @Override

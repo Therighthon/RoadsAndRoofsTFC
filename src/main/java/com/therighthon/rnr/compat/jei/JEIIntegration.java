@@ -15,11 +15,11 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
 
+import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.client.ClientHelpers;
 
 @JeiPlugin
@@ -31,20 +31,23 @@ public class JEIIntegration implements IModPlugin
         return RNRHelpers.modIdentifier("jei");
     }
 
-    private static <T> RecipeType<T> type(String name, Class<T> tClass)
+    private static <T extends Recipe<?>> RecipeType<RecipeHolder<T>> type(String name, Class<T> kind)
     {
-        return RecipeType.create(RoadsAndRoofs.MOD_ID, name, tClass);
+        return RecipeType.createRecipeHolderType(ResourceLocation.fromNamespaceAndPath(TerraFirmaCraft.MOD_ID, name));
     }
 
-    public static final RecipeType<MattockRecipe> MATTOCK = type("mattock", MattockRecipe.class);
-    public static final RecipeType<BlockModRecipe> BLOCK_MOD = type("block_mod", BlockModRecipe.class);
+    public static final RecipeType<RecipeHolder<MattockRecipe>> MATTOCK = type("mattock", MattockRecipe.class);
+    public static final RecipeType<RecipeHolder<BlockModRecipe>> BLOCK_MOD = type("block_mod", BlockModRecipe.class);
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration r)
     {
         IGuiHelper gui = r.getJeiHelpers().getGuiHelper();
-        r.addRecipeCategories(new MattockCategory(MATTOCK, gui));
-        r.addRecipeCategories(new BlockModCategory(BLOCK_MOD, gui));
+        r.addRecipeCategories(
+            // TODO: Fluid block mod
+            new BlockModCategory(BLOCK_MOD, gui),
+            new MattockCategory(MATTOCK, gui)
+        );
     }
 
     @Override
@@ -54,18 +57,17 @@ public class JEIIntegration implements IModPlugin
         r.addRecipes(BLOCK_MOD, recipes(RNRRecipeTypes.BLOCK_MOD_RECIPE));
     }
 
-    private static <C extends RecipeInput, T extends Recipe<C>> List<T> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type)
+    private static <C extends RecipeInput, T extends Recipe<C>> List<RecipeHolder<T>> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type)
     {
         return recipes(type, e -> true);
     }
 
-    private static <C extends RecipeInput, T extends Recipe<C>> List<T> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type, Predicate<T> filter)
+    private static <C extends RecipeInput, T extends Recipe<C>> List<RecipeHolder<T>> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type, Predicate<T> filter)
     {
         return ClientHelpers.getLevelOrThrow().getRecipeManager()
             .getAllRecipesFor(type.get())
             .stream()
-            .map(RecipeHolder::value)
-            .filter(filter)
+            .filter(holder -> filter.test(holder.value()))
             .toList();
     }
 }

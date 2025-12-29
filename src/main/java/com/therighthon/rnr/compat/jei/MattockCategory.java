@@ -16,6 +16,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import net.dries007.tfc.client.IngameOverlays;
 import net.dries007.tfc.common.TFCTags;
@@ -29,7 +30,7 @@ public class MattockCategory extends BaseRecipeCategory<MattockRecipe>
 {
     private final Map<ChiselMode, IDrawableStatic> modes;
 
-    public MattockCategory(RecipeType<MattockRecipe> type, IGuiHelper helper)
+    public MattockCategory(RecipeType<RecipeHolder<MattockRecipe>> type, IGuiHelper helper)
     {
         super(type, helper, 118, 26, new ItemStack(RNRItems.MATTOCKS.get(Metal.BISMUTH_BRONZE)));
         modes = ChiselMode.REGISTRY.stream()

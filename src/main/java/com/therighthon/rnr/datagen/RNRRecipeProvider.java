@@ -320,7 +320,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             chisel(BlockIngredient.of(RNRBlocks.WOOD_SHINGLE_ROOFS.get(wood).get()), RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get().defaultBlockState(), ChiselMode.SLAB);
         }
 
-        // TODO: Make this go to the right folder
         for (AFCWood wood : AFCWood.values())
         {
             recipe().damageInputs()
@@ -340,9 +339,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void misc()
     {
-        // TODO: Mattock forging and crafting
-
-        // Mattock melting
+        // Mattocks
         for (Metal metal : Metal.values())
         {
             if (metal.allParts())
@@ -361,6 +358,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
                     RNRHeatDefinitionProvider.getMeltTemp(metal),
                     false
                 ));
+                addTools(RNRItems.MATTOCK_HEADS.get(metal).asItem(), RNRItems.MATTOCKS.get(metal).asItem());
             }
         }
 
@@ -595,6 +593,17 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             case WROUGHT_IRON -> TFCFluids.METALS.get(Metal.CAST_IRON).getSource();
             default -> TFCFluids.METALS.get(metal).getSource();
         };
+    }
+
+    private void addTools(Item input, Item output)
+    {
+        recipe()
+            .input('S', Tags.Items.RODS_WOODEN)
+            .input('X', input)
+            .pattern("X", "S")
+            .copyForging()
+            .source(0, 0)
+            .shaped(output);
     }
 
 }

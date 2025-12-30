@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-30T10:10:11.5913417	Recipes
+// 1.21.1	2025-12-30T14:48:20.2614774	Recipes
 ceffeca4e9ad458588aa919d3b92d85157e924d5 data/rnr/recipe/barrel/concrete_from_powder.json
 f19a27785552285dd2c03b9d3bdccf4079015df4 data/rnr/recipe/block_mod/base_course_from_alfisol.json
 983117b7065b58595bbe9cb7cd9bc7774f10a03c data/rnr/recipe/block_mod/base_course_from_andisol.json
@@ -396,6 +396,15 @@ d863c3c7013220fdb5f2a5168880311bd8493591 data/rnr/recipe/crafting/gravel_fill/sh
 8d220118db34dd1cadc9965070cb02a6a9ccd00d data/rnr/recipe/crafting/gravel_fill/slate.json
 f407ac5bb96990a062895f075a5e506a10c18f64 data/rnr/recipe/crafting/gravel_fill/tuff.json
 0f1fcee3a6358f4a6f19668b087018858baa0205 data/rnr/recipe/crafting/hoggin_mix.json
+164e75183d1a43efc85b9e28d5a952f0cd1a8288 data/rnr/recipe/crafting/metal/mattock/bismuth_bronze.json
+6cba69facdfce5a166f421474fdc29c10034dab6 data/rnr/recipe/crafting/metal/mattock/black_bronze.json
+7802a728fc0e44827d78d77ab3d2030c81cb649e data/rnr/recipe/crafting/metal/mattock/black_steel.json
+3d844816e2df90683a0e9cf4fd4ce43ef6a6885d data/rnr/recipe/crafting/metal/mattock/blue_steel.json
+1f4437227262db2a2594848fa7088b7067e46f33 data/rnr/recipe/crafting/metal/mattock/bronze.json
+e0bd5426679d087c8e6f2f21598b6cf50ba1a5d5 data/rnr/recipe/crafting/metal/mattock/copper.json
+91843db11ee47e457a0570cba20ecf45a323ba60 data/rnr/recipe/crafting/metal/mattock/red_steel.json
+eb8955f2097711e08e12efa47addc7527cc3de0f data/rnr/recipe/crafting/metal/mattock/steel.json
+6852b0fc119f3685e4f675b6077570b285674587 data/rnr/recipe/crafting/metal/mattock/wrought_iron.json
 18021889ab3150fff6f16fe0bfd9158ac8372f72 data/rnr/recipe/crafting/roof_frame.json
 fc7d4ecd079a30ff147282a36ffd4f802389becb data/rnr/recipe/crafting/roof_frame_slab.json
 6f06f2b175e7eb58be4a36e564989b448bfb5d68 data/rnr/recipe/crafting/roof_frame_stairs.json

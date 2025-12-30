@@ -252,9 +252,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get()
         ), RNRBlocks.BASE_COURSE.get().defaultBlockState()));
 
-
-        // TODO: Make a concrete pouring recipe that uses liquids properly
-        //  ORIGINAL: block_mod_recipe(rm, 'pouring_concrete', fluid_item_ingredient('1000 rnr:concrete'), 'rnr:base_course', 'rnr:pouring_concrete_road')
         fluidBlockMod(BlockIngredient.of(RNRBlocks.BASE_COURSE.get()), SizedFluidIngredient.of(RNRFluids.SIMPLE_RNR_FLUIDS.get(SimpleRNRFluid.CONCRETE).getSource(), 1000), RNRBlocks.POURING_CONCRETE_ROAD.get().defaultBlockState(), true);
 
         // Control joints and smoothing footsteps

@@ -42,8 +42,6 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         TickCounterBlockEntity.reset(level, pos);
     }
 
-    //Based on minecraft pressure plates
-    //TODO: Would be swell if it didn't reset the dry timer
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
     {
         if (!level.isClientSide)
@@ -69,7 +67,6 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
                 {
                     cursor.setWithOffset(pos, d);
                     final BlockState stateAt = level.getBlockState(cursor);
-                    //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
                     if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
                     {
                         level.scheduleTick(cursor, stateAt.getBlock(), 20);
@@ -79,7 +76,6 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         });
     }
 
-    //TODO: Make this use actual recipes rather than hard-code?
     public BlockState getOutputState(BlockState input)
     {
         if (input.is(RNRBlocks.WET_CONCRETE_ROAD.get()))

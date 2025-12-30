@@ -29,7 +29,7 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
     public CrackingWetConcretePathBlock(ExtendedProperties properties)
     {
         super(properties.speedFactor(getDefaultSpeedFactor()).randomTicks());
-        //TODO: maybe remove?
+        //TODO: maybe move this info to a block entity?
         this.registerDefaultState(this.defaultBlockState().setValue(DISTANCE_X, 1).setValue(DISTANCE_Z, 1));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();
@@ -78,7 +78,6 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
                 {
                     cursor.setWithOffset(pos, d);
                     final BlockState stateAt = level.getBlockState(cursor);
-                    //TODO: Could be cleaner if this class and the normal wet concrete class extended a single class
                     if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
                     {
                         level.scheduleTick(cursor, stateAt.getBlock(), 1);
@@ -88,7 +87,6 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
         });
     }
 
-    //TODO: Make this use actual recipes rather than hard-code?
     public BlockState getOutputStateCracked(BlockState input)
     {
         if (input.is(RNRBlocks.WET_CONCRETE_ROAD.get()))

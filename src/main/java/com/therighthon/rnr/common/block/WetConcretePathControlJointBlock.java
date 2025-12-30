@@ -26,7 +26,6 @@ import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 
-//TODO: Now that this doesn't have spreading, it could probably just extend the ConcretePathControlJointBlock
 public class WetConcretePathControlJointBlock extends WetConcretePathBlock
 {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
@@ -42,7 +41,6 @@ public class WetConcretePathControlJointBlock extends WetConcretePathBlock
     public WetConcretePathControlJointBlock(ExtendedProperties properties)
     {
         super(properties.speedFactor(getDefaultSpeedFactor()).randomTicks());
-        //TODO: maybe remove?
         this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.X).setValue(CONNECT_NORTH_OR_EAST, false).setValue(CONNECT_SOUTH_OR_WEST, false));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();

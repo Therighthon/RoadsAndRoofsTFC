@@ -15,21 +15,13 @@ import net.dries007.tfc.common.blocks.ExtendedProperties;
 
 public class PouringConcretePathBlock extends PathHeightBlock
 {
-    private static final float defaultSpeedFactor = 0.7f;
-
     public static final IntegerProperty CONCRETE_LEVEL = RNRBlockStateProperties.CONCRETE_LEVEL;
     private final Block base;
     private final BlockState baseState;
 
-    public static float getDefaultSpeedFactor()
-    {
-        return defaultSpeedFactor;
-    }
-
     public PouringConcretePathBlock(ExtendedProperties properties)
     {
-        super(properties.properties().speedFactor(defaultSpeedFactor));
-        //TODO: Probably a less clumsy way of making sure the blockstate is 3 when placed via block interaction
+        super(properties.properties());
         this.registerDefaultState(this.defaultBlockState().setValue(CONCRETE_LEVEL, 3));
         this.base = Blocks.AIR; // These are unused, fields are redirected
         this.baseState = Blocks.AIR.defaultBlockState();
@@ -43,7 +35,6 @@ public class PouringConcretePathBlock extends PathHeightBlock
         level.scheduleTick(pos, this, 10);
     }
 
-    //TODO: Pretty janky setup, but it does work for now
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random)
     {
         //Spreading

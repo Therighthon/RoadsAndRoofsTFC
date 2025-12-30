@@ -22,14 +22,6 @@ public class ConcretePathControlJointBlock extends PathHeightBlock
     private final Block base;
     private final BlockState baseState;
 
-    public ConcretePathControlJointBlock(Properties properties, float speedFactor)
-    {
-        super(properties.speedFactor(speedFactor));
-        this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.X).setValue(CONNECT_NORTH_OR_EAST, false).setValue(CONNECT_SOUTH_OR_WEST, false));
-        this.base = Blocks.AIR; // These are unused, fields are redirected
-        this.baseState = Blocks.AIR.defaultBlockState();
-    }
-
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(AXIS).add(CONNECT_NORTH_OR_EAST).add(CONNECT_SOUTH_OR_WEST);
     }
@@ -94,21 +86,4 @@ public class ConcretePathControlJointBlock extends PathHeightBlock
             return state;
         }
     }
-
-//    Commenting these out because once a concrete path block has set, the joint shouldn't really update appearance
-//    public void onPlace(BlockState pState, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-//        if (!pState.is(pState.getBlock())) {
-//            level.neighborChanged(this.baseState, pos, Blocks.AIR, pos, false);
-//            this.base.onPlace(this.baseState, level, pos, oldState, false);
-//        }
-//    }
-//
-//    public void onRemove(BlockState pState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-//        if (!pState.is(newState.getBlock())) {
-//            this.baseState.onRemove(level, pos, newState, isMoving);
-//        }
-//    }
-
-    //TODO: Add configurable speed factors
-
 }

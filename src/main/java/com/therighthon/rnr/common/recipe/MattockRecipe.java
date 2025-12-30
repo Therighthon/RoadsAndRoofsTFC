@@ -36,8 +36,6 @@ import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.collections.IndirectHashCollection;
 import net.dries007.tfc.world.Codecs;
 
-// TODO: I removed the optional item ingredient because it didn't seem to do anything, may need to revisit that decision
-
 //Mostly copied from TFC's ChiselRecipe.java and is under the TFC License
 public class MattockRecipe implements INoopInputRecipe
 {

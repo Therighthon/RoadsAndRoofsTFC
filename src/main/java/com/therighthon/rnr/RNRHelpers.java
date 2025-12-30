@@ -79,7 +79,7 @@ public final class RNRHelpers
                         if (!player.isCreative() && fluidRecipe.consumesItem())
                         {
                             fluidHandler.drain(amountRequired, IFluidHandler.FluidAction.EXECUTE);
-                            //TODO? player.setItemInHand(hand, fluidHandler.getContainer());
+                            //TODO: Something's up with barrels
                         }
                         final BlockState output = fluidRecipe.getOutputBlock().getBlock().withPropertiesOf(blockState);
                         level.setBlock(pos, output, 3);

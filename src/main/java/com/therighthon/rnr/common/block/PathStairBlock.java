@@ -111,7 +111,6 @@ public class PathStairBlock extends Block
         if (!state.is(state.getBlock()))
         {
             level.neighborChanged(this.baseState, pos, Blocks.AIR, pos, false);
-//            this.base.onPlace(this.baseState, level, pos, oldState, false); // TODO: do path stairs connnect properly without this?
         }
     }
 

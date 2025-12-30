@@ -153,7 +153,8 @@ dependencies {
     implementation("curse.maven:puzzles-lib-495476:${puzzleslib_version}")
 
     // AFC
-    implementation("curse.maven:arborfirmacraft-877545:${afc_version}")
+    compileOnly("curse.maven:arborfirmacraft-877545:${afc_version}")
+    runtimeOnly("curse.maven:arborfirmacraft-877545:${afc_version}")
 
     implementation("curse.maven:cyanide-541676:$cyanide_version")
 }

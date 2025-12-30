@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#rnr:all_gravel_roads",
+    "#rnr:all_macadam_roads",
+    "#rnr:all_hoggin_roads",
+    "#rnr:tamped_blocks",
+    "#rnr:wet_concrete_roads",
+    "rnr:base_course"
+  ]
+}

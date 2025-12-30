@@ -16,12 +16,12 @@ import net.dries007.tfc.util.registry.RegistryRock;
 
 public enum StoneBlockType implements StringRepresentable
 {
-    GRAVEL_ROAD((rock, self) -> new PathHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.5f), 4)), true),
-    OVER_HEIGHT_GRAVEL((rock, self) -> new OverHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.5f), 4)), false),
-    MACADAM_ROAD((rock, self) -> new PathHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(4f), 5)), true),
-    FLAGSTONES((rock, self) -> new PathHeightBlock(properties(rock).strength(rock.category().hardness(5f), 8)), true),
-    SETT_ROAD((rock, self) -> new PathHeightBlock(properties(rock).strength(rock.category().hardness(5f), 8)), true),
-    COBBLED_ROAD((rock, self) -> new PathHeightBlock(properties(rock).strength(rock.category().hardness(5f), 8)), true);
+    GRAVEL_ROAD((rock, self) -> new PathHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.0f), 4)), true),
+    OVER_HEIGHT_GRAVEL((rock, self) -> new OverHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.0f), 4)), false),
+    MACADAM_ROAD((rock, self) -> new PathHeightBlock(properties(rock).sound(SoundType.GRAVEL).strength(rock.category().hardness(3.5f), 6)), true),
+    FLAGSTONES((rock, self) -> new PathHeightBlock(properties(rock).strength(rock.category().hardness(3f), 8)), true),
+    SETT_ROAD((rock, self) -> new PathHeightBlock(properties(rock).strength(rock.category().hardness(3f), 8)), true),
+    COBBLED_ROAD((rock, self) -> new PathHeightBlock(properties(rock).strength(rock.category().hardness(3f), 8)), true);
 
     public static final StoneBlockType[] VALUES = StoneBlockType.values();
 
@@ -61,17 +61,19 @@ public enum StoneBlockType implements StringRepresentable
 
     public Block createRockSlab(RegistryRock rock, StoneBlockType type)
     {
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
-        if (type == StoneBlockType.GRAVEL_ROAD)
+        if (type == StoneBlockType.MACADAM_ROAD)
         {
+            final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(rock.category().hardness(3.0f), 4).requiresCorrectToolForDrops();
             return new PathSlabBlock(properties);
         }
-        else if (type == StoneBlockType.MACADAM_ROAD)
+        else if (type == StoneBlockType.GRAVEL_ROAD)
         {
-            return new PathHeightBlock(properties);
+            final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(rock.category().hardness(3.5f), 6).requiresCorrectToolForDrops();
+            return new PathSlabBlock(properties);
         }
         else
         {
+            final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(rock.category().hardness(3.0f), 8).requiresCorrectToolForDrops();
             return new PathSlabBlock(properties);
         }
     }
@@ -79,20 +81,21 @@ public enum StoneBlockType implements StringRepresentable
     public PathStairBlock createPathStairs(RegistryRock rock, StoneBlockType type)
     {
         final Supplier<BlockState> state = () -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState();
-        final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(1.5f, 10).requiresCorrectToolForDrops();
         if (type == StoneBlockType.MACADAM_ROAD)
         {
+            final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(rock.category().hardness(3.0f), 4).requiresCorrectToolForDrops();
             return new PathStairBlock(state, properties);
         }
         else if (type == StoneBlockType.GRAVEL_ROAD)
         {
+            final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(rock.category().hardness(3.5f), 6).requiresCorrectToolForDrops();
             return new PathStairBlock(state, properties);
         }
         else
         {
+            final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE).strength(rock.category().hardness(3.0f), 8).requiresCorrectToolForDrops();
             return new PathStairBlock(state, properties);
         }
-
     }
 
     @Override

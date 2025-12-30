@@ -1,6 +1,7 @@
 package com.therighthon.rnr.datagen;
 
 import com.therighthon.rnr.common.RNRTags;
+import com.therighthon.rnr.common.block.AFCCompatBlocks;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
 import com.therighthon.rnr.common.block.TampedSoilBlock;
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -110,6 +112,23 @@ public class RNRBlockTagProvider extends BlockTagsProvider
         tag(TFCTags.Blocks.SUPPORTS_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.BASE_COURSE.get());
 
         tag(TFCTags.Blocks.CAN_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.BASE_COURSE.get());
+
+        // Breakability
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).addTags(RNRTags.Blocks.ALL_FLAGSTONE_ROADS, RNRTags.Blocks.ALL_COBBLED_ROADS,
+            RNRTags.Blocks.ALL_SETT_ROADS, RNRTags.Blocks.ALL_DRY_CONCRETE_ROADS);
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).addTags(RNRTags.Blocks.ALL_GRAVEL_ROADS, RNRTags.Blocks.ALL_MACADAM_ROADS, RNRTags.Blocks.ALL_HOGGIN_ROADS,
+            RNRTags.Blocks.TAMPED_BLOCKS, RNRTags.Blocks.WET_CONCRETE_ROADS).add(RNRBlocks.BASE_COURSE.get());
+        tag(BlockTags.MINEABLE_WITH_AXE)
+            .add(RNRBlocks.ROOF_FRAME.get()).add(RNRBlocks.ROOF_FRAME_SLAB.get()).add(RNRBlocks.ROOF_FRAME_STAIRS.get())
+            .add(RNRBlocks.CERAMIC_ROOF.get()).add(RNRBlocks.CERAMIC_ROOF_SLAB.get()).add(RNRBlocks.CERAMIC_ROOF_STAIRS.get())
+            .add(RNRBlocks.TERRACOTTA_ROOF.get()).add(RNRBlocks.TERRACOTTA_ROOF_SLAB.get()).add(RNRBlocks.TERRACOTTA_ROOF_STAIRS.get())
+            .add(RNRBlocks.THATCH_ROOF.get()).add(RNRBlocks.THATCH_ROOF_SLAB.get()).add(RNRBlocks.THATCH_ROOF_STAIRS.get());
+        RNRBlocks.WOOD_SHINGLE_ROOFS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+        RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+        RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+        AFCCompatBlocks.WOOD_SHINGLE_ROOFS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+        AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+        AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
     }
 
     private void addSoilTags(TagKey<Block> dryTag, TagKey<Block> wetTag, SoilBlockType.Variant variant)

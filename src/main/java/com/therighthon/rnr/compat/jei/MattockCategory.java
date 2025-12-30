@@ -1,7 +1,6 @@
 package com.therighthon.rnr.compat.jei;
 
 import java.util.Map;
-import com.google.common.collect.ImmutableMap;
 import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.MattockRecipe;
@@ -18,11 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
-import net.dries007.tfc.client.IngameOverlays;
-import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.player.ChiselMode;
-import net.dries007.tfc.common.recipes.ChiselRecipe;
-import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 import net.dries007.tfc.compat.jei.category.BaseRecipeCategory;
 import net.dries007.tfc.util.Metal;
 
@@ -43,7 +38,7 @@ public class MattockCategory extends BaseRecipeCategory<MattockRecipe>
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, MattockRecipe recipe, IFocusGroup focuses)
     {
-        Ingredient mattockIngredient = Ingredient.of(RNRTags.Items.MATTOCKS);
+        Ingredient mattockIngredient = Ingredient.of(RNRTags.Items.TOOLS_MATTOCKS);
 
         builder.addSlot(RecipeIngredientRole.INPUT, 6, 5)
             .addIngredients(collapse(recipe.getIngredient()))

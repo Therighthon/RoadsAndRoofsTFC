@@ -76,7 +76,7 @@ public class MattockRecipe implements INoopInputRecipe
     {
 
         ItemStack held = player.getMainHandItem();
-        if (Helpers.isItem(held, RNRTags.Items.MATTOCKS))
+        if (Helpers.isItem(held, RNRTags.Items.TOOLS_MATTOCKS))
         {
             final ChiselMode mode = IPlayerInfo.get(player).chiselMode();
             final MattockRecipe recipe = MattockRecipe.getRecipe(state, held, mode);

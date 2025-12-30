@@ -1,5 +1,6 @@
 package com.therighthon.rnr.client;
 
+import com.therighthon.rnr.common.RNRTags;
 import java.util.Locale;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.DeltaTracker;
@@ -12,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
 import net.dries007.tfc.client.ClientHelpers;
-import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.player.IPlayerInfo;
 import net.dries007.tfc.util.Helpers;
 
@@ -49,18 +49,11 @@ public enum IngameOverlays
         if (setup(graphics, mc))
         {
             final Player player = ClientHelpers.getPlayer();
-            if (player != null && Helpers.isItem(player.getItemInHand(InteractionHand.MAIN_HAND), TFCTags.Items.TOOLS_CHISEL))
+            if (player != null && Helpers.isItem(player.getItemInHand(InteractionHand.MAIN_HAND), RNRTags.Items.TOOLS_MATTOCKS))
             {
                 stack.pushPose();
-                if (!Helpers.isItem(player.getItemInHand(InteractionHand.OFF_HAND), TFCTags.Items.TOOLS_HAMMER))
-                {
-                    graphics.blit(TEXTURE, graphics.guiWidth() / 2 + 100, graphics.guiHeight() - 21, 60, 58, 20, 20);
-                }
-                else
-                {
-                    // Delegate to the chisel mode
-                    IPlayerInfo.get(player).chiselMode().createHotbarIcon((texture, u, v) -> graphics.blit(texture, graphics.guiWidth() / 2 + 100, graphics.guiHeight() - 21, u, v, 20, 20));
-                }
+                // Delegate to the chisel mode
+                IPlayerInfo.get(player).chiselMode().createHotbarIcon((texture, u, v) -> graphics.blit(texture, graphics.guiWidth() / 2 + 100, graphics.guiHeight() - 21, u, v, 20, 20));
                 stack.popPose();
             }
         }

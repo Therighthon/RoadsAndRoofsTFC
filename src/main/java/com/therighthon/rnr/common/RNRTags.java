@@ -1,9 +1,7 @@
 package com.therighthon.rnr.common;
 
 import com.therighthon.rnr.RNRHelpers;
-import com.therighthon.rnr.RoadsAndRoofs;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -97,7 +95,7 @@ public class RNRTags
 
     public static class Items
     {
-        public static final TagKey<Item> MATTOCKS = create("mattocks");
+        public static final TagKey<Item> TOOLS_MATTOCKS = create("tools_mattocks");
         public static final TagKey<Item> BASE_COURSE = create("base_course");
         public static final TagKey<Item> ROAD_MATERIALS = create("road_materials");
         public static final TagKey<Item> COBBLE_ROAD_ITEMS = create("cobble_road_items");

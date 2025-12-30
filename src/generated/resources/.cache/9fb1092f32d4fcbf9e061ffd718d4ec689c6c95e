@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-28T15:45:59.8193442	Recipes
+// 1.21.1	2025-12-30T10:10:11.5913417	Recipes
 ceffeca4e9ad458588aa919d3b92d85157e924d5 data/rnr/recipe/barrel/concrete_from_powder.json
 f19a27785552285dd2c03b9d3bdccf4079015df4 data/rnr/recipe/block_mod/base_course_from_alfisol.json
 983117b7065b58595bbe9cb7cd9bc7774f10a03c data/rnr/recipe/block_mod/base_course_from_andisol.json
@@ -163,7 +163,7 @@ ab75e6953121399e329b75c7929dbd644bada9a3 data/rnr/recipe/block_mod/tamped_oxisol
 5ccaabe8edac47ca2087eaf52e74ed384fe486e1 data/rnr/recipe/block_mod/thatch_roof_stairs.json
 0aee14331c184e444c3bd0fc85deed8d78de301e data/rnr/recipe/block_mod/wet_concrete_road_flagstones.json
 105146873fc9af158afc6882f6ae20b89b05bf67 data/rnr/recipe/block_mod/wet_concrete_road_panel.json
-6e03d4bac37fe3fc4e8e285b6d9e8144b356b80e data/rnr/recipe/block_mod/wet_concrete_road_sett.json
+77f127be87e8764bfc4b468871bef89114d787c7 data/rnr/recipe/block_mod/wet_concrete_road_sett.json
 437236a69768a402204570765d1fdbfb14d319d9 data/rnr/recipe/block_mod/white_sandstone_flagstones.json
 0ca438055b3885fd48d9e81841b0adb0892bcf01 data/rnr/recipe/block_mod/wood/shingles/acacia.json
 a3a027170d38bbf56e5e4245f3e4a15ad69a2285 data/rnr/recipe/block_mod/wood/shingles/acacia_slab.json

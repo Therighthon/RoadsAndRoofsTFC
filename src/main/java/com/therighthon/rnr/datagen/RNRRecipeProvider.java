@@ -262,7 +262,7 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
         mattockAnyMode(BlockIngredient.of(RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get()), RNRBlocks.WET_CONCRETE_ROAD.get().defaultBlockState());
 
         // Stamping wet concrete
-        concreteBlockMod(RNRBlocks.WET_CONCRETE_ROAD.get(), Tags.Items.BRICKS, RNRBlocks.WET_CONCRETE_ROAD_SETT.get().defaultBlockState());
+        concreteBlockMod(RNRBlocks.WET_CONCRETE_ROAD.get(), RNRTags.Items.SETT_ROAD_ITEMS, RNRBlocks.WET_CONCRETE_ROAD_SETT.get().defaultBlockState());
         concreteBlockMod(RNRBlocks.WET_CONCRETE_ROAD.get(), RNRTags.Items.FLAGSTONE_ROAD_ITEMS, RNRBlocks.WET_CONCRETE_ROAD_FLAGSTONES.get().defaultBlockState());
         concreteBlockMod(RNRBlocks.WET_CONCRETE_ROAD.get(), TFCTags.Items.STONES_SMOOTH, RNRBlocks.WET_CONCRETE_ROAD_PANEL.get().defaultBlockState());
 

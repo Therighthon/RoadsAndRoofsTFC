@@ -1,6 +1,7 @@
 package com.therighthon.rnr.compat.jei;
 
 import com.therighthon.rnr.RNRHelpers;
+import com.therighthon.rnr.common.recipe.FluidBlockModRecipe;
 import java.util.List;
 import com.therighthon.rnr.RoadsAndRoofs;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
@@ -38,13 +39,14 @@ public class JEIIntegration implements IModPlugin
 
     public static final RecipeType<RecipeHolder<MattockRecipe>> MATTOCK = type("mattock", MattockRecipe.class);
     public static final RecipeType<RecipeHolder<BlockModRecipe>> BLOCK_MOD = type("block_mod", BlockModRecipe.class);
+    public static final RecipeType<RecipeHolder<FluidBlockModRecipe>> FLUID_BLOCK_MOD = type("fluid_block_mod", FluidBlockModRecipe.class);
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration r)
     {
         IGuiHelper gui = r.getJeiHelpers().getGuiHelper();
         r.addRecipeCategories(
-            // TODO: Fluid block mod
+            new FluidBlockModCategory(FLUID_BLOCK_MOD, gui),
             new BlockModCategory(BLOCK_MOD, gui),
             new MattockCategory(MATTOCK, gui)
         );
@@ -55,6 +57,7 @@ public class JEIIntegration implements IModPlugin
     {
         r.addRecipes(MATTOCK, recipes(RNRRecipeTypes.MATTOCK_RECIPE));
         r.addRecipes(BLOCK_MOD, recipes(RNRRecipeTypes.BLOCK_MOD_RECIPE));
+        r.addRecipes(FLUID_BLOCK_MOD, recipes(RNRRecipeTypes.FLUID_BLOCK_MOD_RECIPE));
     }
 
     private static <C extends RecipeInput, T extends Recipe<C>> List<RecipeHolder<T>> recipes(Supplier<net.minecraft.world.item.crafting.RecipeType<T>> type)

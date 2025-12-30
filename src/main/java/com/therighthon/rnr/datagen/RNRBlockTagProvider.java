@@ -4,19 +4,13 @@ import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.block.AFCCompatBlocks;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.block.StoneBlockType;
-import com.therighthon.rnr.common.block.TampedSoilBlock;
-import fuzs.blockrunner.data.ModBlockTagsProvider;
 import fuzs.blockrunner.init.ModRegistry;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -127,9 +121,10 @@ public class RNRBlockTagProvider extends BlockTagsProvider
         RNRBlocks.WOOD_SHINGLE_ROOFS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
         RNRBlocks.WOOD_SHINGLE_ROOF_SLABS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
         RNRBlocks.WOOD_SHINGLE_ROOF_STAIRS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
-        AFCCompatBlocks.WOOD_SHINGLE_ROOFS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
-        AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
-        AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+        // TODO: Make this work in the datagen?
+//        AFCCompatBlocks.WOOD_SHINGLE_ROOFS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+//        AFCCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
+//        AFCCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.values().forEach(b -> tag(BlockTags.MINEABLE_WITH_AXE).add(b.get()));
     }
 
     private void addSoilTags(TagKey<Block> dryTag, TagKey<Block> wetTag, SoilBlockType.Variant variant)

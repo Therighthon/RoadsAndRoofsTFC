@@ -374,9 +374,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             .input(TFCTags.Items.STONES_LOOSE)
             .inputIsPrimary(TFCTags.Items.TOOLS_HAMMER).shapeless(RNRItems.CRUSHED_BASE_COURSE, 8);
 
-        // TODO: Clay knapping makes a crash
-//        clayKnapping("0", RNRItems.UNFIRED_ROOF_TILE, 2, false, "XXXXX", "X   X", "     ", "XXXXX", "X   X");
-//        clayKnapping("1", RNRItems.UNFIRED_ROOF_TILE, 1, false, "XXXXX", "X   X");
         recipe().input(RNRItems.UNFIRED_ROOF_TILE, 8).input(TFCItems.ORE_POWDERS.get(Ore.HEMATITE).asItem()).shapeless(RNRItems.UNFIRED_TERRACOTTA_ROOF_TILE, 8);
 
         float POTTERY = 1399f;
@@ -441,6 +438,17 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
      * @return A builder for a new recipe with a name inferred from the output.
      */
     private DataGenerationHelpers.Builder recipe()
+    {
+        return new DataGenerationHelpers.Builder((name, r) -> {
+            if (name != null) add(name, r);
+            else add(r);
+        });
+    }
+
+    /**
+     * @return A builder for a new recipe with a name inferred from the output.
+     */
+    private DataGenerationHelpers.Builder afcCompatRecipe()
     {
         return new DataGenerationHelpers.Builder((name, r) -> {
             if (name != null) add(name, r);

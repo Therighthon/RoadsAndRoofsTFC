@@ -446,17 +446,6 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     /**
-     * @return A builder for a new recipe with a name inferred from the output.
-     */
-    private DataGenerationHelpers.Builder afcCompatRecipe()
-    {
-        return new DataGenerationHelpers.Builder((name, r) -> {
-            if (name != null) add(name, r);
-            else add(r);
-        });
-    }
-
-    /**
      * @return A builder for a new recipe with a name inferred from the output, plus a suffix. The suffix should not start with an underscore.
      */
     private DataGenerationHelpers.Builder recipe(String suffix)

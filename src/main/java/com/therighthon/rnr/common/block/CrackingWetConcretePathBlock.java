@@ -110,7 +110,7 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
     private int getDistanceX(BlockState neighbor)
     {
         Block block = neighbor.getBlock();
-        if (Helpers.isBlock(block, RNRTags.Blocks.WET_CONCRETE_ROADS) && !Helpers.isBlock(neighbor.getBlock(), RNRTags.Blocks.CONCRETE_CONTROL_JOINTS))
+        if (Helpers.isBlock(block, RNRTags.Blocks.CRACKING_WET_CONCRETE_ROADS))
         {
             return neighbor.getValue(DISTANCE_X);
         }
@@ -123,7 +123,7 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
     private int getDistanceZ(BlockState neighbor)
     {
         Block block = neighbor.getBlock();
-        if (Helpers.isBlock(block, RNRTags.Blocks.WET_CONCRETE_ROADS) && !Helpers.isBlock(neighbor.getBlock(), RNRTags.Blocks.CONCRETE_CONTROL_JOINTS))
+        if (Helpers.isBlock(block, RNRTags.Blocks.CRACKING_WET_CONCRETE_ROADS))
         {
             return neighbor.getValue(DISTANCE_Z);
         }

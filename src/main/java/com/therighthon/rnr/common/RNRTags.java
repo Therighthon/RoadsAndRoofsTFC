@@ -51,6 +51,7 @@ public class RNRTags
         public static final TagKey<Block> DRY_CONCRETE_ROAD_STAIRS = create("dry_concrete_road_stairs");
 
         public static final TagKey<Block> WET_CONCRETE_ROADS = create("wet_concrete_roads");
+        public static final TagKey<Block> CRACKING_WET_CONCRETE_ROADS = create("cracking_wet_concrete_roads");
 
         public static final TagKey<Block> ALL_WORKING_CONCRETE_ROADS = create("all_working_concrete_roads");
         public static final TagKey<Block> WORKING_CONCRETE_ROAD_BLOCKS = create("working_concrete_road_blocks");

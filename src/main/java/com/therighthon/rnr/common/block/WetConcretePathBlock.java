@@ -16,6 +16,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 
 public class WetConcretePathBlock extends PathHeightDeviceBlock
 {
@@ -53,9 +54,14 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         }
     }
 
-    //TODO: Pretty janky setup, but it does work for now
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand)
+    {
+        tick(state, level, pos, rand);
+    }
 
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random)
+    {
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
             if (counter.getTicksSinceUpdate() > ticksToDry)
@@ -67,7 +73,7 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
                 {
                     cursor.setWithOffset(pos, d);
                     final BlockState stateAt = level.getBlockState(cursor);
-                    if (state.getBlock() instanceof CrackingWetConcretePathBlock || stateAt.getBlock() instanceof WetConcretePathControlJointBlock)
+                    if (stateAt.getBlock() instanceof WetConcretePathBlock)
                     {
                         level.scheduleTick(cursor, stateAt.getBlock(), 20);
                     }

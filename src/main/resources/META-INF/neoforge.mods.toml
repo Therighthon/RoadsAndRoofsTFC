@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="EUPL"
 [[mods]] #mandatory
 modId="rnr" #mandatory
-version="1.0.0-1.21.1" #mandatory
+version="1.0.1-1.21.1" #mandatory
 displayName="Roads and Roofs" #mandatory
 logoFile="examplemod.png" #optional
 authors="Therighthon" #optional
@@ -31,6 +31,6 @@ side="BOTH"
 [[dependencies.rnr]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.21,1.22)"
+versionRange="[1.21.1,1.21.2)"
 ordering="AFTER"
 side="BOTH"

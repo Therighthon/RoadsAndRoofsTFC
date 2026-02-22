@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
+import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.items.TFCItems;
@@ -42,5 +43,6 @@ public class RNRItemTagProvider extends ItemTagsProvider
                 tag(RNRTags.Items.TOOLS_MATTOCKS).add(RNRItems.MATTOCKS.get(metal).get().asItem());
             }
         }
+        tag(TFCTags.Items.TOOL_RACK_TOOLS).addTag(RNRTags.Items.TOOLS_MATTOCKS);
     }
 }

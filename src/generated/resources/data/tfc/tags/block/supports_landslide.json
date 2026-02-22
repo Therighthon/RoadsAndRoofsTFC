@@ -3,6 +3,13 @@
     "#rnr:all_roads",
     "#rnr:all_gravel_roads",
     "#rnr:tamped_blocks",
-    "rnr:base_course"
+    "rnr:base_course",
+    "rnr:wet_concrete_road",
+    "rnr:pouring_concrete_road",
+    "rnr:wet_concrete_road_flagstones",
+    "rnr:wet_concrete_road_sett",
+    "rnr:wet_concrete_road_control_joint",
+    "rnr:wet_concrete_road_panel",
+    "rnr:trodden_wet_concrete_road"
   ]
 }

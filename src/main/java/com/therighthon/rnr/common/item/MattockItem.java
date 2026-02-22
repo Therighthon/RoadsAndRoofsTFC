@@ -70,6 +70,8 @@ public class MattockItem extends ToolItem
                 // Silly hard-code to make joints connect properly
                 if (resultState.getBlock() instanceof WetConcretePathControlJointBlock)
                 {
+                    Direction.Axis axis = context.getHorizontalDirection().getAxis();
+                    resultState = resultState.setValue(WetConcretePathControlJointBlock.AXIS, axis);
                     resultState = WetConcretePathControlJointBlock.updateControlJointShape(resultState, Direction.NORTH, level.getBlockState(pos.north()));
                     resultState = WetConcretePathControlJointBlock.updateControlJointShape(resultState, Direction.EAST, level.getBlockState(pos.east()));
                     resultState = WetConcretePathControlJointBlock.updateControlJointShape(resultState, Direction.SOUTH, level.getBlockState(pos.south()));

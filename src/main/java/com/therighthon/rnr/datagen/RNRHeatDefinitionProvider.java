@@ -45,7 +45,7 @@ public class RNRHeatDefinitionProvider extends DataManagerProvider<HeatDefinitio
     {
         add(name, new HeatDefinition(
             ingredient,
-            (0.35f / HEAT_CAPACITY) * (units / 100f), // All tool metals have a unit heat capacity of 0.35
+            2.857143f, // All tool metals have this heat capacity for 100 unit items
             getMeltTemp(metal) * 0.6f,
             getMeltTemp(metal) * 0.8f));
     }

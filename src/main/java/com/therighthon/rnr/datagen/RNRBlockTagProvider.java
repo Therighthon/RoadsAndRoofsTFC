@@ -104,7 +104,11 @@ public class RNRBlockTagProvider extends BlockTagsProvider
             RNRTags.Blocks.ALL_SETT_ROADS, RNRTags.Blocks.ALL_COBBLED_ROADS, RNRTags.Blocks.ALL_FLAGSTONE_ROADS, RNRTags.Blocks.ALL_WORKING_CONCRETE_ROADS);
 
         // Collapse and collapse-support
-        tag(TFCTags.Blocks.SUPPORTS_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.BASE_COURSE.get());
+        tag(TFCTags.Blocks.SUPPORTS_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS)
+            .add(RNRBlocks.BASE_COURSE.get()).add(RNRBlocks.WET_CONCRETE_ROAD.get()).add(RNRBlocks.POURING_CONCRETE_ROAD.get())
+            .add(RNRBlocks.WET_CONCRETE_ROAD_FLAGSTONES.get()).add(RNRBlocks.WET_CONCRETE_ROAD_SETT.get())
+            .add(RNRBlocks.WET_CONCRETE_ROAD_CONTROL_JOINT.get()).add(RNRBlocks.WET_CONCRETE_ROAD_PANEL.get())
+            .add(RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get());
 
         tag(TFCTags.Blocks.CAN_LANDSLIDE).addTags(RNRTags.Blocks.ALL_ROADS, RNRTags.Blocks.OVER_HEIGHT_GRAVELS, RNRTags.Blocks.TAMPED_BLOCKS).add(RNRBlocks.BASE_COURSE.get());
 

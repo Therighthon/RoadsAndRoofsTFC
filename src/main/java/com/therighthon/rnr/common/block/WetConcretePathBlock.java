@@ -16,12 +16,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blockentities.TickCounterBlockEntity;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
-import net.dries007.tfc.common.blocks.TFCBlocks;
 
 public class WetConcretePathBlock extends PathHeightDeviceBlock
 {
+    public static final int TICKS_TO_DRY = 24000;
+
     private static final float defaultSpeedFactor = 0.7f;
-    private final int ticksToDry = 24000;
 
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
     {
@@ -49,7 +49,13 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
         {
             if (entity instanceof LivingEntity)
             {
-                level.setBlock(pos, RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get().withPropertiesOf(state), 3);
+                level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
+                    final long oldLastUpdateTick = counter.getLastUpdateTick();
+                    level.setBlock(pos, RNRBlocks.TRODDEN_WET_CONCRETE_ROAD.get().withPropertiesOf(state), 3);
+                    level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(newCounter -> {
+                        newCounter.setLastUpdateTick(oldLastUpdateTick);
+                    });
+                });
             }
         }
     }
@@ -64,7 +70,7 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
     {
         //Drying
         level.getBlockEntity(pos, TFCBlockEntities.TICK_COUNTER.get()).ifPresent(counter -> {
-            if (counter.getTicksSinceUpdate() > ticksToDry)
+            if (counter.getTicksSinceUpdate() > TICKS_TO_DRY)
             {
                 level.setBlockAndUpdate(pos, getOutputState(state));
 
@@ -119,10 +125,5 @@ public class WetConcretePathBlock extends PathHeightDeviceBlock
     public boolean isRandomlyTicking(BlockState state)
     {
         return true;
-    }
-
-    public int getTicksToDry()
-    {
-        return ticksToDry;
     }
 }

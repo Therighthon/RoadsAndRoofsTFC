@@ -1,5 +1,6 @@
 package com.therighthon.rnr;
 
+import com.therighthon.rnr.common.RNRTags;
 import com.therighthon.rnr.common.block.RNRBlocks;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -57,7 +58,17 @@ public class RNREvents
     {
         final Level level = event.getLevel();
         final BlockPos pos = event.getPos();
-        final ItemInteractionResult result = RNRHelpers.blockModRecipeCompatible(level.getBlockState(pos), level, pos, Objects.requireNonNull(event.getPlayer()), event.getHand());
+        final ItemInteractionResult result;
+        if (event.getItemStack().is(RNRTags.Items.TOOLS_MATTOCKS))
+        {
+            // TODO: So, this is kind of egregious, but also I couldn't figure otu why my timer block entity wasn't getting set right when I did this in the mattock item
+            result = RNRHelpers.useMattockOn(event.getUseOnContext());
+        }
+        else
+        {
+            result = RNRHelpers.blockModRecipeCompatible(level.getBlockState(pos), level, pos, Objects.requireNonNull(event.getPlayer()), event.getHand());
+        }
+
         if (result != ItemInteractionResult.FAIL)
         {
             event.cancelWithResult(result);

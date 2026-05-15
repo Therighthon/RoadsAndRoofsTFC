@@ -15,8 +15,6 @@ import net.dries007.tfc.common.blocks.ExtendedProperties;
 
 public class PouringConcretePathBlock extends PathHeightBlock
 {
-    // TODO: I want to re-write this to be a flood-fill and use tile entities instead of blockstates
-
     public static final IntegerProperty CONCRETE_LEVEL = RNRBlockStateProperties.CONCRETE_LEVEL;
     private final Block base;
     private final BlockState baseState;

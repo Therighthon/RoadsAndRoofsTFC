@@ -13,6 +13,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -72,7 +73,7 @@ public class MattockRecipe implements INoopInputRecipe
     /**
      * In a sentence, this method returns "Either" a BlockState, which the caller must handle, or an InteractionResult to be returned
      */
-    public static Either<BlockState, InteractionResult> computeResult(Player player, BlockState state, BlockHitResult hit, boolean informWhy)
+    public static Either<BlockState, ItemInteractionResult> computeResult(Player player, BlockState state, BlockHitResult hit, boolean informWhy)
     {
 
         ItemStack held = player.getMainHandItem();
@@ -84,7 +85,7 @@ public class MattockRecipe implements INoopInputRecipe
             if (recipe == null)
             {
                 if (informWhy) complain(player, "no_recipe");
-                return Either.<BlockState, InteractionResult>right(InteractionResult.PASS);
+                return Either.<BlockState, ItemInteractionResult>right(ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION);
             }
             else
             {
@@ -94,13 +95,13 @@ public class MattockRecipe implements INoopInputRecipe
                 if (chiseled == null)
                 {
                     if (informWhy) complain(player, "bad_fluid");
-                    return Either.<BlockState, InteractionResult>right(InteractionResult.FAIL);
+                    return Either.<BlockState, ItemInteractionResult>right(ItemInteractionResult.FAIL);
                 }
                 return Either.left(chiseled);
             }
 
         }
-        return Either.right(InteractionResult.PASS);
+        return Either.right(ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION);
     }
 
     /**

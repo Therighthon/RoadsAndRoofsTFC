@@ -1,6 +1,8 @@
 package com.therighthon.rnr.common.block;
 
+import com.mojang.datafixers.util.Pair;
 import com.therighthon.rnr.RNRHelpers;
+import com.therighthon.rnr.common.RNRTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -91,6 +93,46 @@ public class CrackingWetConcretePathBlock extends WetConcretePathBlock
             && newState != getOutputState(state) && newState != getOutputStateCracked(state))
             RNRHelpers.updateWetCrackingConcrete(level, pos);
         super.onRemove(state, level, pos, newState, isMoving);
+    }
+
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston)
+    {
+        // So, when we place a new cracking wet concrete block, if it is adjacent to an existing wet concrete block, that may influence
+        // the edge distance of said block.
+        if (!(oldState.getBlock() instanceof CrackingWetConcretePathBlock))
+        {
+            // Probably it isn't worthwhile to use pairs just to make the flow of code feel better, but what do I know
+            for (Pair pair : new Pair[] {
+                Pair.of(Direction.WEST, RNRBlockStateProperties.DISTANCE_X),
+                Pair.of(Direction.EAST, RNRBlockStateProperties.DISTANCE_X),
+                Pair.of(Direction.NORTH, RNRBlockStateProperties.DISTANCE_Z),
+                Pair.of(Direction.SOUTH, RNRBlockStateProperties.DISTANCE_Z)})
+            {
+                final Direction dir = (Direction) pair.getFirst();
+                final BlockPos posN1 = pos.relative(dir);
+                final BlockState stateN1 = level.getBlockState(posN1);
+                if (stateN1.is(RNRTags.Blocks.CRACKING_WET_CONCRETE_ROADS))
+                {
+                    // We check the distance property here so that we don't waste time on blocks placed in the same bucket as this
+                    final IntegerProperty distProp = (IntegerProperty) pair.getSecond();
+                    if (stateN1.getValue(distProp) > 0)
+                    {
+                        level.setBlockAndUpdate(posN1, stateN1.setValue(distProp, 0));
+                        level.scheduleTick(posN1, stateN1.getBlock(), 21);
+
+                        final BlockPos posN2 = posN1.relative(dir);
+                        final BlockState stateN2 = level.getBlockState(posN2);
+                        if (stateN2.is(RNRTags.Blocks.CRACKING_WET_CONCRETE_ROADS))
+                        {
+                            level.setBlockAndUpdate(posN2, stateN2.setValue(distProp, 0));
+                            level.scheduleTick(posN2, stateN2.getBlock(), 21);
+                        }
+                    }
+                }
+            }
+            super.onPlace(state, level, pos, oldState, movedByPiston);
+        }
     }
 
     public BlockState getOutputStateCracked(BlockState input)

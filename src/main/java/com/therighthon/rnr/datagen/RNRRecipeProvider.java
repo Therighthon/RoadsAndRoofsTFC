@@ -166,7 +166,8 @@ public class RNRRecipeProvider extends RecipeProvider implements IConditionBuild
             recipe().damageInputs()
                 .inputIsPrimary(TFCTags.Items.TOOLS_CHISEL)
                 .input(blocks.get(Rock.BlockType.RAW))
-                .shapeless(RNRItems.FLAGSTONE.get(rock).asItem(), 12);
+                .input(blocks.get(Rock.BlockType.RAW))
+                .shapeless(RNRItems.FLAGSTONE.get(rock).asItem(), 16);
             recipe().input(blocks.get(Rock.BlockType.GRAVEL).asItem()).shapeless(RNRItems.GRAVEL_FILL.get(rock).asItem(), 6);
 
             rockRoadMod(RNRItems.GRAVEL_FILL.get(rock).asItem(), rock, StoneBlockType.GRAVEL_ROAD);

@@ -6,6 +6,9 @@
     },
     {
       "item": "tfc:rock/raw/quartzite"
+    },
+    {
+      "item": "tfc:rock/raw/quartzite"
     }
   ],
   "primary_ingredient": {
@@ -19,7 +22,7 @@
     ]
   },
   "result": {
-    "count": 12,
+    "count": 16,
     "id": "rnr:flagstone/quartzite"
   }
 }

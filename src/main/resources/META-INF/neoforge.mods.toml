@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="EUPL"
 [[mods]] #mandatory
 modId="rnr" #mandatory
-version="1.0.3-1.21.1" #mandatory
+version="1.0.4-1.21.1" #mandatory
 displayName="Roads and Roofs" #mandatory
 logoFile="examplemod.png" #optional
 authors="Therighthon" #optional

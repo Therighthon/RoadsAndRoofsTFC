@@ -6,6 +6,9 @@
     },
     {
       "item": "tfc:rock/raw/limestone"
+    },
+    {
+      "item": "tfc:rock/raw/limestone"
     }
   ],
   "primary_ingredient": {
@@ -19,7 +22,7 @@
     ]
   },
   "result": {
-    "count": 12,
+    "count": 16,
     "id": "rnr:flagstone/limestone"
   }
 }

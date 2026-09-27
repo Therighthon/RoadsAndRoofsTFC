@@ -18,6 +18,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.dries007.tfc.common.recipes.SimpleBlockRecipe;
 import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 
+import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.JsonHelpers;
 import net.dries007.tfc.util.collections.IndirectHashCollection;
 
@@ -44,6 +45,14 @@ public class BlockModRecipe extends SimpleBlockRecipe
     public static BlockModRecipe getRecipe(BlockState state, ItemStack item)
     {
         for (BlockModRecipe recipe : CACHE.getAll(state.getBlock()))
+        {
+            if (recipe.matches(state, item))
+            {
+                return recipe;
+            }
+        }
+        // The cache can end up empty until a full restart (#16), so check the recipe manager before giving up
+        for (BlockModRecipe recipe : Helpers.getRecipes(Helpers.getUnsafeRecipeManager(), RNRRecipeTypes.BLOCK_MOD_RECIPE).values())
         {
             if (recipe.matches(state, item))
             {

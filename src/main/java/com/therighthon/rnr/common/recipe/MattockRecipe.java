@@ -105,6 +105,14 @@ public class MattockRecipe extends SimpleBlockRecipe
                 return recipe;
             }
         }
+        // The cache can end up empty until a full restart (#16), so check the recipe manager before giving up
+        for (MattockRecipe recipe : Helpers.getRecipes(Helpers.getUnsafeRecipeManager(), RNRRecipeTypes.MATTOCK_RECIPE).values())
+        {
+            if (recipe.matches(state, held, mode))
+            {
+                return recipe;
+            }
+        }
         return null;
     }
 
